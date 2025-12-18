@@ -53,9 +53,12 @@ class LogInView extends GetView<LogInController> {
                 tittle: 'Password',
                 hint: 'Enter password',
                 obsecuretext: controller.pass.value,
-                suffix: controller.pass.value
-                    ? Icon(Icons.visibility)
-                    : Icon(Icons.visibility_off),
+                suffix: GestureDetector(
+                  onTap: () => controller.togglepass(),
+                  child: controller.pass.value
+                      ? Icon(Icons.visibility)
+                      : Icon(Icons.visibility_off),
+                ),
               ),)
             ],
           ),

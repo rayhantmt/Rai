@@ -56,8 +56,8 @@ class LogInView extends GetView<LogInController> {
                 suffix: GestureDetector(
                   onTap: () => controller.togglepass(),
                   child: controller.pass.value
-                      ? Icon(Icons.visibility)
-                      : Icon(Icons.visibility_off),
+                      ? Icon(Icons.visibility,color: Color(0xff797B86),)
+                      : Icon(Icons.visibility_off,color: Color(0xff797B86),),
                 ),
               ),)
             ],

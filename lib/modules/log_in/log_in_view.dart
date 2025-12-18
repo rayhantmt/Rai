@@ -49,14 +49,14 @@ class LogInView extends GetView<LogInController> {
                 obsecuretext: false,
               ),
               SizedBox(height: Get.height * 0.01),
-              Commontextfield(
+            Obx(() =>   Commontextfield(
                 tittle: 'Password',
                 hint: 'Enter password',
                 obsecuretext: controller.pass.value,
                 suffix: controller.pass.value
                     ? Icon(Icons.visibility)
                     : Icon(Icons.visibility_off),
-              ),
+              ),)
             ],
           ),
         ),

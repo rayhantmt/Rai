@@ -14,6 +14,8 @@ class LogInView extends StatelessWidget {
         padding: const EdgeInsets.only(left: 20,right: 20),
         child: SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: Get.height*0.1,),
               Image.asset(AppImages.logo,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:rai/utils/app_images.dart';
 
 class LogInView extends StatelessWidget {
   const LogInView({super.key});
@@ -10,7 +12,11 @@ class LogInView extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            
+            SizedBox(height: Get.height*0.1,),
+            Image.asset(AppImages.logo,
+            height: Get.height*0.1,
+            width: Get.width*0.3,
+            )
           ],
         ),
       ),

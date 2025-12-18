@@ -15,7 +15,7 @@ final Widget? suffix;
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(tittle,
-        style: GoogleFonts.roboto( fontWeight: FontWeight.w600,fontSize: 14,color: Colors.white),
+        style: GoogleFonts.roboto( fontWeight: FontWeight.w600,fontSize: 14,color: Color(0xffEEEEF0)),
         ),
         Container(
           height: Get.height*0.04,

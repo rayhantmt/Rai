@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/common_widgets/common_textfield.dart';
 import 'package:rai/utils/app_images.dart';
 
@@ -22,6 +23,14 @@ class LogInView extends StatelessWidget {
                 AppImages.logo,
                 height: Get.height * 0.1,
                 width: Get.width * 0.3,
+              ),
+              SizedBox(height: Get.height*0.01,),
+              Text('Welcome Back!',
+              style: GoogleFonts.inter( 
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+                fontSize: 20
+              )
               ),
               Commontextfield(
                 tittle: 'Username or Email/phone number',

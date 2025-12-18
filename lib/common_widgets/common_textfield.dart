@@ -28,12 +28,13 @@ class Commontextfield extends StatelessWidget {
             color: Color(0xffEEEEF0),
           ),
         ),
+        SizedBox(height: Get.height*0.01,),
         Container(
           height: Get.height * 0.06,
           width: double.infinity,
           decoration: BoxDecoration(
             color: Color(0xff19191B),
-            border: Border.all(color: Colors.white.withOpacity(0.8)),
+            border: Border.all(color: Color(0xff393A40)),
             borderRadius: BorderRadius.circular(12),
           ),
           child: TextFormField(

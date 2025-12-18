@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:rai/modules/splash_screen/splash_screen.dart';
+import 'package:rai/utils/app_routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       home: SplashScreen(),
       debugShowCheckedModeBanner: false,
+      getPages: AppRoutes.getpages,
     );
   }
 }

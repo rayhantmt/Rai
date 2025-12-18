@@ -9,15 +9,18 @@ class LogInView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff19191B),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: Get.height*0.1,),
-            Image.asset(AppImages.logo,
-            height: Get.height*0.1,
-            width: Get.width*0.3,
-            )
-          ],
+      body: Padding(
+        padding: const EdgeInsets.only(left: 20,right: 20),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: Get.height*0.1,),
+              Image.asset(AppImages.logo,
+              height: Get.height*0.1,
+              width: Get.width*0.3,
+              )
+            ],
+          ),
         ),
       ),
     );

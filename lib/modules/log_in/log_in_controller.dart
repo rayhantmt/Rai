@@ -5,4 +5,8 @@ class LogInController extends GetxController{
   void togglepass(){
     pass.value=!pass.value;
   }
+  RxBool ischeck=false.obs;
+  void togglechekc(val){
+    ischeck.value=val;
+  }
 }

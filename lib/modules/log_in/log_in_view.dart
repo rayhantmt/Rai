@@ -92,7 +92,7 @@ class LogInView extends GetView<LogInController> {
                 ],
               ),
               SizedBox(height:Get.height*0.02 ,),
-              CommonButton(tittle: 'Log in')
+              CommonButton(tittle: 'Sign In')
             ],
           ),
         ),

@@ -29,6 +29,10 @@ class Firstpage extends StatelessWidget {
               fontSize: 16,
               color: Color(0xffB2B3BD)
             ),
+            ),
+            Expanded(child: SizedBox()),
+            Container(
+              height: Get.height*0.1,
             )
           ],
         ),

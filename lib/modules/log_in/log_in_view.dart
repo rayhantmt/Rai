@@ -126,7 +126,33 @@ class LogInView extends GetView<LogInController> {
                 ],
               ),
                SizedBox(height:Get.height*0.02 ,),
-               Image.asset(AppImages.google)
+               Image.asset(AppImages.google),
+                SizedBox(height:Get.height*0.02 ,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Don't have an account?",
+                    style: GoogleFonts.inter( 
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: Color(0xffB2B3BD)
+                    ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: Get.height*0.02,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Sign Up',
+                    style: GoogleFonts.inter(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16,
+                      color: Colors.white
+                    ),
+                    ),
+                  ],
+                )
             ],
           ),
         ),

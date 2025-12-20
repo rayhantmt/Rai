@@ -92,7 +92,37 @@ class LogInView extends GetView<LogInController> {
                 ],
               ),
               SizedBox(height:Get.height*0.02 ,),
-              CommonButton(tittle: 'Sign In')
+              CommonButton(tittle: 'Sign In'),
+              SizedBox(height:Get.height*0.02 ,),
+              Row(
+                children: [
+                  Expanded(
+                    child: Divider(
+                      color: Color(0xff5F606A),
+                      thickness: 1,
+                      height: 10,
+                      endIndent: 10,
+                      indent: 10,
+                      
+                    ),
+                  ),
+                  Text('or',
+                  style: GoogleFonts.inter( 
+                    
+                  ),
+                  ),
+                  Expanded(
+                    child: Divider(
+                      color: Color(0xff5F606A),
+                      thickness: 1,
+                      height: 10,
+                      endIndent: 10,
+                      indent: 10,
+                      
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),

@@ -8,10 +8,11 @@ final String tittle;
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Get.height*0.1,
+      height: Get.height*0.06,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.white
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(100)
       ),
       child: Center(
         child: Text(tittle,

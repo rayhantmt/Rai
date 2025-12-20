@@ -5,6 +5,7 @@ import 'package:rai/common_widgets/common_button.dart';
 import 'package:rai/common_widgets/common_textfield.dart';
 import 'package:rai/modules/log_in/log_in_controller.dart';
 import 'package:rai/utils/app_images.dart';
+import 'package:rai/utils/app_pages.dart';
 
 class LogInView extends GetView<LogInController> {
   const LogInView({super.key});
@@ -144,12 +145,15 @@ class LogInView extends GetView<LogInController> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Sign Up',
-                    style: GoogleFonts.inter(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16,
-                      color: Colors.white
-                    ),
+                    GestureDetector(
+                      onTap:  () => Get.toNamed(AppPages.page),
+                      child: Text('Sign Up',
+                      style: GoogleFonts.inter(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16,
+                        color: Colors.white
+                      ),
+                      ),
                     ),
                   ],
                 )

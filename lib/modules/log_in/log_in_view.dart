@@ -124,7 +124,9 @@ class LogInView extends GetView<LogInController> {
                     ),
                   ),
                 ],
-              )
+              ),
+               SizedBox(height:Get.height*0.02 ,),
+               Image.asset(AppImages.google)
             ],
           ),
         ),

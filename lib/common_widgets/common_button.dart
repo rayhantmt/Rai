@@ -17,7 +17,9 @@ final String tittle;
       child: Center(
         child: Text(tittle,
         style: GoogleFonts.inter( 
-          color: Colors.black
+          color: Color(0xff19191B),
+          fontWeight: FontWeight.bold,
+          fontSize: 16
         ),
         ),
       ),

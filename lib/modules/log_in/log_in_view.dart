@@ -108,7 +108,9 @@ class LogInView extends GetView<LogInController> {
                   ),
                   Text('or',
                   style: GoogleFonts.inter( 
-                    
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                    color: Color(0xffB2B3BD)
                   ),
                   ),
                   Expanded(

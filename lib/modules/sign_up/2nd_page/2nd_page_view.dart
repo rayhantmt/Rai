@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rai/modules/sign_up/2nd_page/2nd_page_controller.dart';
 import 'package:rai/utils/app_images.dart';
 
-class SecondPageView extends StatelessWidget {
+class SecondPageView extends GetView<SecondPageController> {
   const SecondPageView({super.key});
 
   @override

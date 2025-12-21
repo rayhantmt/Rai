@@ -10,30 +10,48 @@ class Firstpage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xff19191B),
       body: Padding(
-        padding: const EdgeInsets.only(left: 20,right: 20),
+        padding: const EdgeInsets.only(left: 20, right: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: Get.height*0.15,),
-            Text('Are You 18 or Older?',
-            style: GoogleFonts.inter( 
-              fontWeight: FontWeight.w700,
-              fontSize: 24,
-              color: Colors.white
+            SizedBox(height: Get.height * 0.15),
+            Text(
+              'Are You 18 or Older?',
+              style: GoogleFonts.inter(
+                fontWeight: FontWeight.w700,
+                fontSize: 24,
+                color: Colors.white,
+              ),
             ),
-            ),
-            SizedBox(height: Get.height*0.02,),
-            Text('This app is only available to users 18 years or older.',
-            style: GoogleFonts.inter( 
-              fontWeight: FontWeight.w500,
-              fontSize: 16,
-              color: Color(0xffB2B3BD)
-            ),
+            SizedBox(height: Get.height * 0.02),
+            Text(
+              'This app is only available to users 18 years or older.',
+              style: GoogleFonts.inter(
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+                color: Color(0xffB2B3BD),
+              ),
             ),
             Expanded(child: SizedBox()),
             Container(
-              height: Get.height*0.1,
-            )
+              height: Get.height * 0.06,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Color(0xff303136),
+                borderRadius: BorderRadius.circular(100),
+              ),
+              child: Center(
+                child: Text(
+                  'Yes',
+                  style: GoogleFonts.inter(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: Get.height * 0.08),
           ],
         ),
       ),

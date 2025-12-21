@@ -138,7 +138,24 @@ Widget EmailSignup (){
           ],
         ),
         SizedBox(height: Get.height*0.03,),
-        Image.asset(AppImages.google)
+        Image.asset(AppImages.google),
+        SizedBox(height: Get.height*0.22,),
+        Text('Already have an account',
+        style: GoogleFonts.manrope( 
+          color: Color(0xffB2B3BD),
+          fontWeight: FontWeight.w500,
+          fontSize: 14,
+          
+        ),
+        ),
+        SizedBox(height: Get.height*0.02,),
+        Text("Sing In",
+        style: GoogleFonts.manrope( 
+          fontWeight: FontWeight.w700,
+          color: Colors.white,
+          fontSize: 16
+        ),
+        )
 
       ],
     ),

@@ -32,7 +32,8 @@ class SecondPageView extends StatelessWidget {
                 fontSize: 14,
                 color: Colors.white
               ),
-              )
+              ),
+              SizedBox(height: Get.height*0.03,)
             ],
           ),
         ),

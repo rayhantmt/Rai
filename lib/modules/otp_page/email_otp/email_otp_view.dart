@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rai/common_widgets/common_button.dart';
 import 'package:rai/modules/otp_page/email_otp/email_otp_controller.dart';
 import 'package:rai/utils/app_images.dart';
 
@@ -35,7 +37,70 @@ class EmailOtpView extends GetView<EmailOtpController> {
                 fontSize: 14,
                 color: Colors.white
               ),
-              )
+              ),
+              SizedBox(height: Get.height*0.1,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: List.generate(6, (index) {
+                    return SizedBox(
+                      width: 40,
+                      child: TextField(
+                        controller: controller.otpControllers[index],
+                        focusNode: controller.otpFocusNodes[index],
+                        keyboardType: TextInputType.number,
+                        maxLength: 1,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                        ],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                        decoration: const InputDecoration(
+                          counterText: '',
+                          border: UnderlineInputBorder(),
+                        ),
+                        onChanged: (value) {
+                          controller.onOtpFieldChanged(value, index);
+                        },
+                      ),
+                    );
+                  }),
+                ),
+                const SizedBox(height: 16),
+                CommonButton(tittle: 'Verify'),
+                SizedBox(height: Get.height*0.02,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Didn't get OTP?",
+                    style: GoogleFonts.manrope( 
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: Color(0xffB2B3BD)
+                    ),
+                    ),
+                    Obx(
+                      () => GestureDetector(
+                        onTap: controller.secondsRemaining.value == 0
+                            ? controller.resendCode
+                            : null,
+                        child: Text(
+                          controller.secondsRemaining.value == 0
+                              ? "Resend code"
+                              : "Resend code ${controller.secondsRemaining}s",
+                          style: TextStyle(
+                            color: controller.secondsRemaining.value == 0
+                                ? Colors.white
+                                : Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
              ],
           ),
         ),

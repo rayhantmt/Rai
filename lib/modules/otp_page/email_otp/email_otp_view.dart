@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/modules/otp_page/email_otp/email_otp_controller.dart';
 import 'package:rai/utils/app_images.dart';
 
@@ -10,6 +11,23 @@ class EmailOtpView extends GetView<EmailOtpController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppImages.primarycolor,
+      body: SingleChildScrollView(
+        child: Column(
+           children: [
+            SizedBox(
+              height: Get.height*0.2,
+
+            ),
+            Text('Verify Your Identity',
+            style: GoogleFonts.manrope( 
+              fontWeight: FontWeight.w600,
+              fontSize: 24,
+              color: Colors.white
+            ),
+            )
+           ],
+        ),
+      ),
     );
   }
 }

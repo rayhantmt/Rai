@@ -109,7 +109,9 @@ Widget EmailSignup (){
         SizedBox(height: Get.height*0.03,),
         Commontextfield(tittle: 'Email', hint: 'Enter valid email address', obsecuretext: false),
         SizedBox(height: Get.height*0.03,),
-        CommonButton(tittle: 'Continue'),
+        GestureDetector(
+          onTap: () => Get.toNamed(AppPages.emailotp),
+          child: CommonButton(tittle: 'Continue')),
         SizedBox(height: Get.height*0.03,),
         Row(
           children: [

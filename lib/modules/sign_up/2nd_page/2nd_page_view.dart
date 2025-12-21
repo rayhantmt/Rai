@@ -5,6 +5,7 @@ import 'package:rai/common_widgets/common_button.dart';
 import 'package:rai/common_widgets/common_textfield.dart';
 import 'package:rai/modules/sign_up/2nd_page/2nd_page_controller.dart';
 import 'package:rai/utils/app_images.dart';
+import 'package:rai/utils/app_pages.dart';
 
 class SecondPageView extends GetView<SecondPageController> {
   const SecondPageView({super.key});
@@ -149,12 +150,15 @@ Widget EmailSignup (){
         ),
         ),
         SizedBox(height: Get.height*0.02,),
-        Text("Sing In",
-        style: GoogleFonts.manrope( 
-          fontWeight: FontWeight.w700,
-          color: Colors.white,
-          fontSize: 16
-        ),
+        GestureDetector(
+          onTap: () => Get.toNamed(AppPages.login),
+          child: Text("Sing In",
+          style: GoogleFonts.manrope( 
+            fontWeight: FontWeight.w700,
+            color: Colors.white,
+            fontSize: 16
+          ),
+          ),
         )
 
       ],

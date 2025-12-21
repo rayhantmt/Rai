@@ -33,7 +33,17 @@ class SecondPageView extends StatelessWidget {
                 color: Colors.white
               ),
               ),
-              SizedBox(height: Get.height*0.03,)
+              SizedBox(height: Get.height*0.03,),
+              Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: Row(
+                  children: [
+                    Text('Email'),
+                    SizedBox(width: Get.width*0.1,),
+                    Text('Phone')
+                  ],
+                ),
+              )
             ],
           ),
         ),

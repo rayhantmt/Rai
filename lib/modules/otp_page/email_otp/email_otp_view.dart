@@ -24,6 +24,14 @@ class EmailOtpView extends GetView<EmailOtpController> {
               fontSize: 24,
               color: Colors.white
             ),
+            ),
+            SizedBox(height: Get.height*0.02,),
+            Text('Enter the code sent to your email alex.647@gmail.com',
+            style: GoogleFonts.manrope( 
+              fontWeight: FontWeight.w400,
+              fontSize: 14,
+              color: Colors.white
+            ),
             )
            ],
         ),

@@ -39,9 +39,19 @@ class SecondPageView extends GetView<SecondPageController> {
                 padding: const EdgeInsets.only(left: 20),
                 child: Row(
                   children: [
-                    Text('Email'),
+                    Text('Email',
+                    style: GoogleFonts.manrope( 
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                      color: controller.signuptype.value==0? Colors.white: Color(0xff64748B)
+                    ),
+                    ),
                     SizedBox(width: Get.width*0.1,),
-                    Text('Phone')
+                    Text('Phone',
+                    style: GoogleFonts.manrope( 
+                      color: Colors.white
+                    ),
+                    )
                   ],
                 ),
               )

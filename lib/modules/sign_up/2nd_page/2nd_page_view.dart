@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rai/common_widgets/common_button.dart';
+import 'package:rai/common_widgets/common_textfield.dart';
 import 'package:rai/modules/sign_up/2nd_page/2nd_page_controller.dart';
 import 'package:rai/utils/app_images.dart';
 
@@ -49,10 +51,10 @@ class SecondPageView extends GetView<SecondPageController> {
                           color: controller.signuptype.value==0? Colors.white: Color(0xff64748B)
                         ),
                         ),
-                        Divider(
-                          thickness: 1,
-                          indent: 1,
-                          endIndent: 1,
+                        Container(
+                          
+                          // indent: 1,
+                          // endIndent: 1,
                           color: Colors.blue,
                         )
                       ],
@@ -68,10 +70,10 @@ class SecondPageView extends GetView<SecondPageController> {
                           color: Colors.white
                         ),
                         ),
-                         Divider(
-                      thickness: 1,
-                      indent: 1,
-                      endIndent: 1,
+                         Container(
+                      
+                      // indent: 1,
+                      // endIndent: 1,
                       color: Colors.white,
                     )
                       ],
@@ -101,10 +103,44 @@ class SecondPageView extends GetView<SecondPageController> {
 }
 Widget EmailSignup (){
   return SingleChildScrollView(
-    child: Text('Email',
-    style: TextStyle(
-      color: Colors.white
-    ),
+    child: Column(
+      children: [
+        SizedBox(height: Get.height*0.03,),
+        Commontextfield(tittle: 'Email', hint: 'Enter valid email address', obsecuretext: false),
+        SizedBox(height: Get.height*0.03,),
+        CommonButton(tittle: 'Continue'),
+        SizedBox(height: Get.height*0.03,),
+        Row(
+          children: [
+            Expanded(
+              child: Divider(
+                thickness: 1,
+                color: Color(0xfff5F606A),
+                indent: 2,
+                endIndent: 20,
+              ),
+            ),
+            Text('or',
+            style: GoogleFonts.inter( 
+              fontWeight: FontWeight.w400,
+              fontSize: 16,
+              color: Color(0xffB2B3BD)
+            ),
+            ),
+            Expanded(
+              child: Divider(
+                thickness: 1,
+                color: Color(0xfff5F606A),
+                indent: 20,
+                endIndent: 2,
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: Get.height*0.03,),
+        Image.asset(AppImages.google)
+
+      ],
     ),
   );
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rai/utils/app_pages.dart';
 
 class Firstpage extends StatelessWidget {
   const Firstpage({super.key});
@@ -33,20 +34,23 @@ class Firstpage extends StatelessWidget {
               ),
             ),
             Expanded(child: SizedBox()),
-            Container(
-              height: Get.height * 0.06,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Color(0xff303136),
-                borderRadius: BorderRadius.circular(100),
-              ),
-              child: Center(
-                child: Text(
-                  'Yes',
-                  style: GoogleFonts.inter(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 16,
-                    color: Colors.white,
+            GestureDetector(
+              onTap: () => Get.toNamed(AppPages.secondpage),
+              child: Container(
+                height: Get.height * 0.06,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Color(0xff303136),
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: Center(
+                  child: Text(
+                    'Yes',
+                    style: GoogleFonts.inter(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),

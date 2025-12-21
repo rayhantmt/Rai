@@ -38,19 +38,46 @@ class SecondPageView extends GetView<SecondPageController> {
               padding: const EdgeInsets.only(left: 20),
               child: Row(
                 children: [
-                  Text('Email',
-                  style: GoogleFonts.manrope( 
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16,
-                    color: controller.signuptype.value==0? Colors.white: Color(0xff64748B)
-                  ),
+                  GestureDetector(
+                    onTap: () => controller.setsignintype(0),
+                    child: Column(
+                      children: [
+                        Text('Email',
+                        style: GoogleFonts.manrope( 
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                          color: controller.signuptype.value==0? Colors.white: Color(0xff64748B)
+                        ),
+                        ),
+                        Divider(
+                          thickness: 1,
+                          indent: 1,
+                          endIndent: 1,
+                          color: Colors.blue,
+                        )
+                      ],
+                    ),
                   ),
                   SizedBox(width: Get.width*0.1,),
-                  Text('Phone',
-                  style: GoogleFonts.manrope( 
-                    color: Colors.white
+                  GestureDetector(
+                    onTap: () => controller.setsignintype(1),
+                    child: Column(
+                      children: [
+                        Text('Phone',
+                        style: GoogleFonts.manrope( 
+                          color: Colors.white
+                        ),
+                        ),
+                         Divider(
+                      thickness: 1,
+                      indent: 1,
+                      endIndent: 1,
+                      color: Colors.white,
+                    )
+                      ],
+                    ),
                   ),
-                  )
+                 
                 ],
               ),
             ),

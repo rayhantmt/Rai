@@ -51,6 +51,27 @@ class Firstpage extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(height: Get.height * 0.02),
+            Container(
+              height: Get.height * 0.06,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Color(0xff303136),
+                ),
+                borderRadius: BorderRadius.circular(100),
+              ),
+              child: Center(
+                child: Text(
+                  'No',
+                  style: GoogleFonts.inter(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
             SizedBox(height: Get.height * 0.08),
           ],
         ),

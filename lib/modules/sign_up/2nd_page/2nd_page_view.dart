@@ -13,52 +13,81 @@ class SecondPageView extends GetView<SecondPageController> {
       backgroundColor: AppImages.primarycolor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: Get.height * 0.1),
-              Text(
-                'Create an account!',
-                style: GoogleFonts.manrope(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 24,
-                ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: Get.height * 0.1),
+            Text(
+              'Create an account!',
+              style: GoogleFonts.manrope(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+                fontSize: 24,
               ),
-              SizedBox(height: Get.height*0.02,),
-              Text('To complete the sign up process please enter your valid email or phone number',
-              style: GoogleFonts.manrope( 
-                fontWeight: FontWeight.w400,
-                fontSize: 14,
-                color: Colors.white
+            ),
+            SizedBox(height: Get.height*0.02,),
+            Text('To complete the sign up process please enter your valid email or phone number',
+            style: GoogleFonts.manrope( 
+              fontWeight: FontWeight.w400,
+              fontSize: 14,
+              color: Colors.white
+            ),
+            ),
+            SizedBox(height: Get.height*0.03,),
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: Row(
+                children: [
+                  Text('Email',
+                  style: GoogleFonts.manrope( 
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                    color: controller.signuptype.value==0? Colors.white: Color(0xff64748B)
+                  ),
+                  ),
+                  SizedBox(width: Get.width*0.1,),
+                  Text('Phone',
+                  style: GoogleFonts.manrope( 
+                    color: Colors.white
+                  ),
+                  )
+                ],
               ),
-              ),
-              SizedBox(height: Get.height*0.03,),
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: Row(
-                  children: [
-                    Text('Email',
-                    style: GoogleFonts.manrope( 
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16,
-                      color: controller.signuptype.value==0? Colors.white: Color(0xff64748B)
-                    ),
-                    ),
-                    SizedBox(width: Get.width*0.1,),
-                    Text('Phone',
-                    style: GoogleFonts.manrope( 
-                      color: Colors.white
-                    ),
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
+            ),
+            Expanded(
+              child: Obx(() {
+              if(controller.signuptype.value==0){
+                return EmailSignup();
+              }
+              if(controller.signuptype.value==1){
+                return MobileSignup();
+              }
+              return
+              SizedBox();
+              })
+            )
+          ],
         ),
       ),
     );
   }
+}
+Widget EmailSignup (){
+  return SingleChildScrollView(
+    child: Text('Email',
+    style: TextStyle(
+      color: Colors.white
+    ),
+    ),
+  );
+}
+
+Widget MobileSignup(){
+  return SingleChildScrollView(
+    child: Text('Mobile',
+    style: TextStyle(
+      color: Colors.white
+    ),
+    ),
+  );
 }

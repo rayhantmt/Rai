@@ -168,10 +168,64 @@ Widget EmailSignup (){
 
 Widget MobileSignup(){
   return SingleChildScrollView(
-    child: Text('Mobile',
-    style: TextStyle(
-      color: Colors.white
-    ),
+    child: Column(
+      children: [
+        SizedBox(height: Get.height*0.03,),
+        Commontextfield(tittle: 'Phone', hint: 'Enter valid phone number', obsecuretext: false),
+        SizedBox(height: Get.height*0.03,),
+        CommonButton(tittle: 'Continue'),
+        SizedBox(height: Get.height*0.03,),
+        Row(
+          children: [
+            Expanded(
+              child: Divider(
+                thickness: 1,
+                color: Color(0xfff5F606A),
+                indent: 2,
+                endIndent: 20,
+              ),
+            ),
+            Text('or',
+            style: GoogleFonts.inter( 
+              fontWeight: FontWeight.w400,
+              fontSize: 16,
+              color: Color(0xffB2B3BD)
+            ),
+            ),
+            Expanded(
+              child: Divider(
+                thickness: 1,
+                color: Color(0xfff5F606A),
+                indent: 20,
+                endIndent: 2,
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: Get.height*0.03,),
+        Image.asset(AppImages.google),
+        SizedBox(height: Get.height*0.22,),
+        Text('Already have an account',
+        style: GoogleFonts.manrope( 
+          color: Color(0xffB2B3BD),
+          fontWeight: FontWeight.w500,
+          fontSize: 14,
+          
+        ),
+        ),
+        SizedBox(height: Get.height*0.02,),
+        GestureDetector(
+          onTap: () => Get.toNamed(AppPages.login),
+          child: Text("Sing In",
+          style: GoogleFonts.manrope( 
+            fontWeight: FontWeight.w700,
+            color: Colors.white,
+            fontSize: 16
+          ),
+          ),
+        )
+
+      ],
     ),
   );
 }

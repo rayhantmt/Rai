@@ -69,7 +69,7 @@ class EmailOtpView extends GetView<EmailOtpController> {
                     );
                   }),
                 ),
-                const SizedBox(height: 16),
+              SizedBox(height: Get.height*0.025,),
                 CommonButton(tittle: 'Verify'),
                 SizedBox(height: Get.height*0.02,),
                 Row(

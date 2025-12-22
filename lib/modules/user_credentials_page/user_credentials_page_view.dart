@@ -36,6 +36,16 @@ class UserCredentialsPageView extends GetView<UserCredentialsPageController> {
               ),
               SizedBox(height: Get.height*0.03,),
               Commontextfield(tittle: 'Username', hint: 'Enter unique name', obsecuretext: false),
+              SizedBox(height: Get.height*0.02,),
+              Obx(() => Commontextfield(tittle: 'Password', hint: 'Enter a strong pawword', obsecuretext: controller.isobsecured.value,
+              suffix: GestureDetector(
+                onTap: () => controller.toggle1(),
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Icon(controller.isobsecured.value?Icons.visibility:Icons.visibility_off,color: Color(0xff5F606A),),
+                ),
+              ),
+              ),)
 
             ],
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rai/common_widgets/common_textfield.dart';
 import 'package:rai/utils/app_images.dart';
 
 class UserCredentialsPageView extends StatelessWidget {
@@ -31,7 +32,9 @@ class UserCredentialsPageView extends StatelessWidget {
                 fontSize: 14,
                 color: Color(0xffB2B3BD)
               ),
-              )
+              ),
+              SizedBox(height: Get.height*0.03,),
+              Commontextfield(tittle: 'Username', hint: 'Enter unique name', obsecuretext: false)
             ],
           ),
         ),

@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/common_widgets/common_button.dart';
 import 'package:rai/modules/otp_page/email_otp/email_otp_controller.dart';
 import 'package:rai/utils/app_images.dart';
+import 'package:rai/utils/app_pages.dart';
 
 class EmailOtpView extends GetView<EmailOtpController> {
   const EmailOtpView({super.key});
@@ -70,7 +71,9 @@ class EmailOtpView extends GetView<EmailOtpController> {
                   }),
                 ),
               SizedBox(height: Get.height*0.025,),
-                CommonButton(tittle: 'Verify'),
+                GestureDetector(
+                  onTap: () => Get.toNamed(AppPages.usercredentials),
+                  child: CommonButton(tittle: 'Verify')),
                 SizedBox(height: Get.height*0.02,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

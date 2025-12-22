@@ -73,6 +73,14 @@ class SetProfileView extends StatelessWidget {
                   )
                 ],
               ),
+              SizedBox(height: Get.height*0.02,),
+              Divider(
+                thickness: 1,
+                indent: 1,
+                endIndent: 1,
+                color: Color(0xff5F606A),
+              ),
+              
             ],
           ),
         ),

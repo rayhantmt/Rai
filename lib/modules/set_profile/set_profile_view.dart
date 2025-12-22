@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rai/common_widgets/common_button.dart';
 import 'package:rai/common_widgets/common_textfield.dart';
 import 'package:rai/utils/app_images.dart';
 
@@ -213,6 +214,8 @@ class SetProfileView extends StatelessWidget {
                   ),
                 ),
               ),
+              SizedBox(height: Get.height*0.02,),
+              CommonButton(tittle: 'Get Started')
             ],
           ),
         ),

@@ -80,7 +80,22 @@ class SetProfileView extends StatelessWidget {
                 endIndent: 1,
                 color: Color(0xff5F606A),
               ),
-              
+              SizedBox(height: Get.height*0.02,),
+              Row(
+                children: [
+                  Column(
+                    children: [
+                      Text('First Name',
+                      style: GoogleFonts.manrope( 
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                        color: Colors.white
+                      ),
+                      )
+                    ],
+                  )
+                ],
+              )
             ],
           ),
         ),

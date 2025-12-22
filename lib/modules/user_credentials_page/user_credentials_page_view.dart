@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/common_widgets/common_textfield.dart';
+import 'package:rai/modules/user_credentials_page/user_credentials_page_controller.dart';
 import 'package:rai/utils/app_images.dart';
 
-class UserCredentialsPageView extends StatelessWidget {
+class UserCredentialsPageView extends GetView<UserCredentialsPageController> {
   const UserCredentialsPageView({super.key});
 
   @override
@@ -35,7 +36,7 @@ class UserCredentialsPageView extends StatelessWidget {
               ),
               SizedBox(height: Get.height*0.03,),
               Commontextfield(tittle: 'Username', hint: 'Enter unique name', obsecuretext: false),
-              
+
             ],
           ),
         ),

@@ -4,4 +4,5 @@ class AppPages {
   static const String secondpage='/2ndpage';
   static const String emailotp='/emailotp';
   static const String usercredentials='/usercredentials';
+  static const String setUpProfile='/setupprofile';
 }

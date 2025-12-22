@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rai/common_widgets/common_textfield.dart';
 import 'package:rai/utils/app_images.dart';
 
 class SetProfileView extends StatelessWidget {
@@ -199,7 +200,12 @@ class SetProfileView extends StatelessWidget {
                     ),
                   )
                 ],
-              )
+              ),
+              SizedBox(height: Get.height*0.02,),
+              Commontextfield(tittle: 'Date of Birth', hint: 'Select date of birth', obsecuretext: false,suffix: Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: Icon(Icons.calendar_month_outlined,color: Color(0xffEEEEF0),),
+              ),)
             ],
           ),
         ),

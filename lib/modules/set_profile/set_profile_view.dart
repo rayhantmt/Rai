@@ -43,7 +43,7 @@ class SetProfileView extends StatelessWidget {
                     height: Get.height * 0.15,
                     width: Get.width * 0.3,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(150),
+                      shape: BoxShape.circle,
                       color: Color(0xffB2B3BD),
                     ),
                   ),

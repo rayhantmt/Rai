@@ -47,13 +47,13 @@ class UserCredentialsPageView extends GetView<UserCredentialsPageController> {
                 () => Commontextfield(
                   tittle: 'Password',
                   hint: 'Enter a strong pawword',
-                  obsecuretext: controller.isobsecured.value,
+                  obsecuretext: controller.isobsecured1.value,
                   suffix: GestureDetector(
-                    onTap: () => controller.toggle1(),
+                    onTap: () => controller.toggle2(),
                     child: Padding(
                       padding: const EdgeInsets.only(right: 20),
                       child: Icon(
-                        controller.isobsecured.value
+                        controller.isobsecured1.value
                             ? Icons.visibility
                             : Icons.visibility_off,
                         color: Color(0xff5F606A),

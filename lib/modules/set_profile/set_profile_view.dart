@@ -62,6 +62,13 @@ class SetProfileView extends StatelessWidget {
                         color: Color(0xffB2B3BD)
                       ),
                       ),
+                      Text('Upload Photo',
+                      style: GoogleFonts.manrope( 
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16,
+                        color: Colors.white
+                      ),
+                      )
                     ],
                   )
                 ],

@@ -34,7 +34,8 @@ class UserCredentialsPageView extends StatelessWidget {
               ),
               ),
               SizedBox(height: Get.height*0.03,),
-              Commontextfield(tittle: 'Username', hint: 'Enter unique name', obsecuretext: false)
+              Commontextfield(tittle: 'Username', hint: 'Enter unique name', obsecuretext: false),
+              
             ],
           ),
         ),

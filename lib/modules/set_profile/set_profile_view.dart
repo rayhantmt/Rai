@@ -45,6 +45,18 @@ class SetProfileView extends StatelessWidget {
                       color: Color(0xffB2B3BD),
                     ),
                   ),
+                  SizedBox(width: Get.width*0.09,),
+                  Column(
+                    children: [
+                      Text('Must be JPG, JPEG or PNG',
+                      style: GoogleFonts.manrope( 
+                        fontWeight: FontWeight.w500,
+                        fontSize: 12,
+                        color: Color(0xffB2B3BD)
+                      ),
+                      )
+                    ],
+                  )
                 ],
               ),
             ],

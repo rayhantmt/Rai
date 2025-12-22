@@ -11,17 +11,20 @@ class SetProfileView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppImages.primarycolor,
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: Get.height*0.1,),
-            Text('Set up your profile!',
-            style: GoogleFonts.manrope( 
-              fontWeight: FontWeight.w600,
-              fontSize: 24,
-              color: Colors.white
-            ),
-            )
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              SizedBox(height: Get.height*0.1,),
+              Text('Set up your profile!',
+              style: GoogleFonts.manrope( 
+                fontWeight: FontWeight.w600,
+                fontSize: 24,
+                color: Colors.white
+              ),
+              )
+            ],
+          ),
         ),
       ),
     );

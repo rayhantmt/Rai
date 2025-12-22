@@ -45,124 +45,123 @@ class SetProfileView extends StatelessWidget {
                       color: Color(0xffB2B3BD),
                     ),
                   ),
-                  SizedBox(width: Get.width*0.09,),
+                  SizedBox(width: Get.width * 0.09),
                   Column(
                     children: [
-                      Text('Must be JPG, JPEG or PNG',
-                      style: GoogleFonts.manrope( 
-                        fontWeight: FontWeight.w500,
-                        fontSize: 12,
-                        color: Color(0xffB2B3BD)
+                      Text(
+                        'Must be JPG, JPEG or PNG',
+                        style: GoogleFonts.manrope(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 12,
+                          color: Color(0xffB2B3BD),
+                        ),
                       ),
+                      Text(
+                        '64×64 px, under 2 MB',
+                        style: GoogleFonts.manrope(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 12,
+                          color: Color(0xffB2B3BD),
+                        ),
                       ),
-                       Text('64×64 px, under 2 MB',
-                      style: GoogleFonts.manrope( 
-                        fontWeight: FontWeight.w500,
-                        fontSize: 12,
-                        color: Color(0xffB2B3BD)
+                      Text(
+                        'Upload Photo',
+                        style: GoogleFonts.manrope(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
                       ),
-                      ),
-                      Text('Upload Photo',
-                      style: GoogleFonts.manrope( 
-                        fontWeight: FontWeight.w700,
-                        fontSize: 16,
-                        color: Colors.white
-                      ),
-                      )
                     ],
-                  )
+                  ),
                 ],
               ),
-              SizedBox(height: Get.height*0.02,),
+              SizedBox(height: Get.height * 0.02),
               Divider(
                 thickness: 1,
                 indent: 1,
                 endIndent: 1,
                 color: Color(0xff5F606A),
               ),
-              SizedBox(height: Get.height*0.02,),
+              SizedBox(height: Get.height * 0.02),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('First Name',
-                      style: GoogleFonts.manrope( 
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16,
-                        color: Colors.white
+                      Text(
+                        'First Name',
+                        style: GoogleFonts.manrope(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
                       ),
-                      ),
-                      SizedBox(height: Get.height*0.01,),
+                      SizedBox(height: Get.height * 0.01),
                       Container(
-                        height: Get.height*0.06,
-                        width: Get.width*0.4,
+                        height: Get.height * 0.06,
+                        width: Get.width * 0.4,
                         decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Color(0xff393A40)
-                          ),
-                          borderRadius:BorderRadius.circular(12) 
+                          border: Border.all(color: Color(0xff393A40)),
+                          borderRadius: BorderRadius.circular(12),
                         ),
                         child: TextFormField(
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(left: 10),
-                            hint: Text('Write fist name',
-                            style: GoogleFonts.manrope( 
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14,
-                              color: Color(0xff797B86)
+                            hint: Text(
+                              'Write fist name',
+                              style: GoogleFonts.manrope(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14,
+                                color: Color(0xff797B86),
+                              ),
                             ),
-                            
-                            ),
-                            border: InputBorder.none
+                            border: InputBorder.none,
                           ),
                         ),
-
-                      )
+                      ),
                     ],
                   ),
 
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Last Name',
-                      style: GoogleFonts.manrope( 
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16,
-                        color: Colors.white
+                      Text(
+                        'Last Name',
+                        style: GoogleFonts.manrope(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
                       ),
-                      ),
-                      SizedBox(height: Get.height*0.01,),
+                      SizedBox(height: Get.height * 0.01),
                       Container(
-                        height: Get.height*0.06,
-                        width: Get.width*0.4,
+                        height: Get.height * 0.06,
+                        width: Get.width * 0.4,
                         decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Color(0xff393A40)
-                          ),
-                          borderRadius:BorderRadius.circular(12) 
+                          border: Border.all(color: Color(0xff393A40)),
+                          borderRadius: BorderRadius.circular(12),
                         ),
                         child: TextFormField(
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(left: 10),
-                            hint: Text('Write last name',
-                            style: GoogleFonts.manrope( 
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14,
-                              color: Color(0xff797B86)
+                            hint: Text(
+                              'Write last name',
+                              style: GoogleFonts.manrope(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14,
+                                color: Color(0xff797B86),
+                              ),
                             ),
-                            
-                            ),
-                            border: InputBorder.none
+                            border: InputBorder.none,
                           ),
                         ),
-
-                      )
+                      ),
                     ],
-                  )
+                  ),
                 ],
-              )
+              ),
             ],
           ),
         ),

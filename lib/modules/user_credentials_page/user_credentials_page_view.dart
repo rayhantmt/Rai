@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/utils/app_images.dart';
 
@@ -11,9 +12,10 @@ class UserCredentialsPageView extends StatelessWidget {
       backgroundColor: AppImages.primarycolor,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
+              SizedBox(height: Get.height*0.1,),
               Text('User Credential!',
               style: GoogleFonts.manrope( 
                 fontWeight: FontWeight.w600,

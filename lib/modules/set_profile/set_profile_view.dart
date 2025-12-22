@@ -14,6 +14,7 @@ class SetProfileView extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: Get.height*0.1,),
               Text('Set up your profile!',
@@ -22,7 +23,16 @@ class SetProfileView extends StatelessWidget {
                 fontSize: 24,
                 color: Colors.white
               ),
-              )
+              ),
+SizedBox(height: Get.height*0.02,),
+Text('Set your photo and  add details to get started',
+style: GoogleFonts.manrope( 
+  fontWeight: FontWeight.w400,
+  fontSize: 14,
+  color: Color(0xffB2B3BD)
+),
+)
+
             ],
           ),
         ),

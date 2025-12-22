@@ -54,7 +54,14 @@ class SetProfileView extends StatelessWidget {
                         fontSize: 12,
                         color: Color(0xffB2B3BD)
                       ),
-                      )
+                      ),
+                       Text('64×64 px, under 2 MB',
+                      style: GoogleFonts.manrope( 
+                        fontWeight: FontWeight.w500,
+                        fontSize: 12,
+                        color: Color(0xffB2B3BD)
+                      ),
+                      ),
                     ],
                   )
                 ],

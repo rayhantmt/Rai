@@ -162,6 +162,44 @@ class SetProfileView extends StatelessWidget {
                   ),
                 ],
               ),
+              SizedBox(height: Get.height*0.02,),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Bio',
+                  style: GoogleFonts.manrope( 
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                    color: Color(0xffEEEEF0)
+                  ),
+                  ),
+                  SizedBox(height: Get.height*0.02,),
+                  Container(
+                    height: Get.height*0.15,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Color(0xff393A40)
+                      ),
+                      borderRadius: BorderRadius.circular(12)
+                    ),
+                    child: TextFormField(
+                      
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(left: 10),
+                        border: InputBorder.none,
+                        hint: Text('Write you short bio here.....',
+                        style: GoogleFonts.manrope( 
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                          color: Color(0xff6C6E79)
+                        ),
+                        )
+                      ),
+                    ),
+                  )
+                ],
+              )
             ],
           ),
         ),

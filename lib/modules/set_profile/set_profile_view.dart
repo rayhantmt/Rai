@@ -31,6 +31,19 @@ style: GoogleFonts.manrope(
   fontSize: 14,
   color: Color(0xffB2B3BD)
 ),
+),
+SizedBox(height: Get.height*0.03,),
+Row(
+  children: [
+    Container(
+      height: Get.height*0.15,
+      width: Get.width*0.3,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(150),
+        color: Color(0xffB2B3BD)
+      ),
+    )
+  ],
 )
 
             ],

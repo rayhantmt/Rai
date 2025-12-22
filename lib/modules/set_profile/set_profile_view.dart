@@ -82,6 +82,7 @@ class SetProfileView extends StatelessWidget {
               ),
               SizedBox(height: Get.height*0.02,),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,6 +108,45 @@ class SetProfileView extends StatelessWidget {
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(left: 10),
                             hint: Text('Write fist name',
+                            style: GoogleFonts.manrope( 
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14,
+                              color: Color(0xff797B86)
+                            ),
+                            
+                            ),
+                            border: InputBorder.none
+                          ),
+                        ),
+
+                      )
+                    ],
+                  ),
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Last Name',
+                      style: GoogleFonts.manrope( 
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                        color: Colors.white
+                      ),
+                      ),
+                      SizedBox(height: Get.height*0.01,),
+                      Container(
+                        height: Get.height*0.06,
+                        width: Get.width*0.4,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Color(0xff393A40)
+                          ),
+                          borderRadius:BorderRadius.circular(12) 
+                        ),
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(left: 10),
+                            hint: Text('Write last name',
                             style: GoogleFonts.manrope( 
                               fontWeight: FontWeight.w400,
                               fontSize: 14,

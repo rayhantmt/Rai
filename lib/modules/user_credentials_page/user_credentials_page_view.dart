@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rai/common_widgets/common_button.dart';
 import 'package:rai/common_widgets/common_textfield.dart';
 import 'package:rai/modules/user_credentials_page/user_credentials_page_controller.dart';
 import 'package:rai/utils/app_images.dart';
@@ -83,6 +84,8 @@ class UserCredentialsPageView extends GetView<UserCredentialsPageController> {
                   ),
                 ),
               ),
+              SizedBox(height: Get.height*0.02,),
+              CommonButton(tittle: 'Complete Sign Up')
             ],
           ),
         ),

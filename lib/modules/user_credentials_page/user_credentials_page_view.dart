@@ -14,6 +14,7 @@ class UserCredentialsPageView extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: Get.height*0.1,),
               Text('User Credential!',
@@ -21,6 +22,14 @@ class UserCredentialsPageView extends StatelessWidget {
                 fontWeight: FontWeight.w600,
                 fontSize: 24,
                 color: Colors.white
+              ),
+              ),
+              SizedBox(height: Get.height*0.02,),
+              Text('Set an username &  strong password to secure account',
+              style: GoogleFonts.manrope( 
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+                color: Color(0xffB2B3BD)
               ),
               )
             ],

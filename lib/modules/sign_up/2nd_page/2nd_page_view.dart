@@ -42,51 +42,56 @@ class SecondPageView extends GetView<SecondPageController> {
               padding: const EdgeInsets.only(left: 20),
               child: Row(
                 children: [
-                  Obx(() => GestureDetector(
-                    onTap: () => controller.setsignintype(0),
-                    child: Column(
-                      children: [
-                        Text(
-                          'Email',
-                          style: GoogleFonts.manrope(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 16,
-                            color: controller.signuptype.value == 0
-                                ? Color(0xffEEEEF0)
-                                : Color(0xff64748B),
+                  Obx(
+                    () => GestureDetector(
+                      onTap: () => controller.setsignintype(0),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Email',
+                            style: GoogleFonts.manrope(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16,
+                              color: controller.signuptype.value == 0
+                                  ? Color(0xffEEEEF0)
+                                  : Color(0xff64748B),
+                            ),
                           ),
-                        ),
-                        Container(
-                          // indent: 1,
-                          // endIndent: 1,
-                          color: Colors.blue,
-                        ),
-                      ],
+                          Container(
+                            // indent: 1,
+                            // endIndent: 1,
+                            color: Colors.blue,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),),
+                  ),
                   SizedBox(width: Get.width * 0.1),
-                 Obx(() =>  GestureDetector(
-                    onTap: () => controller.setsignintype(1),
-                    child: Column(
-                      children: [
-                         Text(
-                          'Phone',
-                          style: GoogleFonts.manrope(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 16,
-                            color: controller.signuptype.value == 1
-                                ? Color(0xffEEEEF0)
-                                : Color(0xff64748B),
+                  Obx(
+                    () => GestureDetector(
+                      onTap: () => controller.setsignintype(1),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Phone',
+                            style: GoogleFonts.manrope(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16,
+                              color: controller.signuptype.value == 1
+                                  ? Color(0xffEEEEF0)
+                                  : Color(0xff64748B),
+                            ),
                           ),
-                        ),
-                        Container(
-                          // indent: 1,
-                          // endIndent: 1,
-                          color: Colors.white,
-                        ),
-                      ],
+                          Container(
+                            // indent: 1,
+                            // endIndent: 1,
+                            color: Colors.white,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),),                ],
+                  ),
+                ],
               ),
             ),
             Expanded(
@@ -190,7 +195,9 @@ Widget MobileSignup() {
           obsecuretext: false,
         ),
         SizedBox(height: Get.height * 0.03),
-        CommonButton(tittle: 'Continue'),
+        GestureDetector(
+          onTap: () => Get.toNamed(AppPages.mobileotp),
+          child: CommonButton(tittle: 'Continue')),
         SizedBox(height: Get.height * 0.03),
         Row(
           children: [

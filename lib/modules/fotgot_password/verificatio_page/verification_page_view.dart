@@ -3,11 +3,12 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/common_widgets/common_button.dart';
 import 'package:rai/common_widgets/common_textfield.dart';
-import 'package:rai/modules/sign_up/2nd_page/2nd_page_controller.dart';
+import 'package:rai/modules/fotgot_password/verificatio_page/verification_page_contorller.dart';
+
 import 'package:rai/utils/app_images.dart';
 import 'package:rai/utils/app_pages.dart';
 
-class VerificationPageView extends GetView<SecondPageController> {
+class VerificationPageView extends GetView<VerificationPageContorller> {
   const VerificationPageView({super.key});
 
   @override
@@ -21,7 +22,7 @@ class VerificationPageView extends GetView<SecondPageController> {
           children: [
             SizedBox(height: Get.height * 0.1),
             Text(
-              'Create an account!',
+              'Identity verification!',
               style: GoogleFonts.manrope(
                 color: Colors.white,
                 fontWeight: FontWeight.w600,
@@ -30,7 +31,7 @@ class VerificationPageView extends GetView<SecondPageController> {
             ),
             SizedBox(height: Get.height * 0.02),
             Text(
-              'To complete the sign up process please enter your valid email or phone number',
+              'To get OTP verification code please enter your registered email or phone number',
               style: GoogleFonts.manrope(
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
@@ -128,57 +129,57 @@ Widget EmailSignup() {
           child: CommonButton(tittle: 'Continue'),
         ),
         SizedBox(height: Get.height * 0.03),
-        Row(
-          children: [
-            Expanded(
-              child: Divider(
-                thickness: 1,
-                color: Color(0xfff5F606A),
-                indent: 2,
-                endIndent: 20,
-              ),
-            ),
-            Text(
-              'or',
-              style: GoogleFonts.inter(
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-                color: Color(0xffB2B3BD),
-              ),
-            ),
-            Expanded(
-              child: Divider(
-                thickness: 1,
-                color: Color(0xfff5F606A),
-                indent: 20,
-                endIndent: 2,
-              ),
-            ),
-          ],
-        ),
-        SizedBox(height: Get.height * 0.03),
-        Image.asset(AppImages.google),
-        SizedBox(height: Get.height * 0.22),
-        Text(
-          'Already have an account',
-          style: GoogleFonts.manrope(
-            color: Color(0xffB2B3BD),
-            fontWeight: FontWeight.w500,
-            fontSize: 14,
-          ),
-        ),
-        SizedBox(height: Get.height * 0.02),
-        GestureDetector(
-          onTap: () => Get.toNamed(AppPages.login),
-          child: Text(
-            "Sing In",
-            style: GoogleFonts.manrope(
-              fontWeight: FontWeight.w700,
-              color: Colors.white,
-              fontSize: 16,
-            ),
-          ),
-        ),
+        // Row(
+        //   children: [
+        //     Expanded(
+        //       child: Divider(
+        //         thickness: 1,
+        //         color: Color(0xfff5F606A),
+        //         indent: 2,
+        //         endIndent: 20,
+        //       ),
+        //     ),
+        //     Text(
+        //       'or',
+        //       style: GoogleFonts.inter(
+        //         fontWeight: FontWeight.w400,
+        //         fontSize: 16,
+        //         color: Color(0xffB2B3BD),
+        //       ),
+        //     ),
+        //     Expanded(
+        //       child: Divider(
+        //         thickness: 1,
+        //         color: Color(0xfff5F606A),
+        //         indent: 20,
+        //         endIndent: 2,
+        //       ),
+        //     ),
+        //   ],
+        // ),
+        // SizedBox(height: Get.height * 0.03),
+        // Image.asset(AppImages.google),
+        // SizedBox(height: Get.height * 0.22),
+        // Text(
+        //   'Already have an account',
+        //   style: GoogleFonts.manrope(
+        //     color: Color(0xffB2B3BD),
+        //     fontWeight: FontWeight.w500,
+        //     fontSize: 14,
+        //   ),
+        // ),
+        // SizedBox(height: Get.height * 0.02),
+        // GestureDetector(
+        //   onTap: () => Get.toNamed(AppPages.login),
+        //   child: Text(
+        //     "Sing In",
+        //     style: GoogleFonts.manrope(
+        //       fontWeight: FontWeight.w700,
+        //       color: Colors.white,
+        //       fontSize: 16,
+        //     ),
+        //   ),
+        // ),
       ],
     ),
   );
@@ -199,57 +200,57 @@ Widget MobileSignup() {
           onTap: () => Get.toNamed(AppPages.mobileotp),
           child: CommonButton(tittle: 'Continue')),
         SizedBox(height: Get.height * 0.03),
-        Row(
-          children: [
-            Expanded(
-              child: Divider(
-                thickness: 1,
-                color: Color(0xfff5F606A),
-                indent: 2,
-                endIndent: 20,
-              ),
-            ),
-            Text(
-              'or',
-              style: GoogleFonts.inter(
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-                color: Color(0xffB2B3BD),
-              ),
-            ),
-            Expanded(
-              child: Divider(
-                thickness: 1,
-                color: Color(0xfff5F606A),
-                indent: 20,
-                endIndent: 2,
-              ),
-            ),
-          ],
-        ),
-        SizedBox(height: Get.height * 0.03),
-        Image.asset(AppImages.google),
-        SizedBox(height: Get.height * 0.22),
-        Text(
-          'Already have an account',
-          style: GoogleFonts.manrope(
-            color: Color(0xffB2B3BD),
-            fontWeight: FontWeight.w500,
-            fontSize: 14,
-          ),
-        ),
-        SizedBox(height: Get.height * 0.02),
-        GestureDetector(
-          onTap: () => Get.toNamed(AppPages.login),
-          child: Text(
-            "Sing In",
-            style: GoogleFonts.manrope(
-              fontWeight: FontWeight.w700,
-              color: Colors.white,
-              fontSize: 16,
-            ),
-          ),
-        ),
+        // Row(
+        //   children: [
+        //     Expanded(
+        //       child: Divider(
+        //         thickness: 1,
+        //         color: Color(0xfff5F606A),
+        //         indent: 2,
+        //         endIndent: 20,
+        //       ),
+        //     ),
+        //     Text(
+        //       'or',
+        //       style: GoogleFonts.inter(
+        //         fontWeight: FontWeight.w400,
+        //         fontSize: 16,
+        //         color: Color(0xffB2B3BD),
+        //       ),
+        //     ),
+        //     Expanded(
+        //       child: Divider(
+        //         thickness: 1,
+        //         color: Color(0xfff5F606A),
+        //         indent: 20,
+        //         endIndent: 2,
+        //       ),
+        //     ),
+        //   ],
+        // ),
+        // SizedBox(height: Get.height * 0.03),
+        // Image.asset(AppImages.google),
+        // SizedBox(height: Get.height * 0.22),
+        // Text(
+        //   'Already have an account',
+        //   style: GoogleFonts.manrope(
+        //     color: Color(0xffB2B3BD),
+        //     fontWeight: FontWeight.w500,
+        //     fontSize: 14,
+        //   ),
+        // ),
+        // SizedBox(height: Get.height * 0.02),
+        // GestureDetector(
+        //   onTap: () => Get.toNamed(AppPages.login),
+        //   child: Text(
+        //     "Sing In",
+        //     style: GoogleFonts.manrope(
+        //       fontWeight: FontWeight.w700,
+        //       color: Colors.white,
+        //       fontSize: 16,
+        //     ),
+        //   ),
+        // ),
       ],
     ),
   );

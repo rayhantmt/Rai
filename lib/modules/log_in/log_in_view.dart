@@ -83,12 +83,15 @@ class LogInView extends GetView<LogInController> {
                   ),
                   ),
                   Expanded(child: SizedBox()),
-                  Text('Forgot Passord?',
-                  style: GoogleFonts.roboto( 
-                    fontWeight: FontWeight.w700,
-                    fontSize: 14,
-                    color: Color(0xffEEEEF0)
-                  ),
+                  GestureDetector(
+                    onTap: () => Get.toNamed(AppPages.verificationpage),
+                    child: Text('Forgot Passord?',
+                    style: GoogleFonts.roboto( 
+                      fontWeight: FontWeight.w700,
+                      fontSize: 14,
+                      color: Color(0xffEEEEF0)
+                    ),
+                    ),
                   )
                 ],
               ),

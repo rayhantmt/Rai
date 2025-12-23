@@ -6,4 +6,5 @@ class AppPages {
   static const String mobileotp='/mobileotp';
   static const String usercredentials='/usercredentials';
   static const String setUpProfile='/setupprofile';
+  static const String verificationpage='/verificationpage';
 }

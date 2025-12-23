@@ -28,91 +28,101 @@ class SecondPageView extends GetView<SecondPageController> {
                 fontSize: 24,
               ),
             ),
-            SizedBox(height: Get.height*0.02,),
-            Text('To complete the sign up process please enter your valid email or phone number',
-            style: GoogleFonts.manrope( 
-              fontWeight: FontWeight.w400,
-              fontSize: 14,
-              color: Colors.white
+            SizedBox(height: Get.height * 0.02),
+            Text(
+              'To complete the sign up process please enter your valid email or phone number',
+              style: GoogleFonts.manrope(
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+                color: Colors.white,
+              ),
             ),
-            ),
-            SizedBox(height: Get.height*0.03,),
+            SizedBox(height: Get.height * 0.03),
             Padding(
               padding: const EdgeInsets.only(left: 20),
               child: Row(
                 children: [
-                  GestureDetector(
+                  Obx(() => GestureDetector(
                     onTap: () => controller.setsignintype(0),
                     child: Column(
                       children: [
-                        Text('Email',
-                        style: GoogleFonts.manrope( 
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16,
-                          color: controller.signuptype.value==0?  Color(0xffEEEEF0): Color(0xff64748B)
-                        ),
+                        Text(
+                          'Email',
+                          style: GoogleFonts.manrope(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                            color: controller.signuptype.value == 0
+                                ? Color(0xffEEEEF0)
+                                : Color(0xff64748B),
+                          ),
                         ),
                         Container(
-                          
                           // indent: 1,
                           // endIndent: 1,
                           color: Colors.blue,
-                        )
+                        ),
                       ],
                     ),
-                  ),
-                  SizedBox(width: Get.width*0.1,),
-                  GestureDetector(
+                  ),),
+                  SizedBox(width: Get.width * 0.1),
+                 Obx(() =>  GestureDetector(
                     onTap: () => controller.setsignintype(1),
                     child: Column(
                       children: [
-                        Text('Phone',
-                        style: GoogleFonts.manrope( 
-                          color: Colors.white
+                         Text(
+                          'Phone',
+                          style: GoogleFonts.manrope(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                            color: controller.signuptype.value == 1
+                                ? Color(0xffEEEEF0)
+                                : Color(0xff64748B),
+                          ),
                         ),
+                        Container(
+                          // indent: 1,
+                          // endIndent: 1,
+                          color: Colors.white,
                         ),
-                         Container(
-                      
-                      // indent: 1,
-                      // endIndent: 1,
-                      color: Colors.white,
-                    )
                       ],
                     ),
-                  ),
-                 
-                ],
+                  ),),                ],
               ),
             ),
             Expanded(
               child: Obx(() {
-              if(controller.signuptype.value==0){
-                return EmailSignup();
-              }
-              if(controller.signuptype.value==1){
-                return MobileSignup();
-              }
-              return
-              SizedBox();
-              })
-            )
+                if (controller.signuptype.value == 0) {
+                  return EmailSignup();
+                }
+                if (controller.signuptype.value == 1) {
+                  return MobileSignup();
+                }
+                return SizedBox();
+              }),
+            ),
           ],
         ),
       ),
     );
   }
 }
-Widget EmailSignup (){
+
+Widget EmailSignup() {
   return SingleChildScrollView(
     child: Column(
       children: [
-        SizedBox(height: Get.height*0.03,),
-        Commontextfield(tittle: 'Email', hint: 'Enter valid email address', obsecuretext: false),
-        SizedBox(height: Get.height*0.03,),
+        SizedBox(height: Get.height * 0.03),
+        Commontextfield(
+          tittle: 'Email',
+          hint: 'Enter valid email address',
+          obsecuretext: false,
+        ),
+        SizedBox(height: Get.height * 0.03),
         GestureDetector(
           onTap: () => Get.toNamed(AppPages.emailotp),
-          child: CommonButton(tittle: 'Continue')),
-        SizedBox(height: Get.height*0.03,),
+          child: CommonButton(tittle: 'Continue'),
+        ),
+        SizedBox(height: Get.height * 0.03),
         Row(
           children: [
             Expanded(
@@ -123,12 +133,13 @@ Widget EmailSignup (){
                 endIndent: 20,
               ),
             ),
-            Text('or',
-            style: GoogleFonts.inter( 
-              fontWeight: FontWeight.w400,
-              fontSize: 16,
-              color: Color(0xffB2B3BD)
-            ),
+            Text(
+              'or',
+              style: GoogleFonts.inter(
+                fontWeight: FontWeight.w400,
+                fontSize: 16,
+                color: Color(0xffB2B3BD),
+              ),
             ),
             Expanded(
               child: Divider(
@@ -140,43 +151,47 @@ Widget EmailSignup (){
             ),
           ],
         ),
-        SizedBox(height: Get.height*0.03,),
+        SizedBox(height: Get.height * 0.03),
         Image.asset(AppImages.google),
-        SizedBox(height: Get.height*0.22,),
-        Text('Already have an account',
-        style: GoogleFonts.manrope( 
-          color: Color(0xffB2B3BD),
-          fontWeight: FontWeight.w500,
-          fontSize: 14,
-          
+        SizedBox(height: Get.height * 0.22),
+        Text(
+          'Already have an account',
+          style: GoogleFonts.manrope(
+            color: Color(0xffB2B3BD),
+            fontWeight: FontWeight.w500,
+            fontSize: 14,
+          ),
         ),
-        ),
-        SizedBox(height: Get.height*0.02,),
+        SizedBox(height: Get.height * 0.02),
         GestureDetector(
           onTap: () => Get.toNamed(AppPages.login),
-          child: Text("Sing In",
-          style: GoogleFonts.manrope( 
-            fontWeight: FontWeight.w700,
-            color: Colors.white,
-            fontSize: 16
+          child: Text(
+            "Sing In",
+            style: GoogleFonts.manrope(
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
+              fontSize: 16,
+            ),
           ),
-          ),
-        )
-
+        ),
       ],
     ),
   );
 }
 
-Widget MobileSignup(){
+Widget MobileSignup() {
   return SingleChildScrollView(
     child: Column(
       children: [
-        SizedBox(height: Get.height*0.03,),
-        Commontextfield(tittle: 'Phone', hint: 'Enter valid phone number', obsecuretext: false),
-        SizedBox(height: Get.height*0.03,),
+        SizedBox(height: Get.height * 0.03),
+        Commontextfield(
+          tittle: 'Phone',
+          hint: 'Enter valid phone number',
+          obsecuretext: false,
+        ),
+        SizedBox(height: Get.height * 0.03),
         CommonButton(tittle: 'Continue'),
-        SizedBox(height: Get.height*0.03,),
+        SizedBox(height: Get.height * 0.03),
         Row(
           children: [
             Expanded(
@@ -187,12 +202,13 @@ Widget MobileSignup(){
                 endIndent: 20,
               ),
             ),
-            Text('or',
-            style: GoogleFonts.inter( 
-              fontWeight: FontWeight.w400,
-              fontSize: 16,
-              color: Color(0xffB2B3BD)
-            ),
+            Text(
+              'or',
+              style: GoogleFonts.inter(
+                fontWeight: FontWeight.w400,
+                fontSize: 16,
+                color: Color(0xffB2B3BD),
+              ),
             ),
             Expanded(
               child: Divider(
@@ -204,29 +220,29 @@ Widget MobileSignup(){
             ),
           ],
         ),
-        SizedBox(height: Get.height*0.03,),
+        SizedBox(height: Get.height * 0.03),
         Image.asset(AppImages.google),
-        SizedBox(height: Get.height*0.22,),
-        Text('Already have an account',
-        style: GoogleFonts.manrope( 
-          color: Color(0xffB2B3BD),
-          fontWeight: FontWeight.w500,
-          fontSize: 14,
-          
+        SizedBox(height: Get.height * 0.22),
+        Text(
+          'Already have an account',
+          style: GoogleFonts.manrope(
+            color: Color(0xffB2B3BD),
+            fontWeight: FontWeight.w500,
+            fontSize: 14,
+          ),
         ),
-        ),
-        SizedBox(height: Get.height*0.02,),
+        SizedBox(height: Get.height * 0.02),
         GestureDetector(
           onTap: () => Get.toNamed(AppPages.login),
-          child: Text("Sing In",
-          style: GoogleFonts.manrope( 
-            fontWeight: FontWeight.w700,
-            color: Colors.white,
-            fontSize: 16
+          child: Text(
+            "Sing In",
+            style: GoogleFonts.manrope(
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
+              fontSize: 16,
+            ),
           ),
-          ),
-        )
-
+        ),
       ],
     ),
   );

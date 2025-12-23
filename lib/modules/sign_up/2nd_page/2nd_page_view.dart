@@ -49,7 +49,7 @@ class SecondPageView extends GetView<SecondPageController> {
                         style: GoogleFonts.manrope( 
                           fontWeight: FontWeight.w400,
                           fontSize: 16,
-                          color: controller.signuptype.value==0? Colors.white: Color(0xff64748B)
+                          color: controller.signuptype.value==0?  Color(0xffEEEEF0): Color(0xff64748B)
                         ),
                         ),
                         Container(

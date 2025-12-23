@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:rai/common_widgets/common_textfield.dart';
 import 'package:rai/utils/app_images.dart';
 
 class SetPasswordPageView extends StatelessWidget {
@@ -9,10 +12,30 @@ class SetPasswordPageView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppImages.primarycolor,
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Text('Set a strong password!')
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              SizedBox(height: Get.height*0.1,),
+              Text('Set a strong password!',
+              style: GoogleFonts.manrope( 
+                color: Color(0xffEEEEF0),
+                fontWeight: FontWeight.w600,
+                fontSize: 24
+              ),
+              ),
+              SizedBox(height: Get.height*0.02,),
+              Text('Set a strong password to secure account',
+              style: GoogleFonts.manrope( 
+                color: Color(0xffB2B3BD),
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+              ),
+              ),
+              SizedBox(height: Get.height*0.02,),
+              Commontextfield(tittle: 'New password', hint: 'Enter a strong passowrd', obsecuretext: true)
+            ],
+          ),
         ),
       ),
     );

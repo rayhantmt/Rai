@@ -7,4 +7,7 @@ class AppPages {
   static const String usercredentials='/usercredentials';
   static const String setUpProfile='/setupprofile';
   static const String verificationpage='/verificationpage';
+  static const String emailotpfp='/emailotpfp';
+  static const String setpasswordpage='/setpassowrdpage';
+  
 }

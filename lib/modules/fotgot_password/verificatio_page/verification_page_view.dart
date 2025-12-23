@@ -125,7 +125,7 @@ Widget EmailSignup() {
         ),
         SizedBox(height: Get.height * 0.03),
         GestureDetector(
-          onTap: () => Get.toNamed(AppPages.emailotp),
+          onTap: () => Get.toNamed(AppPages.emailotpfp),
           child: CommonButton(tittle: 'Continue'),
         ),
         SizedBox(height: Get.height * 0.03),

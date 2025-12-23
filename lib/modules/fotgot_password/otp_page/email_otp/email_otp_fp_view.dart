@@ -72,7 +72,7 @@ class EmailOtpFpView extends GetView<EmailOtpFpController> {
                 ),
               SizedBox(height: Get.height*0.025,),
                 GestureDetector(
-                  onTap: () => Get.toNamed(AppPages.usercredentials),
+                  onTap: () => Get.toNamed(AppPages.setpasswordpage),
                   child: CommonButton(tittle: 'Verify')),
                 SizedBox(height: Get.height*0.02,),
                 Row(

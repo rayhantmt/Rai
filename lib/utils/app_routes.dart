@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:rai/modules/fotgot_password/verificatio_page/verification_page_binding.dart';
+import 'package:rai/modules/fotgot_password/verificatio_page/verification_page_view.dart';
 import 'package:rai/modules/log_in/log_in_binding.dart';
 import 'package:rai/modules/log_in/log_in_view.dart';
 import 'package:rai/modules/otp_page/email_otp/email_otp_binding.dart';
@@ -21,6 +23,7 @@ class AppRoutes {
     GetPage(name: AppPages.emailotp, page: () => EmailOtpView(),binding: EmailOtpBinding()),
     GetPage(name: AppPages.usercredentials, page: () => UserCredentialsPageView(),binding: UserCredentialsPageBinding()),
     GetPage(name: AppPages.setUpProfile, page:() => SetProfileView(), ),
-    GetPage(name: AppPages.mobileotp, page: () => MobileOtpView(),binding: MobileOtpBinding())
+    GetPage(name: AppPages.mobileotp, page: () => MobileOtpView(),binding: MobileOtpBinding()),
+    GetPage(name: AppPages.verificationpage, page: () => VerificationPageView(),binding: VerificationPageBinding())
   ];
 }

@@ -32,7 +32,7 @@ class MobileOtpView extends GetView<MobileOtpController> {
               ),
               ),
               SizedBox(height: Get.height*0.02,),
-              Text('Enter the code sent to your email alex.647@gmail.com',
+              Text('Enter the code sent to your phone number (555) 123-4567',
               style: GoogleFonts.manrope( 
                 fontWeight: FontWeight.w400,
                 fontSize: 14,

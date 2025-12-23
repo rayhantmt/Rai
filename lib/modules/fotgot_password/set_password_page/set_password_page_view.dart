@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rai/common_widgets/common_button.dart';
 import 'package:rai/common_widgets/common_textfield.dart';
 import 'package:rai/utils/app_images.dart';
 
@@ -33,8 +34,12 @@ class SetPasswordPageView extends StatelessWidget {
                 fontSize: 14,
               ),
               ),
-              SizedBox(height: Get.height*0.02,),
-              Commontextfield(tittle: 'New password', hint: 'Enter a strong passowrd', obsecuretext: true)
+              SizedBox(height: Get.height*0.03,),
+              Commontextfield(tittle: 'New password', hint: 'Enter a strong passowrd', obsecuretext: true),
+              SizedBox(height: Get.height*0.03,),
+              Commontextfield(tittle: 'Confirm New password', hint: 'Re-enter the new passowrd', obsecuretext: true),
+              SizedBox(height: Get.height*0.03,),
+              CommonButton(tittle: 'Set New Password')
             ],
           ),
         ),

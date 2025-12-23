@@ -7,8 +7,8 @@ import 'package:rai/modules/otp_page/mobile_otp/mobile_otp_controller.dart';
 import 'package:rai/utils/app_images.dart';
 import 'package:rai/utils/app_pages.dart';
 
-class EmailOtpView extends GetView<MobileOtpController> {
-  const EmailOtpView({super.key});
+class MobileOtpView extends GetView<MobileOtpController> {
+  const MobileOtpView({super.key});
 
   @override
   Widget build(BuildContext context) {

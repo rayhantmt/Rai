@@ -9,6 +9,6 @@ class AppPages {
   static const String verificationpage='/verificationpage';
   static const String emailotpfp='/emailotpfp';
   static const String setpasswordpage='/setpassowrdpage';
-  static const String mainscreen='mainscreen';
+  static const String mainscreen='/mainscreen';
   
 }

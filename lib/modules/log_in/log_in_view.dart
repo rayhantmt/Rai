@@ -96,7 +96,9 @@ class LogInView extends GetView<LogInController> {
                 ],
               ),
               SizedBox(height:Get.height*0.02 ,),
-              CommonButton(tittle: 'Sign In'),
+              GestureDetector(
+                onTap: () => Get.offAllNamed(AppPages.mainscreen),
+                child: CommonButton(tittle: 'Sign In')),
               SizedBox(height:Get.height*0.02 ,),
               Row(
                 children: [

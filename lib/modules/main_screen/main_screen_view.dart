@@ -15,7 +15,13 @@ class MainScreenView extends StatelessWidget {
             width: double.infinity,
             child: Row(
               children: [
-                
+                Column(
+                  children: [
+                    Image.asset(''),
+                    Text(''),
+                    
+                  ],
+                )
               ],
             ),
           )

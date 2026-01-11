@@ -9,7 +9,8 @@ class BottomIcons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-
+Image.asset(img),
+Text(tittle)
       ],
     );
   }

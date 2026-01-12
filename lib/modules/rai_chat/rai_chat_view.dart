@@ -20,10 +20,13 @@ class RaiChatView extends StatelessWidget {
                 height: Get.height*0.05,
                 width: Get.width*0.2,
                 ),
+                Expanded(child: SizedBox()),
                 Icon(Icons.history,
+                size: Get.height*0.04,
                 color: Color(0xffEEEEF0),
                 ),
                 Icon(Icons.more_vert,
+                size: Get.height*0.04,
                 color: Color(0xffEEEEF0),
                 )
               ],

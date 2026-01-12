@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/modules/home/home_view.dart';
 import 'package:rai/modules/main_screen/main_screen_controller.dart';
+import 'package:rai/modules/sign_up/1st_page/1st_page.dart';
 import 'package:rai/utils/app_images.dart';
 
 class MainScreenView extends GetView<MainScreenController> {
@@ -12,8 +13,21 @@ class MainScreenView extends GetView<MainScreenController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
+        
         children: [
-          Expanded(child: HomeView()),
+          Obx(
+           (){
+            if(controller.pagetype.value ==0)
+            {
+              return HomeView();
+            }
+            else {
+              return Firstpage();
+            }
+           
+           }
+            
+          ),
           Positioned(
             bottom: 0,
             left: 0,

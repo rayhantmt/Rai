@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rai/modules/home/home_view.dart';
 import 'package:rai/utils/app_images.dart';
 
 class MainScreenView extends StatelessWidget {
@@ -10,12 +11,8 @@ class MainScreenView extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Center(
-            child: Image.asset(AppImages.communityicon,
-            height: Get.height*0.035,
-            
-            ),
-          ),
+          
+          Expanded(child: HomeView()),
           Positioned(
             bottom: 0,
             left: 0,

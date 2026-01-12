@@ -1,9 +1,12 @@
 import 'package:get/get.dart';
+import 'package:rai/modules/community/community_binding.dart';
+import 'package:rai/modules/community/community_view.dart';
 import 'package:rai/modules/fotgot_password/otp_page/email_otp/email_otp_fp_binding.dart';
 import 'package:rai/modules/fotgot_password/otp_page/email_otp/email_otp_fp_view.dart';
 import 'package:rai/modules/fotgot_password/set_password_page/set_password_page_view.dart';
 import 'package:rai/modules/fotgot_password/verificatio_page/verification_page_binding.dart';
 import 'package:rai/modules/fotgot_password/verificatio_page/verification_page_view.dart';
+import 'package:rai/modules/home/home_view.dart';
 import 'package:rai/modules/log_in/log_in_binding.dart';
 import 'package:rai/modules/log_in/log_in_view.dart';
 import 'package:rai/modules/main_screen/main_screen_binding.dart';
@@ -32,6 +35,9 @@ class AppRoutes {
     GetPage(name: AppPages.verificationpage, page: () => VerificationPageView(),binding: VerificationPageBinding()),
     GetPage(name: AppPages.setpasswordpage, page: () => SetPasswordPageView(),),
     GetPage(name: AppPages.emailotpfp, page: () => EmailOtpFpView(),binding: EmailOtpFpBinding()),
-    GetPage(name: AppPages.mainscreen, page: () => MainScreenView(),binding: MainScreenBinding() )
+    GetPage(name: AppPages.mainscreen, page: () => MainScreenView(),binding: MainScreenBinding() ),
+    GetPage(name: AppPages.home, page: ()=>HomeView(),),
+    GetPage(name: AppPages.community, page: ()=>CommunityView(),binding: CommunityBinding()),
+    
   ];
 }

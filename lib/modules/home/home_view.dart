@@ -9,10 +9,24 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppImages.primarycolor,
-      body: Column(
-        children: [
-          SizedBox(height: Get.height*0.05,)
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          children: [
+            SizedBox(height: Get.height*0.05,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset(AppImages.logo,
+                height: Get.height*0.05,
+                ),
+                Image.asset(AppImages.notificationicon,
+                height: Get.height*0.06,
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

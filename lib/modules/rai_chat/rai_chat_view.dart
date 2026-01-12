@@ -10,13 +10,17 @@ class RaiChatView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppImages.primarycolor,
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
             SizedBox(height: Get.height*0.05,),
             Row(
               children: [
-                Image.asset(AppImages.aiicon)
+                Image.asset(AppImages.logo,
+                height: Get.height*0.05,
+                width: Get.width*0.2,
+                ),
+                
               ],
             )
           ],

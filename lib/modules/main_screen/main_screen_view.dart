@@ -36,7 +36,7 @@ class MainScreenView extends StatelessWidget {
                       Image.asset(
                         AppImages.communityicon,
                         height: Get.height * 0.035,
-                        //width: 30,
+                        
                       ),
                       Text('Home'),
                     ],

@@ -16,4 +16,5 @@ class AppImages {
   static const String newchaticon='assets/new_chat_icon.png';
   static const String notificationicon='assets/notifications_icon.png';
   static const String profileimg='assets/profile_img.jpg';
+  static const String warningicon='assets/warning_icon.png';
 }

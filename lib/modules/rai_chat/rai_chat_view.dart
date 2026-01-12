@@ -40,10 +40,28 @@ class RaiChatView extends StatelessWidget {
                     color: Color(0xffEEEEF0),
                   ),
                 ),
-                Icon(
-                  Icons.more_vert,
-                  size: Get.height * 0.04,
-                  color: Color(0xffEEEEF0),
+                GestureDetector(
+                  onTap: () => showModalBottomSheet(
+                    context: context,
+                    builder: (BuildContext) {
+                      return Container(
+                        height: Get.height * 0.2,
+                        child: Column(children: [
+Row(
+  children: [
+    
+  ],
+)
+  ],
+),
+                      );
+                    },
+                  ),
+                  child: Icon(
+                    Icons.more_vert,
+                    size: Get.height * 0.04,
+                    color: Color(0xffEEEEF0),
+                  ),
                 ),
               ],
             ),

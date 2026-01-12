@@ -12,4 +12,6 @@ class AppImages {
   static const String imagepicking='assets/image_picking.png';
   static const String sendbutton='assets/send_button.png';
   static const String chatscreenblacklogo='assets/chat_screen_blanck_logo.png';
+  static const String clearconversationicon='assets/clear_conversation_icon.png';
+  static const String newchaticon='assets/new_chat_icon.png';
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rai/utils/app_images.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -6,7 +7,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber,
+      backgroundColor: AppImages.primarycolor,
     );
   }
 }

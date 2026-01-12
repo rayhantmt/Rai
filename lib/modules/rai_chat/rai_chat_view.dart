@@ -23,10 +23,22 @@ class RaiChatView extends StatelessWidget {
                   width: Get.width * 0.2,
                 ),
                 Expanded(child: SizedBox()),
-                Icon(
-                  Icons.history,
-                  size: Get.height * 0.04,
-                  color: Color(0xffEEEEF0),
+                GestureDetector(
+                  onTap: () => showModalBottomSheet(
+                    context: context,
+                    builder: (BuildContext) {
+                      return Container(
+                        height: 400,
+                        color: Colors.red,
+                        child: Center(child: Text('Chat Historys')),
+                      );
+                    },
+                  ),
+                  child: Icon(
+                    Icons.history,
+                    size: Get.height * 0.04,
+                    color: Color(0xffEEEEF0),
+                  ),
                 ),
                 Icon(
                   Icons.more_vert,
@@ -38,30 +50,34 @@ class RaiChatView extends StatelessWidget {
             SizedBox(height: Get.height * 0.02),
             SizedBox(
               height: Get.height * 0.7,
-              child: Container(color: AppImages.primarycolor,
-              
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(AppImages.chatscreenblacklogo,
-                  height: Get.height*0.05,
-                  ),
-                  Text('Hi, Ethen!',
-                  style: GoogleFonts.manrope( 
-                    fontWeight: FontWeight.w700,
-                    fontSize: 20,
-                    color: Color(0xffEEEEF0)
-                  ),
-                  ),
-                  Text("'Just ask me, what's on your mind?",
-                  style: GoogleFonts.manrope( 
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                    color: Color(0xffB2B3BD)
-                  ),
-                  )
-                ],
-              ),
+              child: Container(
+                color: AppImages.primarycolor,
+
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      AppImages.chatscreenblacklogo,
+                      height: Get.height * 0.05,
+                    ),
+                    Text(
+                      'Hi, Ethen!',
+                      style: GoogleFonts.manrope(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20,
+                        color: Color(0xffEEEEF0),
+                      ),
+                    ),
+                    Text(
+                      "'Just ask me, what's on your mind?",
+                      style: GoogleFonts.manrope(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                        color: Color(0xffB2B3BD),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             Row(

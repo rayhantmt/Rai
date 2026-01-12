@@ -11,10 +11,16 @@ import 'package:rai/modules/log_in/log_in_binding.dart';
 import 'package:rai/modules/log_in/log_in_view.dart';
 import 'package:rai/modules/main_screen/main_screen_binding.dart';
 import 'package:rai/modules/main_screen/main_screen_view.dart';
+import 'package:rai/modules/more_section/more_section_binding.dart';
+import 'package:rai/modules/more_section/more_section_view.dart';
 import 'package:rai/modules/otp_page/email_otp/email_otp_binding.dart';
 import 'package:rai/modules/otp_page/email_otp/email_otp_view.dart';
 import 'package:rai/modules/otp_page/mobile_otp/mobile_otp_binding.dart';
 import 'package:rai/modules/otp_page/mobile_otp/mobile_otp_view.dart';
+import 'package:rai/modules/rai_chat/rai_chat_binding.dart';
+import 'package:rai/modules/rai_chat/rai_chat_view.dart';
+import 'package:rai/modules/rais_picks/rais_picks_bindings.dart';
+import 'package:rai/modules/rais_picks/rais_picks_view.dart';
 import 'package:rai/modules/set_profile/set_profile_view.dart';
 import 'package:rai/modules/sign_up/1st_page/1st_page.dart';
 import 'package:rai/modules/sign_up/2nd_page/2nd_page_binding.dart';
@@ -38,6 +44,9 @@ class AppRoutes {
     GetPage(name: AppPages.mainscreen, page: () => MainScreenView(),binding: MainScreenBinding() ),
     GetPage(name: AppPages.home, page: ()=>HomeView(),),
     GetPage(name: AppPages.community, page: ()=>CommunityView(),binding: CommunityBinding()),
-    
+    GetPage(name: AppPages.raichat, page: ()=>RaiChatView(),binding: RaiChatBinding()),
+    GetPage(name: AppPages.raispicks, page: ()=>RaisPicksView(),binding: RaisPicksBindings()),
+    GetPage(name: AppPages.more, page: ()=>MoreSectionView(),binding: MoreSectionBinding()),
+
   ];
 }

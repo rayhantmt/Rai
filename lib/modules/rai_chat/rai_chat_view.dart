@@ -34,6 +34,13 @@ class RaiChatView extends StatelessWidget {
                 ),
               ],
             ),
+            SizedBox(height: Get.height * 0.02),
+            SizedBox(
+              height: Get.height*0.7,
+              child: Container(
+                color: Colors.amber,
+              ),
+            )
           ],
         ),
       ),

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rai/modules/community/community_view.dart';
 import 'package:rai/modules/home/home_view.dart';
 import 'package:rai/modules/main_screen/main_screen_controller.dart';
-import 'package:rai/modules/sign_up/1st_page/1st_page.dart';
+import 'package:rai/modules/more_section/more_section_view.dart';
+import 'package:rai/modules/rai_chat/rai_chat_view.dart';
+import 'package:rai/modules/rais_picks/rais_picks_view.dart';
 import 'package:rai/utils/app_images.dart';
 
 class MainScreenView extends GetView<MainScreenController> {
@@ -19,12 +22,20 @@ class MainScreenView extends GetView<MainScreenController> {
            (){
             if(controller.pagetype.value ==0)
             {
-              return HomeView();
+              return CommunityView();
             }
-            else {
-              return Firstpage();
+            else if (controller.pagetype.value==1) {
+              return RaiChatView();
             }
-           
+           else if(controller.pagetype.value==2){
+            return HomeView();
+           }
+           else if(controller.pagetype.value==3){
+            return RaisPicksView();
+           }
+           else {
+            return MoreSectionView();
+           }
            }
             
           ),

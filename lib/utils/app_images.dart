@@ -8,5 +8,5 @@ class AppImages {
   static const String moreicon='assets/more_icon.png';
   static const String picksicon='assets/picks_icon.png';
   static const String aiicon='assets/ai_icon.png';
-  static const String communityicon='assets/community_icon.png';
+  static const String communityicon='assets/communituy_icon.png';
 }

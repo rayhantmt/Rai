@@ -10,6 +10,12 @@ class MainScreenView extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
+          Center(
+            child: Image.asset(AppImages.communityicon,
+            height: Get.height*0.035,
+            
+            ),
+          ),
           Positioned(
             bottom: 0,
             left: 0,
@@ -31,8 +37,9 @@ class MainScreenView extends StatelessWidget {
                   Column(
                     children: [
                       Image.asset(
-                        AppImages.homeicon,
+                        AppImages.communityicon,
                         height: Get.height * 0.035,
+                        //width: 30,
                       ),
                       Text('Home'),
                     ],
@@ -40,7 +47,7 @@ class MainScreenView extends StatelessWidget {
                   Column(
                     children: [
                       Image.asset(
-                        AppImages.homeicon,
+                        AppImages.aiicon,
                         height: Get.height * 0.035,
                       ),
                       Text('Home'),
@@ -56,7 +63,7 @@ class MainScreenView extends StatelessWidget {
                   ),Column(
                     children: [
                       Image.asset(
-                        AppImages.homeicon,
+                        AppImages.picksicon,
                         height: Get.height * 0.035,
                       ),
                       Text('Home'),
@@ -64,7 +71,7 @@ class MainScreenView extends StatelessWidget {
                   ),Column(
                     children: [
                       Image.asset(
-                        AppImages.homeicon,
+                        AppImages.moreicon,
                         height: Get.height * 0.035,
                       ),
                       Text('Home'),

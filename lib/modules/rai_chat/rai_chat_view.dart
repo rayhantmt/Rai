@@ -38,7 +38,14 @@ class RaiChatView extends StatelessWidget {
             SizedBox(height: Get.height * 0.02),
             SizedBox(
               height: Get.height * 0.7,
-              child: Container(color: AppImages.primarycolor),
+              child: Container(color: AppImages.primarycolor,
+              
+              child: Column(
+                children: [
+                  
+                ],
+              ),
+              ),
             ),
             Row(
               children: [
@@ -53,26 +60,26 @@ class RaiChatView extends StatelessWidget {
                   child: Row(
                     //mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                    Expanded(
-                      child: TextFormField(
-                        cursorColor: Colors.white,
-                        
-                        decoration: InputDecoration(
-                         hint: Center(
-                          child: Text('Type message here...',
-                          style: GoogleFonts.manrope( 
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14,
-                            color: Color(0xffB2B3BD)
+                      Expanded(
+                        child: TextFormField(
+                          cursorColor: Colors.white,
+
+                          decoration: InputDecoration(
+                            hint: Center(
+                              child: Text(
+                                'Type message here...',
+                                style: GoogleFonts.manrope(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14,
+                                  color: Color(0xffB2B3BD),
+                                ),
+                              ),
+                            ),
+                            border: InputBorder.none,
                           ),
-                          ),
-                         ),
-                          border: InputBorder.none
                         ),
                       ),
-                    ),
-                    Image.asset(AppImages.sendbutton)
-                    
+                      Image.asset(AppImages.sendbutton),
                     ],
                   ),
                 ),

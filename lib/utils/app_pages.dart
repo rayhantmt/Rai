@@ -10,5 +10,10 @@ class AppPages {
   static const String emailotpfp='/emailotpfp';
   static const String setpasswordpage='/setpassowrdpage';
   static const String mainscreen='/mainscreen';
+  static const String community='/community';
+  static const String raichat='/raichat';
+  static const String home='/home';
+  static const String raispicks='/raispicks';
+  static const String more='/more';
   
 }

@@ -9,4 +9,6 @@ class AppImages {
   static const String picksicon='assets/picks_icon.png';
   static const String aiicon='assets/ai_icon.png';
   static const String communityicon='assets/communituy_icon.png';
+  static const String imagepicking='assets/image_picking.png';
+  static const String sendbutton='assets/send_button.png';
 }

@@ -10,6 +10,7 @@ class MainScreenView extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
+          
           Positioned(
             bottom: 0,
             left: 0,
@@ -31,7 +32,7 @@ class MainScreenView extends StatelessWidget {
                     children: [
                       Image.asset(
                         AppImages.homeicon,
-                        height: Get.height * 0.05,
+                        height: Get.height * 0.035,
                       ),
                       Text('Home'),
                     ],

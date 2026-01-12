@@ -45,6 +45,7 @@ class MainScreenView extends StatelessWidget {
                     children: [
                       Image.asset(
                         AppImages.aiicon,
+                        color: Colors.white,
                         height: Get.height * 0.035,
                       ),
                       Text('Home'),

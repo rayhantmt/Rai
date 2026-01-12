@@ -46,14 +46,43 @@ class RaiChatView extends StatelessWidget {
                     builder: (BuildContext) {
                       return Container(
                         height: Get.height * 0.2,
-                        child: Column(children: [
-Row(
-  children: [
-    
-  ],
-)
-  ],
-),
+                        color: AppImages.primarycolor,
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Image.asset(
+                                  AppImages.newchaticon,
+                                  height: Get.height * .05,
+                                ),
+                                Text(
+                                  'New chat',
+                                  style: GoogleFonts.manrope(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14,
+                                    color: Color(0xffEEEEF0)
+                                  ),
+                                ),
+                              ],
+                            ),
+                             Row(
+                              children: [
+                                Image.asset(
+                                  AppImages.clearconversationicon,
+                                  height: Get.height * .05,
+                                ),
+                                Text(
+                                  'Clear this conversation',
+                                  style: GoogleFonts.manrope(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14,
+                                     color: Color(0xffEEEEF0)
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       );
                     },
                   ),

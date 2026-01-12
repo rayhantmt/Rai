@@ -13,27 +13,30 @@ class RaiChatView extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            SizedBox(height: Get.height*0.05,),
+            SizedBox(height: Get.height * 0.05),
             Row(
               children: [
-                Image.asset(AppImages.logo,
-                height: Get.height*0.05,
-                width: Get.width*0.2,
+                Image.asset(
+                  AppImages.logo,
+                  height: Get.height * 0.05,
+                  width: Get.width * 0.2,
                 ),
                 Expanded(child: SizedBox()),
-                Icon(Icons.history,
-                size: Get.height*0.04,
-                color: Color(0xffEEEEF0),
+                Icon(
+                  Icons.history,
+                  size: Get.height * 0.04,
+                  color: Color(0xffEEEEF0),
                 ),
-                Icon(Icons.more_vert,
-                size: Get.height*0.04,
-                color: Color(0xffEEEEF0),
-                )
+                Icon(
+                  Icons.more_vert,
+                  size: Get.height * 0.04,
+                  color: Color(0xffEEEEF0),
+                ),
               ],
-            )
+            ),
           ],
         ),
-      )
+      ),
     );
   }
 }

@@ -136,7 +136,7 @@ class RaiChatView extends StatelessWidget {
                     color: Color(0xff222325),
                   ),
                   height: Get.height * 0.07,
-                  width: Get.width * 0.75,
+                  width: Get.width * 0.745,
                   child: Row(
                     //mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -159,7 +159,9 @@ class RaiChatView extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Image.asset(AppImages.sendbutton),
+                      Image.asset(AppImages.sendbutton,
+                      
+                      ),
                     ],
                   ),
                 ),

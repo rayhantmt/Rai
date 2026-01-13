@@ -56,7 +56,7 @@ class MainScreenView extends GetView<MainScreenController> {
                 height: Get.height * 0.1,
                 width: double.infinity,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     GestureDetector(
                       onTap: () => controller.setpagetype(0),

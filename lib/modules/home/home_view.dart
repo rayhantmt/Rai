@@ -14,89 +14,112 @@ class HomeView extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            SizedBox(height: Get.height*0.05,),
+            SizedBox(height: Get.height * 0.05),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset(AppImages.logo,
-                height: Get.height*0.05,
+                Image.asset(AppImages.logo, height: Get.height * 0.05),
+                Image.asset(
+                  AppImages.notificationicon,
+                  height: Get.height * 0.06,
                 ),
-                Image.asset(AppImages.notificationicon,
-                height: Get.height*0.06,
-                )
               ],
             ),
-            SizedBox(height: Get.height*0.02,),
+            SizedBox(height: Get.height * 0.02),
             Row(
               children: [
                 ClipRRect(
                   // borderRadius: BorderRadiusGeometry.circular(9),
-                  child: Image.asset(AppImages.imagepicking,
-                  height: Get.height*0.1,
-                  width: Get.width*0.2,
+                  child: Image.asset(
+                    AppImages.imagepicking,
+                    height: Get.height * 0.1,
+                    width: Get.width * 0.2,
                   ),
                 ),
                 Column(
                   children: [
-                    Text('Ethen Walker',
-                    style: GoogleFonts.manrope( 
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16,
-                      color: Color(0xffEEEEF0)
+                    Text(
+                      'Ethen Walker',
+                      style: GoogleFonts.manrope(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16,
+                        color: Color(0xffEEEEF0),
+                      ),
                     ),
+                    Text(
+                      '@random_234',
+                      style: GoogleFonts.manrope(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                        color: Color(0xffB2B3BD),
+                      ),
                     ),
-                    Text('@random_234',
-                    style: GoogleFonts.manrope( 
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                      color: Color(0xffB2B3BD)
-                    ),
-                    )
                   ],
-                )
+                ),
               ],
             ),
-            SizedBox(
-              height: Get.height*0.02,
-            ),
+            SizedBox(height: Get.height * 0.02),
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: Color(0xff222325)
+                color: Color(0xff222325),
               ),
-              height: Get.height*0.17,
+              height: Get.height * 0.17,
               width: double.infinity,
               child: Column(
                 children: [
                   Row(
                     children: [
-                      Image.asset(AppImages.premiumicon,
-                      height: Get.height*0.1,
+                      Image.asset(
+                        AppImages.premiumicon,
+                        height: Get.height * 0.1,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Free Plan',
-                          style: GoogleFonts.manrope( 
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16,
-                            color: Color(0xffEEEEF0)
+                          Text(
+                            'Free Plan',
+                            style: GoogleFonts.manrope(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 16,
+                              color: Color(0xffEEEEF0),
+                            ),
                           ),
+                          Text(
+                            "Currently you're using",
+                            style: GoogleFonts.inter(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14,
+                              color: Color(0xffB2B3BD),
+                            ),
                           ),
-                          Text("Currently you're using",
-                          style: GoogleFonts.inter( 
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14,
-                            color: Color(0xffB2B3BD)
-                          ),
-                          )
                         ],
-                      )
+                      ),
                     ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Container(
+                      height: Get.height*0.05,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        color: Color(0xff303136)
+                      ),
+                      child: Center(
+                        child: Text('Purchase rai.pro >',
+                        style: GoogleFonts.manrope( 
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                          color: Colors.white
+                        ),
+                        ),
+                      ),
+                    ),
                   )
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

@@ -100,25 +100,41 @@ class HomeView extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Container(
-                      height: Get.height*0.05,
+                      height: Get.height * 0.05,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(100),
-                        color: Color(0xff303136)
+                        color: Color(0xff303136),
                       ),
                       child: Center(
-                        child: Text('Purchase rai.pro >',
-                        style: GoogleFonts.manrope( 
-                          fontWeight: FontWeight.w700,
-                          fontSize: 16,
-                          color: Colors.white
-                        ),
+                        child: Text(
+                          'Purchase rai.pro >',
+                          style: GoogleFonts.manrope(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
+            ),
+            SizedBox(height: Get.height * 0.02),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Image.asset(AppImages.warningicon, height: Get.height * 0.05),
+                Text(
+                  'rai. is not responsible for your losses,\nOnly for your wins',
+                  style: GoogleFonts.manrope(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
+                    color: Color(0xffEEEEF0),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

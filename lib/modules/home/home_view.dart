@@ -55,6 +55,47 @@ class HomeView extends StatelessWidget {
                   ],
                 )
               ],
+            ),
+            SizedBox(
+              height: Get.height*0.02,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Color(0xff222325)
+              ),
+              height: Get.height*0.17,
+              width: double.infinity,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Image.asset(AppImages.premiumicon,
+                      height: Get.height*0.1,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Free Plan',
+                          style: GoogleFonts.manrope( 
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
+                            color: Color(0xffEEEEF0)
+                          ),
+                          ),
+                          Text("Currently you're using",
+                          style: GoogleFonts.inter( 
+                            fontWeight: FontWeight.w500,
+                            fontSize: 14,
+                            color: Color(0xffB2B3BD)
+                          ),
+                          )
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              ),
             )
           ],
         ),

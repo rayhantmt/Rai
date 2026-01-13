@@ -16,29 +16,20 @@ class MainScreenView extends GetView<MainScreenController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        
         children: [
-          Obx(
-           (){
-            if(controller.pagetype.value ==0)
-            {
+          Obx(() {
+            if (controller.pagetype.value == 0) {
               return CommunityView();
-            }
-            else if (controller.pagetype.value==1) {
+            } else if (controller.pagetype.value == 1) {
               return RaiChatView();
+            } else if (controller.pagetype.value == 2) {
+              return HomeView();
+            } else if (controller.pagetype.value == 3) {
+              return RaisPicksView();
+            } else {
+              return MoreSectionView();
             }
-           else if(controller.pagetype.value==2){
-            return HomeView();
-           }
-           else if(controller.pagetype.value==3){
-            return RaisPicksView();
-           }
-           else {
-            return MoreSectionView();
-           }
-           }
-            
-          ),
+          }),
           Positioned(
             bottom: 0,
             left: 0,
@@ -70,8 +61,9 @@ class MainScreenView extends GetView<MainScreenController> {
                                 ? Color(0xffEEEEF0)
                                 : Color(0xff6C6E79),
                           ),
-                          Text('Community',
-                          style: GoogleFonts.manrope(
+                          Text(
+                            'Community',
+                            style: GoogleFonts.manrope(
                               fontWeight: FontWeight.w500,
                               color: controller.pagetype.value == 0
                                   ? Color(0xffEEEEF0)
@@ -88,14 +80,15 @@ class MainScreenView extends GetView<MainScreenController> {
                         children: [
                           Image.asset(
                             AppImages.aiicon,
-                       
+
                             height: Get.height * 0.035,
                             color: controller.pagetype.value == 1
                                 ? Color(0xffEEEEF0)
                                 : Color(0xff6C6E79),
                           ),
-                          Text('rai. Chat',
-                          style: GoogleFonts.manrope(
+                          Text(
+                            'rai. Chat',
+                            style: GoogleFonts.manrope(
                               fontWeight: FontWeight.w500,
                               color: controller.pagetype.value == 1
                                   ? Color(0xffEEEEF0)
@@ -117,8 +110,9 @@ class MainScreenView extends GetView<MainScreenController> {
                                 ? Color(0xffEEEEF0)
                                 : Color(0xff6C6E79),
                           ),
-                          Text('Home',
-                          style: GoogleFonts.manrope(
+                          Text(
+                            'Home',
+                            style: GoogleFonts.manrope(
                               fontWeight: FontWeight.w500,
                               color: controller.pagetype.value == 2
                                   ? Color(0xffEEEEF0)
@@ -140,8 +134,9 @@ class MainScreenView extends GetView<MainScreenController> {
                                 ? Color(0xffEEEEF0)
                                 : Color(0xff6C6E79),
                           ),
-                          Text("rai's picks",
-                          style: GoogleFonts.manrope(
+                          Text(
+                            "rai's picks",
+                            style: GoogleFonts.manrope(
                               fontWeight: FontWeight.w500,
                               color: controller.pagetype.value == 3
                                   ? Color(0xffEEEEF0)

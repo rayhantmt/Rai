@@ -17,12 +17,13 @@ class MoreSectionView extends StatelessWidget {
             children: [
               SizedBox(height: Get.height * 0.07),
 
-              Text('More Tools',
-              style: GoogleFonts.manrope( 
-                fontWeight: FontWeight.w700,
-                fontSize: 22,
-                color: Color(0xffEEEEF0)
-              ),
+              Text(
+                'More Tools',
+                style: GoogleFonts.manrope(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 22,
+                  color: Color(0xffEEEEF0),
+                ),
               ),
             ],
           ),

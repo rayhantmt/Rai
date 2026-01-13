@@ -127,7 +127,22 @@ class HomeView extends StatelessWidget {
               children: [
                 Image.asset(AppImages.warningicon, height: Get.height * 0.05),
                 Text(
-                  'rai. is not responsible for your losses,\nOnly for your wins',
+                  'rai. is not responsible for your losses           \nOnly for your wins',
+                  style: GoogleFonts.manrope(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
+                    color: Color(0xffEEEEF0),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: Get.height * 0.02),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Image.asset(AppImages.warningicon, height: Get.height * 0.05),
+                Text(
+                  'No pick is a 100% lock\nIf it was we would be on a yacht somewhere',
                   style: GoogleFonts.manrope(
                     fontWeight: FontWeight.w500,
                     fontSize: 14,

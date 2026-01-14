@@ -10,7 +10,8 @@ class MoreSectionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Get.height*0.05,
+      color: Colors.red,
+      height: Get.height*0.04,
       child: Row(
         children: [
           Image.asset(img),

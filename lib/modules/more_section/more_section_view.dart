@@ -12,7 +12,7 @@ class MoreSectionView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppImages.primarycolor,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding:  EdgeInsets.symmetric(horizontal: 20),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -138,12 +138,50 @@ class MoreSectionView extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    MoreSectionWidget(tittle: 'About Us', img: AppImages.aboutUsMore),
+                    MoreSectionWidget(
+                      tittle: 'About Us',
+                      img: AppImages.aboutUsMore,
+                    ),
                     SizedBox(height: Get.height * 0.01),
                     Divider(height: 1, color: Color(0xffB2B3BD)),
                     SizedBox(height: Get.height * 0.01),
-                     MoreSectionWidget(tittle: 'Rate this App', img: AppImages.ratetheapp),
-                   
+                    MoreSectionWidget(
+                      tittle: 'Rate this App',
+                      img: AppImages.ratetheapp,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: Get.height * 0.02),
+              Text(
+                'Others',
+                style: GoogleFonts.manrope(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                  color: Color(0xffB2B3BD),
+                ),
+                
+              ),
+              SizedBox(height: Get.height * 0.02),
+                 Container(
+                height: Get.height * 0.11,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: Color(0xff222325),
+                ),
+                child: Column(
+                  children: [
+                    MoreSectionWidget(
+                      tittle: 'About Us',
+                      img: AppImages.aboutUsMore,
+                    ),
+                    SizedBox(height: Get.height * 0.01),
+                    Divider(height: 1, color: Color(0xffB2B3BD)),
+                    SizedBox(height: Get.height * 0.01),
+                    MoreSectionWidget(
+                      tittle: 'Rate this App',
+                      img: AppImages.ratetheapp,
+                    ),
                   ],
                 ),
               ),

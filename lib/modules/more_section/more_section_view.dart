@@ -138,13 +138,12 @@ class MoreSectionView extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    MoreSectionWidget(tittle: 'About Us', img: ''),
+                    MoreSectionWidget(tittle: 'About Us', img: AppImages.aboutUsMore),
                     SizedBox(height: Get.height * 0.01),
                     Divider(height: 1, color: Color(0xffB2B3BD)),
                     SizedBox(height: Get.height * 0.01),
-                     MoreSectionWidget(tittle: 'About Us', img: ''),
-                    SizedBox(height: Get.height * 0.01),
-                    Divider(height: 1, color: Color(0xffB2B3BD)),
+                     MoreSectionWidget(tittle: 'Rate this App', img: AppImages.ratetheapp),
+                   
                   ],
                 ),
               ),

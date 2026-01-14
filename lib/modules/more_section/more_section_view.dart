@@ -10,7 +10,7 @@ class MoreSectionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     backgroundColor: AppImages.primarycolor,
+      backgroundColor: AppImages.primarycolor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: SingleChildScrollView(
@@ -41,43 +41,57 @@ class MoreSectionView extends StatelessWidget {
                       radius: 30,
                       backgroundImage: AssetImage(AppImages.profileimg),
                     ),
-                    SizedBox(width: Get.width*0.05,),
+                    SizedBox(width: Get.width * 0.05),
                     Column(
                       children: [
-                        Text('Adam smith',
-                        style: GoogleFonts.manrope( 
-                          fontWeight: FontWeight.w700,
-                          fontSize: 16,
-                          color: Color(0xffEEEEF0)
+                        Text(
+                          'Adam smith',
+                          style: GoogleFonts.manrope(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
+                            color: Color(0xffEEEEF0),
+                          ),
                         ),
+                        Text(
+                          'new@123',
+                          style: GoogleFonts.manrope(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 14,
+                            color: Color(0xffB2B3BD),
+                          ),
                         ),
-                        Text('new@123',
-                        style: GoogleFonts.manrope( 
-                          fontWeight: FontWeight.w500,
-                          fontSize: 14,
-                          color: Color(0xffB2B3BD)
-                        ),
-                        )
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
-              SizedBox(height: Get.height*0.02,),
-              Text('More Tools',
-              style: GoogleFonts.manrope( 
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
-                color: Color(0xffB2B3BD)
+              SizedBox(height: Get.height * 0.02),
+              Text(
+                'More Tools',
+                style: GoogleFonts.manrope(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                  color: Color(0xffB2B3BD),
+                ),
               ),
+              SizedBox(height: Get.height * 0.02),
+              Container(
+                height: Get.height * 0.27,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: Color(0xff222325),
+                ),
+                child: Column(
+                  children: [
+                    MoreSectionWidget(
+                      tittle: 'Live Bet Tracking',
+                      img: AppImages.livebettracking,
+                    ),
+                    SizedBox(height: Get.height * 0.01),
+                    Divider(height: 1, color: Color(0xffB2B3BD)),
+                  ],
+                ),
               ),
-              SizedBox(height: Get.height*0.02,),
-              MoreSectionWidget(tittle: 'Live Bet Tracking', img: AppImages.livebettracking),
-              SizedBox(height: Get.height*0.01,),
-              Divider(
-                height: 1,
-                color: Colors.red,
-              )
             ],
           ),
         ),

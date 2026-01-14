@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MoreSectionWidget extends StatelessWidget {
@@ -8,18 +9,21 @@ class MoreSectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Image.asset(img),
-        Text(
-          tittle,
-          style: GoogleFonts.manrope(
-            fontWeight: FontWeight.w500,
-            fontSize: 14,
-            color: Color(0xffEEEEF0),
+    return Container(
+      height: Get.height*0.05,
+      child: Row(
+        children: [
+          Image.asset(img),
+          Text(
+            tittle,
+            style: GoogleFonts.manrope(
+              fontWeight: FontWeight.w500,
+              fontSize: 14,
+              color: Color(0xffEEEEF0),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

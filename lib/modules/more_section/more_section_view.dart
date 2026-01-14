@@ -93,26 +93,26 @@ class MoreSectionView extends StatelessWidget {
                      SizedBox(height: Get.height * 0.01),
                       MoreSectionWidget(
                       tittle: 'Subscription',
-                      img: AppImages.livebettracking,
+                      img: AppImages.moresubscription,
                     ),
                     SizedBox(height: Get.height * 0.01),
                     Divider(height: 1, color: Color(0xffB2B3BD)),
                      SizedBox(height: Get.height * 0.01), MoreSectionWidget(
                       tittle: 'Payment & Billing',
-                      img: AppImages.livebettracking,
+                      img: AppImages.morepaymentbilling,
                     ),
                     SizedBox(height: Get.height * 0.01),
                     Divider(height: 1, color: Color(0xffB2B3BD)),
                      SizedBox(height: Get.height * 0.01), MoreSectionWidget(
                       tittle: 'Comment & Concern',
-                      img: AppImages.livebettracking,
+                      img: AppImages.morecommentconcern,
                     ),
                     SizedBox(height: Get.height * 0.01),
                     Divider(height: 1, color: Color(0xffB2B3BD)),
                      SizedBox(height: Get.height * 0.01),
                       MoreSectionWidget(
                       tittle: 'Account Setting',
-                      img: AppImages.livebettracking,
+                      img: AppImages.accountsettings,
                     ),
                     SizedBox(height: Get.height * 0.01),
                   

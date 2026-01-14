@@ -19,4 +19,8 @@ class AppImages {
   static const String warningicon='assets/warning_icon.png';
   static const String premiumicon='assets/premium_icon.png';
   static const String livebettracking='assets/live_bet_tracking.png';
+  static const String moresubscription='assets/suscription_more_logo.png';
+  static const String morepaymentbilling='assets/more_payment_billing.png';
+  static const String morecommentconcern='assets/more_comment_concern.png';
+  static const String accountsettings='assets/account_settings.png';
 }

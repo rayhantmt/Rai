@@ -10,14 +10,15 @@ class MoreSectionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-Image.asset(img),
-Text(tittle,
-style: GoogleFonts.manrope( 
-  fontWeight: FontWeight.w500,
-  fontSize: 14,
-  color: Color(0xffEEEEF0)
-),
-)
+        Image.asset(img),
+        Text(
+          tittle,
+          style: GoogleFonts.manrope(
+            fontWeight: FontWeight.w500,
+            fontSize: 14,
+            color: Color(0xffEEEEF0),
+          ),
+        ),
       ],
     );
   }

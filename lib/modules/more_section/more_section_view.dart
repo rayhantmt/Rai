@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rai/common_widgets/more_section_widget.dart';
 import 'package:rai/utils/app_images.dart';
 
 class MoreSectionView extends StatelessWidget {
@@ -69,7 +70,9 @@ class MoreSectionView extends StatelessWidget {
                 fontSize: 16,
                 color: Color(0xffB2B3BD)
               ),
-              )
+              ),
+              SizedBox(height: Get.height*0.02,),
+              MoreSectionWidget(tittle: 'Live Bet Tracking', img: AppImages.liveBetTracking)
             ],
           ),
         ),

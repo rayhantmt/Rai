@@ -18,4 +18,5 @@ class AppImages {
   static const String profileimg='assets/profile_img.jpg';
   static const String warningicon='assets/warning_icon.png';
   static const String premiumicon='assets/premium_icon.png';
+  static const String liveBetTracking='assets/live_bet_tracking.png';
 }

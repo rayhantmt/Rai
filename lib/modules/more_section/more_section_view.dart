@@ -76,19 +76,46 @@ class MoreSectionView extends StatelessWidget {
               ),
               SizedBox(height: Get.height * 0.02),
               Container(
-                height: Get.height * 0.27,
+                height: Get.height * 0.31,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   color: Color(0xff222325),
                 ),
                 child: Column(
                   children: [
+                    SizedBox(height: Get.height * 0.01),
                     MoreSectionWidget(
                       tittle: 'Live Bet Tracking',
                       img: AppImages.livebettracking,
                     ),
                     SizedBox(height: Get.height * 0.01),
                     Divider(height: 1, color: Color(0xffB2B3BD)),
+                     SizedBox(height: Get.height * 0.01),
+                      MoreSectionWidget(
+                      tittle: 'Subscription',
+                      img: AppImages.livebettracking,
+                    ),
+                    SizedBox(height: Get.height * 0.01),
+                    Divider(height: 1, color: Color(0xffB2B3BD)),
+                     SizedBox(height: Get.height * 0.01), MoreSectionWidget(
+                      tittle: 'Payment & Billing',
+                      img: AppImages.livebettracking,
+                    ),
+                    SizedBox(height: Get.height * 0.01),
+                    Divider(height: 1, color: Color(0xffB2B3BD)),
+                     SizedBox(height: Get.height * 0.01), MoreSectionWidget(
+                      tittle: 'Comment & Concern',
+                      img: AppImages.livebettracking,
+                    ),
+                    SizedBox(height: Get.height * 0.01),
+                    Divider(height: 1, color: Color(0xffB2B3BD)),
+                     SizedBox(height: Get.height * 0.01),
+                      MoreSectionWidget(
+                      tittle: 'Account Setting',
+                      img: AppImages.livebettracking,
+                    ),
+                    SizedBox(height: Get.height * 0.01),
+                  
                   ],
                 ),
               ),

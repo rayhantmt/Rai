@@ -14,6 +14,7 @@ class MoreSectionWidget extends StatelessWidget {
       child: Row(
         children: [
           Image.asset(img),
+          SizedBox(width: Get.width*0.05,),
           Text(
             tittle,
             style: GoogleFonts.manrope(
@@ -22,6 +23,10 @@ class MoreSectionWidget extends StatelessWidget {
               color: Color(0xffEEEEF0),
             ),
           ),
+          Expanded(child: SizedBox()),
+          Icon(Icons.arrow_forward_ios_rounded,
+          color: Color(0xffB2B3BD),
+          )
         ],
       ),
     );

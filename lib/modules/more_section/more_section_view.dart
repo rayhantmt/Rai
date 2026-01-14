@@ -90,32 +90,61 @@ class MoreSectionView extends StatelessWidget {
                     ),
                     SizedBox(height: Get.height * 0.01),
                     Divider(height: 1, color: Color(0xffB2B3BD)),
-                     SizedBox(height: Get.height * 0.01),
-                      MoreSectionWidget(
+                    SizedBox(height: Get.height * 0.01),
+                    MoreSectionWidget(
                       tittle: 'Subscription',
                       img: AppImages.moresubscription,
                     ),
                     SizedBox(height: Get.height * 0.01),
                     Divider(height: 1, color: Color(0xffB2B3BD)),
-                     SizedBox(height: Get.height * 0.01), MoreSectionWidget(
+                    SizedBox(height: Get.height * 0.01),
+                    MoreSectionWidget(
                       tittle: 'Payment & Billing',
                       img: AppImages.morepaymentbilling,
                     ),
                     SizedBox(height: Get.height * 0.01),
                     Divider(height: 1, color: Color(0xffB2B3BD)),
-                     SizedBox(height: Get.height * 0.01), MoreSectionWidget(
+                    SizedBox(height: Get.height * 0.01),
+                    MoreSectionWidget(
                       tittle: 'Comment & Concern',
                       img: AppImages.morecommentconcern,
                     ),
                     SizedBox(height: Get.height * 0.01),
                     Divider(height: 1, color: Color(0xffB2B3BD)),
-                     SizedBox(height: Get.height * 0.01),
-                      MoreSectionWidget(
+                    SizedBox(height: Get.height * 0.01),
+                    MoreSectionWidget(
                       tittle: 'Account Setting',
                       img: AppImages.accountsettings,
                     ),
                     SizedBox(height: Get.height * 0.01),
-                  
+                  ],
+                ),
+              ),
+              SizedBox(height: Get.height * 0.02),
+              Text(
+                'More Info & Support',
+                style: GoogleFonts.manrope(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                  color: Color(0xffB2B3BD),
+                ),
+              ),
+              SizedBox(height: Get.height * 0.02),
+              Container(
+                height: Get.height * 0.11,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: Color(0xff222325),
+                ),
+                child: Column(
+                  children: [
+                    MoreSectionWidget(tittle: 'About Us', img: ''),
+                    SizedBox(height: Get.height * 0.01),
+                    Divider(height: 1, color: Color(0xffB2B3BD)),
+                    SizedBox(height: Get.height * 0.01),
+                     MoreSectionWidget(tittle: 'About Us', img: ''),
+                    SizedBox(height: Get.height * 0.01),
+                    Divider(height: 1, color: Color(0xffB2B3BD)),
                   ],
                 ),
               ),

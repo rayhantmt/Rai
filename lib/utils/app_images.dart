@@ -23,4 +23,8 @@ class AppImages {
   static const String morepaymentbilling='assets/more_payment_billing.png';
   static const String morecommentconcern='assets/more_comment_concern.png';
   static const String accountsettings='assets/account_settings.png';
+  static const String aboutUsMore='assets/about_us_more.png';
+  static const String privacyPolicy='assets/privacy_policy_more_section.png';
+  static const String ratetheapp='assets/rate_app_more.png';
+
 }

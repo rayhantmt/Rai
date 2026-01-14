@@ -10,7 +10,7 @@ class MoreSectionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     // backgroundColor: AppImages.primarycolor,
+     backgroundColor: AppImages.primarycolor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: SingleChildScrollView(
@@ -72,7 +72,7 @@ class MoreSectionView extends StatelessWidget {
               ),
               ),
               SizedBox(height: Get.height*0.02,),
-              MoreSectionWidget(tittle: 'Live Bet Tracking', img: AppImages.liveBetTracking)
+              MoreSectionWidget(tittle: 'Live Bet Tracking', img: AppImages.livebettracking)
             ],
           ),
         ),

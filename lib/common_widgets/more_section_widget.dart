@@ -10,7 +10,7 @@ class MoreSectionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.red,
+      //color: Colors.red,
       height: Get.height*0.04,
       child: Row(
         children: [

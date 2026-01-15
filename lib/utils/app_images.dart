@@ -26,5 +26,6 @@ class AppImages {
   static const String aboutUsMore='assets/about_us_more.png';
   static const String privacyPolicy='assets/privacy_policy_more_section.png';
   static const String ratetheapp='assets/rate_app_more.png';
+  static const String logoutlogo='assets/log_out_logo.png';
 
 }

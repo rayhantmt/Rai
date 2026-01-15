@@ -76,8 +76,8 @@ class MoreSectionView extends StatelessWidget {
               ),
               SizedBox(height: Get.height * 0.02),
               Container(
-               // height: Get.height * 0.31,
-               width: double.infinity,
+                // height: Get.height * 0.31,
+                width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   color: Color(0xff222325),
@@ -132,8 +132,8 @@ class MoreSectionView extends StatelessWidget {
               ),
               SizedBox(height: Get.height * 0.02),
               Container(
-               // height: Get.height * 0.11,
-               width: double.infinity,
+                // height: Get.height * 0.11,
+                width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   color: Color(0xff222325),
@@ -187,10 +187,22 @@ class MoreSectionView extends StatelessWidget {
                   ],
                 ),
               ),
+              SizedBox(height: Get.height * 0.02),
               Container(
-                height: Get.height*0.5,
-               
-              )
+                height: Get.height * 0.065,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Color(0xff222325),
+                ),
+              ),
+              Container(height: Get.height * 0.5,
+              child: Row(
+                children: [
+                  
+                ],
+              ),
+              
+              ),
             ],
           ),
         ),

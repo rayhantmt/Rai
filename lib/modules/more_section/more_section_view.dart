@@ -194,15 +194,21 @@ class MoreSectionView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   color: Color(0xff222325),
                 ),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      AppImages.logoutlogo,
+                      height: Get.height * 0.04,
+                    ),
+                    Text('Sign Out',
+                    style: GoogleFonts.manrope( 
+                      color: Colors.red
+                    ),
+                    )
+                  ],
+                ),
               ),
-              Container(height: Get.height * 0.5,
-              child: Row(
-                children: [
-                  
-                ],
-              ),
-              
-              ),
+              Container(height: Get.height * 0.5),
             ],
           ),
         ),

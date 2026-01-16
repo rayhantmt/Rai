@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/common_widgets/more_section_widget.dart';
 import 'package:rai/utils/app_images.dart';
+import 'package:rai/utils/app_pages.dart';
 
 class MoreSectionView extends StatelessWidget {
   const MoreSectionView({super.key});
@@ -106,9 +107,12 @@ class MoreSectionView extends StatelessWidget {
                     SizedBox(height: Get.height * 0.01),
                     Divider(height: 1, color: Color(0xffB2B3BD)),
                     SizedBox(height: Get.height * 0.01),
-                    MoreSectionWidget(
-                      tittle: 'Comment & Concern',
-                      img: AppImages.morecommentconcern,
+                    GestureDetector(
+                      onTap: () => Get.toNamed(AppPages.commentandconcern),
+                      child: MoreSectionWidget(
+                        tittle: 'Comment & Concern',
+                        img: AppImages.morecommentconcern,
+                      ),
                     ),
                     SizedBox(height: Get.height * 0.01),
                     Divider(height: 1, color: Color(0xffB2B3BD)),
@@ -200,13 +204,14 @@ class MoreSectionView extends StatelessWidget {
                       AppImages.logoutlogo,
                       height: Get.height * 0.04,
                     ),
-                    Text('Sign Out',
-                    style: GoogleFonts.manrope( 
-                      color: Color(0xffEF4444),
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
+                    Text(
+                      'Sign Out',
+                      style: GoogleFonts.manrope(
+                        color: Color(0xffEF4444),
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                      ),
                     ),
-                    )
                   ],
                 ),
               ),

@@ -9,9 +9,10 @@ class CommentConcernView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: Icon(Icons.add_circle_outline_sharp,
-      color: Colors.white,
-      size: 40,
+      floatingActionButton: Icon(
+        Icons.add_circle_outline_sharp,
+        color: Colors.white,
+        size: 40,
       ),
       backgroundColor: AppImages.primarycolor,
       body: SingleChildScrollView(
@@ -19,36 +20,36 @@ class CommentConcernView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              SizedBox(
-                height: Get.height*0.07,
-              ),
+              SizedBox(height: Get.height * 0.07),
               Row(
                 children: [
-                  Image.asset(AppImages.commentconcernbackicon,
-                  height: Get.height*0.05,
-                  
+                  Image.asset(
+                    AppImages.commentconcernbackicon,
+                    height: Get.height * 0.05,
                   ),
 
-                  SizedBox(width: Get.width*0.05,),
-                  Text('Comment & Concern',
-                  style: GoogleFonts.manrope( 
-                    fontWeight: FontWeight.w700,
-                    fontSize: 22,
-                    color: Color(0xffEEEEF0)
+                  SizedBox(width: Get.width * 0.05),
+                  Text(
+                    'Comment & Concern',
+                    style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 22,
+                      color: Color(0xffEEEEF0),
+                    ),
                   ),
-                  )
                 ],
               ),
-              SizedBox(height: Get.height*0.2,),
+              SizedBox(height: Get.height * 0.2),
               Center(
-                child: Text('No comment & concern found',
-                style: GoogleFonts.manrope( 
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14,
-                  color: Color(0xffB2B3BD)
+                child: Text(
+                  'No comment & concern found',
+                  style: GoogleFonts.manrope(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
+                    color: Color(0xffB2B3BD),
+                  ),
                 ),
-                ),
-              )
+              ),
             ],
           ),
         ),

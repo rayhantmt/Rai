@@ -20,6 +20,40 @@ class CommentConcernView extends StatelessWidget {
                 topRight: Radius.circular(32)
               )
             ),
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  children: [
+                    Divider(
+                      thickness: 2,
+                      endIndent: Get.width*0.4,
+                      indent: Get.width*0.4,
+                      color: Colors.white,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Submit Comment & Concern',
+                        style: GoogleFonts.manrope( 
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xffEEEEF0),
+                          fontSize: 20
+                        ),
+                        ),
+                        GestureDetector(
+                          onTap: () => Navigator.pop(context),
+                          child: Icon(Icons.close,
+                          color: Colors.red,
+                          size: 32,
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
           );
         }),
         child: Icon(

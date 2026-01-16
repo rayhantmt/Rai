@@ -9,6 +9,10 @@ class CommentConcernView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: Icon(Icons.add_circle_outline_sharp,
+      color: Colors.white,
+      size: 40,
+      ),
       backgroundColor: AppImages.primarycolor,
       body: SingleChildScrollView(
         child: Padding(
@@ -35,6 +39,7 @@ class CommentConcernView extends StatelessWidget {
                   )
                 ],
               ),
+              SizedBox(height: Get.height*0.2,),
               Center(
                 child: Text('No comment & concern found',
                 style: GoogleFonts.manrope( 

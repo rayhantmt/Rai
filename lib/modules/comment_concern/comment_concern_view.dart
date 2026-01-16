@@ -9,10 +9,24 @@ class CommentConcernView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: Icon(
-        Icons.add_circle_outline_sharp,
-        color: Colors.white,
-        size: 40,
+      floatingActionButton: GestureDetector(
+        onTap: () => showModalBottomSheet(context: context, builder: (BuildContext){
+          return Container(
+            height: Get.height*0.4,
+            decoration: BoxDecoration(
+              color: Color(0xff222325),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(32),
+                topRight: Radius.circular(32)
+              )
+            ),
+          );
+        }),
+        child: Icon(
+          Icons.add_circle_outline_sharp,
+          color: Colors.white,
+          size: 40,
+        ),
       ),
       backgroundColor: AppImages.primarycolor,
       body: SingleChildScrollView(

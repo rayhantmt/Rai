@@ -54,6 +54,21 @@ class CommentConcernView extends StatelessWidget {
                           ),
                         ],
                       ),
+                      Container(
+                        height: Get.height * 0.2,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Color(0xff222325),
+                          border: Border.all(
+                            width: 1,
+                            color: Color(0xff393A40),
+                          ),
+                        ),
+                        child: TextFormField(
+                          style: TextStyle(color: Colors.white),
+                          decoration: InputDecoration(border: InputBorder.none),
+                        ),
+                      ),
                     ],
                   ),
                 ),

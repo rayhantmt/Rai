@@ -202,7 +202,9 @@ class MoreSectionView extends StatelessWidget {
                     ),
                     Text('Sign Out',
                     style: GoogleFonts.manrope( 
-                      color: Colors.red
+                      color: Color(0xffEF4444),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
                     ),
                     )
                   ],

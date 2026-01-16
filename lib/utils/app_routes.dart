@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:rai/modules/account_settings/account_settings_binding.dart';
+import 'package:rai/modules/account_settings/account_settings_view.dart';
 import 'package:rai/modules/comment_concern/comment_concern_binding.dart';
 import 'package:rai/modules/comment_concern/comment_concern_view.dart';
 import 'package:rai/modules/community/community_binding.dart';
@@ -49,7 +51,8 @@ class AppRoutes {
     GetPage(name: AppPages.raichat, page: ()=>RaiChatView(),binding: RaiChatBinding()),
     GetPage(name: AppPages.raispicks, page: ()=>RaisPicksView(),binding: RaisPicksBindings()),
     GetPage(name: AppPages.more, page: ()=>MoreSectionView(),binding: MoreSectionBinding()),
-    GetPage(name: AppPages.commentandconcern, page: ()=>CommentConcernView(),binding: CommentConcernBinding())
+    GetPage(name: AppPages.commentandconcern, page: ()=>CommentConcernView(),binding: CommentConcernBinding()),
+    GetPage(name: AppPages.accountsetting, page: ()=>AccountSettingsView(),binding: AccountSettingsBinding())
 
   ];
 }

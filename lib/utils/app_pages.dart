@@ -16,5 +16,5 @@ class AppPages {
   static const String raispicks='/raispicks';
   static const String more='/more';
   static const String commentandconcern='/commentconcern';
-  
+  static const String accountsetting='/accountsetting';  
 }

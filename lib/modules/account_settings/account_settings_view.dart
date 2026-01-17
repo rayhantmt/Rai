@@ -197,6 +197,7 @@ Widget _PersonalInfo() {
           ),
         ),
       ),
+      SizedBox(height: Get.height*0.02,),
       CommonButton(tittle: 'Edit Profile'),
     ],
   );

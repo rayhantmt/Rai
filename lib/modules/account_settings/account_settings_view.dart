@@ -5,6 +5,7 @@ import 'package:rai/common_widgets/common_button.dart';
 import 'package:rai/common_widgets/common_textfield.dart';
 import 'package:rai/modules/account_settings/account_settings_controller.dart';
 import 'package:rai/utils/app_images.dart';
+import 'package:rai/utils/app_pages.dart';
 
 class AccountSettingsView extends GetView<AccountSettingsController> {
   const AccountSettingsView({super.key});
@@ -198,7 +199,9 @@ Widget _PersonalInfo() {
         ),
       ),
       SizedBox(height: Get.height*0.02,),
-      CommonButton(tittle: 'Edit Profile'),
+      GestureDetector(
+        onTap: () => Get.toNamed(AppPages.editprofile),
+        child: CommonButton(tittle: 'Edit Profile')),
     ],
   );
 }

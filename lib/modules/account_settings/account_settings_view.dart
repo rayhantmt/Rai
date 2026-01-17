@@ -101,7 +101,45 @@ Widget _PersonalInfo (){
               radius: Get.height*0.06,
               backgroundImage: AssetImage(AppImages.profileimg),
             ),
-            SizedBox(width: double.infinity,)
+            SizedBox(height: Get.height*0.02),
+            Divider(
+             height: 1,
+             indent: 1,
+             endIndent: 1,
+             color: Color(0xff393A40),
+            ),
+            Text('Username',
+            style: GoogleFonts.manrope( 
+              fontWeight: FontWeight.w400,
+              fontSize: 14,
+              color: Color(0xffEEEEF0)
+            ),
+            ),
+            Text('new_@123',
+            style: GoogleFonts.manrope( 
+              fontWeight: FontWeight.w400,
+              fontSize: 14,
+              color: Color(0xffB2B3BD)
+            ),
+            ),
+            SizedBox(height: Get.height*0.02,),
+            Text('Name',
+            style: GoogleFonts.manrope( 
+              fontWeight: FontWeight.w400,
+              fontSize: 14,
+              color: Color(0xffEEEEF0)
+            ),
+            ),
+            Text('Adam Smith',
+            style: GoogleFonts.manrope( 
+              fontWeight: FontWeight.w400,
+              fontSize: 14,
+              color: Color(0xffB2B3BD)
+            ),
+            ),
+            SizedBox(height: Get.height*0.02,),
+            Text('Bio'),
+            
           ],
         ),
       ),

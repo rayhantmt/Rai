@@ -32,6 +32,18 @@ class AccountSettingsView extends StatelessWidget {
                   ),
                   )
                 ],
+              ),
+              SizedBox(height: Get.height*0.03,),
+              Row(
+                children: [
+                  Text('Personal Info',
+                  style: GoogleFonts.manrope( 
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14,
+                    color: Color(0xffEEEEF0)
+                  ),
+                  )
+                ],
               )
             ],
           ),

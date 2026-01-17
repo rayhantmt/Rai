@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rai/utils/app_images.dart';
 
 class AccountSettingsView extends StatelessWidget {
   const AccountSettingsView({super.key});
@@ -6,7 +7,7 @@ class AccountSettingsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      backgroundColor: AppImages.primarycolor,
     );
   }
 }

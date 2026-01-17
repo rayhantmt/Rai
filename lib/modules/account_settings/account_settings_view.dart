@@ -37,6 +37,7 @@ class AccountSettingsView extends StatelessWidget {
               Row(
                 children: [
                   Container(
+                    height: Get.height*0.05,
                     child: Column(
                       children: [
                         Text('Personal Info',
@@ -57,6 +58,7 @@ class AccountSettingsView extends StatelessWidget {
                     ),
                   ),
                   Container(
+                    height: Get.height*0.05,
                     child: Column(
                       children: [
                         Text('Change Password',

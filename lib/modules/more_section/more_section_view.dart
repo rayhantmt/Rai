@@ -117,9 +117,12 @@ class MoreSectionView extends StatelessWidget {
                     SizedBox(height: Get.height * 0.01),
                     Divider(height: 1, color: Color(0xffB2B3BD)),
                     SizedBox(height: Get.height * 0.01),
-                    MoreSectionWidget(
-                      tittle: 'Account Setting',
-                      img: AppImages.accountsettings,
+                    GestureDetector(
+                      onTap: () => Get.toNamed(AppPages.accountsetting),
+                      child: MoreSectionWidget(
+                        tittle: 'Account Setting',
+                        img: AppImages.accountsettings,
+                      ),
                     ),
                     SizedBox(height: Get.height * 0.01),
                   ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rai/common_widgets/common_button.dart';
 import 'package:rai/modules/account_settings/account_settings_controller.dart';
 import 'package:rai/utils/app_images.dart';
 
@@ -184,6 +185,19 @@ Widget _PersonalInfo() {
           ),
         ),
       ),
+    SizedBox(
+      height: Get.height*0.15,
+    ),
+    Center(
+      child: Text('Delete Account',
+      style: GoogleFonts.manrope( 
+        fontWeight: FontWeight.w400,
+        fontSize: 14,
+        color: Color(0xffEF4444)
+      ),
+      ),
+    ),
+      CommonButton(tittle: 'Edit Profile')
     ],
   );
 }

@@ -16,60 +16,66 @@ class AccountSettingsView extends GetView<AccountSettingsController> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              SizedBox(
-                height: Get.height*0.07,
-              ),
+              SizedBox(height: Get.height * 0.07),
               Row(
                 children: [
-                  Image.asset(AppImages.commentconcernbackicon,
-                  height: Get.height*0.05,
+                  Image.asset(
+                    AppImages.commentconcernbackicon,
+                    height: Get.height * 0.05,
                   ),
-                  SizedBox(width: Get.width*0.05,),
-                  Text('Account Setting',
-                  style: GoogleFonts.manrope( 
-                    fontWeight: FontWeight.w700,
-                    fontSize: 22,
-                    color: Color(0xffEEEEF0)
+                  SizedBox(width: Get.width * 0.05),
+                  Text(
+                    'Account Setting',
+                    style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 22,
+                      color: Color(0xffEEEEF0),
+                    ),
                   ),
-                  )
                 ],
               ),
-              SizedBox(height: Get.height*0.03,),
-            Obx(()=>
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () => controller.toggleScreen(0),
-                    child: Text('Personal Info',
-                    style: GoogleFonts.manrope( 
-                      fontWeight: FontWeight.w700,
-                      fontSize: 14,
-                      color: controller.screetype.value==0?Color(0xffEEEEF0):Color(0xff6C6E79)
+              SizedBox(height: Get.height * 0.03),
+              Obx(
+                () => Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () => controller.toggleScreen(0),
+                      child: Text(
+                        'Personal Info',
+                        style: GoogleFonts.manrope(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14,
+                          color: controller.screetype.value == 0
+                              ? Color(0xffEEEEF0)
+                              : Color(0xff6C6E79),
+                        ),
+                      ),
                     ),
+                    SizedBox(width: Get.width * 0.05),
+                    GestureDetector(
+                      onTap: () => controller.toggleScreen(1),
+                      child: Text(
+                        'Change Password',
+                        style: GoogleFonts.manrope(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14,
+                          color: controller.screetype.value == 1
+                              ? Color(0xffEEEEF0)
+                              : Color(0xff6C6E79),
+                        ),
+                      ),
                     ),
-                  ),
-                  SizedBox(width: Get.width*0.05,),
-                  GestureDetector(
-                    onTap: () => controller.toggleScreen(1),
-                    child: Text('Change Password',
-                    style: GoogleFonts.manrope( 
-                      fontWeight: FontWeight.w700,
-                      fontSize: 14,
-                      color: controller.screetype.value==1?Color(0xffEEEEF0):Color(0xff6C6E79)
-                    ),
-                    ),
-                  )
-                ],
-              )
-            ),
-            SizedBox(
-              height: Get.height*0.05,
-            ),
-            Obx(()=>
-          Container(child: 
-            controller.screetype.value==0? _PersonalInfo():_ChangePassword()
-            )
-          )
+                  ],
+                ),
+              ),
+              SizedBox(height: Get.height * 0.05),
+              Obx(
+                () => Container(
+                  child: controller.screetype.value == 0
+                      ? _PersonalInfo()
+                      : _ChangePassword(),
+                ),
+              ),
             ],
           ),
         ),
@@ -78,97 +84,109 @@ class AccountSettingsView extends GetView<AccountSettingsController> {
   }
 }
 
-Widget _PersonalInfo (){
+Widget _PersonalInfo() {
   return Column(
-    
     children: [
-     Container(
-      height: Get.height*0.5,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          width: 1,
-          color: Color(0xff393A40)
-        )
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all( 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CircleAvatar(
-              radius: Get.height*0.06,
-              backgroundImage: AssetImage(AppImages.profileimg),
-            ),
-            SizedBox(height: Get.height*0.02),
-            Divider(
-             height: 1,
-             indent: 1,
-             endIndent: 1,
-             color: Color(0xff393A40),
-            ),
-            Text('Username',
-            style: GoogleFonts.manrope( 
-              fontWeight: FontWeight.w400,
-              fontSize: 14,
-              color: Color(0xffEEEEF0)
-            ),
-            ),
-            Text('new_@123',
-            style: GoogleFonts.manrope( 
-              fontWeight: FontWeight.w400,
-              fontSize: 14,
-              color: Color(0xffB2B3BD)
-            ),
-            ),
-            SizedBox(height: Get.height*0.02,),
-            Text('Name',
-            style: GoogleFonts.manrope( 
-              fontWeight: FontWeight.w400,
-              fontSize: 14,
-              color: Color(0xffEEEEF0)
-            ),
-            ),
-            Text('Adam Smith',
-            style: GoogleFonts.manrope( 
-              fontWeight: FontWeight.w400,
-              fontSize: 14,
-              color: Color(0xffB2B3BD)
-            ),
-            ),
-            SizedBox(height: Get.height*0.02,),
-            Text('Bio',
-            style: GoogleFonts.manrope( 
-              fontWeight: FontWeight.w400,
-              fontSize: 14,
-              color: Color(0xffEEEEF0)
-            ),
-            ),
-            Text('on their profile I would like for them to be able to put a bio of whatever they want to say and if they want to upload a photo they can do',
-            style: GoogleFonts.manrope( 
-              fontWeight: FontWeight.w400,
-              fontSize: 14,
-              color: Color(0xff797B86)
-            ),
-            )
-          ],
+      Container(
+        height: Get.height * 0.5,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(width: 1, color: Color(0xff393A40)),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CircleAvatar(
+                radius: Get.height * 0.06,
+                backgroundImage: AssetImage(AppImages.profileimg),
+              ),
+              SizedBox(height: Get.height * 0.02),
+              Divider(
+                height: 1,
+                indent: 1,
+                endIndent: 1,
+                color: Color(0xff393A40),
+              ),
+              Text(
+                'Username',
+                style: GoogleFonts.manrope(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                  color: Color(0xffEEEEF0),
+                ),
+              ),
+              Text(
+                'new_@123',
+                style: GoogleFonts.manrope(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                  color: Color(0xffB2B3BD),
+                ),
+              ),
+              SizedBox(height: Get.height * 0.02),
+              Text(
+                'Name',
+                style: GoogleFonts.manrope(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                  color: Color(0xffEEEEF0),
+                ),
+              ),
+              Text(
+                'Adam Smith',
+                style: GoogleFonts.manrope(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                  color: Color(0xffB2B3BD),
+                ),
+              ),
+              SizedBox(height: Get.height * 0.02),
+              Text(
+                'Bio',
+                style: GoogleFonts.manrope(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                  color: Color(0xffEEEEF0),
+                ),
+              ),
+              Text(
+                'on their profile I would like for them to be able to put a bio of whatever they want to say and if they want to upload a photo they can do',
+                style: GoogleFonts.manrope(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                  color: Color(0xff797B86),
+                ),
+              ),
+              SizedBox(height: Get.height * 0.02),
+              Text(
+                'Date of Birth',
+                style: GoogleFonts.manrope(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                  color: Color(0xffEEEEF0),
+                ),
+              ),
+              Text(
+                '11 Aug 1999',
+                style: GoogleFonts.manrope(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                  color: Color(0xff797B86),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
-     )
-     
     ],
   );
 }
 
-Widget _ChangePassword(){
+Widget _ChangePassword() {
   return Column(
-    children: [
-      Text('Change Password',
-      style: TextStyle(
-        color: Colors.white
-      ),
-      )
-    ],
+    children: [Text('Change Password', style: TextStyle(color: Colors.white))],
   );
 }

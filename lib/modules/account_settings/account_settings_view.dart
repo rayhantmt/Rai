@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rai/modules/account_settings/account_settings_controller.dart';
 import 'package:rai/utils/app_images.dart';
 
-class AccountSettingsView extends StatelessWidget {
+class AccountSettingsView extends GetView<AccountSettingsController> {
   const AccountSettingsView({super.key});
 
   @override
@@ -34,24 +35,32 @@ class AccountSettingsView extends StatelessWidget {
                 ],
               ),
               SizedBox(height: Get.height*0.03,),
+            Obx(()=>
               Row(
                 children: [
-                  Text('Personal Info',
-                  style: GoogleFonts.manrope( 
-                    fontWeight: FontWeight.w700,
-                    fontSize: 14,
-                    color: Color(0xffEEEEF0)
+                  GestureDetector(
+                    onTap: () => controller.toggleScreen(0),
+                    child: Text('Personal Info',
+                    style: GoogleFonts.manrope( 
+                      fontWeight: FontWeight.w700,
+                      fontSize: 14,
+                      color: controller.screetype.value==0?Color(0xffEEEEF0):Color(0xff6C6E79)
+                    ),
+                    ),
                   ),
-                  ),
-                  Text('Change Password',
-                  style: GoogleFonts.manrope( 
-                    fontWeight: FontWeight.w700,
-                    fontSize: 14,
-                    color: Color(0xff6C6E79)
-                  ),
+                  GestureDetector(
+                    onTap: () => controller.toggleScreen(1),
+                    child: Text('Change Password',
+                    style: GoogleFonts.manrope( 
+                      fontWeight: FontWeight.w700,
+                      fontSize: 14,
+                      color: controller.screetype.value==1?Color(0xffEEEEF0):Color(0xff6C6E79)
+                    ),
+                    ),
                   )
                 ],
               )
+            )
             ],
           ),
         ),

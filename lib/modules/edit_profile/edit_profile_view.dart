@@ -33,6 +33,49 @@ class EditProfileView extends StatelessWidget {
                   ),
                   )
                 ],
+              ),
+              SizedBox(height: Get.height*0.02,),
+              Container(
+                height: Get.height*0.15,
+                child: Row(
+                  children: [
+                    CircleAvatar(
+                      backgroundImage: AssetImage(AppImages.profileimg,
+                      
+                      ),
+                      radius: Get.height*0.07,
+                    ),
+                    Column(
+                      children: [
+                        Text('Must be JPG,JPEG or PNG',
+                        style: GoogleFonts.manrope( 
+                          fontWeight: FontWeight.w500,
+                          fontSize: 12,
+                          color: Color(0xffB2B3BD)
+                        ),
+                        ),
+                          Text('64×64 px, under 2 MB',
+                        style: GoogleFonts.manrope( 
+                          fontWeight: FontWeight.w500,
+                          fontSize: 12,
+                          color: Color(0xffB2B3BD)
+                        ),
+                        ),
+                        Spacer(),
+                        Text('UPload Image',
+                        style: GoogleFonts.manrope( 
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                          color: Color(0xffEEEEF0)
+                        ),
+                        ),
+                        SizedBox(
+                          height: Get.height*0.02,
+                        )
+                      ],
+                    )
+                  ],
+                ),
               )
             ],
           ),

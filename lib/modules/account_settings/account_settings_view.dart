@@ -92,14 +92,18 @@ Widget _PersonalInfo (){
           color: Color(0xff393A40)
         )
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CircleAvatar(
-            backgroundImage: AssetImage(AppImages.profileimg),
-          ),
-          SizedBox(width: double.infinity,)
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all( 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CircleAvatar(
+              radius: Get.height*0.06,
+              backgroundImage: AssetImage(AppImages.profileimg),
+            ),
+            SizedBox(width: double.infinity,)
+          ],
+        ),
       ),
      )
      

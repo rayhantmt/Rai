@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
+import 'package:rai/utils/app_images.dart';
 
 class CommunityView extends GetView {
   const CommunityView({super.key});
@@ -7,8 +8,13 @@ class CommunityView extends GetView {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppImages.primarycolor,
       body: Center(
-        child: Text('Community'),
+        child: Text('Community',
+        style: TextStyle(
+          color: Colors.white
+        ),
+        ),
       ),
     );
   }

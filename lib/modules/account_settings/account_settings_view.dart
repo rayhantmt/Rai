@@ -36,40 +36,19 @@ class AccountSettingsView extends StatelessWidget {
               SizedBox(height: Get.height*0.03,),
               Row(
                 children: [
-                  Container(
-                    height: Get.height*0.05,
-                    child: Column(
-                      children: [
-                        Text('Personal Info',
-                        style: GoogleFonts.manrope( 
-                          fontWeight: FontWeight.w700,
-                          fontSize: 14,
-                          color: Color(0xffEEEEF0)
-                        ),
-                        ),
-                        Divider(
-                          thickness: 3,
-                          color: Color(0xffEEEEF0),
-                          indent: 1,
-                          height: 2,
-                          endIndent: 1,
-                        )
-                      ],
-                    ),
+                  Text('Personal Info',
+                  style: GoogleFonts.manrope( 
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14,
+                    color: Color(0xffEEEEF0)
                   ),
-                  Container(
-                    height: Get.height*0.05,
-                    child: Column(
-                      children: [
-                        Text('Change Password',
-                        style: GoogleFonts.manrope( 
-                          fontWeight: FontWeight.w700,
-                          fontSize: 14,
-                          color: Color(0xff6C6E79)
-                        ),
-                        ),
-                      ],
-                    ),
+                  ),
+                  Text('Change Password',
+                  style: GoogleFonts.manrope( 
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14,
+                    color: Color(0xff6C6E79)
+                  ),
                   )
                 ],
               )

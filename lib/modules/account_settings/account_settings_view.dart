@@ -138,8 +138,20 @@ Widget _PersonalInfo (){
             ),
             ),
             SizedBox(height: Get.height*0.02,),
-            Text('Bio'),
-            
+            Text('Bio',
+            style: GoogleFonts.manrope( 
+              fontWeight: FontWeight.w400,
+              fontSize: 14,
+              color: Color(0xffEEEEF0)
+            ),
+            ),
+            Text('on their profile I would like for them to be able to put a bio of whatever they want to say and if they want to upload a photo they can do',
+            style: GoogleFonts.manrope( 
+              fontWeight: FontWeight.w400,
+              fontSize: 14,
+              color: Color(0xff797B86)
+            ),
+            )
           ],
         ),
       ),

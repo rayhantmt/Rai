@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/common_widgets/common_button.dart';
+import 'package:rai/common_widgets/common_textfield.dart';
 import 'package:rai/modules/account_settings/account_settings_controller.dart';
 import 'package:rai/utils/app_images.dart';
 
@@ -185,25 +186,74 @@ Widget _PersonalInfo() {
           ),
         ),
       ),
-    SizedBox(
-      height: Get.height*0.15,
-    ),
-    Center(
-      child: Text('Delete Account',
-      style: GoogleFonts.manrope( 
-        fontWeight: FontWeight.w400,
-        fontSize: 14,
-        color: Color(0xffEF4444)
+      SizedBox(height: Get.height * 0.15),
+      Center(
+        child: Text(
+          'Delete Account',
+          style: GoogleFonts.manrope(
+            fontWeight: FontWeight.w400,
+            fontSize: 14,
+            color: Color(0xffEF4444),
+          ),
+        ),
       ),
-      ),
-    ),
-      CommonButton(tittle: 'Edit Profile')
+      CommonButton(tittle: 'Edit Profile'),
     ],
   );
 }
 
 Widget _ChangePassword() {
+  final controller = Get.find<AccountSettingsController>();
   return Column(
-    children: [Text('Change Password', style: TextStyle(color: Colors.white))],
+    children: [
+      Commontextfield(
+        tittle: 'Old Password',
+        hint: 'Enter your old password',
+        obsecuretext: controller.obsecured.value,
+        suffix: Obx(
+          () => GestureDetector(
+            onTap: () => controller.toggle(),
+            child: Icon(
+              controller.obsecured.value
+                  ? Icons.visibility
+                  : Icons.visibility_off,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+        Commontextfield(
+        tittle: 'New Password',
+        hint: 'Enter new password',
+        obsecuretext: controller.obsecured.value,
+        suffix: Obx(
+          () => GestureDetector(
+            onTap: () => controller.toggle(),
+            child: Icon(
+              controller.obsecured.value
+                  ? Icons.visibility
+                  : Icons.visibility_off,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+        Commontextfield(
+        tittle: 'Confirm new Password',
+        hint: 'Re-type new password',
+        obsecuretext: controller.obsecured.value,
+        suffix: Obx(
+          () => GestureDetector(
+            onTap: () => controller.toggle(),
+            child: Icon(
+              controller.obsecured.value
+                  ? Icons.visibility
+                  : Icons.visibility_off,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+    ],
   );
 }

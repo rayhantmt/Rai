@@ -80,12 +80,29 @@ class AccountSettingsView extends GetView<AccountSettingsController> {
 
 Widget _PersonalInfo (){
   return Column(
+    
     children: [
-      Text('Personal Info',
-      style: TextStyle(
-        color: Colors.white
+     Container(
+      height: Get.height*0.5,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          width: 1,
+          color: Color(0xff393A40)
+        )
       ),
-      )
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CircleAvatar(
+            backgroundImage: AssetImage(AppImages.profileimg),
+          ),
+          SizedBox(width: double.infinity,)
+        ],
+      ),
+     )
+     
     ],
   );
 }

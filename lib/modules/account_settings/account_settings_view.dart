@@ -48,6 +48,7 @@ class AccountSettingsView extends GetView<AccountSettingsController> {
                     ),
                     ),
                   ),
+                  SizedBox(width: Get.width*0.05,),
                   GestureDetector(
                     onTap: () => controller.toggleScreen(1),
                     child: Text('Change Password',
@@ -60,11 +61,43 @@ class AccountSettingsView extends GetView<AccountSettingsController> {
                   )
                 ],
               )
+            ),
+            SizedBox(
+              height: Get.height*0.05,
+            ),
+            Obx(()=>
+          Container(child: 
+            controller.screetype.value==0? _PersonalInfo():_ChangePassword()
             )
+          )
             ],
           ),
         ),
       ),
     );
   }
+}
+
+Widget _PersonalInfo (){
+  return Column(
+    children: [
+      Text('Personal Info',
+      style: TextStyle(
+        color: Colors.white
+      ),
+      )
+    ],
+  );
+}
+
+Widget _ChangePassword(){
+  return Column(
+    children: [
+      Text('Change Password',
+      style: TextStyle(
+        color: Colors.white
+      ),
+      )
+    ],
+  );
 }

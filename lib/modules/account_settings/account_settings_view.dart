@@ -254,6 +254,8 @@ Widget _ChangePassword() {
           ),
         ),
       ),
+      SizedBox(height: Get.height*0.1,),
+      CommonButton(tittle: 'Update Password')
     ],
   );
 }

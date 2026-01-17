@@ -18,8 +18,11 @@ class EditProfileView extends StatelessWidget {
               SizedBox(height: Get.height*0.07,),
               Row(
                 children: [
-                  Image.asset(AppImages.commentconcernbackicon,
-                  height: Get.height*0.05,
+                  GestureDetector(
+                    onTap: () => Get.back(),
+                    child: Image.asset(AppImages.commentconcernbackicon,
+                    height: Get.height*0.05,
+                    ),
                   ),
                   SizedBox(width: Get.width*0.05,),
                   Text('Edit Profile',

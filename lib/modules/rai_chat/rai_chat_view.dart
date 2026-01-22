@@ -160,6 +160,7 @@ class RaiChatView extends StatelessWidget {
                         ),
                       ),
                       Image.asset(AppImages.sendbutton),
+                      Image.asset(AppImages.micIcon)
                     ],
                   ),
                 ),

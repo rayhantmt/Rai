@@ -60,12 +60,12 @@ class RaiChatView extends StatelessWidget {
                                   style: GoogleFonts.manrope(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 14,
-                                    color: Color(0xffEEEEF0)
+                                    color: Color(0xffEEEEF0),
                                   ),
                                 ),
                               ],
                             ),
-                             Row(
+                            Row(
                               children: [
                                 Image.asset(
                                   AppImages.clearconversationicon,
@@ -76,7 +76,7 @@ class RaiChatView extends StatelessWidget {
                                   style: GoogleFonts.manrope(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 14,
-                                     color: Color(0xffEEEEF0)
+                                    color: Color(0xffEEEEF0),
                                   ),
                                 ),
                               ],
@@ -143,7 +143,7 @@ class RaiChatView extends StatelessWidget {
                       Expanded(
                         child: TextFormField(
                           cursorColor: Colors.white,
-
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                             hint: Center(
                               child: Text(
@@ -159,9 +159,7 @@ class RaiChatView extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Image.asset(AppImages.sendbutton,
-                      
-                      ),
+                      Image.asset(AppImages.sendbutton),
                     ],
                   ),
                 ),

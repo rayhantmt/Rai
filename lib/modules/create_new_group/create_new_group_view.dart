@@ -8,6 +8,13 @@ class CreateNewGroupView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppImages.primarycolor,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            
+          ],
+        ),
+      ),
     );
   }
 }

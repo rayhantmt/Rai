@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/utils/app_images.dart';
+import 'package:rai/utils/app_pages.dart';
 
 class CommunityView extends GetView {
   const CommunityView({super.key});
@@ -34,14 +35,17 @@ class CommunityView extends GetView {
           Positioned(
             bottom: Get.height * 0.15, 
             right: 20,
-            child: Container(
-              height: 60,
-              width: 60,
-              decoration: BoxDecoration(
-                color: Color(0xff303136),
-                shape: BoxShape.circle,
+            child: GestureDetector(
+              onTap: () => Get.toNamed(AppPages.createNewGroup),
+              child: Container(
+                height: 60,
+                width: 60,
+                decoration: BoxDecoration(
+                  color: Color(0xff303136),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(Icons.add, color: Color(0xffEEEEF0), size: 30),
               ),
-              child: Icon(Icons.add, color: Color(0xffEEEEF0), size: 30),
             ),
           ),
         ],

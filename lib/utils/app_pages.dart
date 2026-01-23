@@ -18,4 +18,5 @@ class AppPages {
   static const String commentandconcern='/commentconcern';
   static const String accountsetting='/accountsetting';
   static const String editprofile='/editprofile';  
+  static const String createNewGroup='/createNewGroup';
 }

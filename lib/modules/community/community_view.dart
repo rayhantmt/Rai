@@ -10,12 +10,10 @@ class CommunityView extends GetView {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppImages.primarycolor,
-      //floatingActionButton: FloatingActionButton(onPressed: (){}),
       body: Stack(
         fit: StackFit.expand,
         children: [
           SingleChildScrollView(
-            //physics: NeverScrollableScrollPhysics(),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(

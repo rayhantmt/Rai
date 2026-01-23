@@ -12,8 +12,10 @@ class CommunityView extends GetView {
       backgroundColor: AppImages.primarycolor,
       //floatingActionButton: FloatingActionButton(onPressed: (){}),
       body: Stack(
+        fit: StackFit.expand,
         children: [
           SingleChildScrollView(
+            //physics: NeverScrollableScrollPhysics(),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -32,17 +34,16 @@ class CommunityView extends GetView {
             ),
           ),
           Positioned(
-            bottom:Get.height *0.32, 
+            bottom: Get.height * 0.15, 
             right: 20,
-            left: 49,
             child: Container(
               height: 60,
               width: 60,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Color(0xff303136),
                 shape: BoxShape.circle,
               ),
-              child: Icon(Icons.add, color: Colors.white, size: 30),
+              child: Icon(Icons.add, color: Color(0xffEEEEF0), size: 30),
             ),
           ),
         ],

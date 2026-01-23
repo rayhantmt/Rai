@@ -32,9 +32,7 @@ class CommunityView extends GetView {
             ),
           ),
           Positioned(
-            bottom:
-                Get.height *
-                0.32, // Just above the bottom nav (10% + 2% spacing)
+            bottom:Get.height *0.32, 
             right: 20,
             left: 49,
             child: Container(

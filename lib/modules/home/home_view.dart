@@ -123,30 +123,36 @@ class HomeView extends StatelessWidget {
             ),
             SizedBox(height: Get.height * 0.02),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image.asset(AppImages.warningicon, height: Get.height * 0.05),
-                Text(
-                  'rai. is not responsible for your losses           \nOnly for your wins',
-                  style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                    color: Color(0xffEEEEF0),
+                Expanded(
+                  child: Text(
+                    'rai. is not responsible for your losses\nOnly for your wins',
+                    //overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: Color(0xffEEEEF0),
+                    ),
                   ),
                 ),
               ],
             ),
             SizedBox(height: Get.height * 0.02),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image.asset(AppImages.warningicon, height: Get.height * 0.05),
-                Text(
-                  'No pick is a 100% lock\nIf it was we would be on a yacht somewhere',
-                  style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                    color: Color(0xffEEEEF0),
+                Expanded(
+                  child: Text(
+                    'No pick is a 100% lock. \nIf it was we would be on a yacht somewhere',
+                    //overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: Color(0xffEEEEF0),
+                    ),
                   ),
                 ),
               ],

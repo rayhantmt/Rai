@@ -80,6 +80,21 @@ class CreateNewGroupView extends StatelessWidget {
                       )
                     ),
                   ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Approval required to join',
+                  style: GoogleFonts.manrope( 
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                    color: Color(0xffEEEEF0)
+                  ),
+                  ),
+                 Switch(value: true, onChanged: (value) => {},)
+                  
+                ],
+              ),
+              SizedBox(height: Get.height*0.06,),
                   CommonButton(tittle: 'Create Group')
             ],
           ),

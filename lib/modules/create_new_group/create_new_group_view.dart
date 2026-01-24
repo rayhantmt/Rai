@@ -83,6 +83,18 @@ class CreateNewGroupView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(width: 1, color: Color(0xff393A40)),
                 ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hint: Text('Write short description here....')
+                  ),
+                   style: GoogleFonts.inter(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
+                    color: Color(0xff6C6E79),
+                  ),
+                  
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

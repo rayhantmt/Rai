@@ -17,85 +17,89 @@ class CreateNewGroupView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              SizedBox(height: Get.height*0.07,),
+              SizedBox(height: Get.height * 0.07),
               Row(
                 children: [
-                  Image.asset(AppImages.commentconcernbackicon,
-                  height: Get.height*0.05,
+                  Image.asset(
+                    AppImages.commentconcernbackicon,
+                    height: Get.height * 0.05,
                   ),
-                  SizedBox(width: Get.width*0.03,),
-                  Text('Create New Group',
-                  style: GoogleFonts.manrope( 
-                    fontWeight: FontWeight.w700,
-                    fontSize: 22,
-                    color: Color(0xffEEEEF0)
-                  ),
+                  SizedBox(width: Get.width * 0.03),
+                  Text(
+                    'Create New Group',
+                    style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 22,
+                      color: Color(0xffEEEEF0),
+                    ),
                   ),
                 ],
               ),
-              SizedBox(height: Get.height*0.04,),
+              SizedBox(height: Get.height * 0.04),
               CircleAvatar(
                 radius: 80,
-                backgroundImage: NetworkImage('https://i.pravatar.cc/150?img=12'),
+                backgroundImage: NetworkImage(
+                  'https://i.pravatar.cc/150?img=12',
+                ),
               ),
-              SizedBox(height: Get.height*0.03,),
-              Text('Upload Group Photo',
-              style: GoogleFonts.manrope(
-                fontWeight: FontWeight.w700,
-                fontSize: 16,
-                color: Color(0xffEEEEF0)
+              SizedBox(height: Get.height * 0.03),
+              Text(
+                'Upload Group Photo',
+                style: GoogleFonts.manrope(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16,
+                  color: Color(0xffEEEEF0),
+                ),
               ),
-              ),
-              SizedBox(height: Get.height*0.02,),
+              SizedBox(height: Get.height * 0.02),
               Divider(
                 height: 1,
                 endIndent: 1,
                 indent: 1,
                 color: Color(0xff393A40),
               ),
-              Commontextfield(tittle: 'Group Name', hint: 'Write group name', obsecuretext: false),
-              SizedBox(
-                height: Get.height*0.01,
+              Commontextfield(
+                tittle: 'Group Name',
+                hint: 'Write group name',
+                obsecuretext: false,
               ),
+              SizedBox(height: Get.height * 0.01),
               Row(
                 children: [
-                  Text('Short Description',
-                  style: GoogleFonts.manrope( 
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16,
-                    color: Color(0xffEEEEF0)
+                  Text(
+                    'Short Description',
+                    style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                      color: Color(0xffEEEEF0),
+                    ),
                   ),
-                  ),
-                  
                 ],
               ),
               Container(
-                    width: double.infinity,
-                    height: Get.height*0.15,
-                    decoration: BoxDecoration(
-                     borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                        width: 1,
-                        color: Color(0xff393A40)
-                      )
+                width: double.infinity,
+                height: Get.height * 0.15,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(width: 1, color: Color(0xff393A40)),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Approval required to join',
+                    style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                      color: Color(0xffEEEEF0),
                     ),
                   ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Approval required to join',
-                  style: GoogleFonts.manrope( 
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16,
-                    color: Color(0xffEEEEF0)
-                  ),
-                  ),
-                 Switch(value: true, onChanged: (value) => {},)
-                  
+                  Switch(value: true, onChanged: (value) => {}),
                 ],
               ),
-              SizedBox(height: Get.height*0.06,),
-                  CommonButton(tittle: 'Create Group')
+              SizedBox(height: Get.height * 0.06),
+              CommonButton(tittle: 'Create Group'),
             ],
           ),
         ),

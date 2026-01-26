@@ -49,7 +49,8 @@ class CommunityView extends GetView<CommunityController> {
                       child: GestureDetector(
                         onTap: () => Get.toNamed(AppPages.communitydetails,arguments: {
                           'name':controller.communities[index].tittle,
-                          'img':controller.communities[index].members
+                          'img':controller.communities[index].img,
+                          'member':controller.communities[index].members
                         }),
                         child: Container(
                           height: Get.height * 0.066,

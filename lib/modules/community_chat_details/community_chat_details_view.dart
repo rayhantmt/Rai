@@ -22,7 +22,7 @@ class CommunityChatDetailsView extends GetView<CommunityChatDetailsController> {
             SizedBox(height: Get.height * 0.06),
             Row(
               children: [
-                 GestureDetector(
+                GestureDetector(
                   onTap: () => Get.back(),
                   child: Image.asset(
                     AppImages.commentconcernbackicon,
@@ -30,33 +30,41 @@ class CommunityChatDetailsView extends GetView<CommunityChatDetailsController> {
                   ),
                 ),
                 SizedBox(width: Get.width * 0.02),
-                Row(
-                  children: [
-                    CircleAvatar(radius: 30, backgroundImage: NetworkImage(img)),
-                SizedBox(width: Get.width * 0.04),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      name,
-                      style: GoogleFonts.manrope(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16,
-                        color: Color(0xffEEEEF0),
+                GestureDetector(
+                  onTap: () {
+                    
+                  },
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundImage: NetworkImage(img),
                       ),
-                    ),
-                    Text(
-                      member,
-                      style: GoogleFonts.manrope(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14,
-                        color: Color(0xffEEEEF0),
+                      SizedBox(width: Get.width * 0.04),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            name,
+                            style: GoogleFonts.manrope(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16,
+                              color: Color(0xffEEEEF0),
+                            ),
+                          ),
+                          Text(
+                            member,
+                            style: GoogleFonts.manrope(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14,
+                              color: Color(0xffEEEEF0),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-                  ],
-                )
               ],
             ),
           ],

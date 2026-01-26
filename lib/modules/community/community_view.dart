@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/modules/community/community_controller.dart';
 import 'package:rai/utils/app_images.dart';
 import 'package:rai/utils/app_pages.dart';
-
 class CommunityView extends GetView<CommunityController> {
   const CommunityView({super.key});
 
@@ -47,40 +46,46 @@ class CommunityView extends GetView<CommunityController> {
                     itemCount: controller.communities.length,
                     itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.only(bottom: 10),
-                      child: Container(
-                        height: Get.height * 0.066,
-                        width: double.infinity,
-                        child: Row(
-                          children: [
-                            CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                controller.communities[index].img,
+                      child: GestureDetector(
+                        onTap: () => Get.toNamed(AppPages.communitydetails,arguments: {
+                          'name':controller.communities[index].tittle,
+                          'img':controller.communities[index].members
+                        }),
+                        child: Container(
+                          height: Get.height * 0.066,
+                          width: double.infinity,
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                backgroundImage: NetworkImage(
+                                  controller.communities[index].img,
+                                ),
+                                radius: 40,
                               ),
-                              radius: 40,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  controller.communities[index].tittle,
-                                  style: GoogleFonts.manrope(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 16,
-                                    color: Color(0xffEEEEF0),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    controller.communities[index].tittle,
+                                    style: GoogleFonts.manrope(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 16,
+                                      color: Color(0xffEEEEF0),
+                                    ),
                                   ),
-                                ),
-                                Text(
-                                  '${controller.communities[index].members} members',
-
-                                  style: GoogleFonts.manrope(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 14,
-                                    color: Color(0xffEEEEF0),
+                                  Text(
+                                    '${controller.communities[index].members} members',
+                        
+                                    style: GoogleFonts.manrope(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 14,
+                                      color: Color(0xffEEEEF0),
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

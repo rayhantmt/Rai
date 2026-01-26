@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/modules/community_chat_details/community_chat_details_controller.dart';
 import 'package:rai/utils/app_images.dart';
+import 'package:rai/utils/app_pages.dart';
 
 class CommunityChatDetailsView extends GetView<CommunityChatDetailsController> {
   const CommunityChatDetailsView({super.key});
@@ -31,9 +32,11 @@ class CommunityChatDetailsView extends GetView<CommunityChatDetailsController> {
                 ),
                 SizedBox(width: Get.width * 0.02),
                 GestureDetector(
-                  onTap: () {
-                    
-                  },
+                  onTap: () => Get.toNamed(AppPages.updateCommunity,arguments: {
+                    'img':img,
+                    'name':name,
+                    'member':member,
+                  }),
                   child: Row(
                     children: [
                       CircleAvatar(

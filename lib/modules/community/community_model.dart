@@ -1,6 +1,6 @@
 class CommunityModel {
   final String tittle;
   final String members;
-
-  CommunityModel({required this.tittle, required this.members});
+final String img;
+  CommunityModel({required this.tittle, required this.members,required this.img, });
 }

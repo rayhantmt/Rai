@@ -5,6 +5,8 @@ import 'package:rai/modules/comment_concern/comment_concern_binding.dart';
 import 'package:rai/modules/comment_concern/comment_concern_view.dart';
 import 'package:rai/modules/community/community_binding.dart';
 import 'package:rai/modules/community/community_view.dart';
+import 'package:rai/modules/community_chat_details/community_chat_details_binding.dart';
+import 'package:rai/modules/community_chat_details/community_chat_details_view.dart';
 import 'package:rai/modules/create_new_group/create_new_group_binding.dart';
 import 'package:rai/modules/create_new_group/create_new_group_view.dart';
 import 'package:rai/modules/edit_profile/edit_profile_binding.dart';
@@ -58,7 +60,8 @@ class AppRoutes {
     GetPage(name: AppPages.commentandconcern, page: ()=>CommentConcernView(),binding: CommentConcernBinding()),
     GetPage(name: AppPages.accountsetting, page: ()=>AccountSettingsView(),binding: AccountSettingsBinding()),
     GetPage(name: AppPages.editprofile, page: ()=>EditProfileView(),binding: EditProfileBinding()),
-    GetPage(name: AppPages.createNewGroup, page: () => CreateNewGroupView(),binding: CreateNewGroupBinding())
+    GetPage(name: AppPages.createNewGroup, page: () => CreateNewGroupView(),binding: CreateNewGroupBinding()),
+    GetPage(name: AppPages.communitydetails, page: () => CommunityChatDetailsView(),binding: CommunityChatDetailsBinding())
 
   ];
 }

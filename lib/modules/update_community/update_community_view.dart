@@ -126,6 +126,12 @@ class UpdateCommunityView extends StatelessWidget {
                       color: Color(0xffEEEEF0),
                     ),
                   ),
+                  SizedBox(width: Get.width*0.2,),
+                  Switch(
+                    activeTrackColor: Color(0xffEEEEF0),
+                  
+                  activeColor: Color(0xff19191B),
+                  value: true, onChanged: (value) => {},)
                 ],
               ),
             ],

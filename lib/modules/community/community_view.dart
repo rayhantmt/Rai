@@ -47,7 +47,7 @@ class CommunityView extends GetView<CommunityController> {
                     itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.only(bottom: 10),
                       child: GestureDetector(
-                        onTap: () => Get.toNamed(AppPages.communitydetails,arguments: {
+                        onTap: () => Get.toNamed(AppPages.communitychatdetails,arguments: {
                           'name':controller.communities[index].tittle,
                           'img':controller.communities[index].img,
                           'member':controller.communities[index].members

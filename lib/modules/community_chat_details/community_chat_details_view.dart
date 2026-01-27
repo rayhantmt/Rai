@@ -32,7 +32,7 @@ class CommunityChatDetailsView extends GetView<CommunityChatDetailsController> {
                 ),
                 SizedBox(width: Get.width * 0.02),
                 GestureDetector(
-                  onTap: () => Get.toNamed(AppPages.updateCommunity,arguments: {
+                  onTap: () => Get.toNamed(AppPages.communityDetails,arguments: {
                     'img':img,
                     'name':name,
                     'member':member,

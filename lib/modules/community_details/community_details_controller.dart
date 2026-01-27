@@ -1,7 +1,7 @@
 
 import 'package:get/get.dart';
 
-class UpdateCommunityController extends GetxController {
+class CommunityDetailsController extends GetxController {
   RxBool notificatio=true.obs;
   void notification(bool){
     notificatio.value=bool;

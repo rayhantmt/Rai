@@ -19,6 +19,6 @@ class AppPages {
   static const String accountsetting='/accountsetting';
   static const String editprofile='/editprofile';  
   static const String createNewGroup='/createNewGroup';
-  static const String communitydetails='/communityDetails';
-  static const String updateCommunity='/updaetCommunity';
+  static const String communitychatdetails='/communityChatDetails';
+  static const String communityDetails='/communityDetails';
 }

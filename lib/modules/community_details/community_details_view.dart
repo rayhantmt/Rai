@@ -5,8 +5,8 @@ import 'package:rai/common_widgets/more_section_widget.dart';
 import 'package:rai/modules/community_details/community_details_controller.dart';
 import 'package:rai/utils/app_images.dart';
 
-class UpdateCommunityView extends GetView<UpdateCommunityController> {
-  const UpdateCommunityView({super.key});
+class CommunityDetailsView extends GetView<CommunityDetailsController> {
+  const CommunityDetailsView({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -63,8 +63,8 @@ class AppRoutes {
     GetPage(name: AppPages.accountsetting, page: ()=>AccountSettingsView(),binding: AccountSettingsBinding()),
     GetPage(name: AppPages.editprofile, page: ()=>EditProfileView(),binding: EditProfileBinding()),
     GetPage(name: AppPages.createNewGroup, page: () => CreateNewGroupView(),binding: CreateNewGroupBinding()),
-    GetPage(name: AppPages.communitydetails, page: () => CommunityChatDetailsView(),binding: CommunityChatDetailsBinding()),
-    GetPage(name: AppPages.updateCommunity, page: () => UpdateCommunityView(),binding: UpdateCommunityBinding())
+    GetPage(name: AppPages.communitychatdetails, page: () => CommunityChatDetailsView(),binding: CommunityChatDetailsBinding()),
+    GetPage(name: AppPages.communityDetails, page: () => CommunityDetailsView(),binding: CommunityDetailsBinding())
 
   ];
 }

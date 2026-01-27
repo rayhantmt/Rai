@@ -69,6 +69,13 @@ class UpdateCommunityView extends StatelessWidget {
                         )
                       ],
                     ),
+                    Text(name,
+                    style: GoogleFonts.manrope( 
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      color: Color(0xffEEEEF0)
+                    ),
+                    )
                   ],
                 ),
               ),

@@ -103,7 +103,23 @@ class UpdateCommunityView extends StatelessWidget {
               SizedBox(height: Get.height*0.02,),
               MoreSectionWidget(tittle: 'Group Link', img: AppImages.shareGroupLink),
               SizedBox(height: Get.height*0.03,),
-              MoreSectionWidget(tittle: 'Group member', img: AppImages.groupMemberIcon)
+              MoreSectionWidget(tittle: 'Group member', img: AppImages.groupMemberIcon),
+              SizedBox(height: Get.height*0.03,),
+              Row(
+                children: [
+                  Image.asset(AppImages.notificationIcon,
+                  height: Get.height*0.05,
+                  ),
+                  SizedBox(width: Get.width*0.04,),
+                  Text('Mute Notifications',
+                  style: GoogleFonts.manrope( 
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16,
+                    color: Color(0xffEEEEF0)
+                  ),
+                  )
+                ],
+              )
             ],
           ),
         ),

@@ -30,5 +30,8 @@ class AppImages {
   static const String commentconcernbackicon='assets/comment_conern_back.png';
   static const String micIcon='assets/mic_icon.png';
   static const String addPeopleIcon='assets/addMemberIcon.png';
+  static const String groupMemberIcon='assets/group_member_icon.png';
+  static const String shareGroupLink='assets/share_link_icon.png';
+  static const String notificationIcon='assets/notification_icon.png';
 
 }

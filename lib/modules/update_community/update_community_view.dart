@@ -84,15 +84,16 @@ class UpdateCommunityView extends StatelessWidget {
                             color: Color(0xffEEEEF0),
                           ),
                         ),
-                        Text('Smart bettors hang out here. Discuss picks, parlays, odds, and insights powered read more...',
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.manrope( 
-                          fontWeight: FontWeight.w500,
-                          fontSize: 14,
-                          color: Color(0xfffB2B3BD)
+                        Text(
+                          'Smart bettors hang out here. Discuss picks, parlays, odds, and insights powered read more...',
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: GoogleFonts.manrope(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 14,
+                            color: Color(0xfffB2B3BD),
+                          ),
                         ),
-                        )
                       ],
                     ),
                   ],

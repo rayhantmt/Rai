@@ -67,18 +67,34 @@ class UpdateCommunityView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Image.asset(AppImages.addPeopleIcon,
-                        height: Get.height*0.05,
+                        Image.asset(
+                          AppImages.addPeopleIcon,
+                          height: Get.height * 0.05,
+                        ),
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          name,
+                          style: GoogleFonts.manrope(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            color: Color(0xffEEEEF0),
+                          ),
+                        ),
+                        Text('Smart bettors hang out here. Discuss picks, parlays, odds, and insights powered read more...',
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.manrope( 
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                          color: Color(0xfffB2B3BD)
+                        ),
                         )
                       ],
                     ),
-                    Text(name,
-                    style: GoogleFonts.manrope( 
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                      color: Color(0xffEEEEF0)
-                    ),
-                    )
                   ],
                 ),
               ),

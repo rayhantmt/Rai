@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/common_widgets/more_section_widget.dart';
-import 'package:rai/modules/update_community/update_community_controller.dart';
+import 'package:rai/modules/community_details/community_details_controller.dart';
 import 'package:rai/utils/app_images.dart';
 
 class UpdateCommunityView extends GetView<UpdateCommunityController> {

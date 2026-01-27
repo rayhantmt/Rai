@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rai/common_widgets/more_section_widget.dart';
 import 'package:rai/utils/app_images.dart';
 
 class UpdateCommunityView extends StatelessWidget {
@@ -99,6 +100,10 @@ class UpdateCommunityView extends StatelessWidget {
                   ],
                 ),
               ),
+              SizedBox(height: Get.height*0.02,),
+              MoreSectionWidget(tittle: 'Group Link', img: AppImages.shareGroupLink),
+              SizedBox(height: Get.height*0.03,),
+              MoreSectionWidget(tittle: 'Group member', img: AppImages.groupMemberIcon)
             ],
           ),
         ),

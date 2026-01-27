@@ -33,5 +33,6 @@ class AppImages {
   static const String groupMemberIcon='assets/group_member_icon.png';
   static const String shareGroupLink='assets/share_link_icon.png';
   static const String notificationIcon='assets/notification_icon.png';
+  static const String leaveicon='assets/leave_icon.png';
 
 }

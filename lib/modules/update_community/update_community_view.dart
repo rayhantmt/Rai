@@ -137,6 +137,30 @@ class UpdateCommunityView extends GetView<UpdateCommunityController> {
                   ),)
                 ],
               ),
+              SizedBox(height: Get.height*0.28,),
+              Container(
+                height: Get.height*0.06,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Color(0xff222325),
+                  borderRadius: BorderRadius.circular(16)
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(AppImages.leaveicon,
+                    height: Get.height*0.03,
+                    ),
+                    Text('Leave',
+                    style: GoogleFonts.manrope( 
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      color: Color(0xffEF4444)
+                    ),
+                    )
+                  ],
+                ),
+              )
             ],
           ),
         ),

@@ -70,6 +70,50 @@ class CommunityChatDetailsView extends GetView<CommunityChatDetailsController> {
                 ),
               ],
             ),
+            SizedBox(height: Get.height*0.76,),
+               Row(
+              children: [
+                Image.asset(AppImages.imagepicking, height: Get.height * 0.07),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    color: Color(0xff222325),
+                  ),
+                  height: Get.height * 0.07,
+                  width: Get.width * 0.745,
+                  child: Row(
+                    //mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Expanded(
+                        child: TextFormField(
+                          cursorColor: Colors.white,
+                          style: TextStyle(color: Colors.white),
+                          decoration: InputDecoration(
+                            hint: Center(
+                              child: Text(
+                                'Type message here...',
+                                style: GoogleFonts.manrope(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14,
+                                  color: Color(0xffB2B3BD),
+                                ),
+                              ),
+                            ),
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                      Image.asset(AppImages.sendbutton,
+                      height: Get.height*0.05,
+                      ),
+                      Image.asset(AppImages.micIcon,
+                      height: Get.height*0.05,
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),

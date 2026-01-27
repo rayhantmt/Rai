@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/common_widgets/more_section_widget.dart';
 import 'package:rai/modules/community_details/community_details_controller.dart';
 import 'package:rai/utils/app_images.dart';
+import 'package:rai/utils/app_pages.dart';
 
 class CommunityDetailsView extends GetView<CommunityDetailsController> {
   const CommunityDetailsView({super.key});
@@ -73,8 +74,11 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
                           AppImages.addPeopleIcon,
                           height: Get.height * 0.05,
                         ),
-                        Image.asset(AppImages.editCommunity,
-                        height: Get.height*0.05,
+                        GestureDetector(
+                          onTap: () => Get.toNamed(AppPages.updatecommunity),
+                          child: Image.asset(AppImages.editCommunity,
+                          height: Get.height*0.05,
+                          ),
                         )
                       ],
                     ),

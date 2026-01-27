@@ -21,9 +21,12 @@ class UpdateCommunityView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: Get.height * 0.06),
-              Image.asset(
-                AppImages.commentconcernbackicon,
-                height: Get.height * 0.06,
+              GestureDetector(
+                onTap: () => Get.back(),
+                child: Image.asset(
+                  AppImages.commentconcernbackicon,
+                  height: Get.height * 0.06,
+                ),
               ),
               SizedBox(height: Get.height * 0.03),
               Container(

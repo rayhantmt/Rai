@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/common_widgets/more_section_widget.dart';
+import 'package:rai/modules/update_community/update_community_controller.dart';
 import 'package:rai/utils/app_images.dart';
 
-class UpdateCommunityView extends StatelessWidget {
+class UpdateCommunityView extends GetView<UpdateCommunityController> {
   const UpdateCommunityView({super.key});
 
   @override
@@ -126,12 +127,14 @@ class UpdateCommunityView extends StatelessWidget {
                       color: Color(0xffEEEEF0),
                     ),
                   ),
-                  SizedBox(width: Get.width*0.2,),
-                  Switch(
+                  SizedBox(width: Get.width * 0.2),
+                 Obx(() =>  Switch(
                     activeTrackColor: Color(0xffEEEEF0),
-                  
-                  activeColor: Color(0xff19191B),
-                  value: true, onChanged: (value) => {},)
+
+                    activeColor: Color(0xff19191B),
+                    value: controller.notificatio.value,
+                    onChanged: (value) => controller.notificatio(value),
+                  ),)
                 ],
               ),
             ],

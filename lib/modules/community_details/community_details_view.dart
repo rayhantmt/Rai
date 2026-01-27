@@ -73,6 +73,9 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
                           AppImages.addPeopleIcon,
                           height: Get.height * 0.05,
                         ),
+                        Image.asset(AppImages.editCommunity,
+                        height: Get.height*0.05,
+                        )
                       ],
                     ),
                     Column(

@@ -37,6 +37,8 @@ import 'package:rai/modules/sign_up/2nd_page/2nd_page_binding.dart';
 import 'package:rai/modules/sign_up/2nd_page/2nd_page_view.dart';
 import 'package:rai/modules/community_details/community_details_binding.dart';
 import 'package:rai/modules/community_details/community_details_view.dart';
+import 'package:rai/modules/update_community/update_community_binding.dart';
+import 'package:rai/modules/update_community/update_community_view.dart';
 import 'package:rai/modules/user_credentials_page/user_credentials_page_binding.dart';
 import 'package:rai/modules/user_credentials_page/user_credentials_page_view.dart';
 import 'package:rai/utils/app_pages.dart';
@@ -64,7 +66,8 @@ class AppRoutes {
     GetPage(name: AppPages.editprofile, page: ()=>EditProfileView(),binding: EditProfileBinding()),
     GetPage(name: AppPages.createNewGroup, page: () => CreateNewGroupView(),binding: CreateNewGroupBinding()),
     GetPage(name: AppPages.communitychatdetails, page: () => CommunityChatDetailsView(),binding: CommunityChatDetailsBinding()),
-    GetPage(name: AppPages.communityDetails, page: () => CommunityDetailsView(),binding: CommunityDetailsBinding())
+    GetPage(name: AppPages.communityDetails, page: () => CommunityDetailsView(),binding: CommunityDetailsBinding()),
+    GetPage(name: AppPages.updatecommunity, page: () => UpdateCommunityView(),binding: UpdateCommunityBinding())
 
   ];
 }

@@ -21,4 +21,5 @@ class AppPages {
   static const String createNewGroup='/createNewGroup';
   static const String communitychatdetails='/communityChatDetails';
   static const String communityDetails='/communityDetails';
+  static const String updatecommunity='/updatecommunity';
 }

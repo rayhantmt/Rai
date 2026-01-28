@@ -14,6 +14,7 @@ class EditProfileView extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: Get.height * 0.07),
               Row(
@@ -166,6 +167,13 @@ class EditProfileView extends StatelessWidget {
                   ),
                 ],
               ),
+              Text('Bio',
+              style: GoogleFonts.manrope( 
+                fontWeight: FontWeight.w400,
+                fontSize: 16,
+                color: Colors.white
+              ),
+              )
             ],
           ),
         ),

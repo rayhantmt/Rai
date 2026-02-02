@@ -157,6 +157,8 @@ class HomeView extends StatelessWidget {
                 ),
               ],
             ),
+            SizedBox(height: Get.height*0.02,),
+            Image.asset(AppImages.launchBannar)
           ],
         ),
       ),

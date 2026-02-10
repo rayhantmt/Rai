@@ -146,9 +146,44 @@ class GroupMemberCommunityView extends GetView<GroupMemberCommunityController> {
                 ],
               ),
             ),
+            Expanded(child: 
+            Obx(() {
+              if(controller.gen.value==0){
+                return _general();
+              }
+              else 
+              return _joinrequests();
+            },)
+            )
           ],
         ),
       ),
     );
   }
+
+Widget _general(){
+  return
+ListView(
+  children: [
+Text('General Members',
+style: TextStyle(
+  color: Colors.white
+),
+)
+  ],
+);
+}
+
+Widget _joinrequests(){
+  return
+ListView(
+  children: [
+Text('join requests',
+style: TextStyle(
+  color: Colors.white
+),
+)
+  ],
+);
+}
 }

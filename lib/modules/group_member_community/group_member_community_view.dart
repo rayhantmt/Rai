@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rai/modules/group_member_community/group_member_community_controller.dart';
 import 'package:rai/utils/app_images.dart';
 
-class GroupMemberCommunityView extends StatelessWidget {
+class GroupMemberCommunityView extends GetView<GroupMemberCommunityController> {
   const GroupMemberCommunityView({super.key});
 
   @override
@@ -48,22 +49,50 @@ class GroupMemberCommunityView extends StatelessWidget {
               ),
               child: TextFormField(
                 style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(border: InputBorder.none,
-                hint: Row(
-                  children: [
-                    Icon(Icons.search,
-                    color: Color(0xff6E6E6E),
-                    ),
-                    Text('Search member',
-                    style: TextStyle(
-                      color: Color(0xff6E6E6E),
-                    ),
-                    )
-                  ],
-                )
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hint: Row(
+                    children: [
+                      Icon(Icons.search, color: Color(0xff6E6E6E)),
+                      Text(
+                        'Search member',
+                        style: TextStyle(color: Color(0xff6E6E6E)),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
+            SizedBox(height: Get.height * 0.02),
+            Row(
+              children: [
+                Text(
+                  'Approval required to join',
+                  style: GoogleFonts.manrope(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16,
+                    color: Color(0xffEEEEF0),
+                  ),
+                ),
+                SizedBox(width: Get.width * 0.2),
+                Obx(
+                  () => Switch(
+                    activeTrackColor: Color(0xffEEEEF0),
+
+                    activeColor: Color(0xff19191B),
+                    value: controller.notificatio.value,
+                    onChanged: (value) => controller.notificatio(value),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: Get.height*0.02,),
+            Container(
+              height: Get.height*0.05,
+              decoration: BoxDecoration(
+                
+              ),
+            )
           ],
         ),
       ),

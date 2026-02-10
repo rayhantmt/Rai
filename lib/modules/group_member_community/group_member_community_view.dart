@@ -18,8 +18,11 @@ class GroupMemberCommunityView extends StatelessWidget {
             ),
             Row(
               children: [
-                Image.asset(AppImages.commentconcernbackicon,
-                height: Get.height*0.06,
+                GestureDetector(
+                  onTap: () => Get.back(),
+                  child: Image.asset(AppImages.commentconcernbackicon,
+                  height: Get.height*0.06,
+                  ),
                 )
               ],
             )

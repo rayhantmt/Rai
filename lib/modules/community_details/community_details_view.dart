@@ -114,9 +114,12 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
                 img: AppImages.shareGroupLink,
               ),
               SizedBox(height: Get.height * 0.03),
-              MoreSectionWidget(
-                tittle: 'Group member',
-                img: AppImages.groupMemberIcon,
+              GestureDetector(
+                onTap: () => Get.toNamed(AppPages.groupmembercommunity),
+                child: MoreSectionWidget(
+                  tittle: 'Group member',
+                  img: AppImages.groupMemberIcon,
+                ),
               ),
               SizedBox(height: Get.height * 0.03),
               Row(

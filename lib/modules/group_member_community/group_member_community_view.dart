@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rai/utils/app_images.dart';
 
 class GroupMemberCommunityView extends StatelessWidget {
   const GroupMemberCommunityView({super.key});
@@ -7,12 +8,23 @@ class GroupMemberCommunityView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(
-            height: Get.height*0.06,
-          )
-        ],
+      backgroundColor: AppImages.primarycolor,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          children: [
+            SizedBox(
+              height: Get.height*0.06,
+            ),
+            Row(
+              children: [
+                Image.asset(AppImages.commentconcernbackicon,
+                height: Get.height*0.06,
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

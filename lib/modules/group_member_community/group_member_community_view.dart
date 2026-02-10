@@ -14,6 +14,7 @@ class GroupMemberCommunityView extends GetView<GroupMemberCommunityController> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: Get.height * 0.06),
             Row(
@@ -87,12 +88,8 @@ class GroupMemberCommunityView extends GetView<GroupMemberCommunityController> {
               ],
             ),
             SizedBox(height: Get.height*0.02,),
-            Container(
-              height: Get.height*0.05,
-              decoration: BoxDecoration(
-                
-              ),
-            )
+           
+            
           ],
         ),
       ),

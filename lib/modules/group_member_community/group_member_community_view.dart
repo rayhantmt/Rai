@@ -87,48 +87,65 @@ class GroupMemberCommunityView extends GetView<GroupMemberCommunityController> {
                 ),
               ],
             ),
-            SizedBox(height: Get.height*0.02,),
-            Row(
-              children: [
-                Container(
-                  height: Get.height*0.05,
-                  width: Get.width*0.3,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    color: Colors.white,
-                  ),
-                  child: Center(
-                    child: Text('General',
-                    style:GoogleFonts.manrope( 
-                      fontWeight: FontWeight.w700,
-                      fontSize: 14,
-                      color: Color(0xff19191B)
-                    ) ,
+            SizedBox(height: Get.height * 0.02),
+            Obx(
+              () => Row(
+                children: [
+                  GestureDetector(
+                    onTap: () => controller.general(0),
+                    child: Container(
+                      height: Get.height * 0.05,
+                      width: Get.width * 0.3,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        color: controller.gen.value == 0
+                            ? Color(0xffEEEEF0)
+                            : Color(0xff19191B),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'General',
+                          style: GoogleFonts.manrope(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 14,
+                            color: controller.gen.value == 0
+                                ? Color(0xff19191B)
+                                : Color(0xffEEEEF0),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(width: Get.width*0.05,),
-                  Container(
-              height: Get.height*0.05,
-              width: Get.width*0.35,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
-                color: Colors.white,
-              ),
-              child: Center(
-                child: Text('Join requests',
-                style:GoogleFonts.manrope( 
-                  fontWeight: FontWeight.w700,
-                  fontSize: 14,
-                  color: Color(0xff19191B)
-                ) ,
-                ),
+                  SizedBox(width: Get.width * 0.05),
+                  GestureDetector(
+                    onTap: () => controller.general(1),
+                    child: Container(
+                      height: Get.height * 0.05,
+                      width: Get.width * 0.35,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        border: Border.all(width: 1, color: Color(0xff393A40)),
+                        color: controller.gen.value == 1
+                            ? Color(0xffEEEEF0)
+                            : Color(0xff19191B),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Join requests',
+                          style: GoogleFonts.manrope(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 14,
+                            color: controller.gen.value == 1
+                                ? Color(0xff19191B)
+                                : Color(0xffEEEEF0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-              ],
-            ),
-           
-            
           ],
         ),
       ),

@@ -40,5 +40,7 @@ class AppImages {
   static const String nba='assets/nba.png';
   static const String l1='assets/l1.png';
   static const String l2='assets/l2.png';
+  static const String viewbreakdown='assets/viewbreakdown.png';
+  static const String addtoprolay='assets/addtoprolay.png';
 
 }

@@ -16,6 +16,8 @@ import 'package:rai/modules/fotgot_password/otp_page/email_otp/email_otp_fp_view
 import 'package:rai/modules/fotgot_password/set_password_page/set_password_page_view.dart';
 import 'package:rai/modules/fotgot_password/verificatio_page/verification_page_binding.dart';
 import 'package:rai/modules/fotgot_password/verificatio_page/verification_page_view.dart';
+import 'package:rai/modules/group_member_community/group_member_community_binding.dart';
+import 'package:rai/modules/group_member_community/group_member_community_view.dart';
 import 'package:rai/modules/home/home_view.dart';
 import 'package:rai/modules/log_in/log_in_binding.dart';
 import 'package:rai/modules/log_in/log_in_view.dart';
@@ -67,7 +69,8 @@ class AppRoutes {
     GetPage(name: AppPages.createNewGroup, page: () => CreateNewGroupView(),binding: CreateNewGroupBinding()),
     GetPage(name: AppPages.communitychatdetails, page: () => CommunityChatDetailsView(),binding: CommunityChatDetailsBinding()),
     GetPage(name: AppPages.communityDetails, page: () => CommunityDetailsView(),binding: CommunityDetailsBinding()),
-    GetPage(name: AppPages.updatecommunity, page: () => UpdateCommunityView(),binding: UpdateCommunityBinding())
+    GetPage(name: AppPages.updatecommunity, page: () => UpdateCommunityView(),binding: UpdateCommunityBinding()),
+    GetPage(name: AppPages.groupmembercommunity, page: () => GroupMemberCommunityView(),binding: GroupMemberCommunityBinding())
 
   ];
 }

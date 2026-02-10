@@ -22,4 +22,5 @@ class AppPages {
   static const String communitychatdetails='/communityChatDetails';
   static const String communityDetails='/communityDetails';
   static const String updatecommunity='/updatecommunity';
+  static const String groupmembercommunity='/groupmembercommunity';
 }

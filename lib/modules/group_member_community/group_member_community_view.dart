@@ -14,51 +14,43 @@ class GroupMemberCommunityView extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            SizedBox(
-              height: Get.height*0.06,
-            ),
+            SizedBox(height: Get.height * 0.06),
             Row(
               children: [
                 GestureDetector(
                   onTap: () => Get.back(),
-                  child: Image.asset(AppImages.commentconcernbackicon,
-                  height: Get.height*0.06,
+                  child: Image.asset(
+                    AppImages.commentconcernbackicon,
+                    height: Get.height * 0.06,
                   ),
                 ),
-                SizedBox(width: Get.width*0.05,),
-                Text('Member List',
-                style: GoogleFonts.manrope( 
-                  fontWeight: FontWeight.w700,
-                  fontSize: 22,
-                  color: Color(0xffEEEEF0)
-                ),
+                SizedBox(width: Get.width * 0.05),
+                Text(
+                  'Member List',
+                  style: GoogleFonts.manrope(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 22,
+                    color: Color(0xffEEEEF0),
+                  ),
                 ),
                 Expanded(child: SizedBox()),
-                Image.asset(AppImages.peopleicon,
-                height: Get.height*0.04,
-                )
+                Image.asset(AppImages.peopleicon, height: Get.height * 0.04),
               ],
             ),
-            SizedBox(height: Get.height*0.02,),
+            SizedBox(height: Get.height * 0.02),
             Container(
               padding: EdgeInsets.only(left: 10),
-              height: Get.height*0.05,
+              height: Get.height * 0.05,
               width: double.infinity,
               decoration: BoxDecoration(
-
                 color: Color(0xff000000).withOpacity(0.8),
-                borderRadius: BorderRadius.circular(100)
+                borderRadius: BorderRadius.circular(100),
               ),
               child: TextFormField(
-                style: TextStyle(
-                  color: Colors.white
-                ),
-                decoration: InputDecoration(
-                  
-                  border: InputBorder.none
-                ),
+                style: TextStyle(color: Colors.white),
+                decoration: InputDecoration(border: InputBorder.none),
               ),
-            )
+            ),
           ],
         ),
       ),

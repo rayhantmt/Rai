@@ -41,10 +41,22 @@ class GroupMemberCommunityView extends StatelessWidget {
             ),
             SizedBox(height: Get.height*0.02,),
             Container(
+              padding: EdgeInsets.only(left: 10),
               height: Get.height*0.05,
               width: double.infinity,
               decoration: BoxDecoration(
+
+                color: Color(0xff000000).withOpacity(0.8),
                 borderRadius: BorderRadius.circular(100)
+              ),
+              child: TextFormField(
+                style: TextStyle(
+                  color: Colors.white
+                ),
+                decoration: InputDecoration(
+                  
+                  border: InputBorder.none
+                ),
               ),
             )
           ],

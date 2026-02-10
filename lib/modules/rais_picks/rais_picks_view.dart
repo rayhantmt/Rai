@@ -55,7 +55,7 @@ class RaisPicksView extends GetView<RaisPicsController> {
                             SizedBox(height: 4),
                             Container(
                               height: 1,
-      
+
                               color: controller.picksindex.value == index
                                   ? Color(0xffEEEEF0)
                                   : Color(0xff6C6E79),
@@ -70,7 +70,7 @@ class RaisPicksView extends GetView<RaisPicsController> {
             ),
             SizedBox(
               height: Get.height * 0.045,
-      
+
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: controller.games.length,
@@ -78,34 +78,36 @@ class RaisPicksView extends GetView<RaisPicsController> {
                   onTap: () => controller.selectgames(index),
                   child: Padding(
                     padding: const EdgeInsets.only(right: 8),
-                    child: Obx(() => Container(
-                      width: Get.width * 0.25,
-      
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 1,
-                           color: controller.gamesindex.value == index
-                            ? Color(0xffEEEEF0)
-                            : Color(0xff393A40),
-                        ),
-                        borderRadius: BorderRadius.circular(100),
-                        color: controller.gamesindex.value == index
-                            ? Color(0xffEEEEF0)
-                            : AppImages.primarycolor,
-                      ),
-                      child: Center(
-                        child: Text(
-                          controller.games[index].gametype,
-                          style: GoogleFonts.manrope(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 14,
+                    child: Obx(
+                      () => Container(
+                        width: Get.width * 0.25,
+
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 1,
                             color: controller.gamesindex.value == index
-                            ? Color(0xff19191B)
-                            : Color(0xff797B86),
+                                ? Color(0xffEEEEF0)
+                                : Color(0xff393A40),
+                          ),
+                          borderRadius: BorderRadius.circular(100),
+                          color: controller.gamesindex.value == index
+                              ? Color(0xffEEEEF0)
+                              : AppImages.primarycolor,
+                        ),
+                        child: Center(
+                          child: Text(
+                            controller.games[index].gametype,
+                            style: GoogleFonts.manrope(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 14,
+                              color: controller.gamesindex.value == index
+                                  ? Color(0xff19191B)
+                                  : Color(0xff797B86),
+                            ),
                           ),
                         ),
                       ),
-                    ),)
+                    ),
                   ),
                 ),
               ),
@@ -114,10 +116,19 @@ class RaisPicksView extends GetView<RaisPicsController> {
               child: ListView.builder(
                 itemCount: controller.predictions.length,
                 shrinkWrap: true,
-                itemBuilder: (context, index) => Container(
-              height: Get.height*0.2,
-              color: Colors.red,
-            ),))
+                itemBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: Container(
+                    height: Get.height * 0.2,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [Color(0xff191818), Color(0xff000000)],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

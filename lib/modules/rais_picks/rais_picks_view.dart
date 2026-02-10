@@ -15,6 +15,7 @@ class RaisPicksView extends GetView<RaisPicsController> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: Get.height * 0.06),
               Text(
@@ -37,8 +38,9 @@ class RaisPicksView extends GetView<RaisPicsController> {
                     child: GestureDetector(
                       onTap: () => controller.selectpicks(index),
                       child: Container(
-                          width: Get.width * 0.3,
-                          child: Obx(() => Column(
+                        width: Get.width * 0.3,
+                        child: Obx(
+                          () => Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
@@ -51,16 +53,18 @@ class RaisPicksView extends GetView<RaisPicsController> {
                                       : Color(0xff6C6E79),
                                 ),
                               ),
+                              SizedBox(height: 4),
                               Container(
                                 height: 1,
-                             
+
                                 color: controller.picksindex.value == index
                                     ? Color(0xffEEEEF0)
                                     : Color(0xff6C6E79),
                               ),
                             ],
-                          ),)
+                          ),
                         ),
+                      ),
                     ),
                   ),
                 ),

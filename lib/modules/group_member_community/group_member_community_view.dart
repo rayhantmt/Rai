@@ -88,6 +88,45 @@ class GroupMemberCommunityView extends GetView<GroupMemberCommunityController> {
               ],
             ),
             SizedBox(height: Get.height*0.02,),
+            Row(
+              children: [
+                Container(
+                  height: Get.height*0.05,
+                  width: Get.width*0.3,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    color: Colors.white,
+                  ),
+                  child: Center(
+                    child: Text('General',
+                    style:GoogleFonts.manrope( 
+                      fontWeight: FontWeight.w700,
+                      fontSize: 14,
+                      color: Color(0xff19191B)
+                    ) ,
+                    ),
+                  ),
+                ),
+                SizedBox(width: Get.width*0.05,),
+                  Container(
+              height: Get.height*0.05,
+              width: Get.width*0.35,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                color: Colors.white,
+              ),
+              child: Center(
+                child: Text('Join requests',
+                style:GoogleFonts.manrope( 
+                  fontWeight: FontWeight.w700,
+                  fontSize: 14,
+                  color: Color(0xff19191B)
+                ) ,
+                ),
+              ),
+            ),
+              ],
+            ),
            
             
           ],

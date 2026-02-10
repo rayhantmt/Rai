@@ -34,26 +34,33 @@ class RaisPicksView extends GetView<RaisPicsController> {
                   itemCount: controller.picks.length,
                   itemBuilder: (context, index) => SizedBox(
                     height: Get.height * 0.1,
-                    child: Container(
-                      width: Get.width * 0.3,
-                      child: Column(
-                        children: [
-                          Text(
-                            controller.picks[index].type,
-                            style: GoogleFonts.manrope(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 14,
-                              color: Color(0xffEEEEF0),
-                            ),
-                          ),
-                          Divider(
-                            height: 1,
-                            indent: 5,
-                            endIndent: 5,
-                            color: Colors.white,
-                          ),
-                        ],
-                      ),
+                    child: GestureDetector(
+                      onTap: () => controller.selectpicks(index),
+                      child: Container(
+                          width: Get.width * 0.3,
+                          child: Obx(() => Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                controller.picks[index].type,
+                                style: GoogleFonts.manrope(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 14,
+                                  color: controller.picksindex.value == index
+                                      ? Color(0xffEEEEF0)
+                                      : Color(0xff6C6E79),
+                                ),
+                              ),
+                              Container(
+                                height: 1,
+                             
+                                color: controller.picksindex.value == index
+                                    ? Color(0xffEEEEF0)
+                                    : Color(0xff6C6E79),
+                              ),
+                            ],
+                          ),)
+                        ),
                     ),
                   ),
                 ),

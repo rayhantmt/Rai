@@ -19,4 +19,17 @@ class RaisPicsController extends GetxController{
     RaisPicksModel(gametype: 'Tenis'),
     RaisPicksModel(gametype: 'Cricket')
   ];
+  RxInt picksindex=0.obs;
+  RxInt gamesindex=0.obs;
+  void selectpicks(int index){
+      print(picksindex.value);
+    print('list inedx $index');
+    picksindex.value=index;
+  }
+  void selectgames(int index){
+    gamesindex.value=index;
+    print(gamesindex.value);
+    print('list inedx $index');
+  }
+  
 }

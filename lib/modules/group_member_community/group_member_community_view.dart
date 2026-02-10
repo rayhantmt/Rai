@@ -32,8 +32,20 @@ class GroupMemberCommunityView extends StatelessWidget {
                   fontSize: 22,
                   color: Color(0xffEEEEF0)
                 ),
+                ),
+                Expanded(child: SizedBox()),
+                Image.asset(AppImages.peopleicon,
+                height: Get.height*0.04,
                 )
               ],
+            ),
+            SizedBox(height: Get.height*0.02,),
+            Container(
+              height: Get.height*0.05,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100)
+              ),
             )
           ],
         ),

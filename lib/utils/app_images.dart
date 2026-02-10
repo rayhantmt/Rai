@@ -36,5 +36,6 @@ class AppImages {
   static const String leaveicon='assets/leave_icon.png';
   static const String editCommunity='assets/edit_community_icon.png';
   static const String launchBannar='assets/promotion_bannar.png';
+  static const String peopleicon='assets/peopleicon.png';
 
 }

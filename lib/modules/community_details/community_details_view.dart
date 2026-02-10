@@ -47,13 +47,13 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
                       children: [
                         CircleAvatar(
                           radius: 40,
-                          backgroundImage: NetworkImage(img),
+                          backgroundImage: NetworkImage(img??''),
                         ),
                         SizedBox(width: Get.width * 0.03),
                         Column(
                           children: [
                             Text(
-                              member,
+                              member??"99",
                               style: GoogleFonts.manrope(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 16,
@@ -86,7 +86,7 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          name,
+                          name??'Invalid name',
                           style: GoogleFonts.manrope(
                             fontWeight: FontWeight.w500,
                             fontSize: 16,

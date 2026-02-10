@@ -37,5 +37,8 @@ class AppImages {
   static const String editCommunity='assets/edit_community_icon.png';
   static const String launchBannar='assets/promotion_bannar.png';
   static const String peopleicon='assets/peopleicon.png';
+  static const String nba='assets/nba.png';
+  static const String l1='assets/l1.png';
+  static const String l2='assets/l2.png';
 
 }

@@ -125,6 +125,104 @@ class RaisPicksView extends GetView<RaisPicsController> {
                         colors: [Color(0xff191818), Color(0xff000000)],
                       ),
                     ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Row(
+                              children: [
+                                Image.asset(
+                                  AppImages.nba,
+                                  height: Get.height * 0.02,
+                                ),
+                                Text(
+                                  'NBA',
+                                  style: GoogleFonts.manrope(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14,
+                                    color: Color(0xffEEEEF0),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Expanded(child: SizedBox()),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  AppImages.l1,
+                                  height: Get.height * 0.03,
+                                ),
+                                Text(
+                                  'VS',
+                                  style: GoogleFonts.manrope(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12,
+                                    color: Color(0xff797B86),
+                                  ),
+                                ),
+                                Image.asset(
+                                  AppImages.l2,
+                                  height: Get.height * 0.03,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: Get.height * 0.015),
+                        Divider(
+                          height: 1,
+                          indent: 1,
+                          endIndent: 1,
+                          color: Color(0xff393A40),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Image.asset(AppImages.l1,
+                                height: Get.height*0.03,
+                                ),
+                                Text('New York Knicks',
+                                style: GoogleFonts.manrope( 
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 12,
+                                  color: Color(0xffEEEEF0)
+                                ),
+                                )
+                              ],
+                            ),
+                            Text(controller.predictions[index].point,
+                            style: GoogleFonts.manrope( 
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                              color: Color(0xffEEEEF0)
+                            ),
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(controller.predictions[index].confidence,
+                                style: GoogleFonts.manrope( 
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 14,
+                                  color: Color(0xffFFA220)
+                                ),
+                                ),
+                                Text('Confidence',
+                                style: GoogleFonts.manrope( 
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 12,
+                                  color: Color(0xff797B86)
+                                ),
+                                )
+                              ],
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),

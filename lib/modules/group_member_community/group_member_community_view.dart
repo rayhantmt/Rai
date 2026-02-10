@@ -48,7 +48,20 @@ class GroupMemberCommunityView extends StatelessWidget {
               ),
               child: TextFormField(
                 style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(border: InputBorder.none),
+                decoration: InputDecoration(border: InputBorder.none,
+                hint: Row(
+                  children: [
+                    Icon(Icons.search,
+                    color: Color(0xff6E6E6E),
+                    ),
+                    Text('Search member',
+                    style: TextStyle(
+                      color: Color(0xff6E6E6E),
+                    ),
+                    )
+                  ],
+                )
+                ),
               ),
             ),
           ],

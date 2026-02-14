@@ -1,5 +1,8 @@
 import 'package:get/get.dart';
 
 class EditProfileController extends GetxController{
-  DateTime birthdate=DateTime.now();
+  Rx<DateTime> birthdate=DateTime.now().obs;
+//   void updateDate(DateTime? date){
+// birthdate=date!;
+//   }
 }

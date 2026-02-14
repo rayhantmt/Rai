@@ -202,7 +202,7 @@ class EditProfileView extends GetView<EditProfileController> {
               GestureDetector(
                 onTap: () async{
                   DateTime? pickedDate= await showDatePicker(context: context, firstDate: DateTime(1000), lastDate: DateTime.now());
-                 controller.birthdate=pickedDate!;
+                 controller.birthdate.value=pickedDate!;
                 } ,
                 child: Container(
                   height: Get.height*0.05,
@@ -218,13 +218,13 @@ class EditProfileView extends GetView<EditProfileController> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(DateFormat('yyyy-mm-dd').format(controller.birthdate),
+                        Obx(() => Text(DateFormat('yyyy-mm-dd').format(controller.birthdate.value),
                         style: GoogleFonts.manrope(
                           fontWeight: FontWeight.w400,
                           fontSize: 14,
                           color: Color(0xffEEEEF0)
                         ),
-                        ),
+                        ),),
                         Icon(Icons.calendar_month_outlined,
                         color: Color(0xffEEEEF0),
                         )

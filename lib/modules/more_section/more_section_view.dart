@@ -86,10 +86,7 @@ class MoreSectionView extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(height: Get.height * 0.01),
-                    MoreSectionWidget(
-                      tittle: 'Live Bet Tracking',
-                      img: AppImages.livebettracking,
-                    ),
+                    
                     SizedBox(height: Get.height * 0.01),
                     Divider(height: 1, color: Color(0xffB2B3BD)),
                     SizedBox(height: Get.height * 0.01),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rai/common_widgets/more_section_widget.dart';
 import 'package:rai/utils/app_images.dart';
 
 class HomeView extends StatelessWidget {
@@ -119,6 +120,24 @@ class HomeView extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+            ),
+            SizedBox(height: Get.height*0.03,),
+            Container(
+              height: Get.height*0.05,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 1,
+                  color: Color(0xff5F606A)
+                ),
+                borderRadius: BorderRadius.circular(8)
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 5),
+                child: MoreSectionWidget(
+                          tittle: 'Live Bet Tracking',
+                          img: AppImages.livebettracking,
+                        ),
               ),
             ),
             SizedBox(height: Get.height * 0.02),

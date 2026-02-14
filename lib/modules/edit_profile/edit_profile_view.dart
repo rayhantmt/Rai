@@ -194,6 +194,35 @@ class EditProfileView extends StatelessWidget {
                 fontSize: 16,
                 color: Colors.white
               ),
+              ),
+              SizedBox(height: Get.height*0.03,),
+              Container(
+                height: Get.height*0.05,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 1,
+                    color: Color(0xff5F606A)
+                  ),
+                  borderRadius: BorderRadius.circular(12)
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('11 Aug 1999',
+                      style: GoogleFonts.manrope(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                        color: Color(0xffEEEEF0)
+                      ),
+                      ),
+                      Icon(Icons.calendar_month_outlined,
+                      color: Color(0xffEEEEF0),
+                      )
+                    ],
+                  ),
+                ),
               )
             ],
           ),

@@ -55,7 +55,6 @@ class RaisPicksView extends GetView<RaisPicsController> {
                             SizedBox(height: 4),
                             Container(
                               height: 1,
-
                               color: controller.picksindex.value == index
                                   ? Color(0xffEEEEF0)
                                   : Color(0xff6C6E79),
@@ -226,107 +225,113 @@ class RaisPicksView extends GetView<RaisPicsController> {
                             ),
                           ],
                         ),
-                        SizedBox(height: Get.height*0.02,),
+                        SizedBox(height: Get.height * 0.02),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Container(
-                              height: Get.height*0.05,
-                              width: Get.width*0.25,
+                              height: Get.height * 0.05,
+                              width: Get.width * 0.25,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
-                                color: Color(0xff222325)
+                                color: Color(0xff222325),
                               ),
                               child: Center(
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text(controller.predictions[index].odds,
-                                    style: GoogleFonts.manrope( 
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 14,
-                                      color: Color(0xffEEEEF0)
+                                    Text(
+                                      controller.predictions[index].odds,
+                                      style: GoogleFonts.manrope(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 14,
+                                        color: Color(0xffEEEEF0),
+                                      ),
                                     ),
+                                    Text(
+                                      'Odds',
+                                      style: GoogleFonts.manrope(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 12,
+                                        color: Color(0xff797B86),
+                                      ),
                                     ),
-                                    Text('Odds',
-                                    style: GoogleFonts.manrope( 
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 12,
-                                      color: Color(0xff797B86)
-                                    ),
-                                    )
                                   ],
                                 ),
                               ),
                             ),
                             Container(
-                              height: Get.height*0.05,
-                              width: Get.width*0.25,
+                              height: Get.height * 0.05,
+                              width: Get.width * 0.25,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
-                                color: Color(0xff222325)
+                                color: Color(0xff222325),
                               ),
                               child: Center(
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text(controller.predictions[index].edge,
-                                    style: GoogleFonts.manrope( 
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 14,
-                                      color: Color(0xff10B981)
+                                    Text(
+                                      controller.predictions[index].edge,
+                                      style: GoogleFonts.manrope(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 14,
+                                        color: Color(0xff10B981),
+                                      ),
                                     ),
+                                    Text(
+                                      'Edge',
+                                      style: GoogleFonts.manrope(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 12,
+                                        color: Color(0xff797B86),
+                                      ),
                                     ),
-                                    Text('Edge',
-                                    style: GoogleFonts.manrope( 
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 12,
-                                      color: Color(0xff797B86)
-                                    ),
-                                    )
                                   ],
                                 ),
                               ),
                             ),
                             Container(
-                              height: Get.height*0.05,
-                              width: Get.width*0.25,
+                              height: Get.height * 0.05,
+                              width: Get.width * 0.25,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
-                                color: Color(0xff222325)
+                                color: Color(0xff222325),
                               ),
                               child: Center(
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text(controller.predictions[index].ev,
-                                    style: GoogleFonts.manrope( 
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 14,
-                                      color: Color(0xff10B981)
+                                    Text(
+                                      controller.predictions[index].ev,
+                                      style: GoogleFonts.manrope(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 14,
+                                        color: Color(0xff10B981),
+                                      ),
                                     ),
+                                    Text(
+                                      'Ev',
+                                      style: GoogleFonts.manrope(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 12,
+                                        color: Color(0xff797B86),
+                                      ),
                                     ),
-                                    Text('Ev',
-                                    style: GoogleFonts.manrope( 
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 12,
-                                      color: Color(0xff797B86)
-                                    ),
-                                    )
                                   ],
                                 ),
                               ),
                             ),
                           ],
                         ),
-                        SizedBox(height: Get.height*0.015,),
+                        SizedBox(height: Get.height * 0.015),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Image.asset(AppImages.addtoprolay),
-                            Image.asset(AppImages.viewbreakdown)
+                            Image.asset(AppImages.viewbreakdown),
                           ],
-                        )
+                        ),
                       ],
                     ),
                   ),

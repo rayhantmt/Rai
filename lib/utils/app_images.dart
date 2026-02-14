@@ -42,5 +42,6 @@ class AppImages {
   static const String l2='assets/l2.png';
   static const String viewbreakdown='assets/viewbreakdown.png';
   static const String addtoprolay='assets/addtoprolay.png';
+  static const String picvaypolicymoresection='assets/privacy_policy.png';
 
 }

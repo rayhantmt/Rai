@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:rai/common_widgets/common_button.dart';
+import 'package:rai/modules/edit_profile/edit_profile_controller.dart';
 import 'package:rai/utils/app_images.dart';
 
-class EditProfileView extends StatelessWidget {
+class EditProfileView extends GetView<EditProfileController> {
   const EditProfileView({super.key});
 
   @override
@@ -200,6 +202,7 @@ class EditProfileView extends StatelessWidget {
               GestureDetector(
                 onTap: () async{
                   DateTime? pickedDate= await showDatePicker(context: context, firstDate: DateTime(1000), lastDate: DateTime.now());
+                 controller.birthdate=pickedDate!;
                 } ,
                 child: Container(
                   height: Get.height*0.05,
@@ -215,7 +218,7 @@ class EditProfileView extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('11 Aug 1999',
+                        Text(DateFormat('yyyy-mm-dd').format(controller.birthdate),
                         style: GoogleFonts.manrope(
                           fontWeight: FontWeight.w400,
                           fontSize: 14,

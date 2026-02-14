@@ -138,7 +138,6 @@ class RaiChatView extends StatelessWidget {
                   height: Get.height * 0.07,
                   width: Get.width * 0.745,
                   child: Row(
-                    //mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Expanded(
                         child: TextFormField(

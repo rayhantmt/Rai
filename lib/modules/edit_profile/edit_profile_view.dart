@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rai/common_widgets/common_button.dart';
 import 'package:rai/utils/app_images.dart';
 
 class EditProfileView extends StatelessWidget {
@@ -228,7 +229,9 @@ class EditProfileView extends StatelessWidget {
                     ),
                   ),
                 ),
-              )
+              ),
+              SizedBox(height: Get.height*0.09,),
+              CommonButton(tittle: 'Update Info')
             ],
           ),
         ),

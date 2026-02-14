@@ -173,6 +173,27 @@ class EditProfileView extends StatelessWidget {
                 fontSize: 16,
                 color: Colors.white
               ),
+              ),
+              SizedBox(height: Get.height*0.02,),
+              Container(
+                height: Get.height*0.22,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 1,
+                    color: Color(0xff393A40)
+                  ),
+                  borderRadius: BorderRadius.circular(12)
+                ),
+                
+              ),
+              SizedBox(height: Get.height*0.03,),
+              Text('Date of Birth',
+               style: GoogleFonts.manrope( 
+                fontWeight: FontWeight.w400,
+                fontSize: 16,
+                color: Colors.white
+              ),
               )
             ],
           ),

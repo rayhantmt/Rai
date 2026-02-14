@@ -86,9 +86,11 @@ class CommunityChatDetailsView extends GetView<CommunityChatDetailsController> {
                     children: [
                       Expanded(
                         child: TextFormField(
+                          
                           cursorColor: Colors.white,
                           style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(left: 15),
                             hint: Center(
                               child: Text(
                                 'Type message here...',

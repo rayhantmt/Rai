@@ -70,13 +70,13 @@ class RaisPicksView extends GetView<RaisPicsController> {
             Obx(() {
               if (controller.picksindex == 0) {
                 return _bangForBuck();
-              } 
-              else if (controller.picksindex==3){
+              } else if (controller.picksindex == 3) {
                 return _PickOfTheDay();
-              }
-              
-              else {
-                return Text('Yet to build');
+              } else {
+                return Text(
+                  'Yet to build',
+                  style: TextStyle(color: Colors.white),
+                );
               }
             }),
           ],
@@ -366,15 +366,75 @@ Widget _bangForBuck() {
     ),
   );
 }
-Widget _PickOfTheDay(){
-  return Expanded(child: Column(
-    children: [
-      Text(
-        'Pick of the day',
-        style: TextStyle(
-          color: Colors.white
-        ),
-      )
-    ],
-  ));
+
+Widget _PickOfTheDay() {
+  return Expanded(
+    child: Column(
+      children: [
+        Container(
+          height: Get.height*0.27,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: 
+            [
+              Color(0xff191818),
+              Color(0xff000000)
+            ]
+            ),
+            borderRadius:BorderRadius.circular(12) 
+          ),
+          child:  Column(
+            children: [
+              Row(
+                children: [
+                  Image.asset(AppImages.pickoftheday),
+                  Column(
+                    children: [
+                      Text("Reese'S PICK",
+                      style: GoogleFonts.manrope(fontWeight: FontWeight.w400,
+                      fontSize: 22,
+                      color: Color(0xffEEEEF0)
+                      ),
+                      ),
+                      Row(
+                        children: [
+                          Image.asset(AppImages.nfl,
+                          height: Get.height*0.03,
+                          ),
+
+                          Text('NFL',
+                          style: GoogleFonts.manrope( 
+                            fontWeight: FontWeight.w500,
+                            fontSize: 14,
+                            color: Color(0xffEEEEF0)
+                          ),
+                          ),
+                          SizedBox(width: Get.width*0.25,),
+                          Image.asset(AppImages.qq),
+                          Text('VS',
+                          style: GoogleFonts.manrope( 
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12,
+                            color: Color(0xff797B86)
+                          ),
+                          ),
+                          Image.asset(AppImages.GG)
+                        ],
+                      ),
+                      Divider(
+                        height: 2,
+                        endIndent: 1,
+                        indent: 1,
+                        color: Color(0xff393A40),
+                      )
+                    ],
+                  )
+                ],
+              )
+            ],
+          ),
+        )
+      ],
+    ),
+  );
 }

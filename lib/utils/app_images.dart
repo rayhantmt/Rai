@@ -43,5 +43,9 @@ class AppImages {
   static const String viewbreakdown='assets/viewbreakdown.png';
   static const String addtoprolay='assets/addtoprolay.png';
   static const String picvaypolicymoresection='assets/privacy_policy.png';
+  static const String pickoftheday='assets/pickofthedayimg.png';
+  static const String nfl='assets/nfl.png';
+  static const String qq='assets/qq.png';
+  static const String GG='assets/gg.png';
 
 }

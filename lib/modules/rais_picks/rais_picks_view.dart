@@ -418,19 +418,71 @@ Widget _PickOfTheDay() {
                             color: Color(0xff797B86)
                           ),
                           ),
-                          Image.asset(AppImages.GG)
+                          Image.asset(AppImages.GG),
+                          
                         ],
                       ),
-                      Divider(
-                        height: 2,
-                        endIndent: 1,
-                        indent: 1,
-                        color: Color(0xff393A40),
+                     
+                    ],
+                  ),
+                  
+                ],
+              ),
+               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    children: [
+                      Image.asset(AppImages.qq),
+                      Text('Cincinnati Bengals',
+                      style: GoogleFonts.manrope( 
+                        fontWeight: FontWeight.w500,
+                        fontSize: 12,
+                        color: Colors.white
+                      ),
+                      )
+                    ],
+                  ),
+
+                  Text('+5.5',
+                  style: GoogleFonts.manrope( 
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                    color: Colors.white
+                  ),
+                  ),
+                  Column(
+                    children: [
+                      Text('82%',
+                      style: GoogleFonts.manrope( 
+                        fontWeight: FontWeight.w700,
+                        fontSize: 14,
+                        color: Color(0xffFFA220)
+                      ),
+                      ),
+                      Text('Confidence',
+                      style: GoogleFonts.manrope( 
+                        fontWeight: FontWeight.w500,
+                        fontSize: 12,
+                        color: Color(0xff797B86)
+                      ),
                       )
                     ],
                   )
                 ],
-              )
+               ),
+               Row(
+                children: [
+                  Container(
+                    height: Get.height*0.06,
+                    width: Get.width*0.25,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Color(0xff222325)
+                    ),
+                  )
+                ],
+               )
             ],
           ),
         )

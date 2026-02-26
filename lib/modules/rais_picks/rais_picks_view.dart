@@ -92,7 +92,7 @@ Widget _bangForBuck() {
     child: Column(
       children: [
         SizedBox(
-          height: Get.height * 0.045,
+         height: Get.height * 0.045,
 
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -369,124 +369,220 @@ Widget _bangForBuck() {
 
 Widget _PickOfTheDay() {
   return Expanded(
-    child: Column(
-      children: [
-        Container(
-          height: Get.height*0.27,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(colors: 
-            [
-              Color(0xff191818),
-              Color(0xff000000)
-            ]
+    child: SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+            height: Get.height * 0.32,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Color(0xff191818), Color(0xff000000)],
+              ),
+              borderRadius: BorderRadius.circular(12),
             ),
-            borderRadius:BorderRadius.circular(12) 
-          ),
-          child:  Column(
-            children: [
-              Row(
-                children: [
-                  Image.asset(AppImages.pickoftheday),
-                  Column(
-                    children: [
-                      Text("Reese'S PICK",
-                      style: GoogleFonts.manrope(fontWeight: FontWeight.w400,
-                      fontSize: 22,
-                      color: Color(0xffEEEEF0)
-                      ),
-                      ),
-                      Row(
-                        children: [
-                          Image.asset(AppImages.nfl,
-                          height: Get.height*0.03,
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Image.asset(AppImages.pickoftheday),
+                    Column(
+                      children: [
+                        Text(
+                          "Reese'S PICK",
+                          style: GoogleFonts.manrope(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 22,
+                            color: Color(0xffEEEEF0),
                           ),
-
-                          Text('NFL',
-                          style: GoogleFonts.manrope( 
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14,
-                            color: Color(0xffEEEEF0)
-                          ),
-                          ),
-                          SizedBox(width: Get.width*0.25,),
-                          Image.asset(AppImages.qq),
-                          Text('VS',
-                          style: GoogleFonts.manrope( 
+                        ),
+                        Row(
+                          children: [
+                            Image.asset(AppImages.nfl, height: Get.height * 0.03),
+      
+                            Text(
+                              'NFL',
+                              style: GoogleFonts.manrope(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 14,
+                                color: Color(0xffEEEEF0),
+                              ),
+                            ),
+                            SizedBox(width: Get.width * 0.25),
+                            Image.asset(AppImages.qq),
+                            Text(
+                              'VS',
+                              style: GoogleFonts.manrope(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12,
+                                color: Color(0xff797B86),
+                              ),
+                            ),
+                            Image.asset(AppImages.GG),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      children: [
+                        Image.asset(AppImages.qq),
+                        Text(
+                          'Cincinnati Bengals',
+                          style: GoogleFonts.manrope(
                             fontWeight: FontWeight.w500,
                             fontSize: 12,
-                            color: Color(0xff797B86)
+                            color: Colors.white,
                           ),
+                        ),
+                      ],
+                    ),
+      
+                    Text(
+                      '+5.5',
+                      style: GoogleFonts.manrope(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          '82%',
+                          style: GoogleFonts.manrope(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 14,
+                            color: Color(0xffFFA220),
                           ),
-                          Image.asset(AppImages.GG),
-                          
+                        ),
+                        Text(
+                          'Confidence',
+                          style: GoogleFonts.manrope(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12,
+                            color: Color(0xff797B86),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      height: Get.height * 0.06,
+                      width: Get.width * 0.25,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Color(0xff222325),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '+133',
+                            style: GoogleFonts.manrope(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              color: Color(0xffEEEEF0),
+                            ),
+                          ),
+                          Text(
+                            'Odds',
+                            style: GoogleFonts.manrope(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 12,
+                              color: Color(0xff797B86),
+                            ),
+                          ),
                         ],
                       ),
-                     
-                    ],
-                  ),
-                  
-                ],
-              ),
-               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: [
-                      Image.asset(AppImages.qq),
-                      Text('Cincinnati Bengals',
-                      style: GoogleFonts.manrope( 
-                        fontWeight: FontWeight.w500,
-                        fontSize: 12,
-                        color: Colors.white
-                      ),
-                      )
-                    ],
-                  ),
-
-                  Text('+5.5',
-                  style: GoogleFonts.manrope( 
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                    color: Colors.white
-                  ),
-                  ),
-                  Column(
-                    children: [
-                      Text('82%',
-                      style: GoogleFonts.manrope( 
-                        fontWeight: FontWeight.w700,
-                        fontSize: 14,
-                        color: Color(0xffFFA220)
-                      ),
-                      ),
-                      Text('Confidence',
-                      style: GoogleFonts.manrope( 
-                        fontWeight: FontWeight.w500,
-                        fontSize: 12,
-                        color: Color(0xff797B86)
-                      ),
-                      )
-                    ],
-                  )
-                ],
-               ),
-               Row(
-                children: [
-                  Container(
-                    height: Get.height*0.06,
-                    width: Get.width*0.25,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Color(0xff222325)
                     ),
-                  )
-                ],
-               )
-            ],
+                     Container(
+                      height: Get.height * 0.06,
+                      width: Get.width * 0.25,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Color(0xff222325),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '+8.23%',
+                            style: GoogleFonts.manrope(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              color: Color(0xff10B981),
+                            ),
+                          ),
+                          Text(
+                            'Edges',
+                            style: GoogleFonts.manrope(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 12,
+                              color: Color(0xff797B86),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                     Container(
+                      height: Get.height * 0.06,
+                      width: Get.width * 0.25,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Color(0xff222325),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '+9.83%',
+                            style: GoogleFonts.manrope(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                             color: Color(0xff10B981),
+                            ),
+                          ),
+                          Text(
+                            'EV',
+                            style: GoogleFonts.manrope(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 12,
+                              color: Color(0xff797B86),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: Get.height*0.02,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Image.asset(AppImages.addtoprolay),
+                    Image.asset(AppImages.viewbreakdown)
+                  ],
+                )
+              ],
+            ),
           ),
-        )
-      ],
+          SizedBox(height: Get.height*0.05,),
+          Image.asset(AppImages.coming_soon),
+          SizedBox(height: Get.height*0.05,),
+          Image.asset(AppImages.coming_soon),
+          SizedBox(height: Get.height*0.05,),
+          Image.asset(AppImages.coming_soon)
+        ],
+      ),
     ),
   );
 }

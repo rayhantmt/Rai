@@ -47,5 +47,6 @@ class AppImages {
   static const String nfl='assets/nfl.png';
   static const String qq='assets/qq.png';
   static const String GG='assets/gg.png';
+  static const String coming_soon='assets/coming_soon.png';
 
 }

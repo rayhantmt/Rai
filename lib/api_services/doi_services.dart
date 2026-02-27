@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:rai/exceptions/app_exceptions.dart';
 
 
 class DioClient {
@@ -48,7 +49,7 @@ class DioClient {
     }
   }
 
-  // ✅ Helper to safely extract message regardless of format
+  //  Helper to safely extract message regardless of format
   String _getErrorMessage(dynamic data) {
     if (data == null) return 'Unknown Error';
 

@@ -24,14 +24,14 @@ class RaisPicsController extends GetxController {
   RxInt gamesindex = 0.obs;
   void selectpicks(int index) {
     print(picksindex.value);
-    print('list inedx $index');
+    print('Picks inedx $index');
     picksindex.value = index;
   }
 
   void selectgames(int index) {
     gamesindex.value = index;
     print(gamesindex.value);
-    print('list inedx $index');
+    print('Games inedx $index');
   }
 
   var predictions = [

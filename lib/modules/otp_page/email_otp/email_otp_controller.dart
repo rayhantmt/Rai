@@ -2,6 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rai/api_services/api_config.dart';
+import 'package:rai/api_services/api_services.dart';
+import 'package:rai/exceptions/app_exceptions.dart';
+import 'package:rai/utils/app_pages.dart';
 
 class EmailOtpController extends GetxController{
   RxString otp = ''.obs;
@@ -64,5 +68,30 @@ final email=Get.arguments['email'];
     }
     otp.value = otpControllers.map((c) => c.text).join();
     isButtonEnabled.value = otp.value.length == 6;
+  }
+
+  Future<void> VerifyOtp() async {
+    isLoading.value = true;
+
+    final body = {"identifier": email,
+    "otp":otp.toString()
+    };
+    try {
+      final response = await ApiService.post(
+        endpoint: ApiConfig.verifyotp,
+        body: body,
+      );
+
+      print("Otp verified $response");
+
+      Get.toNamed(
+        AppPages.emailotp,
+        arguments: {'email':email},
+      );
+    } on AppException catch (e) {
+      Get.snackbar("Login Failed", e.message);
+    } finally {
+      isLoading.value = false;
+    }
   }
 }

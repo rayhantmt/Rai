@@ -34,6 +34,7 @@ import 'package:rai/modules/rai_chat/rai_chat_view.dart';
 import 'package:rai/modules/rais_picks/rais_picks_bindings.dart';
 import 'package:rai/modules/rais_picks/rais_picks_view.dart';
 import 'package:rai/modules/set_profile/set_profile_view.dart';
+import 'package:rai/modules/set_profile/set_up_profile_binding.dart';
 import 'package:rai/modules/sign_up/1st_page/1st_page.dart';
 import 'package:rai/modules/sign_up/2nd_page/2nd_page_binding.dart';
 import 'package:rai/modules/sign_up/2nd_page/2nd_page_view.dart';
@@ -52,7 +53,7 @@ class AppRoutes {
     GetPage(name: AppPages.secondpage, page:  () => SecondPageView(),binding: SecondPageBinding()),
     GetPage(name: AppPages.emailotp, page: () => EmailOtpView(),binding: EmailOtpBinding()),
     GetPage(name: AppPages.usercredentials, page: () => UserCredentialsPageView(),binding: UserCredentialsPageBinding()),
-    GetPage(name: AppPages.setUpProfile, page:() => SetProfileView(), ),
+    GetPage(name: AppPages.setUpProfile, page:() => SetProfileView(),binding: SetUpProfileBinding() ),
     GetPage(name: AppPages.mobileotp, page: () => MobileOtpView(),binding: MobileOtpBinding()),
     GetPage(name: AppPages.verificationpage, page: () => VerificationPageView(),binding: VerificationPageBinding()),
     GetPage(name: AppPages.setpasswordpage, page: () => SetPasswordPageView(),),

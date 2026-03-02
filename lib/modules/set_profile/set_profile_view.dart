@@ -3,9 +3,10 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/common_widgets/common_button.dart';
 import 'package:rai/common_widgets/common_textfield.dart';
+import 'package:rai/modules/set_profile/set_up_profile_controller.dart';
 import 'package:rai/utils/app_images.dart';
 
-class SetProfileView extends StatelessWidget {
+class SetProfileView extends GetView<SetUpProfileController> {
   const SetProfileView({super.key});
 
   @override

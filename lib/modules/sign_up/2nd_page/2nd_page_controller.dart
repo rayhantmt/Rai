@@ -28,6 +28,7 @@ class SecondPageController extends GetxController{
       );
       
       print("Otp sent $response");
+    
       Get.toNamed(AppPages.emailotp,arguments: {
         'email':emailcontroller.text.toLowerCase()
       });

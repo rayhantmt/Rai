@@ -10,7 +10,7 @@ class EmailOtpController extends GetxController{
   Timer? timer;
  
   final isLoading = false.obs; 
-
+final email=Get.arguments['email'];
   // For 6 separate OTP fields
   final List<TextEditingController> otpControllers = List.generate(
     6,

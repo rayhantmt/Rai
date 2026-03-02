@@ -126,8 +126,10 @@ Widget EmailSignup() {
         ),
         SizedBox(height: Get.height * 0.03),
         GestureDetector(
-        onTap: () => controllersec.login(),
-          //onTap: () => print(controllersec.emailcontroller.text),
+       // onTap: () => controllersec.login(),
+          onTap: () => Get.toNamed(AppPages.emailotp,arguments: {
+        'email':controllersec.emailcontroller.text.toLowerCase()
+      }),
           child:Obx(() => controllersec.isLoading.value?CircularProgressIndicator(
             color: Colors.black,
           ): CommonButton(tittle: 'Continue'),)

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart' hide FormData, MultipartFile;
 import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
@@ -10,6 +11,7 @@ import 'package:rai/utils/app_pages.dart';
 class SetUpProfileController extends GetxController {
   final ImagePicker _picker = ImagePicker();
 final DioClient _client = DioClient();
+final birthdatecontroller=TextEditingController();
 Rxn<XFile> profileImage = Rxn<XFile>();
  Future<void> pickProfileImage() async {
     try {

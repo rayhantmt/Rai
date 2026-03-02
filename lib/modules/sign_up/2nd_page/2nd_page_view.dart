@@ -113,19 +113,24 @@ class SecondPageView extends GetView<SecondPageController> {
 }
 
 Widget EmailSignup() {
+  final controllersec=SecondPageController();
   return SingleChildScrollView(
     child: Column(
       children: [
         SizedBox(height: Get.height * 0.03),
         Commontextfield(
+        controller: controllersec.emailcontroller,
           tittle: 'Email',
           hint: 'Enter valid email address',
           obsecuretext: false,
         ),
         SizedBox(height: Get.height * 0.03),
         GestureDetector(
-          onTap: () => Get.toNamed(AppPages.emailotp),
-          child: CommonButton(tittle: 'Continue'),
+        onTap: () => controllersec.login(),
+          //onTap: () => print(controllersec.emailcontroller.text),
+          child:Obx(() => controllersec.isLoading.value?CircularProgressIndicator(
+            color: Colors.black,
+          ): CommonButton(tittle: 'Continue'),)
         ),
         SizedBox(height: Get.height * 0.03),
         Row(

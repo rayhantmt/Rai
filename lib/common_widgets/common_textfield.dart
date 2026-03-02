@@ -8,12 +8,13 @@ class Commontextfield extends StatelessWidget {
     required this.tittle,
     required this.hint,
     required this.obsecuretext,
-    this.suffix,
+    this.suffix, this.controller,
   });
   final String tittle;
   final String hint;
   final bool obsecuretext;
   final Widget? suffix;
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -38,6 +39,7 @@ class Commontextfield extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
           ),
           child: TextFormField(
+            controller: controller,
             style: GoogleFonts.inter(color: Colors.white),
             obscureText: obsecuretext,
             decoration: InputDecoration(

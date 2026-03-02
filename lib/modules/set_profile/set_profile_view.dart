@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -47,6 +49,28 @@ class SetProfileView extends GetView<SetUpProfileController> {
                       shape: BoxShape.circle,
                       color: Color(0xffB2B3BD),
                     ),
+                    child: Obx(
+  () {
+    // 1. Check if the value itself is null first
+    final file = controller.profileImage.value;
+    
+    if (file != null && file.path.isNotEmpty) {
+      return ClipOval( // Use ClipOval to keep the image inside the circle
+        child: Image.file(
+          File(file.path),
+          fit: BoxFit.cover,
+        ),
+      );
+    } else {
+      return const Center(
+        child: Text(
+          'Select image',
+          style: TextStyle(color: Colors.white),
+        ),
+      );
+    }
+  },
+),
                   ),
                   SizedBox(width: Get.width * 0.09),
                   Column(
@@ -67,12 +91,15 @@ class SetProfileView extends GetView<SetUpProfileController> {
                           color: Color(0xffB2B3BD),
                         ),
                       ),
-                      Text(
-                        'Upload Photo',
-                        style: GoogleFonts.manrope(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 16,
-                          color: Colors.white,
+                      GestureDetector(
+                        onTap: () => controller.pickProfileImage(),
+                        child: Text(
+                          'Upload Photo',
+                          style: GoogleFonts.manrope(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ],
@@ -215,8 +242,8 @@ class SetProfileView extends GetView<SetUpProfileController> {
                   ),
                 ),
               ),
-              SizedBox(height: Get.height*0.02,),
-              CommonButton(tittle: 'Get Started')
+              SizedBox(height: Get.height * 0.02),
+              CommonButton(tittle: 'Get Started'),
             ],
           ),
         ),

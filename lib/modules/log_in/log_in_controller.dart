@@ -9,4 +9,6 @@ class LogInController extends GetxController{
   void togglechekc(val){
     ischeck.value=val;
   }
+
+  
 }

@@ -73,7 +73,8 @@ class EmailOtpView extends GetView<EmailOtpController> {
                 ),
               SizedBox(height: Get.height*0.025,),
                 GestureDetector(
-                  onTap: () => Get.toNamed(AppPages.usercredentials),
+                  //onTap: () => Get.toNamed(AppPages.usercredentials),
+                  onTap: () => controller.VerifyOtp(),
                   child: CommonButton(tittle: 'Verify')),
                 SizedBox(height: Get.height*0.02,),
                 Row(

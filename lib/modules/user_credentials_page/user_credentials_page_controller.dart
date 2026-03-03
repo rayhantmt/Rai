@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class UserCredentialsPageController extends GetxController {
@@ -9,4 +10,8 @@ class UserCredentialsPageController extends GetxController {
   void toggle2(){
     isobsecured1.value=!isobsecured1.value;
   }
+  final usernamecontroller=TextEditingController();
+  final passwordcontroller=TextEditingController();
+  final confirmpasswordcontroller=TextEditingController();
+  final email=Get.arguments['email'];
 }

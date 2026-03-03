@@ -55,7 +55,6 @@ class SetProfileView extends GetView<SetUpProfileController> {
 
                       if (file != null && file.path.isNotEmpty) {
                         return ClipOval(
-                         
                           child: Image.file(File(file.path), fit: BoxFit.cover),
                         );
                       } else {
@@ -133,6 +132,10 @@ class SetProfileView extends GetView<SetUpProfileController> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: TextFormField(
+                          controller: controller.firstnamecontroller,
+                          style: TextStyle(
+                            color: Colors.white
+                          ),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(left: 10),
                             hint: Text(
@@ -170,6 +173,10 @@ class SetProfileView extends GetView<SetUpProfileController> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: TextFormField(
+                          controller: controller.lastnamecontroller,
+                          style: TextStyle(
+                            color: Colors.white
+                          ),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(left: 10),
                             hint: Text(
@@ -209,6 +216,10 @@ class SetProfileView extends GetView<SetUpProfileController> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: TextFormField(
+                      controller: controller.boicontroller,
+                      style: TextStyle(
+                        color: Colors.white
+                      ),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(left: 10),
                         border: InputBorder.none,
@@ -226,11 +237,21 @@ class SetProfileView extends GetView<SetUpProfileController> {
                 ],
               ),
               SizedBox(height: Get.height * 0.02),
-            DatePickerField(tittle: 'Date of birth', hint: 'Select date of birth',textcontroller: controller.birthdatecontroller,),
+              DatePickerField(
+                tittle: 'Date of birth',
+                hint: 'Select date of birth',
+                textcontroller: controller.birthdatecontroller,
+              ),
               SizedBox(height: Get.height * 0.02),
               GestureDetector(
-                onTap: () => print(controller.birthdatecontroller.text),
-                child: CommonButton(tittle: 'Get Started')),
+                //onTap: () => print(controller.birthdatecontroller.text),
+                onTap: () => controller.createUser(),
+                child: Obx(() => controller.isLoading.value?Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                  ),
+                ):CommonButton(tittle: 'Get Started'),)
+              ),
             ],
           ),
         ),

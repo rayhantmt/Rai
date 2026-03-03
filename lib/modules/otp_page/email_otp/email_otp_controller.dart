@@ -85,7 +85,7 @@ final email=Get.arguments['email'];
       print("Otp verified $response");
 
       Get.toNamed(
-        AppPages.emailotp,
+        AppPages.usercredentials,
         arguments: {'email':email},
       );
     } on AppException catch (e) {

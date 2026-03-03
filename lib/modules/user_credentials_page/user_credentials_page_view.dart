@@ -40,6 +40,7 @@ class UserCredentialsPageView extends GetView<UserCredentialsPageController> {
               ),
               SizedBox(height: Get.height * 0.03),
               Commontextfield(
+                controller: controller.usernamecontroller,
                 tittle: 'Username',
                 hint: 'Enter unique name',
                 obsecuretext: false,
@@ -47,6 +48,7 @@ class UserCredentialsPageView extends GetView<UserCredentialsPageController> {
               SizedBox(height: Get.height * 0.02),
               Obx(
                 () => Commontextfield(
+                  controller: controller.passwordcontroller,
                   tittle: 'Password',
                   hint: 'Enter a strong pawword',
                   obsecuretext: controller.isobsecured1.value,
@@ -68,6 +70,7 @@ class UserCredentialsPageView extends GetView<UserCredentialsPageController> {
 
               Obx(
                 () => Commontextfield(
+                  controller: controller.confirmpasswordcontroller,
                   tittle: 'Confirm Password',
                   hint: 'Enter a strong pawword',
                   obsecuretext: controller.isobsecured.value,
@@ -87,7 +90,14 @@ class UserCredentialsPageView extends GetView<UserCredentialsPageController> {
               ),
               SizedBox(height: Get.height*0.02,),
               GestureDetector(
-                onTap: () => Get.toNamed(AppPages.setUpProfile),
+                onTap: () => Get.toNamed(AppPages.setUpProfile,
+                arguments: {
+                  'username':controller.usernamecontroller.text,
+                  'password':controller.passwordcontroller.text,
+                  'confirmpassowrd':controller.confirmpasswordcontroller.text,
+                  'email':controller.email
+                }
+                ),
                 child: CommonButton(tittle: 'Complete Sign Up'))
             ],
           ),

@@ -11,7 +11,6 @@ class EmailOtpView extends GetView<EmailOtpController> {
 
   @override
   Widget build(BuildContext context) {
-    print(controller.email);
     return Scaffold(
       backgroundColor: AppImages.primarycolor,
       body: Padding(

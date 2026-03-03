@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/common_widgets/common_button.dart';
 import 'package:rai/modules/otp_page/email_otp/email_otp_controller.dart';
 import 'package:rai/utils/app_images.dart';
-import 'package:rai/utils/app_pages.dart';
 
 class EmailOtpView extends GetView<EmailOtpController> {
   const EmailOtpView({super.key});

@@ -5,15 +5,16 @@ import 'package:rai/api_services/api_services.dart';
 import 'package:rai/exceptions/app_exceptions.dart';
 
 class MainScreenController extends GetxController {
-  @override
-  void onInit() {
-    if (GetStorage().read('firstname') == null) {
-      getprofile();
-    } else {
-      print("Profile already loaded: ${GetStorage().read('firstname')}");
-    }
-    super.onInit();
-  }
+  // @override
+  // void onInit() {
+  //   if (GetStorage().read('firstname') == null) {
+  //     print('Loading profile');
+  //     getprofile();
+  //   } else {
+  //     print("Profile already loaded: ${GetStorage().read('firstname')}");
+  //   }
+  //   super.onInit();
+  // }
 
   var pagetype = 2.obs;
   void setpagetype(int) {

@@ -34,6 +34,20 @@ class LogInController extends GetxController {
       final storage = GetStorage();
       final accessToken = response['data']['access'];
       await storage.write('token', accessToken);
+      final token=storage.read('token');
+        final response2 = await ApiService.get(
+        endpoint: ApiConfig.getprofile,
+        headers: {'Authorization': 'Bearer $token'},
+      );
+      print(response2);
+      //final storage = GetStorage();
+      final data = response2['data'];
+      storage.write('firstname', data['first_name']);
+      storage.write('lastname', data['last_name']);
+      storage.write('username', data['username']);
+      storage.write('profileimage', data['profile_picture']);
+      storage.write('dateofbirth', data['date_of_birth']);
+      storage.write('bio', data['bio']);
       Get.offAllNamed(AppPages.mainscreen);
     } on AppException catch (e) {
       Get.snackbar("Login Failed", e.message);

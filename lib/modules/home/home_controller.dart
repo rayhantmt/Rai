@@ -3,7 +3,7 @@ import 'package:get_storage/get_storage.dart';
 
 class HomeController extends GetxController{
   final token=GetStorage().read('token');
-  final firstname=GetStorage().read('firstname');
-  final lastname=GetStorage().read('lastname');
-  final profileimage=GetStorage().read('profileimage');
+  final firstname=GetStorage().read('firstname')??"Error loading name";
+  final lastname=GetStorage().read('lastname')??'';
+  final profileimage=GetStorage().read('profileimage')??"loading";
 }

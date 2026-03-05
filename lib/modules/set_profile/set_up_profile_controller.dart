@@ -109,9 +109,10 @@ class SetUpProfileController extends GetxController {
       }
       print('FILES:');
       for (var file in formData.files) {
-        print('  ${file.key}: ${file.value.filename} (${file.value.contentType})');
+        print(
+          '  ${file.key}: ${file.value.filename} (${file.value.contentType})',
+        );
       }
-    
 
       final response = await _client.postFormData(
         url: '${ApiConfig.baseUrl}/api/auth/signup/finalize/',

@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:rai/common_widgets/common_button.dart';
@@ -45,10 +48,23 @@ class EditProfileView extends GetView<EditProfileController> {
                 height: Get.height * 0.15,
                 child: Row(
                   children: [
-                    CircleAvatar(
-                      backgroundImage: AssetImage(AppImages.profileimg),
-                      radius: Get.height * 0.07,
-                    ),
+                    Obx(() {
+                      // 1. Check if the value itself is null first
+                      final file = controller.profileImage.value;
+
+                      if (file != null && file.path.isNotEmpty) {
+                        return ClipOval(
+                          child: Image.file(File(file.path), fit: BoxFit.cover),
+                        );
+                      } else {
+                        return CircleAvatar(
+                          radius: 35,
+                          backgroundImage: NetworkImage(
+                            GetStorage().read('profileimage'),
+                          ),
+                        );
+                      }
+                    }),
                     Column(
                       children: [
                         Text(
@@ -68,12 +84,15 @@ class EditProfileView extends GetView<EditProfileController> {
                           ),
                         ),
                         Spacer(),
-                        Text(
-                          'UPload Image',
-                          style: GoogleFonts.manrope(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16,
-                            color: Color(0xffEEEEF0),
+                        GestureDetector(
+                          onTap: () => controller.pickProfileImage(),
+                          child: Text(
+                            'UPload Image',
+                            style: GoogleFonts.manrope(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 16,
+                              color: Color(0xffEEEEF0),
+                            ),
                           ),
                         ),
                         SizedBox(height: Get.height * 0.02),
@@ -114,9 +133,7 @@ class EditProfileView extends GetView<EditProfileController> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: TextFormField(
-                          style: TextStyle(
-                            color: Colors.white
-                          ),
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(left: 10),
                             border: InputBorder.none,
@@ -133,8 +150,8 @@ class EditProfileView extends GetView<EditProfileController> {
                       ),
                     ],
                   ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Last Name',
@@ -155,9 +172,7 @@ class EditProfileView extends GetView<EditProfileController> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: TextFormField(
-                          style: TextStyle(
-                            color: Colors.white
-                          ),
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(left: 10),
                             border: InputBorder.none,
@@ -176,80 +191,84 @@ class EditProfileView extends GetView<EditProfileController> {
                   ),
                 ],
               ),
-              Text('Bio',
-              style: GoogleFonts.manrope( 
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-                color: Colors.white
+              Text(
+                'Bio',
+                style: GoogleFonts.manrope(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16,
+                  color: Colors.white,
+                ),
               ),
-              ),
-              SizedBox(height: Get.height*0.02,),
+              SizedBox(height: Get.height * 0.02),
               Container(
-                height: Get.height*0.22,
+                height: Get.height * 0.22,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 1,
-                    color: Color(0xff393A40)
-                  ),
-                  borderRadius: BorderRadius.circular(12)
+                  border: Border.all(width: 1, color: Color(0xff393A40)),
+                  borderRadius: BorderRadius.circular(12),
                 ),
                 child: TextFormField(
-                  style: TextStyle(
-                    color: Colors.white
-                  ),
-                
+                  style: TextStyle(color: Colors.white),
+
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.only(left: 10),
-                    border: InputBorder.none
+                    border: InputBorder.none,
                   ),
                 ),
               ),
-              SizedBox(height: Get.height*0.03,),
-              Text('Date of Birth',
-               style: GoogleFonts.manrope( 
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-                color: Colors.white
+              SizedBox(height: Get.height * 0.03),
+              Text(
+                'Date of Birth',
+                style: GoogleFonts.manrope(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16,
+                  color: Colors.white,
+                ),
               ),
-              ),
-              SizedBox(height: Get.height*0.03,),
+              SizedBox(height: Get.height * 0.03),
               GestureDetector(
-                onTap: () async{
-                  DateTime? pickedDate= await showDatePicker(context: context, firstDate: DateTime(1000), lastDate: DateTime.now());
-                 controller.birthdate.value=pickedDate!;
-                } ,
+                onTap: () async {
+                  DateTime? pickedDate = await showDatePicker(
+                    context: context,
+                    firstDate: DateTime(1000),
+                    lastDate: DateTime.now(),
+                  );
+                  controller.birthdate.value = pickedDate!;
+                },
                 child: Container(
-                  height: Get.height*0.05,
+                  height: Get.height * 0.05,
                   decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 1,
-                      color: Color(0xff5F606A)
-                    ),
-                    borderRadius: BorderRadius.circular(12)
+                    border: Border.all(width: 1, color: Color(0xff5F606A)),
+                    borderRadius: BorderRadius.circular(12),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Obx(() => Text(DateFormat('yyyy-mm-dd').format(controller.birthdate.value),
-                        style: GoogleFonts.manrope(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 14,
-                          color: Color(0xffEEEEF0)
+                        Obx(
+                          () => Text(
+                            DateFormat(
+                              'yyyy-mm-dd',
+                            ).format(controller.birthdate.value),
+                            style: GoogleFonts.manrope(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14,
+                              color: Color(0xffEEEEF0),
+                            ),
+                          ),
                         ),
-                        ),),
-                        Icon(Icons.calendar_month_outlined,
-                        color: Color(0xffEEEEF0),
-                        )
+                        Icon(
+                          Icons.calendar_month_outlined,
+                          color: Color(0xffEEEEF0),
+                        ),
                       ],
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: Get.height*0.09,),
-              CommonButton(tittle: 'Update Info')
+              SizedBox(height: Get.height * 0.09),
+              CommonButton(tittle: 'Update Info'),
             ],
           ),
         ),

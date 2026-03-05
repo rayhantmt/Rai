@@ -40,9 +40,7 @@ class HomeView extends GetView<HomeController> {
                 // ),
                 CircleAvatar(
                   maxRadius: 35,
-                  backgroundImage: NetworkImage(controller.profileimage,
-                   
-                  ),
+                  backgroundImage: NetworkImage(controller.profileimage),
                 ),
                 Column(
                   children: [
@@ -129,22 +127,19 @@ class HomeView extends GetView<HomeController> {
                 ],
               ),
             ),
-            SizedBox(height: Get.height*0.03,),
+            SizedBox(height: Get.height * 0.03),
             Container(
-              height: Get.height*0.05,
+              height: Get.height * 0.05,
               decoration: BoxDecoration(
-                border: Border.all(
-                  width: 1,
-                  color: Color(0xff5F606A)
-                ),
-                borderRadius: BorderRadius.circular(8)
+                border: Border.all(width: 1, color: Color(0xff5F606A)),
+                borderRadius: BorderRadius.circular(8),
               ),
               child: Padding(
                 padding: const EdgeInsets.only(left: 5),
                 child: MoreSectionWidget(
-                          tittle: 'Live Bet Tracking',
-                          img: AppImages.livebettracking,
-                        ),
+                  tittle: 'Live Bet Tracking',
+                  img: AppImages.livebettracking,
+                ),
               ),
             ),
             SizedBox(height: Get.height * 0.02),
@@ -183,8 +178,8 @@ class HomeView extends GetView<HomeController> {
                 ),
               ],
             ),
-            SizedBox(height: Get.height*0.02,),
-            Image.asset(AppImages.launchBannar)
+            SizedBox(height: Get.height * 0.02),
+            Image.asset(AppImages.launchBannar),
           ],
         ),
       ),

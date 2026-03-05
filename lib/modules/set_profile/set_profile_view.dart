@@ -133,9 +133,7 @@ class SetProfileView extends GetView<SetUpProfileController> {
                         ),
                         child: TextFormField(
                           controller: controller.firstnamecontroller,
-                          style: TextStyle(
-                            color: Colors.white
-                          ),
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(left: 10),
                             hint: Text(
@@ -174,9 +172,7 @@ class SetProfileView extends GetView<SetUpProfileController> {
                         ),
                         child: TextFormField(
                           controller: controller.lastnamecontroller,
-                          style: TextStyle(
-                            color: Colors.white
-                          ),
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(left: 10),
                             hint: Text(
@@ -217,9 +213,7 @@ class SetProfileView extends GetView<SetUpProfileController> {
                     ),
                     child: TextFormField(
                       controller: controller.boicontroller,
-                      style: TextStyle(
-                        color: Colors.white
-                      ),
+                      style: TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(left: 10),
                         border: InputBorder.none,
@@ -246,11 +240,13 @@ class SetProfileView extends GetView<SetUpProfileController> {
               GestureDetector(
                 //onTap: () => print(controller.birthdatecontroller.text),
                 onTap: () => controller.createUser(),
-                child: Obx(() => controller.isLoading.value?Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.white,
-                  ),
-                ):CommonButton(tittle: 'Get Started'),)
+                child: Obx(
+                  () => controller.isLoading.value
+                      ? Center(
+                          child: CircularProgressIndicator(color: Colors.white),
+                        )
+                      : CommonButton(tittle: 'Get Started'),
+                ),
               ),
             ],
           ),

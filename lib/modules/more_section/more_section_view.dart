@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/common_widgets/more_section_widget.dart';
 import 'package:rai/utils/app_images.dart';
@@ -198,21 +199,27 @@ class MoreSectionView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   color: Color(0xff222325),
                 ),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      AppImages.logoutlogo,
-                      height: Get.height * 0.04,
-                    ),
-                    Text(
-                      'Sign Out',
-                      style: GoogleFonts.manrope(
-                        color: Color(0xffEF4444),
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14,
+                child: GestureDetector(
+                  onTap: () {
+                    GetStorage().erase();
+                    Get.toNamed(AppPages.login);
+                  },
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        AppImages.logoutlogo,
+                        height: Get.height * 0.04,
                       ),
-                    ),
-                  ],
+                      Text(
+                        'Sign Out',
+                        style: GoogleFonts.manrope(
+                          color: Color(0xffEF4444),
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Container(height: Get.height * 0.5),

@@ -3,4 +3,5 @@ class ApiConfig {
   static const String emailurl='/api/auth/signup/initiate/';
   static const String verifyotp='/api/auth/signup/verify/';
   static const String login='/api/auth/login/';
+  static const String getprofile='/api/auth/profile/';
 }

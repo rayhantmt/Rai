@@ -1,8 +1,40 @@
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:rai/api_services/api_config.dart';
+import 'package:rai/api_services/api_services.dart';
+import 'package:rai/exceptions/app_exceptions.dart';
 
-class MainScreenController extends GetxController{
-  var pagetype=2.obs;
-  void setpagetype (int){
-    pagetype.value=int;
+class MainScreenController extends GetxController {
+  @override
+  void onInit() {
+   getprofile();
+    super.onInit();
+  }
+  var pagetype = 2.obs;
+  void setpagetype(int) {
+    pagetype.value = int;
+  }
+final token=GetStorage().read('token');
+  RxBool isLoading = false.obs;
+  Future<void> getprofile() async {
+
+    isLoading.value = true;
+    try {
+    final  response= await ApiService.get(endpoint: ApiConfig.getprofile,
+      headers: {
+        'Authorization': 'Bearer ${token}'
+      }
+      );
+      print(response);
+      final storage=GetStorage();
+      final data=response['data'];
+      storage.write('firstname', data['first_name']);
+      storage.write('lastname', data['last_name']);
+
+
+    } on AppException catch (e) {
+      print(e.toString());
+      Get.snackbar('Error', e.toString());
+    }
   }
 }

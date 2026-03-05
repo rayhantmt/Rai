@@ -10,7 +10,6 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-print(controller.token);
     return Scaffold(
       backgroundColor: AppImages.primarycolor,
       body: Padding(
@@ -42,7 +41,7 @@ print(controller.token);
                 Column(
                   children: [
                     Text(
-                      'Ethen Walker',
+                      '${controller.firstname} ${controller.lastname}',
                       style: GoogleFonts.manrope(
                         fontWeight: FontWeight.w700,
                         fontSize: 16,

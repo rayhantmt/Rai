@@ -32,8 +32,8 @@ class HomeView extends GetView<HomeController> {
               children: [
                 ClipRRect(
                   // borderRadius: BorderRadiusGeometry.circular(9),
-                  child: Image.asset(
-                    AppImages.imagepicking,
+                  child: Image.network(
+                   controller.profileimage,
                     height: Get.height * 0.1,
                     width: Get.width * 0.2,
                   ),

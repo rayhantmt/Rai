@@ -5,4 +5,5 @@ class HomeController extends GetxController{
   final token=GetStorage().read('token');
   final firstname=GetStorage().read('firstname');
   final lastname=GetStorage().read('lastname');
+  final profileimage=GetStorage().read('profileimage');
 }

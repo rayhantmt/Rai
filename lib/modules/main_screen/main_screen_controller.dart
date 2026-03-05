@@ -30,6 +30,10 @@ final token=GetStorage().read('token');
       final data=response['data'];
       storage.write('firstname', data['first_name']);
       storage.write('lastname', data['last_name']);
+      storage.write('username', data['username']);
+      storage.write('profileimage', data['profile_picture']);
+      storage.write('dateofbirth', data['date_of_birth']);
+      storage.write('bio', data['bio']);
 
 
     } on AppException catch (e) {

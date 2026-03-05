@@ -91,6 +91,7 @@ class AccountSettingsView extends GetView<AccountSettingsController> {
 }
 
 Widget _PersonalInfo() {
+  final controller=Get.find<AccountSettingsController>();
   return Column(
     children: [
       Container(
@@ -107,7 +108,7 @@ Widget _PersonalInfo() {
             children: [
               CircleAvatar(
                 radius: Get.height * 0.06,
-                backgroundImage: AssetImage(AppImages.profileimg),
+                backgroundImage: NetworkImage(controller.profileimage),
               ),
               SizedBox(height: Get.height * 0.02),
               Divider(
@@ -125,7 +126,7 @@ Widget _PersonalInfo() {
                 ),
               ),
               Text(
-                'new_@123',
+                controller.username,
                 style: GoogleFonts.manrope(
                   fontWeight: FontWeight.w400,
                   fontSize: 14,
@@ -142,7 +143,7 @@ Widget _PersonalInfo() {
                 ),
               ),
               Text(
-                'Adam Smith',
+                '${controller.firstname} ${controller.lastname}',
                 style: GoogleFonts.manrope(
                   fontWeight: FontWeight.w400,
                   fontSize: 14,
@@ -159,7 +160,7 @@ Widget _PersonalInfo() {
                 ),
               ),
               Text(
-                'on their profile I would like for them to be able to put a bio of whatever they want to say and if they want to upload a photo they can do',
+                controller.bio,
                 style: GoogleFonts.manrope(
                   fontWeight: FontWeight.w400,
                   fontSize: 14,
@@ -176,7 +177,7 @@ Widget _PersonalInfo() {
                 ),
               ),
               Text(
-                '11 Aug 1999',
+                controller.dateofbirth,
                 style: GoogleFonts.manrope(
                   fontWeight: FontWeight.w400,
                   fontSize: 14,

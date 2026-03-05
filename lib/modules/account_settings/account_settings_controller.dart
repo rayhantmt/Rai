@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class AccountSettingsController extends GetxController{
   var screetype=0.obs;
@@ -17,4 +18,11 @@ class AccountSettingsController extends GetxController{
   void toggle2(){
     obsecured2.value=!obsecured2.value;
   }
+  final token=GetStorage().read('token');
+  final firstname=GetStorage().read('firstname')??"Error loading name";
+  final lastname=GetStorage().read('lastname')??'';
+  final profileimage=GetStorage().read('profileimage')??"loading";
+  final username=GetStorage().read('username');
+  final bio=GetStorage().read('bio');
+  final dateofbirth=GetStorage().read('dateofbirth');
 }

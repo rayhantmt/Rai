@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/common_widgets/more_section_widget.dart';
+import 'package:rai/modules/home/home_controller.dart';
 import 'package:rai/utils/app_images.dart';
 import 'package:rai/utils/app_pages.dart';
 
@@ -11,6 +12,7 @@ class MoreSectionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller=Get.find<HomeController>();
     return Scaffold(
       backgroundColor: AppImages.primarycolor,
       body: Padding(
@@ -41,13 +43,13 @@ class MoreSectionView extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: 30,
-                      backgroundImage: AssetImage(AppImages.profileimg),
+                      backgroundImage: NetworkImage(controller.profileimage),
                     ),
                     SizedBox(width: Get.width * 0.05),
                     Column(
                       children: [
                         Text(
-                          'Adam smith',
+                         '${controller.firstname} ${controller.lastname}',
                           style: GoogleFonts.manrope(
                             fontWeight: FontWeight.w700,
                             fontSize: 16,

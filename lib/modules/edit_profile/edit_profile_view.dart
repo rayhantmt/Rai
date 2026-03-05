@@ -114,6 +114,9 @@ class EditProfileView extends GetView<EditProfileController> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: TextFormField(
+                          style: TextStyle(
+                            color: Colors.white
+                          ),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(left: 10),
                             border: InputBorder.none,
@@ -152,6 +155,9 @@ class EditProfileView extends GetView<EditProfileController> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: TextFormField(
+                          style: TextStyle(
+                            color: Colors.white
+                          ),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(left: 10),
                             border: InputBorder.none,
@@ -188,7 +194,16 @@ class EditProfileView extends GetView<EditProfileController> {
                   ),
                   borderRadius: BorderRadius.circular(12)
                 ),
+                child: TextFormField(
+                  style: TextStyle(
+                    color: Colors.white
+                  ),
                 
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.only(left: 10),
+                    border: InputBorder.none
+                  ),
+                ),
               ),
               SizedBox(height: Get.height*0.03,),
               Text('Date of Birth',

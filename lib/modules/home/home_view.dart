@@ -55,7 +55,7 @@ class HomeView extends GetView<HomeController> {
                       ),
                     ),
                     Text(
-                      '@random_234',
+                      controller.username,
                       style: GoogleFonts.manrope(
                         fontWeight: FontWeight.w500,
                         fontSize: 14,

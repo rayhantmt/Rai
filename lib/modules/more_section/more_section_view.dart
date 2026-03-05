@@ -57,7 +57,7 @@ class MoreSectionView extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'new@123',
+                          controller.username,
                           style: GoogleFonts.manrope(
                             fontWeight: FontWeight.w500,
                             fontSize: 14,

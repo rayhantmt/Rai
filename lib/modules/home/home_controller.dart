@@ -6,4 +6,5 @@ class HomeController extends GetxController{
   final firstname=GetStorage().read('firstname')??"Error loading name";
   final lastname=GetStorage().read('lastname')??'';
   final profileimage=GetStorage().read('profileimage')??"loading";
+  final username=GetStorage().read('username');
 }

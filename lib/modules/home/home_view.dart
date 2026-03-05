@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/common_widgets/more_section_widget.dart';
+import 'package:rai/modules/home/home_controller.dart';
 import 'package:rai/utils/app_images.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
+print(controller.token);
     return Scaffold(
       backgroundColor: AppImages.primarycolor,
       body: Padding(

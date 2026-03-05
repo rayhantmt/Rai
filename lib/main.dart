@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:rai/modules/splash_screen/splash_screen.dart';
 import 'package:rai/utils/app_routes.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
+  
   runApp(const MyApp());
 }
 

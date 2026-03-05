@@ -18,6 +18,7 @@ import 'package:rai/modules/fotgot_password/verificatio_page/verification_page_b
 import 'package:rai/modules/fotgot_password/verificatio_page/verification_page_view.dart';
 import 'package:rai/modules/group_member_community/group_member_community_binding.dart';
 import 'package:rai/modules/group_member_community/group_member_community_view.dart';
+import 'package:rai/modules/home/home_binding.dart';
 import 'package:rai/modules/home/home_view.dart';
 import 'package:rai/modules/log_in/log_in_binding.dart';
 import 'package:rai/modules/log_in/log_in_view.dart';
@@ -59,7 +60,7 @@ class AppRoutes {
     GetPage(name: AppPages.setpasswordpage, page: () => SetPasswordPageView(),),
     GetPage(name: AppPages.emailotpfp, page: () => EmailOtpFpView(),binding: EmailOtpFpBinding()),
     GetPage(name: AppPages.mainscreen, page: () => MainScreenView(),binding: MainScreenBinding() ),
-    GetPage(name: AppPages.home, page: ()=>HomeView(),),
+    GetPage(name: AppPages.home, page: ()=>HomeView(),binding: HomeBinding()),
     GetPage(name: AppPages.community, page: ()=>CommunityView(),binding: CommunityBinding()),
     GetPage(name: AppPages.raichat, page: ()=>RaiChatView(),binding: RaiChatBinding()),
     GetPage(name: AppPages.raispicks, page: ()=>RaisPicksView(),binding: RaisPicksBindings()),

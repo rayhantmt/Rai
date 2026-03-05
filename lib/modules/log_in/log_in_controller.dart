@@ -16,16 +16,17 @@ class LogInController extends GetxController {
   void togglechekc(val) {
     ischeck.value = val;
   }
-final emailcontroller=TextEditingController();
-final passwordcontroller=TextEditingController();
+
+  final emailcontroller = TextEditingController();
+  final passwordcontroller = TextEditingController();
   RxBool isLoading = false.obs;
   Future<void> login() async {
     isLoading.value = true;
 
     final body = {
-  "username": emailcontroller.text,
-  "password": passwordcontroller.text
-};
+      "username": emailcontroller.text,
+      "password": passwordcontroller.text,
+    };
     try {
       final response = await ApiService.post(
         endpoint: ApiConfig.login,
@@ -33,10 +34,13 @@ final passwordcontroller=TextEditingController();
       );
       final storage = GetStorage();
       final accessToken = response['data']['access'];
-      storage.write('token', accessToken);
+      await storage.write('token', accessToken);
+      final token = storage.read('token');
+      
+
       Get.offAllNamed(AppPages.mainscreen);
 
-      print("Login success: $response");
+     
     } on AppException catch (e) {
       Get.snackbar("Login Failed", e.message);
     } finally {

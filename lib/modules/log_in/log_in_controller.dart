@@ -22,7 +22,6 @@ class LogInController extends GetxController {
   RxBool isLoading = false.obs;
   Future<void> login() async {
     isLoading.value = true;
-
     final body = {
       "username": emailcontroller.text,
       "password": passwordcontroller.text,
@@ -35,12 +34,7 @@ class LogInController extends GetxController {
       final storage = GetStorage();
       final accessToken = response['data']['access'];
       await storage.write('token', accessToken);
-      final token = storage.read('token');
-      
-
       Get.offAllNamed(AppPages.mainscreen);
-
-     
     } on AppException catch (e) {
       Get.snackbar("Login Failed", e.message);
     } finally {

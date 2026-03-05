@@ -48,6 +48,7 @@ class LogInView extends GetView<LogInController> {
               Commontextfield(
                 tittle: 'Username or Email/phone number',
                 hint: 'Enter username or email/phone number',
+                controller: controller.emailcontroller,
                 obsecuretext: false,
               ),
               SizedBox(height: Get.height * 0.01),
@@ -55,6 +56,7 @@ class LogInView extends GetView<LogInController> {
                 () => Commontextfield(
                   tittle: 'Password',
                   hint: 'Enter password',
+                  controller: controller.passwordcontroller,
                   obsecuretext: controller.pass.value,
                   suffix: GestureDetector(
                     onTap: () => controller.togglepass(),
@@ -97,8 +99,11 @@ class LogInView extends GetView<LogInController> {
               ),
               SizedBox(height:Get.height*0.02 ,),
               GestureDetector(
-                onTap: () => Get.offAllNamed(AppPages.mainscreen),
-                child: CommonButton(tittle: 'Sign In')),
+               // onTap: () => Get.offAllNamed(AppPages.mainscreen),
+               onTap: () => controller.login(),
+                child: Obx(() => controller.isLoading.value?CircularProgressIndicator(
+                  color: Colors.white,
+                ):CommonButton(tittle: 'Sign In'),)),
               SizedBox(height:Get.height*0.02 ,),
               Row(
                 children: [

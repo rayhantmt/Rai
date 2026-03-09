@@ -54,8 +54,8 @@ class EditProfileView extends GetView<EditProfileController> {
 
                       if (file != null && file.path.isNotEmpty) {
                         return CircleAvatar(
-backgroundImage: FileImage(File(file.path)),
-radius: 35,
+                          backgroundImage: FileImage(File(file.path)),
+                          radius: 35,
                         );
                       } else {
                         return CircleAvatar(
@@ -66,7 +66,7 @@ radius: 35,
                         );
                       }
                     }),
-                    
+
                     Column(
                       children: [
                         Text(
@@ -234,6 +234,7 @@ radius: 35,
                     context: context,
                     firstDate: DateTime(1000),
                     lastDate: DateTime.now(),
+                    
                   );
                   controller.birthdate.value = pickedDate!;
                 },

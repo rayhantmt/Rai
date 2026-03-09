@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
 
 class EditProfileController extends GetxController {
@@ -20,4 +21,12 @@ class EditProfileController extends GetxController {
       Get.snackbar('Error', 'Failed to pick profile image: $e');
     }
   }
+
+  final token=GetStorage().read('token');
+  final firstname=GetStorage().read('firstname')??"Error loading name";
+  final lastname=GetStorage().read('lastname')??'';
+  final profileimage=GetStorage().read('profileimage')??"loading";
+  final username=GetStorage().read('username');
+  final bio=GetStorage().read('bio');
+  final dateofbirth=GetStorage().read('dateofbirth');
 }

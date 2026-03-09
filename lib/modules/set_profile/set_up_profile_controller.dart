@@ -60,31 +60,6 @@ class SetUpProfileController extends GetxController {
     isLoading.value = true;
 
     try {
-      // final formData = FormData.fromMap({
-      //   'identifier': email,
-      //   'username': username,
-      //   // 'name': namecontroller.text,
-      //   'password': password,
-      //   'first_name': firstnamecontroller.text,
-      //   'last_name': lastnamecontroller.text,
-      //   'profile_picture': await MultipartFile.fromFile(
-      //     profileImage.value!.path,
-      //     filename: profileImage.value!.name,
-      //     contentType: MediaType('image', 'png'),
-      //   ),
-      //   'date_of_birth': birthdatecontroller.text,
-      //   'bio': boicontroller.text,
-      // });
-
-      // // 4. API Call
-      // final response = await _client.postFormData(
-      //   url: '${ApiConfig.baseUrl}/api/auth/signup/finalize/',
-      //   data: formData,
-      // );
-
-      // print('✅ User Created: ${response.data}');
-      // Get.snackbar('Success', 'User Created Successfully log in now');
-      // Get.toNamed(AppPages.login);
       final formData = FormData.fromMap({
         'identifier': email,
         'username': username,

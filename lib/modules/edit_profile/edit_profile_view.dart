@@ -135,6 +135,7 @@ class EditProfileView extends GetView<EditProfileController> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: TextFormField(
+                          controller: controller.firstnamecontrolle,
                           style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(left: 10),
@@ -174,6 +175,7 @@ class EditProfileView extends GetView<EditProfileController> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: TextFormField(
+                          controller: controller.lastnamecontroller,
                           style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(left: 10),
@@ -210,6 +212,7 @@ class EditProfileView extends GetView<EditProfileController> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: TextFormField(
+                  controller: controller.biocontroller,
                   style: TextStyle(color: Colors.white),
 
                   decoration: InputDecoration(
@@ -234,7 +237,6 @@ class EditProfileView extends GetView<EditProfileController> {
                     context: context,
                     firstDate: DateTime(1000),
                     lastDate: DateTime.now(),
-                    
                   );
                   controller.birthdate.value = pickedDate!;
                 },
@@ -271,7 +273,16 @@ class EditProfileView extends GetView<EditProfileController> {
                 ),
               ),
               SizedBox(height: Get.height * 0.09),
-              CommonButton(tittle: 'Update Info'),
+              GestureDetector(
+                onTap: () => controller.updateProfile(),
+                child: Obx(
+                  () => controller.isLoading.value
+                      ? Center(
+                          child: CircularProgressIndicator(color: Colors.white),
+                        )
+                      : CommonButton(tittle: 'Update Info'),
+                ),
+              ),
             ],
           ),
         ),

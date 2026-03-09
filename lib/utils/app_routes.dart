@@ -9,7 +9,7 @@ import 'package:rai/modules/community_chat_details/community_chat_details_bindin
 import 'package:rai/modules/community_chat_details/community_chat_details_view.dart';
 import 'package:rai/modules/create_new_group/create_new_group_binding.dart';
 import 'package:rai/modules/create_new_group/create_new_group_view.dart';
-import 'package:rai/modules/edit_profile/edit_profile_binding.dart';
+import 'package:rai/modules/create_new_group/edit_profile_binding.dart';
 import 'package:rai/modules/edit_profile/edit_profile_view.dart';
 import 'package:rai/modules/fotgot_password/otp_page/email_otp/email_otp_fp_binding.dart';
 import 'package:rai/modules/fotgot_password/otp_page/email_otp/email_otp_fp_view.dart';

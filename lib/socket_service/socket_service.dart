@@ -12,7 +12,7 @@ class SocketService {
   bool _isManuallyDisconnected = false;
   String? _currentUserId;
 
-  static const String SOCKET_URL = 'wss://server.momentumactivity.com';
+  static const String SOCKET_URL = 'wss://quicker-epistylar-barbie.ngrok-free.dev';
 
   bool get isConnected => _socket?.connected ?? false;
 

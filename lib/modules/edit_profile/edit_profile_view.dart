@@ -53,8 +53,9 @@ class EditProfileView extends GetView<EditProfileController> {
                       final file = controller.profileImage.value;
 
                       if (file != null && file.path.isNotEmpty) {
-                        return ClipOval(
-                          child: Image.file(File(file.path), fit: BoxFit.cover),
+                        return CircleAvatar(
+backgroundImage: FileImage(File(file.path)),
+radius: 35,
                         );
                       } else {
                         return CircleAvatar(
@@ -65,6 +66,7 @@ class EditProfileView extends GetView<EditProfileController> {
                         );
                       }
                     }),
+                    
                     Column(
                       children: [
                         Text(

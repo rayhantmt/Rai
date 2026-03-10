@@ -535,7 +535,7 @@
 
 // rai_chat_view.dart
 
-import 'dart:io';
+//import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -563,20 +563,27 @@ class RaiChatView extends GetView<RaiChatController> {
     });
 
     return Scaffold(
-      //resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppImages.primarycolor,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.only(
+          left: 20,
+          right: 20,
+          bottom: Get.height * 0.1, // Space for bottom nav bar
+        ),
         child: Column(
           children: [
             // ── Top bar ──────────────────────────────────────
             SizedBox(height: Get.height * 0.05),
             Row(
               children: [
-                Image.asset(AppImages.logo,
-                    height: Get.height * 0.05, width: Get.width * 0.2),
+                Image.asset(
+                  AppImages.logo,
+                  height: Get.height * 0.05,
+                  width: Get.width * 0.2,
+                ),
                 const Expanded(child: SizedBox()),
-        
+
                 // History icon
                 GestureDetector(
                   onTap: () {
@@ -588,11 +595,13 @@ class RaiChatView extends GetView<RaiChatController> {
                       builder: (_) => _HistorySheet(controller: controller),
                     );
                   },
-                  child: Icon(Icons.history,
-                      size: Get.height * 0.04,
-                      color: const Color(0xffEEEEF0)),
+                  child: Icon(
+                    Icons.history,
+                    size: Get.height * 0.04,
+                    color: const Color(0xffEEEEF0),
+                  ),
                 ),
-        
+
                 // More options
                 GestureDetector(
                   onTap: () => showModalBottomSheet(
@@ -607,50 +616,63 @@ class RaiChatView extends GetView<RaiChatController> {
                               Get.back();
                               controller.startNewChat();
                             },
-                            child: Row(children: [
-                              Image.asset(AppImages.newchaticon,
-                                  height: Get.height * .05),
-                              Text('New chat',
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  AppImages.newchaticon,
+                                  height: Get.height * .05,
+                                ),
+                                Text(
+                                  'New chat',
                                   style: GoogleFonts.manrope(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14,
-                                      color: const Color(0xffEEEEF0))),
-                            ]),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14,
+                                    color: const Color(0xffEEEEF0),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                           GestureDetector(
                             onTap: () {
                               Get.back();
                               controller.clearConversation();
                             },
-                            child: Row(children: [
-                              Image.asset(AppImages.clearconversationicon,
-                                  height: Get.height * .05),
-                              Text('Clear this conversation',
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  AppImages.clearconversationicon,
+                                  height: Get.height * .05,
+                                ),
+                                Text(
+                                  'Clear this conversation',
                                   style: GoogleFonts.manrope(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14,
-                                      color: const Color(0xffEEEEF0))),
-                            ]),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14,
+                                    color: const Color(0xffEEEEF0),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
                     ),
                   ),
-                  child: Icon(Icons.more_vert,
-                      size: Get.height * 0.04,
-                      color: const Color(0xffEEEEF0)),
+                  child: Icon(
+                    Icons.more_vert,
+                    size: Get.height * 0.04,
+                    color: const Color(0xffEEEEF0),
+                  ),
                 ),
               ],
             ),
-        
+
             SizedBox(height: Get.height * 0.02),
-        
+
             // ── Chat body ─────────────────────────────────────
-            SizedBox(
-          height: Get.height*0.7,
-              
+            Expanded(
               child: Obx(() {
-                print('bottom sized${MediaQuery.of(context).viewInsets.bottom}');
                 if (controller.messages.isEmpty &&
                     !controller.isConnecting.value) {
                   return Container(
@@ -658,55 +680,65 @@ class RaiChatView extends GetView<RaiChatController> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset(AppImages.chatscreenblacklogo,
-                            height: Get.height * 0.05),
-                        Text('Hi, There!',
-                            style: GoogleFonts.manrope(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 20,
-                                color: const Color(0xffEEEEF0))),
-                        Text("'Just ask me, what's on your mind?",
-                            style: GoogleFonts.manrope(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 14,
-                                color: const Color(0xffB2B3BD))),
+                        Image.asset(
+                          AppImages.chatscreenblacklogo,
+                          height: Get.height * 0.05,
+                        ),
+                        Text(
+                          'Hi, There!',
+                          style: GoogleFonts.manrope(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 20,
+                            color: const Color(0xffEEEEF0),
+                          ),
+                        ),
+                        Text(
+                          "'Just ask me, what's on your mind?",
+                          style: GoogleFonts.manrope(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 14,
+                            color: const Color(0xffB2B3BD),
+                          ),
+                        ),
                       ],
                     ),
                   );
                 }
-        
+
                 if (controller.isConnecting.value &&
                     controller.messages.isEmpty) {
                   return Container(
                     color: AppImages.primarycolor,
                     child: const Center(
-                        child: CircularProgressIndicator(
-                            color: Color(0xffEEEEF0))),
+                      child: CircularProgressIndicator(
+                        color: Color(0xffEEEEF0),
+                      ),
+                    ),
                   );
                 }
-        
+
                 return ListView.builder(
                   controller: scrollController,
                   padding: const EdgeInsets.only(top: 8, bottom: 8),
-                  itemCount: controller.messages.length +
+                  itemCount:
+                      controller.messages.length +
                       (controller.isAiTyping.value ? 1 : 0),
                   itemBuilder: (context, index) {
                     if (index == controller.messages.length) {
                       return _TypingBubble();
                     }
-                    return _MessageBubble(
-                        message: controller.messages[index]);
+                    return _MessageBubble(message: controller.messages[index]);
                   },
                 );
               }),
             ),
-        
+
             // ── Input row ─────────────────────────────────────
             Obx(() {
               final isRecording = controller.isRecording.value;
               final isTranscribing = controller.isTranscribing.value;
               final isUploadingImage = controller.isUploadingImage.value;
-        
+
               return Row(
                 children: [
                   // Image pick button
@@ -723,20 +755,25 @@ class RaiChatView extends GetView<RaiChatController> {
                                 width: 24,
                                 height: 24,
                                 child: CircularProgressIndicator(
-                                    strokeWidth: 2,
-                                    color: Color(0xffEEEEF0)),
+                                  strokeWidth: 2,
+                                  color: Color(0xffEEEEF0),
+                                ),
                               ),
                             ),
                           )
-                        : Image.asset(AppImages.imagepicking,
-                            height: Get.height * 0.07),
+                        : Image.asset(
+                            AppImages.imagepicking,
+                            height: Get.height * 0.07,
+                          ),
                   ),
-        
+
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
                       color: isRecording
-                          ? const Color(0xff3A1A1A) // dark red tint when recording
+                          ? const Color(
+                              0xff3A1A1A,
+                            ) // dark red tint when recording
                           : const Color(0xff222325),
                     ),
                     height: Get.height * 0.07,
@@ -750,44 +787,56 @@ class RaiChatView extends GetView<RaiChatController> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      const Icon(Icons.fiber_manual_record,
-                                          color: Colors.red, size: 12),
+                                      const Icon(
+                                        Icons.fiber_manual_record,
+                                        color: Colors.red,
+                                        size: 12,
+                                      ),
                                       const SizedBox(width: 6),
-                                      Text('Recording...',
-                                          style: GoogleFonts.manrope(
-                                              fontSize: 14,
-                                              color: const Color(0xffEEEEF0))),
+                                      Text(
+                                        'Recording...',
+                                        style: GoogleFonts.manrope(
+                                          fontSize: 14,
+                                          color: const Color(0xffEEEEF0),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 )
                               : isTranscribing
-                                  ? Center(
-                                      child: Text('Transcribing...',
-                                          style: GoogleFonts.manrope(
-                                              fontSize: 14,
-                                              color: const Color(0xffB2B3BD))),
-                                    )
-                                  : TextFormField(
-                                      controller: textController,
-                                      cursorColor: Colors.white,
-                                      style: const TextStyle(color: Colors.white),
-                                      enabled: !controller.isSending.value,
-                                      decoration: InputDecoration(
-                                        contentPadding:
-                                            const EdgeInsets.only(left: 15),
-                                        hint: Center(
-                                          child: Text('Type message here...',
-                                              style: GoogleFonts.manrope(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 14,
-                                                  color:
-                                                      const Color(0xffB2B3BD))),
+                              ? Center(
+                                  child: Text(
+                                    'Transcribing...',
+                                    style: GoogleFonts.manrope(
+                                      fontSize: 14,
+                                      color: const Color(0xffB2B3BD),
+                                    ),
+                                  ),
+                                )
+                              : TextFormField(
+                                  controller: textController,
+                                  cursorColor: Colors.white,
+                                  style: const TextStyle(color: Colors.white),
+                                  enabled: !controller.isSending.value,
+                                  decoration: InputDecoration(
+                                    contentPadding: const EdgeInsets.only(
+                                      left: 15,
+                                    ),
+                                    hint: Center(
+                                      child: Text(
+                                        'Type message here...',
+                                        style: GoogleFonts.manrope(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 14,
+                                          color: const Color(0xffB2B3BD),
                                         ),
-                                        border: InputBorder.none,
                                       ),
                                     ),
+                                    border: InputBorder.none,
+                                  ),
+                                ),
                         ),
-        
+
                         // Send button
                         GestureDetector(
                           onTap: controller.isSending.value
@@ -799,19 +848,23 @@ class RaiChatView extends GetView<RaiChatController> {
                           child: controller.isSending.value
                               ? Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 8),
+                                    horizontal: 8,
+                                  ),
                                   child: SizedBox(
                                     width: Get.height * 0.03,
                                     height: Get.height * 0.03,
                                     child: const CircularProgressIndicator(
-                                        strokeWidth: 2,
-                                        color: Color(0xffEEEEF0)),
+                                      strokeWidth: 2,
+                                      color: Color(0xffEEEEF0),
+                                    ),
                                   ),
                                 )
-                              : Image.asset(AppImages.sendbutton,
-                                  height: Get.height * 0.045),
+                              : Image.asset(
+                                  AppImages.sendbutton,
+                                  height: Get.height * 0.045,
+                                ),
                         ),
-        
+
                         // Mic button — tap to start/stop recording
                         GestureDetector(
                           onTap: isTranscribing
@@ -820,25 +873,32 @@ class RaiChatView extends GetView<RaiChatController> {
                           child: isTranscribing
                               ? Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 4),
+                                    horizontal: 4,
+                                  ),
                                   child: SizedBox(
                                     width: Get.height * 0.03,
                                     height: Get.height * 0.03,
                                     child: const CircularProgressIndicator(
-                                        strokeWidth: 2,
-                                        color: Color(0xffEEEEF0)),
+                                      strokeWidth: 2,
+                                      color: Color(0xffEEEEF0),
+                                    ),
                                   ),
                                 )
                               : isRecording
-                                  ? Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 4),
-                                      child: Icon(Icons.stop_circle,
-                                          color: Colors.red,
-                                          size: Get.height * 0.04),
-                                    )
-                                  : Image.asset(AppImages.micIcon,
-                                      height: Get.height * 0.05),
+                              ? Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 4,
+                                  ),
+                                  child: Icon(
+                                    Icons.stop_circle,
+                                    color: Colors.red,
+                                    size: Get.height * 0.04,
+                                  ),
+                                )
+                              : Image.asset(
+                                  AppImages.micIcon,
+                                  height: Get.height * 0.05,
+                                ),
                         ),
                       ],
                     ),
@@ -846,18 +906,13 @@ class RaiChatView extends GetView<RaiChatController> {
                 ],
               );
             }),
-        // SizedBox(height: MediaQuery.of(context).viewInsets.bottom > 0
-        //     ? MediaQuery.of(context).viewInsets.bottom
-        //     : Get.height * 0.02),
-            const Expanded(child: SizedBox()),
+            SizedBox(height: MediaQuery.of(context).viewInsets.bottom),
           ],
         ),
       ),
     );
   }
 }
-
-
 
 // ── History Bottom Sheet ──────────────────────────────────────
 class _HistorySheet extends StatelessWidget {
@@ -887,16 +942,18 @@ class _HistorySheet extends StatelessWidget {
 
           // Header
           Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Chat History',
-                    style: GoogleFonts.manrope(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                        color: const Color(0xffEEEEF0))),
+                Text(
+                  'Chat History',
+                  style: GoogleFonts.manrope(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 18,
+                    color: const Color(0xffEEEEF0),
+                  ),
+                ),
                 GestureDetector(
                   onTap: () {
                     Get.back();
@@ -904,14 +961,16 @@ class _HistorySheet extends StatelessWidget {
                   },
                   child: Row(
                     children: [
-                      const Icon(Icons.add,
-                          color: Color(0xffEEEEF0), size: 18),
+                      const Icon(Icons.add, color: Color(0xffEEEEF0), size: 18),
                       const SizedBox(width: 4),
-                      Text('New Chat',
-                          style: GoogleFonts.manrope(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              color: const Color(0xffEEEEF0))),
+                      Text(
+                        'New Chat',
+                        style: GoogleFonts.manrope(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                          color: const Color(0xffEEEEF0),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -926,14 +985,18 @@ class _HistorySheet extends StatelessWidget {
             child: Obx(() {
               if (controller.isLoadingHistory.value) {
                 return const Center(
-                    child: CircularProgressIndicator(
-                        color: Color(0xffEEEEF0)));
+                  child: CircularProgressIndicator(color: Color(0xffEEEEF0)),
+                );
               }
               if (controller.conversations.isEmpty) {
                 return Center(
-                  child: Text('No conversations yet',
-                      style: GoogleFonts.manrope(
-                          color: const Color(0xffB2B3BD), fontSize: 14)),
+                  child: Text(
+                    'No conversations yet',
+                    style: GoogleFonts.manrope(
+                      color: const Color(0xffB2B3BD),
+                      fontSize: 14,
+                    ),
+                  ),
                 );
               }
               return ListView.separated(
@@ -945,11 +1008,16 @@ class _HistorySheet extends StatelessWidget {
                   final conv = controller.conversations[i];
                   return Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 4),
+                      horizontal: 20,
+                      vertical: 4,
+                    ),
                     child: Row(
                       children: [
-                        const Icon(Icons.chat_bubble_outline,
-                            color: Color(0xffB2B3BD), size: 18),
+                        const Icon(
+                          Icons.chat_bubble_outline,
+                          color: Color(0xffB2B3BD),
+                          size: 18,
+                        ),
                         const SizedBox(width: 12),
 
                         // Title + date
@@ -962,18 +1030,23 @@ class _HistorySheet extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(conv.title,
-                                    style: GoogleFonts.manrope(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 14,
-                                        color: const Color(0xffEEEEF0)),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis),
                                 Text(
-                                    controller.formatConvDate(conv.updatedAt),
-                                    style: GoogleFonts.manrope(
-                                        fontSize: 11,
-                                        color: const Color(0xff666770))),
+                                  conv.title,
+                                  style: GoogleFonts.manrope(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14,
+                                    color: const Color(0xffEEEEF0),
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                Text(
+                                  controller.formatConvDate(conv.updatedAt),
+                                  style: GoogleFonts.manrope(
+                                    fontSize: 11,
+                                    color: const Color(0xff666770),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -981,12 +1054,14 @@ class _HistorySheet extends StatelessWidget {
 
                         // Delete icon
                         GestureDetector(
-                          onTap: () =>
-                              controller.deleteConversation(conv.id),
+                          onTap: () => controller.deleteConversation(conv.id),
                           child: const Padding(
                             padding: EdgeInsets.all(8),
-                            child: Icon(Icons.delete_outline,
-                                color: Colors.red, size: 20),
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Colors.red,
+                              size: 20,
+                            ),
                           ),
                         ),
                       ],
@@ -1030,19 +1105,28 @@ class _MessageBubble extends StatelessWidget {
                 width: 40,
                 height: 14,
                 child: LinearProgressIndicator(
-                    backgroundColor: Colors.transparent,
-                    color: Color(0xffEEEEF0)))
+                  backgroundColor: Colors.transparent,
+                  color: Color(0xffEEEEF0),
+                ),
+              )
             : message.imageUrl != null
-                // Show image if present
-                ? ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.network(message.imageUrl!,
-                        width: Get.width * 0.6, fit: BoxFit.cover))
-                : Text(message.text,
-                    style: GoogleFonts.manrope(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xffEEEEF0))),
+            // Show image if present
+            ? ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.network(
+                  message.imageUrl!,
+                  width: Get.width * 0.6,
+                  fit: BoxFit.cover,
+                ),
+              )
+            : Text(
+                message.text,
+                style: GoogleFonts.manrope(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: const Color(0xffEEEEF0),
+                ),
+              ),
       ),
     );
   }
@@ -1069,8 +1153,9 @@ class _TypingBubble extends StatelessWidget {
           width: 40,
           height: 14,
           child: LinearProgressIndicator(
-              backgroundColor: Colors.transparent,
-              color: Color(0xffEEEEF0)),
+            backgroundColor: Colors.transparent,
+            color: Color(0xffEEEEF0),
+          ),
         ),
       ),
     );

@@ -261,6 +261,7 @@ class ConversationModel {
 }
 
 class RaiChatController extends GetxController {
+  RxDouble secheight=7.0.obs;
   // ── Observables ──────────────────────────────────────────
   final messages = <ChatMessage>[].obs;
   final isConnecting = true.obs;

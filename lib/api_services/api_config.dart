@@ -4,4 +4,5 @@ class ApiConfig {
   static const String verifyotp='/api/auth/signup/verify/';
   static const String login='/api/auth/login/';
   static const String getprofile='/api/auth/profile/';
+  static const String forgotpassotprequest='/api/auth/password-reset/request/';
 }

@@ -34,8 +34,8 @@ class LogInController extends GetxController {
       final storage = GetStorage();
       final accessToken = response['data']['access'];
       await storage.write('token', accessToken);
-      final token=storage.read('token');
-        final response2 = await ApiService.get(
+      final token = storage.read('token');
+      final response2 = await ApiService.get(
         endpoint: ApiConfig.getprofile,
         headers: {'Authorization': 'Bearer $token'},
       );

@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:rai/modules/community/community_controller.dart';
 import 'package:rai/modules/home/home_controller.dart';
 import 'package:rai/modules/main_screen/main_screen_controller.dart';
+import 'package:rai/modules/rai_chat/rai_chat_controller.dart';
 import 'package:rai/modules/rais_picks/rais_pics_controller.dart';
 
 class MainScreenBinding extends Bindings{
@@ -11,5 +12,6 @@ class MainScreenBinding extends Bindings{
     Get.lazyPut<CommunityController>(() => CommunityController());
     Get.lazyPut<RaisPicsController>(() => RaisPicsController(),);
      Get.lazyPut<HomeController>(()=>HomeController());
+     Get.lazyPut<RaiChatController>(()=>RaiChatController());
   }
 }

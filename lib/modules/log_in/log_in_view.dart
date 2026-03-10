@@ -101,8 +101,10 @@ class LogInView extends GetView<LogInController> {
               GestureDetector(
                // onTap: () => Get.offAllNamed(AppPages.mainscreen),
                onTap: () => controller.login(),
-                child: Obx(() => controller.isLoading.value?CircularProgressIndicator(
-                  color: Colors.white,
+                child: Obx(() => controller.isLoading.value?Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                  ),
                 ):CommonButton(tittle: 'Sign In'),)),
               SizedBox(height:Get.height*0.02 ,),
               Row(

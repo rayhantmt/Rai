@@ -18,6 +18,10 @@
 	<string>APPL</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We need access to your photo library to allow you to upload images.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+    <string>Rai needs access to send image for transcription images.</string>
+	<key>NSMicrophoneUsageDescription</key>
+    <string>Rai needs microphone to record voice messages</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>

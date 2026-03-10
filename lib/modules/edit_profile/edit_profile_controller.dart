@@ -77,7 +77,7 @@ Future<void> updateProfile() async {
       print('Data: ${response.data}');
       // --- PRINT RESPONSE END ---
 
-      Get.snackbar('Success', 'User Created Successfully log in now');
+      Get.snackbar('Info updated Successfully ', 'Log out and log in to the app to see the updates');
       //Get.toNamed(AppPages.login);
     } on BadRequestException catch (e) {
       // Caught by our custom DioClient logic

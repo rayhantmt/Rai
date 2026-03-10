@@ -114,19 +114,23 @@ class VerificationPageView extends GetView<VerificationPageContorller> {
 }
 
 Widget EmailSignup() {
+  final cntroller=Get.find<VerificationPageContorller>();
   return SingleChildScrollView(
     child: Column(
       children: [
         SizedBox(height: Get.height * 0.03),
         Commontextfield(
+          controller: cntroller.emailcontroller,
           tittle: 'Email',
           hint: 'Enter valid email address',
           obsecuretext: false,
         ),
         SizedBox(height: Get.height * 0.03),
         GestureDetector(
-          onTap: () => Get.toNamed(AppPages.emailotpfp),
-          child: CommonButton(tittle: 'Continue'),
+         onTap: () => cntroller.requestOtp(),
+          child: Obx(() => cntroller.isLoading.value?CircularProgressIndicator(
+            color: Colors.white,
+          ):CommonButton(tittle: 'Continue')),
         ),
         SizedBox(height: Get.height * 0.03),
         // Row(

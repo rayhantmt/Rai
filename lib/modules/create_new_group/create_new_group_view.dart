@@ -1,11 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/common_widgets/common_button.dart';
 import 'package:rai/common_widgets/common_textfield.dart';
+import 'package:rai/modules/create_new_group/create_new_group_controller.dart';
 import 'package:rai/utils/app_images.dart';
 
-class CreateNewGroupView extends StatelessWidget {
+class CreateNewGroupView extends GetView<CreateNewGroupController> {
   const CreateNewGroupView({super.key});
 
   @override
@@ -39,19 +42,28 @@ class CreateNewGroupView extends StatelessWidget {
                 ],
               ),
               SizedBox(height: Get.height * 0.04),
-              CircleAvatar(
-                radius: 80,
-                backgroundImage: NetworkImage(
-                  'https://i.pravatar.cc/150?img=12',
+              Obx(
+                () => CircleAvatar(
+                  radius: 80,
+                  backgroundColor: Color(0xffB2B3BD),
+                  backgroundImage: controller.profileImage.value != null
+                      ? FileImage(File(controller.profileImage.value!.path))
+                      : null,
+                  child: controller.profileImage.value == null
+                      ? Icon(Icons.person, size: 60, color: Colors.white)
+                      : null,
                 ),
               ),
               SizedBox(height: Get.height * 0.03),
-              Text(
-                'Upload Group Photo',
-                style: GoogleFonts.manrope(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16,
-                  color: Color(0xffEEEEF0),
+              GestureDetector(
+                onTap: () => controller.pickProfileImage(),
+                child: Text(
+                  'Upload Group Photo',
+                  style: GoogleFonts.manrope(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16,
+                    color: Color(0xffEEEEF0),
+                  ),
                 ),
               ),
               SizedBox(height: Get.height * 0.02),
@@ -62,6 +74,7 @@ class CreateNewGroupView extends StatelessWidget {
                 color: Color(0xff393A40),
               ),
               Commontextfield(
+                controller: controller.namecontroller,
                 tittle: 'Group Name',
                 hint: 'Write group name',
                 obsecuretext: false,
@@ -88,23 +101,24 @@ class CreateNewGroupView extends StatelessWidget {
                 ),
                 child: TextFormField(
                   
+                  controller: controller.descriptioncontroller,
                   decoration: InputDecoration(
-                    
+                    contentPadding: EdgeInsets.only(left: 10),
                     border: InputBorder.none,
-                    hint: Text('Write short description here....',
-                    style: GoogleFonts.manrope( 
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                      color: Color(0xff6C6E79)
+                    hint: Text(
+                      'Write short description here....',
+                      style: GoogleFonts.manrope(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                        color: Color(0xff6C6E79),
+                      ),
                     ),
-                    )
                   ),
-                   style: GoogleFonts.inter(
+                  style: GoogleFonts.inter(
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
                     color: Colors.white,
                   ),
-                  
                 ),
               ),
               Row(
@@ -118,11 +132,18 @@ class CreateNewGroupView extends StatelessWidget {
                       color: Color(0xffEEEEF0),
                     ),
                   ),
-                  Switch(value: true, onChanged: (value) => {}),
+                  Obx(
+                    () => Switch(
+                      value: controller.isPrivate.value,
+                      onChanged: controller.private,
+                    ),
+                  ),
                 ],
               ),
               SizedBox(height: Get.height * 0.06),
-              CommonButton(tittle: 'Create Group'),
+              GestureDetector(
+                onTap: () => controller.createGroup(),
+                child: Obx(() => controller.isLoading.value?CircularProgressIndicator(color: Colors.white,):CommonButton(tittle: 'Create Group'),))
             ],
           ),
         ),

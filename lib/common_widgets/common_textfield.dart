@@ -43,6 +43,7 @@ class Commontextfield extends StatelessWidget {
             style: GoogleFonts.inter(color: Colors.white),
             obscureText: obsecuretext,
             decoration: InputDecoration(
+              contentPadding: EdgeInsets.only(left: 10),
               border: InputBorder.none,
               suffix: suffix,
               hint: Padding(

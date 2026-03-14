@@ -303,25 +303,10 @@ class RaiChatController extends GetxController {
 
   Future<void> _startRecording() async {
     final micStatus = await Permission.microphone.request();
-
-    // iOS returns .limited sometimes — treat it as granted
-    // if (!micStatus.isGranted && !micStatus.isLimited) {
-    //   if (micStatus.isPermanentlyDenied) {
-    //     openAppSettings();
-    //     // User denied permanently — send them to settings
-    //     print('Permission Denied permanently');
-
-    //   } else {
-    //     Get.snackbar('Permission denied', 'Please allow microphone access');
-    //   }
-    //   return;
-    // }
-
     if (!_recorderInitialized) {
       Get.snackbar('Error', 'Recorder not ready');
       return;
     }
-
     final tempDir = Directory.systemTemp;
     _recordingPath =
         '${tempDir.path}/rai_audio_${DateTime.now().millisecondsSinceEpoch}.aac';

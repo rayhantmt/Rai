@@ -30,14 +30,6 @@ class HomeView extends GetView<HomeController> {
             SizedBox(height: Get.height * 0.02),
             Row(
               children: [
-                // ClipRRect(
-                //   // borderRadius: BorderRadiusGeometry.circular(9),
-                //   child: Image.network(
-                //    controller.profileimage,
-                //     height: Get.height * 0.1,
-                //     width: Get.width * 0.2,
-                //   ),
-                // ),
                 CircleAvatar(
                   maxRadius: 35,
                   backgroundImage: NetworkImage(controller.profileimage),

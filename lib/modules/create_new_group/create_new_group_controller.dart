@@ -7,9 +7,11 @@ import 'package:image_picker/image_picker.dart';
 import 'package:rai/api_services/api_config.dart';
 import 'package:rai/api_services/doi_services.dart';
 import 'package:rai/exceptions/app_exceptions.dart';
+import 'package:rai/modules/community/community_controller.dart';
 import 'package:rai/utils/app_pages.dart';
 
 class CreateNewGroupController extends GetxController {
+  final controller=Get.find<CommunityController>();
   RxBool isPrivate = true.obs;
   void private(bool b) {
     isPrivate.value = b;
@@ -82,7 +84,8 @@ class CreateNewGroupController extends GetxController {
       // --- PRINT RESPONSE END ---
 
       Get.snackbar('Success', 'Group Created Successfully');
-      Get.toNamed(AppPages.community);
+      controller.fetchCommunities();
+      Get.toNamed(AppPages.mainscreen);
     } on BadRequestException catch (e) {
       // Caught by our custom DioClient logic
       Get.snackbar('Registration Failed', e.toString());

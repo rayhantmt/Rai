@@ -777,7 +777,7 @@ class RaiChatView extends GetView<RaiChatController> {
                           : const Color(0xff222325),
                     ),
                     height: Get.height * 0.07,
-                    width: Get.width * 0.745,
+                    width: Get.width * 0.72,
                     child: Row(
                       children: [
                         // Text field — hidden while recording

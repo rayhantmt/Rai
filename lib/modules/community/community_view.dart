@@ -40,7 +40,7 @@ class CommunityView extends GetView<CommunityController> {
                     ),
                   ),
                   //SizedBox(height: Get.height * 0.02),
-                  ListView.builder(
+                Obx(() => controller.isLoading.value?CircularProgressIndicator(color: Colors.white,):  ListView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     itemCount: controller.communities.length,
@@ -90,7 +90,7 @@ class CommunityView extends GetView<CommunityController> {
                         ),
                       ),
                     ),
-                  ),
+                  ),)
                 ],
               ),
             ),

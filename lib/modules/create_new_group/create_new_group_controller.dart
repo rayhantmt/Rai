@@ -10,10 +10,11 @@ import 'package:rai/exceptions/app_exceptions.dart';
 import 'package:rai/utils/app_pages.dart';
 
 class CreateNewGroupController extends GetxController {
-   RxBool isPrivate=true.obs;
-  void private(bool b){
-    isPrivate.value=b;
+  RxBool isPrivate = true.obs;
+  void private(bool b) {
+    isPrivate.value = b;
   }
+
   final ImagePicker _picker = ImagePicker();
   final DioClient _client = DioClient();
 
@@ -33,12 +34,13 @@ class CreateNewGroupController extends GetxController {
       Get.snackbar('Error', 'Failed to pick profile image: $e');
     }
   }
-final namecontroller=TextEditingController();
-final descriptioncontroller=TextEditingController();
+
+  final namecontroller = TextEditingController();
+  final descriptioncontroller = TextEditingController();
   RxBool isLoading = false.obs;
   Future<void> createGroup() async {
-      final storage = GetStorage();
-      final token = storage.read('token');
+    final storage = GetStorage();
+    final token = storage.read('token');
     isLoading.value = true;
 
     try {
@@ -48,9 +50,9 @@ final descriptioncontroller=TextEditingController();
           filename: profileImage.value!.name,
           contentType: MediaType('image', 'png'),
         ),
-        'name':namecontroller.text,
-        'description':descriptioncontroller.text,
-        'is_private':isPrivate.value
+        'name': namecontroller.text,
+        'description': descriptioncontroller.text,
+        'is_private': isPrivate.value,
       });
 
       // --- PRINT REQUEST BODY START ---
@@ -70,7 +72,7 @@ final descriptioncontroller=TextEditingController();
       final response = await _client.postFormData(
         url: '${ApiConfig.baseUrl}/api/community/',
         data: formData,
-         headers: {'Authorization': 'Bearer $token'},
+        headers: {'Authorization': 'Bearer $token'},
       );
 
       // --- PRINT RESPONSE START ---

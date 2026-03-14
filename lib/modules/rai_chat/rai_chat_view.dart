@@ -1092,7 +1092,7 @@ class _MessageBubble extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
         constraints: BoxConstraints(maxWidth: Get.width * 0.75),
         decoration: BoxDecoration(
-          color: isAi ? const Color(0xff2C2D30) : const Color(0xff4A90E2),
+          color: isAi ? AppImages.primarycolor : const Color(0xff222325),
           borderRadius: BorderRadius.only(
             topLeft: const Radius.circular(16),
             topRight: const Radius.circular(16),

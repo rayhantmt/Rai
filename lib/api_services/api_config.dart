@@ -6,4 +6,5 @@ class ApiConfig {
   static const String getprofile='/api/auth/profile/';
   static const String forgotpassotprequest='/api/auth/password-reset/request/';
   static const String getcommunity='/api/community/';
+  static const String changePassword='/api/auth/password-change/';
 }

@@ -91,7 +91,7 @@ class AccountSettingsView extends GetView<AccountSettingsController> {
 }
 
 Widget _PersonalInfo() {
-  final controller=Get.find<AccountSettingsController>();
+  final controller = Get.find<AccountSettingsController>();
   return Column(
     children: [
       Container(
@@ -199,10 +199,11 @@ Widget _PersonalInfo() {
           ),
         ),
       ),
-      SizedBox(height: Get.height*0.02,),
+      SizedBox(height: Get.height * 0.02),
       GestureDetector(
         onTap: () => Get.toNamed(AppPages.editprofile),
-        child: CommonButton(tittle: 'Edit Profile')),
+        child: CommonButton(tittle: 'Edit Profile'),
+      ),
     ],
   );
 }
@@ -212,6 +213,7 @@ Widget _ChangePassword() {
   return Column(
     children: [
       Commontextfield(
+        controller: controller.oldpassword,
         tittle: 'Old Password',
         hint: 'Enter your old password',
         obsecuretext: controller.obsecured.value,
@@ -227,7 +229,8 @@ Widget _ChangePassword() {
           ),
         ),
       ),
-        Commontextfield(
+      Commontextfield(
+        controller: controller.newpassword,
         tittle: 'New Password',
         hint: 'Enter new password',
         obsecuretext: controller.obsecured.value,
@@ -243,7 +246,8 @@ Widget _ChangePassword() {
           ),
         ),
       ),
-        Commontextfield(
+      Commontextfield(
+        controller: controller.confirmpassword,
         tittle: 'Confirm new Password',
         hint: 'Re-type new password',
         obsecuretext: controller.obsecured.value,
@@ -259,8 +263,10 @@ Widget _ChangePassword() {
           ),
         ),
       ),
-      SizedBox(height: Get.height*0.1,),
-      CommonButton(tittle: 'Update Password')
+      SizedBox(height: Get.height * 0.1),
+      GestureDetector(
+        onTap: () => controller.changePassword(),
+        child: controller.isLoading.value?CircularProgressIndicator():CommonButton(tittle: 'Update Password')),
     ],
   );
 }

@@ -1,13 +1,17 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'package:dio/dio.dart';
 import 'package:flutter_sound/flutter_sound.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' hide FormData, MultipartFile;
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as path;
 import 'package:permission_handler/permission_handler.dart';
+import 'package:rai/api_services/api_config.dart';
+import 'package:rai/api_services/doi_services.dart';
+import 'package:rai/exceptions/app_exceptions.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:web_socket_channel/status.dart' as ws_status;
 
@@ -67,6 +71,7 @@ class ConversationModel {
 }
 
 class RaiChatController extends GetxController {
+    final DioClient _client = DioClient();
   RxDouble secheight=7.0.obs;
   // ── Observables ──────────────────────────────────────────
   final messages = <ChatMessage>[].obs;
@@ -234,8 +239,7 @@ class RaiChatController extends GetxController {
   // ── Image: pick → upload → send via WS ──────────────────
   Future<void> pickAndSendImage() async {
     try {
-      // iOS 14+ needs limited/full check differently
-      // Just go straight to picker — it handles permission internally
+      
       final picked = await _picker.pickImage(
         source: ImageSource.gallery,
         imageQuality: 85,
@@ -263,35 +267,151 @@ class RaiChatController extends GetxController {
     }
   }
 
-  Future<String?> _uploadImage(File file) async {
+  // Future<String?> _uploadImage(File file) async {
+  //   try {
+  //     final request = http.MultipartRequest(
+  //       'POST',
+  //       Uri.parse('$_baseApiUrl/api/ai/upload-image/'),
+  //     );
+  //     request.headers['Authorization'] = 'Bearer $_token';
+  //     request.files.add(
+  //       await http.MultipartFile.fromPath(
+  //         'image', // 🔴 field name — confirm with your backend
+  //         file.path,
+  //         filename: path.basename(file.path),
+  //       ),
+  //     );
+
+  //     final streamed = await request.send();
+  //     final res = await http.Response.fromStream(streamed);
+  //     print(res.body);
+
+  //     if (res.statusCode == 200 || res.statusCode == 201) {
+  //       final body = jsonDecode(res.body);
+  //       return body['id']?.toString() ?? body['image_id']?.toString();
+  //     }
+  //     return null;
+  //   } catch (e) {
+  //     return null;
+  //   }
+  // }
+  //RxBool isLoading=false.obs;
+// Future<void> updateProfile(File file) async {
+//   final token=GetStorage().read('token');
+//     isLoading.value = true;
+
+//     try {
+//       final formData = FormData.fromMap({
+//         'conversation_id': conversationId.toString(),
+        
+//         'image':  await http.MultipartFile.fromPath(
+//           'image', // 🔴 field name — confirm with your backend
+//           file.path,
+//           filename: path.basename(file.path),
+//         ),
+        
+//       });
+
+//       // --- PRINT REQUEST BODY START ---
+//       print('🚀 --- SENDING POST REQUEST ---');
+//       print('URL: ${ApiConfig.baseUrl}/api/ai/upload-image/');
+//       print('FIELDS:');
+//       for (var field in formData.fields) {
+//         print('  ${field.key}: ${field.value}');
+//       }
+//       print('FILES:');
+//       for (var file in formData.files) {
+//         print(
+//           '  ${file.key}: ${file.value.filename} (${file.value.contentType})',
+//         );
+//       }
+
+//       final response = await _client.putFormData(
+//         url: '${ApiConfig.baseUrl}/api/auth/profile/update/',
+//         data: formData,
+//          headers: {'Authorization': 'Bearer $token'},
+//       );
+
+//       // --- PRINT RESPONSE START ---
+//       print('✅ --- RESPONSE RECEIVED ---');
+//       print('Status Code: ${response.statusCode}');
+//       print('Data: ${response.data}');
+//       // --- PRINT RESPONSE END ---
+
+//       Get.snackbar('Info updated Successfully ', 'Log out and log in to the app to see the updates');
+//       //Get.toNamed(AppPages.login);
+//     } on BadRequestException catch (e) {
+//       // Caught by our custom DioClient logic
+//       Get.snackbar('Registration Failed', e.toString());
+//       print('❌ API Error:  $e');
+//     } on DioException catch (e) {
+//       // Catch generic Dio errors that might slip through
+//       Get.snackbar('Error', 'Network error: ${e.message}');
+//     } catch (e) {
+//       // Catch logic errors (like the one you were seeing)
+//       print('❌ Unexpected Error: $e');
+//       Get.snackbar('Error', 'Something went wrong: $e');
+//     } finally {
+//       isLoading.value = false;
+//     }
+//   }
+Future<String?> _uploadImage(File file) async {
+    final token = _storage.read('token') ?? '';
+    isUploadingImage.value = true;
+
     try {
-      final request = http.MultipartRequest(
-        'POST',
-        Uri.parse('$_baseApiUrl/api/ai/upload-image/'),
-      );
-      request.headers['Authorization'] = 'Bearer $_token';
-      request.files.add(
-        await http.MultipartFile.fromPath(
-          'image', // 🔴 field name — confirm with your backend
+      // 1. Prepare FormData (Including conversation_id)
+      final formData = FormData.fromMap({
+        'conversation_id': conversationId, // Uses the observable from the controller
+        'image': await MultipartFile.fromFile(
           file.path,
           filename: path.basename(file.path),
         ),
+      });
+
+      // --- PRINT REQUEST LOGS ---
+      print('🚀 --- SENDING IMAGE UPLOAD REQUEST ---');
+      print('URL: $_baseApiUrl/api/ai/upload-image/');
+      print('FIELDS: conversation_id: ${conversationId}');
+      print('FILES: ${path.basename(file.path)}');
+
+      // 2. Execute POST Request using your DioClient
+      // Using postFormData (assuming your client has this, similar to putFormData)
+      final response = await _client.postFormData(
+        url: '$_baseApiUrl/api/ai/upload-image/',
+        data: formData,
+        headers: {'Authorization': 'Bearer $token'},
       );
 
-      final streamed = await request.send();
-      final res = await http.Response.fromStream(streamed);
-      print(res.body);
+      // --- PRINT RESPONSE LOGS ---
+      print('✅ --- UPLOAD RESPONSE RECEIVED ---');
+      print('Status Code: ${response.statusCode}');
+      print('Data: ${response.data}');
 
-      if (res.statusCode == 200 || res.statusCode == 201) {
-        final body = jsonDecode(res.body);
-        return body['id']?.toString() ?? body['image_id']?.toString();
+      // 3. Handle successful response
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        // Dio usually returns data as a Map already
+        final data = response.data;
+        return data['id']?.toString() ?? data['image_id']?.toString();
       }
       return null;
-    } catch (e) {
+
+    } on BadRequestException catch (e) {
+      Get.snackbar('Upload Failed', e.toString());
+      print('❌ API Error: $e');
       return null;
+    } on DioException catch (e) {
+      Get.snackbar('Error', 'Network error: ${e.message}');
+      print('❌ Dio Error: ${e.response?.data ?? e.message}');
+      return null;
+    } catch (e) {
+      print('❌ Unexpected Error: $e');
+      Get.snackbar('Error', 'Something went wrong: $e');
+      return null;
+    } finally {
+      isUploadingImage.value = false;
     }
   }
-
   // ── Audio: record → stop → transcribe → send ────────────
   Future<void> toggleRecording() async {
     if (isRecording.value) {

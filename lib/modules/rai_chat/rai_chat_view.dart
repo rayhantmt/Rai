@@ -573,7 +573,6 @@ class RaiChatView extends GetView<RaiChatController> {
         ),
         child: Column(
           children: [
-            // ── Top bar ──────────────────────────────────────
             SizedBox(height: Get.height * 0.05),
             Row(
               children: [
@@ -583,8 +582,6 @@ class RaiChatView extends GetView<RaiChatController> {
                   width: Get.width * 0.2,
                 ),
                 const Expanded(child: SizedBox()),
-
-                // History icon
                 GestureDetector(
                   onTap: () {
                     controller.fetchConversations();

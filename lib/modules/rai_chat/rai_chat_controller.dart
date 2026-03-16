@@ -71,6 +71,7 @@ class ConversationModel {
 }
 
 class RaiChatController extends GetxController {
+  final isInputExpanded = false.obs;
   final DioClient _client = DioClient();
   RxDouble secheight = 7.0.obs;
 
@@ -90,7 +91,7 @@ class RaiChatController extends GetxController {
   // Image
   final isUploadingImage = false.obs;
   final selectedImagePath = ''.obs; // local path for preview in UI
-
+final inputText = ''.obs;
   // History
   final conversations = <ConversationModel>[].obs;
   final isLoadingHistory = false.obs;
@@ -268,6 +269,7 @@ class RaiChatController extends GetxController {
     } else {
       _channel!.sink.add(jsonEncode({'message': trimmed}));
     }
+    inputText.value = '';
   }
 
   /// Call this to discard the pending image without sending.
@@ -290,12 +292,12 @@ class RaiChatController extends GetxController {
 
       final imageId = await _uploadImage(File(picked.path));
 
-      if (imageId == null) {
-        Get.snackbar('Upload failed', 'Could not upload image');
-        selectedImagePath.value = '';
-        isUploadingImage.value = false;
-        return;
-      }
+      // if (imageId == null) {
+      //   Get.snackbar('Upload failed', 'Could not upload image');
+      //   selectedImagePath.value = '';
+      //   isUploadingImage.value = false;
+      //   return;
+      // }
 
       _pendingImageId = imageId; // hold until user taps send
       isUploadingImage.value = false;
@@ -489,6 +491,7 @@ class RaiChatController extends GetxController {
     chatTitle.value = '';
     _pendingImageId = null;
     selectedImagePath.value = '';
+
     _connect();
   }
 

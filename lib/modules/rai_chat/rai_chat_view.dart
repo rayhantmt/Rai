@@ -31,7 +31,7 @@
 //         padding: EdgeInsets.only(
 //           left: 20,
 //           right: 20,
-//           bottom: Get.height * 0.1, 
+//           bottom: Get.height * 0.1,
 //         ),
 //         child: Column(
 //           children: [
@@ -651,11 +651,7 @@ class RaiChatView extends GetView<RaiChatController> {
       resizeToAvoidBottomInset: false,
       backgroundColor: AppImages.primarycolor,
       body: Padding(
-        padding: EdgeInsets.only(
-          left: 20,
-          right: 20,
-          bottom: Get.height * 0.1,
-        ),
+        padding: EdgeInsets.only(left: 20, right: 20, bottom: Get.height * 0.1),
         child: Column(
           children: [
             SizedBox(height: Get.height * 0.05),
@@ -802,7 +798,8 @@ class RaiChatView extends GetView<RaiChatController> {
                 return ListView.builder(
                   controller: scrollController,
                   padding: const EdgeInsets.only(top: 8, bottom: 8),
-                  itemCount: controller.messages.length +
+                  itemCount:
+                      controller.messages.length +
                       (controller.isAiTyping.value ? 1 : 0),
                   itemBuilder: (context, index) {
                     if (index == controller.messages.length) {
@@ -826,8 +823,7 @@ class RaiChatView extends GetView<RaiChatController> {
 
               return Container(
                 margin: const EdgeInsets.only(bottom: 8),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
                 decoration: BoxDecoration(
                   color: const Color(0xff222325),
                   borderRadius: BorderRadius.circular(12),
@@ -866,7 +862,9 @@ class RaiChatView extends GetView<RaiChatController> {
                     // Label
                     Expanded(
                       child: Text(
-                        isUploading ? 'Uploading image…' : 'Image ready to send',
+                        isUploading
+                            ? 'Uploading image…'
+                            : 'Image ready to send',
                         style: GoogleFonts.manrope(
                           fontSize: 13,
                           color: const Color(0xffB2B3BD),
@@ -890,158 +888,418 @@ class RaiChatView extends GetView<RaiChatController> {
             }),
 
             // ── Input row ─────────────────────────────────────
+            //Obx(() {
+            //   final isRecording = controller.isRecording.value;
+            //   final isTranscribing = controller.isTranscribing.value;
+            //   final isUploadingImage = controller.isUploadingImage.value;
+
+            //   return Row(
+            //     children: [
+            //       // Image pick button
+            //       GestureDetector(
+            //         onTap:
+            //             isUploadingImage ? null : controller.pickAndSendImage,
+            //         child: isUploadingImage
+            //             ? SizedBox(
+            //                 height: Get.height * 0.07,
+            //                 width: Get.height * 0.07,
+            //                 child: const Center(
+            //                   child: SizedBox(
+            //                     width: 24,
+            //                     height: 24,
+            //                     child: CircularProgressIndicator(
+            //                       strokeWidth: 2,
+            //                       color: Color(0xffEEEEF0),
+            //                     ),
+            //                   ),
+            //                 ),
+            //               )
+            //             : Image.asset(
+            //                 AppImages.imagepicking,
+            //                 height: Get.height * 0.07,
+            //               ),
+            //       ),
+
+            //       Container(
+            //         decoration: BoxDecoration(
+            //           borderRadius: BorderRadius.circular(100),
+            //           color: isRecording
+            //               ? const Color(0xff3A1A1A)
+            //               : const Color(0xff222325),
+            //         ),
+            //         height: Get.height * 0.07,
+            //         width: Get.width * 0.72,
+            //         child: Row(
+            //           children: [
+            //             // Text field — hidden while recording
+            //             Expanded(
+            //               child: isRecording
+            //                   ? Center(
+            //                       child: Row(
+            //                         mainAxisAlignment: MainAxisAlignment.center,
+            //                         children: [
+            //                           const Icon(
+            //                             Icons.fiber_manual_record,
+            //                             color: Colors.red,
+            //                             size: 12,
+            //                           ),
+            //                           const SizedBox(width: 6),
+            //                           Text(
+            //                             'Recording...',
+            //                             style: GoogleFonts.manrope(
+            //                               fontSize: 14,
+            //                               color: const Color(0xffEEEEF0),
+            //                             ),
+            //                           ),
+            //                         ],
+            //                       ),
+            //                     )
+            //                   : isTranscribing
+            //                       ? Center(
+            //                           child: Text(
+            //                             'Transcribing...',
+            //                             style: GoogleFonts.manrope(
+            //                               fontSize: 14,
+            //                               color: const Color(0xffB2B3BD),
+            //                             ),
+            //                           ),
+            //                         )
+            //                       : TextFormField(
+
+            //                         keyboardType: TextInputType.multiline,
+            //                         maxLines: 3,
+            //                           controller: textController,
+            //                           cursorColor: Colors.white,
+            //                           style:
+            //                               const TextStyle(color: Colors.white),
+            //                           enabled: !controller.isSending.value,
+            //                           decoration: InputDecoration(
+            //                             contentPadding:
+            //                                 const EdgeInsets.only(left: 15,bottom: 10),
+            //                             hint: Center(
+            //                               child: Text(
+            //                                 'Type message here...',
+            //                                 style: GoogleFonts.manrope(
+            //                                   fontWeight: FontWeight.w500,
+            //                                   fontSize: 14,
+            //                                   color: const Color(0xffB2B3BD),
+            //                                 ),
+            //                               ),
+            //                             ),
+            //                             border: InputBorder.none,
+            //                           ),
+            //                         ),
+            //             ),
+
+            //             // Send button
+            //             GestureDetector(
+            //               onTap: controller.isSending.value
+            //                   ? null
+            //                   : () {
+            //                       controller.sendMessage(textController.text);
+            //                       textController.clear();
+            //                     },
+            //               child: controller.isSending.value
+            //                   ? Padding(
+            //                       padding: const EdgeInsets.symmetric(
+            //                           horizontal: 8),
+            //                       child: SizedBox(
+            //                         width: Get.height * 0.03,
+            //                         height: Get.height * 0.03,
+            //                         child: const CircularProgressIndicator(
+            //                           strokeWidth: 2,
+            //                           color: Color(0xffEEEEF0),
+            //                         ),
+            //                       ),
+            //                     )
+            //                   : Image.asset(
+            //                       AppImages.sendbutton,
+            //                       height: Get.height * 0.045,
+            //                     ),
+            //             ),
+
+            //             // Mic button
+            //             GestureDetector(
+            //               onTap: isTranscribing
+            //                   ? null
+            //                   : controller.toggleRecording,
+            //               child: isTranscribing
+            //                   ? Padding(
+            //                       padding: const EdgeInsets.symmetric(
+            //                           horizontal: 4),
+            //                       child: SizedBox(
+            //                         width: Get.height * 0.03,
+            //                         height: Get.height * 0.03,
+            //                         child: const CircularProgressIndicator(
+            //                           strokeWidth: 2,
+            //                           color: Color(0xffEEEEF0),
+            //                         ),
+            //                       ),
+            //                     )
+            //                   : isRecording
+            //                       ? Padding(
+            //                           padding: const EdgeInsets.symmetric(
+            //                               horizontal: 4),
+            //                           child: Icon(
+            //                             Icons.stop_circle,
+            //                             color: Colors.red,
+            //                             size: Get.height * 0.04,
+            //                           ),
+            //                         )
+            //                       : Image.asset(
+            //                           AppImages.micIcon,
+            //                           height: Get.height * 0.05,
+            //                         ),
+            //             ),
+            //           ],
+            //         ),
+            //       ),
+            //     ],
+            //   );
+            // }),
+            // Replace your existing input row Obx block with this:
             Obx(() {
               final isRecording = controller.isRecording.value;
               final isTranscribing = controller.isTranscribing.value;
               final isUploadingImage = controller.isUploadingImage.value;
+              final isSending = controller.isSending.value;
+              final isExpanded = controller.isInputExpanded.value; // NEW
+
+              final showSend =
+                  controller.inputText.value.trim().isNotEmpty ||
+                  controller.selectedImagePath.value.isNotEmpty ||
+                  isSending;
 
               return Row(
                 children: [
-                  // Image pick button
+                  // ── + / collapse button ────────────────────────────
                   GestureDetector(
-                    onTap:
-                        isUploadingImage ? null : controller.pickAndSendImage,
-                    child: isUploadingImage
-                        ? SizedBox(
-                            height: Get.height * 0.07,
-                            width: Get.height * 0.07,
-                            child: const Center(
-                              child: SizedBox(
-                                width: 24,
-                                height: 24,
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 2,
-                                  color: Color(0xffEEEEF0),
-                                ),
-                              ),
-                            ),
-                          )
-                        : Image.asset(
-                            AppImages.imagepicking,
-                            height: Get.height * 0.07,
-                          ),
+                    onTap: () => controller.isInputExpanded.toggle(),
+                    child: AnimatedRotation(
+                      turns: isExpanded
+                          ? 0.125
+                          : 0, // 45° when open → looks like ×
+                      duration: const Duration(milliseconds: 200),
+                      child: Icon(
+                        Icons.add_circle_outline,
+                        size: Get.height * 0.045,
+                        color: const Color(0xffEEEEF0),
+                      ),
+                    ),
                   ),
 
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      color: isRecording
-                          ? const Color(0xff3A1A1A)
-                          : const Color(0xff222325),
-                    ),
-                    height: Get.height * 0.07,
-                    width: Get.width * 0.72,
-                    child: Row(
-                      children: [
-                        // Text field — hidden while recording
-                        Expanded(
-                          child: isRecording
-                              ? Center(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const Icon(
-                                        Icons.fiber_manual_record,
-                                        color: Colors.red,
-                                        size: 12,
-                                      ),
-                                      const SizedBox(width: 6),
-                                      Text(
-                                        'Recording...',
-                                        style: GoogleFonts.manrope(
-                                          fontSize: 14,
-                                          color: const Color(0xffEEEEF0),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              : isTranscribing
-                                  ? Center(
-                                      child: Text(
-                                        'Transcribing...',
-                                        style: GoogleFonts.manrope(
-                                          fontSize: 14,
-                                          color: const Color(0xffB2B3BD),
-                                        ),
-                                      ),
-                                    )
-                                  : TextFormField(
-                                    
-                                    keyboardType: TextInputType.multiline,
-                                    maxLines: 3,
-                                      controller: textController,
-                                      cursorColor: Colors.white,
-                                      style:
-                                          const TextStyle(color: Colors.white),
-                                      enabled: !controller.isSending.value,
-                                      decoration: InputDecoration(
-                                        contentPadding:
-                                            const EdgeInsets.only(left: 15,bottom: 10),
-                                        hint: Center(
-                                          child: Text(
-                                            'Type message here...',
-                                            style: GoogleFonts.manrope(
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 14,
-                                              color: const Color(0xffB2B3BD),
+                  // ── Image + Mic slide in when expanded ─────────────
+                  AnimatedSize(
+                    duration: const Duration(milliseconds: 200),
+                    curve: Curves.easeOut,
+                    child: isExpanded
+                        ? Row(
+                            children: [
+                              const SizedBox(width: 6),
+
+                              // Image pick
+                              GestureDetector(
+                                onTap: isUploadingImage
+                                    ? null
+                                    : controller.pickAndSendImage,
+                                child: isUploadingImage
+                                    ? SizedBox(
+                                        height: Get.height * 0.055,
+                                        width: Get.height * 0.055,
+                                        child: const Center(
+                                          child: SizedBox(
+                                            width: 22,
+                                            height: 22,
+                                            child: CircularProgressIndicator(
+                                              strokeWidth: 2,
+                                              color: Color(0xffEEEEF0),
                                             ),
                                           ),
                                         ),
-                                        border: InputBorder.none,
+                                      )
+                                    : Image.asset(
+                                        AppImages.imagepicking,
+                                        height: Get.height * 0.055,
+                                      ),
+                              ),
+
+                              const SizedBox(width: 4),
+
+                              // Mic — only shown here when panel is open AND no text/image
+                              if (!showSend)
+                                GestureDetector(
+                                  onTap: isTranscribing
+                                      ? null
+                                      : controller.toggleRecording,
+                                  child: isTranscribing
+                                      ? Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 4,
+                                          ),
+                                          child: SizedBox(
+                                            width: Get.height * 0.03,
+                                            height: Get.height * 0.03,
+                                            child:
+                                                const CircularProgressIndicator(
+                                                  strokeWidth: 2,
+                                                  color: Color(0xffEEEEF0),
+                                                ),
+                                          ),
+                                        )
+                                      : isRecording
+                                      ? Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 4,
+                                          ),
+                                          child: Icon(
+                                            Icons.stop_circle,
+                                            color: Colors.red,
+                                            size: Get.height * 0.045,
+                                          ),
+                                        )
+                                      : Image.asset(
+                                          AppImages.micIcon,
+                                          height: Get.height * 0.055,
+                                        ),
+                                ),
+
+                              const SizedBox(width: 4),
+                            ],
+                          )
+                        : const SizedBox(),
+                  ),
+
+                  // ── Text input pill ────────────────────────────────
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        color: isRecording
+                            ? const Color(0xff3A1A1A)
+                            : const Color(0xff222325),
+                      ),
+                      height: Get.height * 0.07,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: isRecording
+                                ? Center(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        const Icon(
+                                          Icons.fiber_manual_record,
+                                          color: Colors.red,
+                                          size: 12,
+                                        ),
+                                        const SizedBox(width: 6),
+                                        Text(
+                                          'Recording...',
+                                          style: GoogleFonts.manrope(
+                                            fontSize: 14,
+                                            color: const Color(0xffEEEEF0),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                : isTranscribing
+                                ? Center(
+                                    child: Text(
+                                      'Transcribing...',
+                                      style: GoogleFonts.manrope(
+                                        fontSize: 14,
+                                        color: const Color(0xffB2B3BD),
                                       ),
                                     ),
-                        ),
-
-                        // Send button
-                        GestureDetector(
-                          onTap: controller.isSending.value
-                              ? null
-                              : () {
-                                  controller.sendMessage(textController.text);
-                                  textController.clear();
-                                },
-                          child: controller.isSending.value
-                              ? Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 8),
-                                  child: SizedBox(
-                                    width: Get.height * 0.03,
-                                    height: Get.height * 0.03,
-                                    child: const CircularProgressIndicator(
-                                      strokeWidth: 2,
-                                      color: Color(0xffEEEEF0),
+                                  )
+                                : TextFormField(
+                                    controller: textController,
+                                    keyboardType: TextInputType.multiline,
+                                    maxLines: 3,
+                                    cursorColor: Colors.white,
+                                    style: const TextStyle(color: Colors.white),
+                                    enabled: !isSending,
+                                    onChanged: (v) =>
+                                        controller.inputText.value = v,
+                                    decoration: InputDecoration(
+                                      contentPadding: const EdgeInsets.only(
+                                        left: 15,
+                                        bottom: 10,
+                                      ),
+                                      hint: Center(
+                                        child: Text(
+                                          'Type message here...',
+                                          style: GoogleFonts.manrope(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 14,
+                                            color: const Color(0xffB2B3BD),
+                                          ),
+                                        ),
+                                      ),
+                                      border: InputBorder.none,
                                     ),
                                   ),
-                                )
-                              : Image.asset(
-                                  AppImages.sendbutton,
-                                  height: Get.height * 0.045,
-                                ),
-                        ),
+                          ),
 
-                        // Mic button
-                        GestureDetector(
-                          onTap: isTranscribing
-                              ? null
-                              : controller.toggleRecording,
-                          child: isTranscribing
-                              ? Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 4),
-                                  child: SizedBox(
-                                    width: Get.height * 0.03,
-                                    height: Get.height * 0.03,
-                                    child: const CircularProgressIndicator(
-                                      strokeWidth: 2,
-                                      color: Color(0xffEEEEF0),
-                                    ),
-                                  ),
-                                )
-                              : isRecording
+                          // ── Send OR Mic inside the pill ───────────
+                          if (showSend)
+                            // Send button / spinner
+                            GestureDetector(
+                              onTap: isSending
+                                  ? null
+                                  : () {
+                                      controller.sendMessage(
+                                        textController.text,
+                                      );
+                                      textController.clear();
+                                    },
+                              child: isSending
                                   ? Padding(
                                       padding: const EdgeInsets.symmetric(
-                                          horizontal: 4),
+                                        horizontal: 8,
+                                      ),
+                                      child: SizedBox(
+                                        width: Get.height * 0.03,
+                                        height: Get.height * 0.03,
+                                        child: const CircularProgressIndicator(
+                                          strokeWidth: 2,
+                                          color: Color(0xffEEEEF0),
+                                        ),
+                                      ),
+                                    )
+                                  : Image.asset(
+                                      AppImages.sendbutton,
+                                      height: Get.height * 0.045,
+                                    ),
+                            )
+                          else if (!isExpanded)
+                            // Mic inside pill — only when panel is collapsed
+                            // (when expanded, mic lives outside in the expanded panel)
+                            GestureDetector(
+                              onTap: isTranscribing
+                                  ? null
+                                  : controller.toggleRecording,
+                              child: isTranscribing
+                                  ? Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 4,
+                                      ),
+                                      child: SizedBox(
+                                        width: Get.height * 0.03,
+                                        height: Get.height * 0.03,
+                                        child: const CircularProgressIndicator(
+                                          strokeWidth: 2,
+                                          color: Color(0xffEEEEF0),
+                                        ),
+                                      ),
+                                    )
+                                  : isRecording
+                                  ? Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 4,
+                                      ),
                                       child: Icon(
                                         Icons.stop_circle,
                                         color: Colors.red,
@@ -1052,8 +1310,9 @@ class RaiChatView extends GetView<RaiChatController> {
                                       AppImages.micIcon,
                                       height: Get.height * 0.05,
                                     ),
-                        ),
-                      ],
+                            ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -1112,8 +1371,7 @@ class _HistorySheet extends StatelessWidget {
                   },
                   child: Row(
                     children: [
-                      const Icon(Icons.add,
-                          color: Color(0xffEEEEF0), size: 18),
+                      const Icon(Icons.add, color: Color(0xffEEEEF0), size: 18),
                       const SizedBox(width: 4),
                       Text(
                         'New Chat',
@@ -1157,7 +1415,9 @@ class _HistorySheet extends StatelessWidget {
                   final conv = controller.conversations[i];
                   return Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 4),
+                      horizontal: 20,
+                      vertical: 4,
+                    ),
                     child: Row(
                       children: [
                         const Icon(
@@ -1197,8 +1457,7 @@ class _HistorySheet extends StatelessWidget {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () =>
-                              controller.deleteConversation(conv.id),
+                          onTap: () => controller.deleteConversation(conv.id),
                           child: const Padding(
                             padding: EdgeInsets.all(8),
                             child: Icon(
@@ -1232,8 +1491,7 @@ class _MessageBubble extends StatelessWidget {
 
     // Determine if imageUrl is a local file path or a remote URL
     final imageUrl = message.imageUrl;
-    final bool isLocalFile =
-        imageUrl != null && !imageUrl.startsWith('http');
+    final bool isLocalFile = imageUrl != null && !imageUrl.startsWith('http');
 
     return Align(
       alignment: isAi ? Alignment.centerLeft : Alignment.centerRight,
@@ -1260,46 +1518,46 @@ class _MessageBubble extends StatelessWidget {
                 ),
               )
             : imageUrl != null
-                ? Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // ── Image (local or network) ──────────
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: isLocalFile
-                            ? Image.file(
-                                File(imageUrl),
-                                width: Get.width * 0.6,
-                                fit: BoxFit.cover,
-                              )
-                            : Image.network(
-                                imageUrl,
-                                width: Get.width * 0.6,
-                                fit: BoxFit.cover,
-                              ),
-                      ),
-                      // ── Optional caption ──────────────────
-                      if (message.text.isNotEmpty) ...[
-                        const SizedBox(height: 6),
-                        Text(
-                          message.text,
-                          style: GoogleFonts.manrope(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: const Color(0xffEEEEF0),
+            ? Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // ── Image (local or network) ──────────
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: isLocalFile
+                        ? Image.file(
+                            File(imageUrl),
+                            width: Get.width * 0.6,
+                            fit: BoxFit.cover,
+                          )
+                        : Image.network(
+                            imageUrl,
+                            width: Get.width * 0.6,
+                            fit: BoxFit.cover,
                           ),
-                        ),
-                      ],
-                    ],
-                  )
-                : Text(
-                    message.text,
-                    style: GoogleFonts.manrope(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: const Color(0xffEEEEF0),
-                    ),
                   ),
+                  // ── Optional caption ──────────────────
+                  if (message.text.isNotEmpty) ...[
+                    const SizedBox(height: 6),
+                    Text(
+                      message.text,
+                      style: GoogleFonts.manrope(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: const Color(0xffEEEEF0),
+                      ),
+                    ),
+                  ],
+                ],
+              )
+            : Text(
+                message.text,
+                style: GoogleFonts.manrope(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: const Color(0xffEEEEF0),
+                ),
+              ),
       ),
     );
   }

@@ -1,3 +1,4 @@
+
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -9,7 +10,6 @@ import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as path;
 import 'package:permission_handler/permission_handler.dart';
-import 'package:rai/api_services/api_config.dart';
 import 'package:rai/api_services/doi_services.dart';
 import 'package:rai/exceptions/app_exceptions.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
@@ -21,7 +21,7 @@ class ChatMessage {
   final bool isAi;
   final String status;
   final String createdAt;
-  final String? imageUrl; // for showing uploaded image in bubble
+  final String? imageUrl;
 
   ChatMessage({
     required this.id,
@@ -33,22 +33,22 @@ class ChatMessage {
   });
 
   factory ChatMessage.fromJson(Map<String, dynamic> json) => ChatMessage(
-    id: json['id'],
-    text: json['text'] ?? '',
-    isAi: json['is_ai'] ?? false,
-    status: json['status'] ?? 'completed',
-    createdAt: json['created_at'] ?? '',
-    imageUrl: json['image_url'],
-  );
+        id: json['id'],
+        text: json['text'] ?? '',
+        isAi: json['is_ai'] ?? false,
+        status: json['status'] ?? 'completed',
+        createdAt: json['created_at'] ?? '',
+        imageUrl: json['image_url'],
+      );
 
   ChatMessage copyWith({String? text, String? status}) => ChatMessage(
-    id: id,
-    text: text ?? this.text,
-    isAi: isAi,
-    status: status ?? this.status,
-    createdAt: createdAt,
-    imageUrl: imageUrl,
-  );
+        id: id,
+        text: text ?? this.text,
+        isAi: isAi,
+        status: status ?? this.status,
+        createdAt: createdAt,
+        imageUrl: imageUrl,
+      );
 }
 
 class ConversationModel {
@@ -71,8 +71,9 @@ class ConversationModel {
 }
 
 class RaiChatController extends GetxController {
-    final DioClient _client = DioClient();
-  RxDouble secheight=7.0.obs;
+  final DioClient _client = DioClient();
+  RxDouble secheight = 7.0.obs;
+
   // ── Observables ──────────────────────────────────────────
   final messages = <ChatMessage>[].obs;
   final isConnecting = true.obs;
@@ -88,7 +89,7 @@ class RaiChatController extends GetxController {
 
   // Image
   final isUploadingImage = false.obs;
-  final selectedImagePath = ''.obs; // local path preview
+  final selectedImagePath = ''.obs; // local path for preview in UI
 
   // History
   final conversations = <ConversationModel>[].obs;
@@ -102,6 +103,7 @@ class RaiChatController extends GetxController {
   bool _recorderInitialized = false;
   final _picker = ImagePicker();
   String? _recordingPath;
+  String? _pendingImageId; // upload result, waiting for user to tap send
 
   static const String _baseWsUrl =
       'wss://quicker-epistylar-barbie.ngrok-free.dev';
@@ -116,11 +118,10 @@ class RaiChatController extends GetxController {
     super.onInit();
     final existingId = Get.arguments?['conversation_id'] as String?;
     if (existingId != null) conversationId.value = existingId;
-    _initRecorder(); // ADD THIS
+    _initRecorder();
     _connect();
   }
 
-  // ADD this new method:
   Future<void> _initRecorder() async {
     await _recorder.openRecorder();
     _recorderInitialized = true;
@@ -130,8 +131,6 @@ class RaiChatController extends GetxController {
   void onClose() {
     _sub?.cancel();
     _channel?.sink.close(ws_status.normalClosure);
-    // REMOVE: _recorder.dispose();
-    // ADD:
     if (_recorderInitialized) _recorder.closeRecorder();
     super.onClose();
   }
@@ -180,12 +179,21 @@ class RaiChatController extends GetxController {
           conversationId.value = data['conversation_id'];
         }
         final msg = ChatMessage.fromJson(data['message']);
-        final idx = messages.indexWhere((m) => m.id == msg.id);
-        if (idx != -1) {
-          messages[idx] = msg;
+
+        // FIX: Replace the optimistic local bubble (id == -1) with the real
+        // server message when the server echoes back the user message.
+        final optimisticIdx = messages.indexWhere((m) => m.id == -1);
+        if (!msg.isAi && optimisticIdx != -1) {
+          messages[optimisticIdx] = msg;
         } else {
-          messages.add(msg);
+          final idx = messages.indexWhere((m) => m.id == msg.id);
+          if (idx != -1) {
+            messages[idx] = msg;
+          } else {
+            messages.add(msg);
+          }
         }
+
         if (!msg.isAi) isAiTyping.value = true;
         break;
 
@@ -224,22 +232,53 @@ class RaiChatController extends GetxController {
     }
   }
 
-  // ── Send text ────────────────────────────────────────────
+  // ── Send text / image ────────────────────────────────────
   void sendMessage(String text) {
     final trimmed = text.trim();
-    if (trimmed.isEmpty || isSending.value) return;
+    // allow send if there's text OR a pending image
+    if ((trimmed.isEmpty && _pendingImageId == null) || isSending.value) return;
     if (_channel == null) {
       Get.snackbar('Not connected', 'Please wait…');
       return;
     }
+
     isSending.value = true;
-    _channel!.sink.add(jsonEncode({'message': trimmed}));
+
+    if (_pendingImageId != null) {
+      // ── FIX: Add an optimistic local bubble so the image appears immediately
+      // on screen without waiting for the server echo.
+      messages.add(ChatMessage(
+        id: -1, // temporary id; replaced when server echoes back
+        text: trimmed,
+        isAi: false,
+        status: 'completed',
+        createdAt: DateTime.now().toIso8601String(),
+        imageUrl: selectedImagePath.value.isNotEmpty
+            ? selectedImagePath.value // local file path shown via Image.file
+            : null,
+      ));
+
+      _channel!.sink.add(jsonEncode({
+        'message': trimmed,
+        'image_id': _pendingImageId,
+      }));
+
+      _pendingImageId = null;
+      selectedImagePath.value = ''; // clear preview
+    } else {
+      _channel!.sink.add(jsonEncode({'message': trimmed}));
+    }
   }
 
-  // ── Image: pick → upload → send via WS ──────────────────
+  /// Call this to discard the pending image without sending.
+  void removePendingImage() {
+    _pendingImageId = null;
+    selectedImagePath.value = '';
+  }
+
+  // ── Image: pick → upload → wait for send ────────────────
   Future<void> pickAndSendImage() async {
     try {
-      
       final picked = await _picker.pickImage(
         source: ImageSource.gallery,
         imageQuality: 85,
@@ -250,152 +289,56 @@ class RaiChatController extends GetxController {
       isUploadingImage.value = true;
 
       final imageId = await _uploadImage(File(picked.path));
+
       if (imageId == null) {
         Get.snackbar('Upload failed', 'Could not upload image');
-        isUploadingImage.value = false;
         selectedImagePath.value = '';
+        isUploadingImage.value = false;
         return;
       }
 
+      _pendingImageId = imageId; // hold until user taps send
       isUploadingImage.value = false;
-      isSending.value = true;
-      _channel!.sink.add(jsonEncode({'message': '', 'image_id': imageId}));
-      selectedImagePath.value = '';
     } catch (e) {
       isUploadingImage.value = false;
-      Get.snackbar('Error', 'Could not send image');
+      selectedImagePath.value = '';
+      Get.snackbar('Error', 'Could not pick image');
     }
   }
 
-  // Future<String?> _uploadImage(File file) async {
-  //   try {
-  //     final request = http.MultipartRequest(
-  //       'POST',
-  //       Uri.parse('$_baseApiUrl/api/ai/upload-image/'),
-  //     );
-  //     request.headers['Authorization'] = 'Bearer $_token';
-  //     request.files.add(
-  //       await http.MultipartFile.fromPath(
-  //         'image', // 🔴 field name — confirm with your backend
-  //         file.path,
-  //         filename: path.basename(file.path),
-  //       ),
-  //     );
-
-  //     final streamed = await request.send();
-  //     final res = await http.Response.fromStream(streamed);
-  //     print(res.body);
-
-  //     if (res.statusCode == 200 || res.statusCode == 201) {
-  //       final body = jsonDecode(res.body);
-  //       return body['id']?.toString() ?? body['image_id']?.toString();
-  //     }
-  //     return null;
-  //   } catch (e) {
-  //     return null;
-  //   }
-  // }
-  //RxBool isLoading=false.obs;
-// Future<void> updateProfile(File file) async {
-//   final token=GetStorage().read('token');
-//     isLoading.value = true;
-
-//     try {
-//       final formData = FormData.fromMap({
-//         'conversation_id': conversationId.toString(),
-        
-//         'image':  await http.MultipartFile.fromPath(
-//           'image', // 🔴 field name — confirm with your backend
-//           file.path,
-//           filename: path.basename(file.path),
-//         ),
-        
-//       });
-
-//       // --- PRINT REQUEST BODY START ---
-//       print('🚀 --- SENDING POST REQUEST ---');
-//       print('URL: ${ApiConfig.baseUrl}/api/ai/upload-image/');
-//       print('FIELDS:');
-//       for (var field in formData.fields) {
-//         print('  ${field.key}: ${field.value}');
-//       }
-//       print('FILES:');
-//       for (var file in formData.files) {
-//         print(
-//           '  ${file.key}: ${file.value.filename} (${file.value.contentType})',
-//         );
-//       }
-
-//       final response = await _client.putFormData(
-//         url: '${ApiConfig.baseUrl}/api/auth/profile/update/',
-//         data: formData,
-//          headers: {'Authorization': 'Bearer $token'},
-//       );
-
-//       // --- PRINT RESPONSE START ---
-//       print('✅ --- RESPONSE RECEIVED ---');
-//       print('Status Code: ${response.statusCode}');
-//       print('Data: ${response.data}');
-//       // --- PRINT RESPONSE END ---
-
-//       Get.snackbar('Info updated Successfully ', 'Log out and log in to the app to see the updates');
-//       //Get.toNamed(AppPages.login);
-//     } on BadRequestException catch (e) {
-//       // Caught by our custom DioClient logic
-//       Get.snackbar('Registration Failed', e.toString());
-//       print('❌ API Error:  $e');
-//     } on DioException catch (e) {
-//       // Catch generic Dio errors that might slip through
-//       Get.snackbar('Error', 'Network error: ${e.message}');
-//     } catch (e) {
-//       // Catch logic errors (like the one you were seeing)
-//       print('❌ Unexpected Error: $e');
-//       Get.snackbar('Error', 'Something went wrong: $e');
-//     } finally {
-//       isLoading.value = false;
-//     }
-//   }
-Future<String?> _uploadImage(File file) async {
+  Future<String?> _uploadImage(File file) async {
     final token = _storage.read('token') ?? '';
     isUploadingImage.value = true;
 
     try {
-      // 1. Prepare FormData (Including conversation_id)
       final formData = FormData.fromMap({
-        'conversation_id': conversationId, // Uses the observable from the controller
+        'conversation_id': conversationId,
         'image': await MultipartFile.fromFile(
           file.path,
           filename: path.basename(file.path),
         ),
       });
 
-      // --- PRINT REQUEST LOGS ---
       print('🚀 --- SENDING IMAGE UPLOAD REQUEST ---');
       print('URL: $_baseApiUrl/api/ai/upload-image/');
       print('FIELDS: conversation_id: ${conversationId}');
       print('FILES: ${path.basename(file.path)}');
 
-      // 2. Execute POST Request using your DioClient
-      // Using postFormData (assuming your client has this, similar to putFormData)
       final response = await _client.postFormData(
         url: '$_baseApiUrl/api/ai/upload-image/',
         data: formData,
         headers: {'Authorization': 'Bearer $token'},
       );
 
-      // --- PRINT RESPONSE LOGS ---
       print('✅ --- UPLOAD RESPONSE RECEIVED ---');
       print('Status Code: ${response.statusCode}');
       print('Data: ${response.data}');
 
-      // 3. Handle successful response
       if (response.statusCode == 200 || response.statusCode == 201) {
-        // Dio usually returns data as a Map already
         final data = response.data;
         return data['id']?.toString() ?? data['image_id']?.toString();
       }
       return null;
-
     } on BadRequestException catch (e) {
       Get.snackbar('Upload Failed', e.toString());
       print('❌ API Error: $e');
@@ -412,6 +355,7 @@ Future<String?> _uploadImage(File file) async {
       isUploadingImage.value = false;
     }
   }
+
   // ── Audio: record → stop → transcribe → send ────────────
   Future<void> toggleRecording() async {
     if (isRecording.value) {
@@ -422,7 +366,7 @@ Future<String?> _uploadImage(File file) async {
   }
 
   Future<void> _startRecording() async {
-    final micStatus = await Permission.microphone.request();
+    await Permission.microphone.request();
     if (!_recorderInitialized) {
       Get.snackbar('Error', 'Recorder not ready');
       return;
@@ -432,13 +376,10 @@ Future<String?> _uploadImage(File file) async {
         '${tempDir.path}/rai_audio_${DateTime.now().millisecondsSinceEpoch}.aac';
 
     await _recorder.startRecorder(toFile: _recordingPath, codec: Codec.aacMP4);
-
     isRecording.value = true;
   }
 
   Future<void> _stopAndTranscribe() async {
-    // REMOVE: final filePath = await _recorder.stop();
-    // ADD:
     final filePath = await _recorder.stopRecorder();
     isRecording.value = false;
 
@@ -456,7 +397,7 @@ Future<String?> _uploadImage(File file) async {
         await http.MultipartFile.fromPath(
           'audio',
           filePath,
-          filename: 'audio.aac', // changed extension to match codec
+          filename: 'audio.aac',
         ),
       );
 
@@ -494,13 +435,12 @@ Future<String?> _uploadImage(File file) async {
       );
       if (res.statusCode == 200) {
         final body = jsonDecode(res.body);
-        final List data = body['data']; // ← was jsonDecode(res.body) directly
-        conversations.value = data
-            .map((e) => ConversationModel.fromJson(e))
-            .toList();
+        final List data = body['data'];
+        conversations.value =
+            data.map((e) => ConversationModel.fromJson(e)).toList();
       }
     } catch (e) {
-      print('fetchConversations error: $e'); // ← add this to see real error
+      print('fetchConversations error: $e');
       Get.snackbar('Error', 'Could not load history');
     } finally {
       isLoadingHistory.value = false;
@@ -508,7 +448,6 @@ Future<String?> _uploadImage(File file) async {
   }
 
   Future<void> loadConversation(String convId) async {
-    // 1. Fetch previous messages via REST
     try {
       final res = await http.get(
         Uri.parse('$_baseApiUrl/api/ai/conversations/$convId/messages/'),
@@ -518,11 +457,8 @@ Future<String?> _uploadImage(File file) async {
         final List data = jsonDecode(res.body);
         messages.value = data.map((m) => ChatMessage.fromJson(m)).toList();
       }
-    } catch (e) {
-      // proceed anyway, WS will also send chat_history
-    }
+    } catch (_) {}
 
-    // 2. Reconnect WebSocket to this conversation
     _sub?.cancel();
     await _channel?.sink.close(ws_status.normalClosure);
     conversationId.value = convId;
@@ -551,6 +487,8 @@ Future<String?> _uploadImage(File file) async {
     messages.clear();
     conversationId.value = '';
     chatTitle.value = '';
+    _pendingImageId = null;
+    selectedImagePath.value = '';
     _connect();
   }
 

@@ -1173,6 +1173,10 @@ class RaiChatView extends GetView<RaiChatController> {
                   Expanded(
                     child: Container(
                       decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 1,
+                          color: Colors.black,
+                        ),
                         borderRadius: BorderRadius.circular(100),
                         color: isRecording
                             ? const Color(0xff3A1A1A)

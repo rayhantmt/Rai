@@ -50,7 +50,8 @@ class CommunityView extends GetView<CommunityController> {
                         onTap: () => Get.toNamed(AppPages.communitychatdetails,arguments: {
                           'name':controller.communities[index].tittle,
                           'img':controller.communities[index].img,
-                          'member':controller.communities[index].members
+                          'member':controller.communities[index].members,
+                         'id':controller.communities[index].id,
                         }),
                         child: Container(
                           height: Get.height * 0.066,

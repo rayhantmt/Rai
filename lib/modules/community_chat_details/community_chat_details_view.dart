@@ -105,8 +105,11 @@ class CommunityChatDetailsView extends GetView<CommunityChatDetailsController> {
                           ),
                         ),
                       ),
-                      Image.asset(AppImages.sendbutton,
-                      height: Get.height*0.05,
+                      GestureDetector(
+                        onTap: () => controller.fetchdetails(),
+                        child: Image.asset(AppImages.sendbutton,
+                        height: Get.height*0.05,
+                        ),
                       ),
                       Image.asset(AppImages.micIcon,
                       height: Get.height*0.05,

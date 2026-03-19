@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,6 +16,7 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
     final String name = arg['name'];
     final String img = arg['img'];
     final String member = arg['member'];
+    final String bio=arg['bio'];
     return Scaffold(
       backgroundColor: AppImages.primarycolor,
       body: SingleChildScrollView(
@@ -94,7 +96,7 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
                           ),
                         ),
                         Text(
-                          'Smart bettors hang out here. Discuss picks, parlays, odds, and insights powered read more...',
+                          bio??'Some error',
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: GoogleFonts.manrope(

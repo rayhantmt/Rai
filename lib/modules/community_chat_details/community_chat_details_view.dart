@@ -36,6 +36,7 @@ class CommunityChatDetailsView extends GetView<CommunityChatDetailsController> {
                     'img':img,
                     'name':name,
                     'member':member,
+                    'bio':controller.communityDetails.value!.description
                   }),
                   child: Row(
                     children: [

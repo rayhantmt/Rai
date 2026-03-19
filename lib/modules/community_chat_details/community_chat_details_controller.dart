@@ -3,6 +3,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:rai/api_services/api_config.dart';
 import 'package:rai/api_services/api_services.dart';
 import 'package:rai/exceptions/app_exceptions.dart';
+import 'package:rai/modules/community_chat_details/community_chat_details_model.dart';
 
 class CommunityChatDetailsController extends GetxController {
   var id = ''.obs;
@@ -17,9 +18,11 @@ class CommunityChatDetailsController extends GetxController {
     final args = Get.arguments;
 
     id.value = args['id'];
+    fetchdetails();
   }
 
   RxBool isLoading = false.obs;
+  Rxn<CommunityChatDetailsModel> communityDetails = Rxn<CommunityChatDetailsModel>();
   Future<void> fetchdetails() async {
     isLoading.value = true;
     try {
@@ -30,6 +33,7 @@ class CommunityChatDetailsController extends GetxController {
         headers: {'Authorization': 'Bearer $token'},
       );
       print(response2);
+       communityDetails.value = CommunityChatDetailsModel.fromJson(response2['data']);
       //final storage = GetStorage();
       final data = response2['data'];
       print(data);

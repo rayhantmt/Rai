@@ -77,36 +77,41 @@ class LogInView extends GetView<LogInController> {
                       onChanged: (value) => controller.togglechekc(value),
                     ),
                   ),
-                  Text('Rememeber me',
-                  style: GoogleFonts.inter( 
-                    color: Color(0xffEEEEF0),
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
-                  ),
+                  Text(
+                    'Rememeber me',
+                    style: GoogleFonts.inter(
+                      color: Color(0xffEEEEF0),
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14,
+                    ),
                   ),
                   Expanded(child: SizedBox()),
                   GestureDetector(
                     onTap: () => Get.toNamed(AppPages.verificationpage),
-                    child: Text('Forgot Passord?',
-                    style: GoogleFonts.roboto( 
-                      fontWeight: FontWeight.w700,
-                      fontSize: 14,
-                      color: Color(0xffEEEEF0)
+                    child: Text(
+                      'Forgot Passord?',
+                      style: GoogleFonts.roboto(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 14,
+                        color: Color(0xffEEEEF0),
+                      ),
                     ),
-                    ),
-                  )
+                  ),
                 ],
               ),
-              SizedBox(height:Get.height*0.02 ,),
+              SizedBox(height: Get.height * 0.02),
               GestureDetector(
-              // onTap: () => Get.offAllNamed(AppPages.raichat),
-               onTap: () => controller.login(),
-                child: Obx(() => controller.isLoading.value?Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.white,
-                  ),
-                ):CommonButton(tittle: 'Sign In'),)),
-              SizedBox(height:Get.height*0.02 ,),
+                // onTap: () => Get.offAllNamed(AppPages.raichat),
+                onTap: () => controller.login(),
+                child: Obx(
+                  () => controller.isLoading.value
+                      ? Center(
+                          child: CircularProgressIndicator(color: Colors.white),
+                        )
+                      : CommonButton(tittle: 'Sign In'),
+                ),
+              ),
+              SizedBox(height: Get.height * 0.02),
               Row(
                 children: [
                   Expanded(
@@ -116,15 +121,15 @@ class LogInView extends GetView<LogInController> {
                       height: 10,
                       endIndent: 10,
                       indent: 10,
-                      
                     ),
                   ),
-                  Text('or',
-                  style: GoogleFonts.inter( 
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16,
-                    color: Color(0xffB2B3BD)
-                  ),
+                  Text(
+                    'or',
+                    style: GoogleFonts.inter(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                      color: Color(0xffB2B3BD),
+                    ),
                   ),
                   Expanded(
                     child: Divider(
@@ -133,42 +138,43 @@ class LogInView extends GetView<LogInController> {
                       height: 10,
                       endIndent: 10,
                       indent: 10,
-                      
                     ),
                   ),
                 ],
               ),
-               SizedBox(height:Get.height*0.02 ,),
-               Image.asset(AppImages.google),
-                SizedBox(height:Get.height*0.02 ,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Don't have an account?",
-                    style: GoogleFonts.inter( 
+              SizedBox(height: Get.height * 0.02),
+              Image.asset(AppImages.google),
+              SizedBox(height: Get.height * 0.02),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Don't have an account?",
+                    style: GoogleFonts.inter(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
-                      color: Color(0xffB2B3BD)
+                      color: Color(0xffB2B3BD),
                     ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: Get.height*0.02,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap:  () => Get.toNamed(AppPages.page),
-                      child: Text('Sign Up',
+                  ),
+                ],
+              ),
+              SizedBox(height: Get.height * 0.02),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: () => Get.toNamed(AppPages.page),
+                    child: Text(
+                      'Sign Up',
                       style: GoogleFonts.inter(
                         fontWeight: FontWeight.w700,
                         fontSize: 16,
-                        color: Colors.white
-                      ),
+                        color: Colors.white,
                       ),
                     ),
-                  ],
-                )
+                  ),
+                ],
+              ),
             ],
           ),
         ),

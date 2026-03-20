@@ -71,7 +71,10 @@ class CommunityChatDetailsView extends GetView<CommunityChatDetailsController> {
                 ),
               ],
             ),
-            SizedBox(height: Get.height*0.76,),
+            Obx(() => controller.isLoading.value?CircularProgressIndicator():SizedBox(
+              height: Get.height*0.7,
+              child: Text('Data Loaded Successfully'),
+            ),),
                Row(
               children: [
                 Image.asset(AppImages.imagepicking, height: Get.height * 0.07),

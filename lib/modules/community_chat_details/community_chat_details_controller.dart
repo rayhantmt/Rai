@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:rai/api_services/api_config.dart';
 import 'package:rai/api_services/api_services.dart';
 import 'package:rai/exceptions/app_exceptions.dart';
 import 'package:rai/modules/community_chat_details/community_chat_details_model.dart';
@@ -34,7 +33,6 @@ class CommunityChatDetailsController extends GetxController {
       );
       print(response2);
        communityDetails.value = CommunityChatDetailsModel.fromJson(response2['data']);
-      //final storage = GetStorage();
       final data = response2['data'];
       print(data);
     } on AppException catch (e) {

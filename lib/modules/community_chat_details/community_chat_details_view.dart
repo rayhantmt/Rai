@@ -32,12 +32,15 @@ class CommunityChatDetailsView extends GetView<CommunityChatDetailsController> {
                 ),
                 SizedBox(width: Get.width * 0.02),
                 GestureDetector(
-                  onTap: () => Get.toNamed(AppPages.communityDetails,arguments: {
-                    'img':img,
-                    'name':name,
-                    'member':member,
-                    'bio':controller.communityDetails.value!.description
-                  }),
+                  onTap: () => Get.toNamed(
+                    AppPages.communityDetails,
+                    arguments: {
+                      'img': img,
+                      'name': name,
+                      'member': member,
+                      'bio': controller.communityDetails.value!.description,
+                    },
+                  ),
                   child: Row(
                     children: [
                       CircleAvatar(
@@ -71,11 +74,22 @@ class CommunityChatDetailsView extends GetView<CommunityChatDetailsController> {
                 ),
               ],
             ),
-            Obx(() => controller.isLoading.value?CircularProgressIndicator():SizedBox(
-              height: Get.height*0.7,
-              child: Text('Data Loaded Successfully'),
-            ),),
-               Row(
+            Obx(
+              () => controller.isLoading.value
+                  ? CircularProgressIndicator()
+                  : SizedBox(
+                      height: Get.height * 0.7,
+                      child: Text('Data Loaded Successfully',
+                      style: GoogleFonts.manrope( 
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+
+                        color: Colors.white
+                      ),
+                      ),
+                    ),
+            ),
+            Row(
               children: [
                 Image.asset(AppImages.imagepicking, height: Get.height * 0.07),
                 Container(
@@ -90,7 +104,6 @@ class CommunityChatDetailsView extends GetView<CommunityChatDetailsController> {
                     children: [
                       Expanded(
                         child: TextFormField(
-                          
                           cursorColor: Colors.white,
                           style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
@@ -111,13 +124,12 @@ class CommunityChatDetailsView extends GetView<CommunityChatDetailsController> {
                       ),
                       GestureDetector(
                         onTap: () => controller.fetchdetails(),
-                        child: Image.asset(AppImages.sendbutton,
-                        height: Get.height*0.05,
+                        child: Image.asset(
+                          AppImages.sendbutton,
+                          height: Get.height * 0.05,
                         ),
                       ),
-                      Image.asset(AppImages.micIcon,
-                      height: Get.height*0.05,
-                      )
+                      Image.asset(AppImages.micIcon, height: Get.height * 0.05),
                     ],
                   ),
                 ),

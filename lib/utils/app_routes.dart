@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:rai/modules/account_settings/account_settings_binding.dart';
 import 'package:rai/modules/account_settings/account_settings_view.dart';
+import 'package:rai/modules/admin_community_get_requests/admin_%20community_get_requests_view.dart';
+import 'package:rai/modules/admin_community_get_requests/admin_community_get_requests_binding.dart';
 import 'package:rai/modules/comment_concern/comment_concern_binding.dart';
 import 'package:rai/modules/comment_concern/comment_concern_view.dart';
 import 'package:rai/modules/community/community_binding.dart';
@@ -72,7 +74,8 @@ class AppRoutes {
     GetPage(name: AppPages.communitychatdetails, page: () => CommunityChatDetailsView(),binding: CommunityChatDetailsBinding()),
     GetPage(name: AppPages.communityDetails, page: () => CommunityDetailsView(),binding: CommunityDetailsBinding()),
     GetPage(name: AppPages.updatecommunity, page: () => UpdateCommunityView(),binding: UpdateCommunityBinding()),
-    GetPage(name: AppPages.groupmembercommunity, page: () => GroupMemberCommunityView(),binding: GroupMemberCommunityBinding())
+    GetPage(name: AppPages.groupmembercommunity, page: () => GroupMemberCommunityView(),binding: GroupMemberCommunityBinding()),
+    GetPage(name: AppPages.admin_community_get_requests, page: () => AdmincommunityGetRequestsView(),binding: AdminCommunityGetRequestsBinding())
 
   ];
 }

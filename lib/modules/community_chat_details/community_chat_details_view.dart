@@ -40,6 +40,7 @@ class CommunityChatDetailsView extends GetView<CommunityChatDetailsController> {
                       'member': member,
                       'bio': controller.communityDetails.value!.description,
                       'role':controller.communityDetails.value!.role,
+                      'id':controller.communityDetails.value!.id
                     },
                   ),
                   child: Row(

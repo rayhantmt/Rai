@@ -17,6 +17,7 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
     final String member = arg['member'];
     final String bio = arg['bio'];
     final String role = arg['role'];
+    final String id = arg['id'];
     return Scaffold(
       backgroundColor: AppImages.primarycolor,
       body: SingleChildScrollView(
@@ -118,10 +119,12 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
                 ),
               ),
               SizedBox(height: Get.height * 0.02),
-              MoreSectionWidget(
-                tittle: 'Group Link',
-                img: AppImages.shareGroupLink,
-              ),
+              role == 'admin'
+                  ? MoreSectionWidget(
+                      tittle: 'Group Link',
+                      img: AppImages.shareGroupLink,
+                    )
+                  : SizedBox(),
               SizedBox(height: Get.height * 0.03),
               GestureDetector(
                 onTap: () => Get.toNamed(AppPages.groupmembercommunity),
@@ -170,14 +173,28 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(AppImages.leaveicon, height: Get.height * 0.03),
-                    Text(
-                      'Leave',
-                      style: GoogleFonts.manrope(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16,
-                        color: Color(0xffEF4444),
-                      ),
-                    ),
+                    role == 'admin'
+                        ? GestureDetector(
+                            onTap: () => controller.deletecommunity(id),
+                            child:Obx(() =>  controller.isLoading.value
+                                ? CircularProgressIndicator(color: Colors.red)
+                                : Text(
+                                    'Delete And Leave',
+                                    style: GoogleFonts.manrope(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 16,
+                                      color: Color(0xffEF4444),
+                                    ),
+                                  ),)
+                          )
+                        : Text(
+                            'Leave',
+                            style: GoogleFonts.manrope(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16,
+                              color: Color(0xffEF4444),
+                            ),
+                          ),
                   ],
                 ),
               ),

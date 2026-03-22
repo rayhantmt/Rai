@@ -19,7 +19,9 @@ class AdmincommunityGetRequestsView extends StatelessWidget {
               SizedBox(height: Get.height*0.06,),
               Row(
                 children: [
-                  Image.asset(AppImages.commentconcernbackicon,height: Get.height*0.06,),
+                  GestureDetector(
+                    onTap: () => Get.back(),
+                    child: Image.asset(AppImages.commentconcernbackicon,height: Get.height*0.06,)),
                   SizedBox(width: Get.width*0.06,),
               Text('Member List',
               style: GoogleFonts.manrope( 

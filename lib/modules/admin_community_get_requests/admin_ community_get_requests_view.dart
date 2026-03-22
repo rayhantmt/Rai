@@ -11,22 +11,26 @@ class AdmincommunityGetRequestsView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppImages.primarycolor,
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: Get.height*0.06,),
-            Row(
-              children: [
-                Image.asset(AppImages.commentconcernbackicon,height: Get.height*0.5,),
-                Text('Member List',
-                style: GoogleFonts.manrope(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 22,
-                  color: Color(0xffEEEEF0)
-                ),
-                ),
-              ],
-            )
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              SizedBox(height: Get.height*0.06,),
+              Row(
+                children: [
+                  Image.asset(AppImages.commentconcernbackicon,height: Get.height*0.06,),
+                  SizedBox(width: Get.width*0.06,),
+                  Text('Member List',
+                  style: GoogleFonts.manrope(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 22,
+                    color: Color(0xffEEEEF0)
+                  ),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

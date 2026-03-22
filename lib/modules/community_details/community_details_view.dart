@@ -71,9 +71,12 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
                             ),
                           ],
                         ),
-                        Image.asset(
-                          AppImages.addPeopleIcon,
-                          height: Get.height * 0.05,
+                        GestureDetector(
+                          onTap: () => Get.toNamed(AppPages.admin_community_get_requests),
+                          child: Image.asset(
+                            AppImages.addPeopleIcon,
+                            height: Get.height * 0.05,
+                          ),
                         ),
                         GestureDetector(
                           onTap: () => Get.toNamed(AppPages.updatecommunity),

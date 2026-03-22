@@ -15,7 +15,8 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
     final String name = arg['name'];
     final String img = arg['img'];
     final String member = arg['member'];
-    final String bio=arg['bio'];
+    final String bio = arg['bio'];
+    final String role = arg['role'];
     return Scaffold(
       backgroundColor: AppImages.primarycolor,
       body: SingleChildScrollView(
@@ -48,13 +49,13 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
                       children: [
                         CircleAvatar(
                           radius: 40,
-                          backgroundImage: NetworkImage(img??''),
+                          backgroundImage: NetworkImage(img ?? ''),
                         ),
                         SizedBox(width: Get.width * 0.03),
                         Column(
                           children: [
                             Text(
-                              member??"99",
+                              member ?? "99",
                               style: GoogleFonts.manrope(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 16,
@@ -72,7 +73,10 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
                           ],
                         ),
                         GestureDetector(
-                          onTap: () => Get.toNamed(AppPages.admin_community_get_requests),
+                          onTap: () => Get.toNamed(
+                            AppPages.admin_community_get_requests,
+                            arguments: {'role': role},
+                          ),
                           child: Image.asset(
                             AppImages.addPeopleIcon,
                             height: Get.height * 0.05,
@@ -80,17 +84,18 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
                         ),
                         GestureDetector(
                           onTap: () => Get.toNamed(AppPages.updatecommunity),
-                          child: Image.asset(AppImages.editCommunity,
-                          height: Get.height*0.05,
+                          child: Image.asset(
+                            AppImages.editCommunity,
+                            height: Get.height * 0.05,
                           ),
-                        )
+                        ),
                       ],
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          name??'Invalid name',
+                          name ?? 'Invalid name',
                           style: GoogleFonts.manrope(
                             fontWeight: FontWeight.w500,
                             fontSize: 16,
@@ -98,7 +103,7 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
                           ),
                         ),
                         Text(
-                          bio??'Some error',
+                          bio ?? 'Some error',
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: GoogleFonts.manrope(
@@ -142,39 +147,40 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
                     ),
                   ),
                   SizedBox(width: Get.width * 0.2),
-                 Obx(() =>  Switch(
-                    activeTrackColor: Color(0xffEEEEF0),
+                  Obx(
+                    () => Switch(
+                      activeTrackColor: Color(0xffEEEEF0),
 
-                    activeColor: Color(0xff19191B),
-                    value: controller.notificatio.value,
-                    onChanged: (value) => controller.notificatio(value),
-                  ),)
+                      activeColor: Color(0xff19191B),
+                      value: controller.notificatio.value,
+                      onChanged: (value) => controller.notificatio(value),
+                    ),
+                  ),
                 ],
               ),
-              SizedBox(height: Get.height*0.28,),
+              SizedBox(height: Get.height * 0.28),
               Container(
-                height: Get.height*0.06,
+                height: Get.height * 0.06,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Color(0xff222325),
-                  borderRadius: BorderRadius.circular(16)
+                  borderRadius: BorderRadius.circular(16),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(AppImages.leaveicon,
-                    height: Get.height*0.03,
+                    Image.asset(AppImages.leaveicon, height: Get.height * 0.03),
+                    Text(
+                      'Leave',
+                      style: GoogleFonts.manrope(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                        color: Color(0xffEF4444),
+                      ),
                     ),
-                    Text('Leave',
-                    style: GoogleFonts.manrope( 
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                      color: Color(0xffEF4444)
-                    ),
-                    )
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),

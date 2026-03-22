@@ -8,6 +8,7 @@ class AdmincommunityGetRequestsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String role=Get.arguments['role'];
     return Scaffold(
       backgroundColor: AppImages.primarycolor,
       body: SingleChildScrollView(
@@ -20,15 +21,25 @@ class AdmincommunityGetRequestsView extends StatelessWidget {
                 children: [
                   Image.asset(AppImages.commentconcernbackicon,height: Get.height*0.06,),
                   SizedBox(width: Get.width*0.06,),
-                  Text('Member List',
-                  style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 22,
-                    color: Color(0xffEEEEF0)
-                  ),
-                  ),
-                ],
+              Text('Member List',
+              style: GoogleFonts.manrope( 
+                fontWeight: FontWeight.w600,
+                fontSize: 18,
+                color: Colors.white
+              ),
               )
+                ],
+              ),
+              Text(role,
+              style: GoogleFonts.manrope( 
+                fontWeight: FontWeight.w600,
+                fontSize: 18,
+                color: Colors.white
+              ),
+              ),
+                role== 'adimn'
+                ? _admin():
+                _user()
             ],
           ),
         ),
@@ -36,4 +47,23 @@ class AdmincommunityGetRequestsView extends StatelessWidget {
     );
 
   }
+}
+
+Widget _admin(){
+  return Text('This is admin view',
+  style: GoogleFonts.manrope( 
+    fontWeight: FontWeight.w700,
+    fontSize: 18,
+    color: Colors.white
+  ),
+  );
+}
+Widget _user(){
+  return Text('This is admin view',
+  style: GoogleFonts.manrope( 
+    fontWeight: FontWeight.w700,
+    fontSize: 18,
+    color: Colors.white
+  ),
+  );
 }

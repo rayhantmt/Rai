@@ -54,7 +54,8 @@ class CreateNewGroupController extends GetxController {
         ),
         'name': namecontroller.text,
         'description': descriptioncontroller.text,
-        'is_private': isPrivate.value,
+       // 'is_private': isPrivate.value,
+       'is_private': false,
       });
 
       // --- PRINT REQUEST BODY START ---

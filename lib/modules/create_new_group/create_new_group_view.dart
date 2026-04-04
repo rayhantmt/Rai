@@ -121,25 +121,25 @@ class CreateNewGroupView extends GetView<CreateNewGroupController> {
                   ),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Approval required to join',
-                    style: GoogleFonts.manrope(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16,
-                      color: Color(0xffEEEEF0),
-                    ),
-                  ),
-                  Obx(
-                    () => Switch(
-                      value: controller.isPrivate.value,
-                      onChanged: controller.private,
-                    ),
-                  ),
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     Text(
+              //       'Approval required to join',
+              //       style: GoogleFonts.manrope(
+              //         fontWeight: FontWeight.w400,
+              //         fontSize: 16,
+              //         color: Color(0xffEEEEF0),
+              //       ),
+              //     ),
+              //     Obx(
+              //       () => Switch(
+              //         value: controller.isPrivate.value,
+              //         onChanged: controller.private,
+              //       ),
+              //     ),
+              //   ],
+              // ),
               SizedBox(height: Get.height * 0.06),
               GestureDetector(
                 onTap: () => controller.createGroup(),

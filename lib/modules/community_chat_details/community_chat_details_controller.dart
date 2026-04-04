@@ -57,13 +57,11 @@ import 'package:rai/api_services/api_services.dart';
 import 'package:rai/exceptions/app_exceptions.dart';
 
 
-// ─── WebSocket base URL ────────────────────────────────────────────────────────
-// Replace with your actual WS host, e.g. ws://192.168.1.10:8000
-// For production use wss://yourdomain.com
+
 const String _wsBaseUrl =  'wss://quicker-epistylar-barbie.ngrok-free.dev';
 
 class CommunityChatDetailsController extends GetxController {
-  // ── Existing state (untouched) ──────────────────────────────────────────────
+
   var id = ''.obs;
   var name = ''.obs;
   var img = ''.obs;
@@ -132,7 +130,7 @@ class CommunityChatDetailsController extends GetxController {
     }
   }
 
-  // ── WebSocket ───────────────────────────────────────────────────────────────
+  //  WebSocket
 
   void _connectSocket() {
     if (id.value.isEmpty) return;

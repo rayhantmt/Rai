@@ -1,4 +1,3 @@
-
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -246,8 +245,6 @@ final inputText = ''.obs;
     isSending.value = true;
 
     if (_pendingImageId != null) {
-      // ── FIX: Add an optimistic local bubble so the image appears immediately
-      // on screen without waiting for the server echo.
       messages.add(ChatMessage(
         id: -1, // temporary id; replaced when server echoes back
         text: trimmed,

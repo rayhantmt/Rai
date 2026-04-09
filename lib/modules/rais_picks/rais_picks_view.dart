@@ -72,7 +72,11 @@ class RaisPicksView extends GetView<RaisPicsController> {
                 return _bangForBuck();
               } else if (controller.picksindex == 3) {
                 return _PickOfTheDay();
-              } else {
+              } else if(controller.picksindex==1) {
+                return _parleyBuilder();
+              }
+              else
+              {
                 return Text(
                   'Yet to build',
                   style: TextStyle(color: Colors.white),
@@ -84,6 +88,39 @@ class RaisPicksView extends GetView<RaisPicsController> {
       ),
     );
   }
+}
+Widget _parleyBuilder (){
+  return Expanded(child: 
+  Column(
+    children: [
+     
+     RichText(
+       textAlign: TextAlign.center,
+       text: TextSpan(
+         style: const TextStyle(
+           fontSize: 16.0,
+           color: Colors.white, // Standard text color
+           height: 1.5,         // Adjust line spacing if needed
+         ),
+         children: [
+           const TextSpan(
+     text: 'For your picks to show in parlay builder click ',
+           ),
+           TextSpan(
+     text: '“Add to Parlay”',
+     style: TextStyle(
+       color: Colors.orange[800], // The specific accent color
+       fontWeight: FontWeight.bold,
+     ),
+           ),
+           const TextSpan(
+     text: ' on any picks of your choice',
+           ),
+         ],
+       ),
+     )
+    ],
+  ));
 }
 
 Widget _bangForBuck() {

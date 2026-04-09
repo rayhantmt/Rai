@@ -118,7 +118,15 @@ Widget _parleyBuilder (){
            ),
          ],
        ),
-     )
+     ),
+     SizedBox(height: Get.height*0.02,),
+     Text('Your Stored Picks',
+     
+     style: GoogleFonts.manrope( 
+      fontWeight: FontWeight.w700,
+      fontSize: 16,
+      color: Color(0xffEEEEF0)
+     ),)
     ],
   ));
 }

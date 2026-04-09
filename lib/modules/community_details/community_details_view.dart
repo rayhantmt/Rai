@@ -119,12 +119,10 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
                 ),
               ),
               SizedBox(height: Get.height * 0.02),
-              role == 'admin'
-                  ? MoreSectionWidget(
-                      tittle: 'Group Link',
-                      img: AppImages.shareGroupLink,
-                    )
-                  : SizedBox(),
+              MoreSectionWidget(
+                tittle: 'Group Link',
+                img: AppImages.shareGroupLink,
+              ),
               SizedBox(height: Get.height * 0.03),
               GestureDetector(
                 onTap: () => Get.toNamed(AppPages.groupmembercommunity),
@@ -176,16 +174,18 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
                     role == 'admin'
                         ? GestureDetector(
                             onTap: () => controller.deletecommunity(id),
-                            child:Obx(() =>  controller.isLoading.value
-                                ? CircularProgressIndicator(color: Colors.red)
-                                : Text(
-                                    'Delete And Leave',
-                                    style: GoogleFonts.manrope(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 16,
-                                      color: Color(0xffEF4444),
+                            child: Obx(
+                              () => controller.isLoading.value
+                                  ? CircularProgressIndicator(color: Colors.red)
+                                  : Text(
+                                      'Delete And Leave',
+                                      style: GoogleFonts.manrope(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16,
+                                        color: Color(0xffEF4444),
+                                      ),
                                     ),
-                                  ),)
+                            ),
                           )
                         : Text(
                             'Leave',

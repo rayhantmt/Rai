@@ -82,7 +82,7 @@
 //                   : SizedBox(
 //                       height: Get.height * 0.7,
 //                       child: Text('Data Loaded Successfully',
-//                       style: GoogleFonts.manrope( 
+//                       style: GoogleFonts.manrope(
 //                         fontWeight: FontWeight.w700,
 //                         fontSize: 18,
 
@@ -143,10 +143,12 @@
 //     );
 //   }
 // }
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:rai/modules/community_chat_details/community_chat_details_controller.dart';
 import 'package:rai/modules/community_chat_details/community_chat_details_model.dart';
 import 'package:rai/utils/app_images.dart';
@@ -190,11 +192,7 @@ class _Header extends GetView<CommunityChatDetailsController> {
   final String img;
   final String member;
 
-  const _Header({
-    required this.name,
-    required this.img,
-    required this.member,
-  });
+  const _Header({required this.name, required this.img, required this.member});
 
   @override
   Widget build(BuildContext context) {
@@ -268,19 +266,21 @@ class _Header extends GetView<CommunityChatDetailsController> {
           ),
 
           // Connection indicator
-          Obx(() => AnimatedContainer(
-                duration: const Duration(milliseconds: 400),
-                width: 8,
-                height: 8,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: controller.isConnected.value
-                      ? const Color(0xff4CAF50)
-                      : controller.isConnecting.value
-                          ? const Color(0xffFFC107)
-                          : const Color(0xffF44336),
-                ),
-              )),
+          Obx(
+            () => AnimatedContainer(
+              duration: const Duration(milliseconds: 400),
+              width: 8,
+              height: 8,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: controller.isConnected.value
+                    ? const Color(0xff4CAF50)
+                    : controller.isConnecting.value
+                    ? const Color(0xffFFC107)
+                    : const Color(0xffF44336),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -307,8 +307,11 @@ class _ChatBody extends GetView<CommunityChatDetailsController> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Icon(Icons.chat_bubble_outline,
-                  color: Color(0xff3A3B3D), size: 48),
+              const Icon(
+                Icons.chat_bubble_outline,
+                color: Color(0xff3A3B3D),
+                size: 48,
+              ),
               const SizedBox(height: 12),
               Text(
                 'No messages yet.\nBe the first to say hi!',
@@ -333,11 +336,9 @@ class _ChatBody extends GetView<CommunityChatDetailsController> {
           final isMe = controller.isMyMessage(msg);
 
           // Show date divider when date changes
-          final showDate = i == 0 ||
-              !_isSameDay(
-                controller.messages[i - 1].createdAt,
-                msg.createdAt,
-              );
+          final showDate =
+              i == 0 ||
+              !_isSameDay(controller.messages[i - 1].createdAt, msg.createdAt);
 
           return Column(
             children: [
@@ -376,7 +377,9 @@ class _DateDivider extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 12),
       child: Row(
         children: [
-          const Expanded(child: Divider(color: Color(0xff2A2B2D), thickness: 1)),
+          const Expanded(
+            child: Divider(color: Color(0xff2A2B2D), thickness: 1),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(
@@ -388,7 +391,9 @@ class _DateDivider extends StatelessWidget {
               ),
             ),
           ),
-          const Expanded(child: Divider(color: Color(0xff2A2B2D), thickness: 1)),
+          const Expanded(
+            child: Divider(color: Color(0xff2A2B2D), thickness: 1),
+          ),
         ],
       ),
     );
@@ -399,16 +404,53 @@ class _DateDivider extends StatelessWidget {
 }
 
 // ─── Message Bubble ───────────────────────────────────────────────────────────
-
-class _MessageBubble extends StatelessWidget {
+class _MessageBubble extends StatefulWidget {
   final ChatMessage msg;
   final bool isMe;
 
   const _MessageBubble({required this.msg, required this.isMe});
 
   @override
+  State<_MessageBubble> createState() => _MessageBubbleState();
+}
+
+class _MessageBubbleState extends State<_MessageBubble> {
+  AudioPlayer? _audioPlayer;
+  bool _isPlaying = false;
+  StreamSubscription? _playerStateSubscription;
+
+  @override
+  void dispose() {
+    _playerStateSubscription?.cancel();
+    _audioPlayer?.dispose();
+    super.dispose();
+  }
+
+  Future<void> _toggleAudio(String url) async {
+    if (_audioPlayer == null) {
+      _audioPlayer = AudioPlayer();
+      _playerStateSubscription = _audioPlayer!.playerStateStream.listen((state) {
+        // Sync UI with actual player state
+        bool isActuallyPlaying = state.playing;
+        if (isActuallyPlaying != _isPlaying) {
+          setState(() => _isPlaying = isActuallyPlaying);
+        }
+      });
+    }
+
+    if (_isPlaying) {
+      await _audioPlayer!.pause();
+    } else {
+      await _audioPlayer!.setUrl(url);
+      await _audioPlayer!.play();
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final timeStr = DateFormat('h:mm a').format(msg.createdAt);
+    final timeStr = DateFormat('h:mm a').format(widget.msg.createdAt);
+    final isMe = widget.isMe;
+    final msg = widget.msg;
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 3),
@@ -417,19 +459,13 @@ class _MessageBubble extends StatelessWidget {
             isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          // Avatar (only for others)
-          if (!isMe) ...[
-            _Avatar(sender: msg.sender),
-            const SizedBox(width: 8),
-          ],
+          if (!isMe) ...[_Avatar(sender: msg.sender), const SizedBox(width: 8)],
 
-          // Bubble
           Flexible(
             child: Column(
               crossAxisAlignment:
                   isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
               children: [
-                // Sender name (only for others)
                 if (!isMe)
                   Padding(
                     padding: const EdgeInsets.only(left: 4, bottom: 2),
@@ -443,16 +479,15 @@ class _MessageBubble extends StatelessWidget {
                     ),
                   ),
 
-                // Bubble container
                 Container(
-                  constraints: BoxConstraints(
-                    maxWidth: Get.width * 0.68,
-                  ),
+                  constraints: BoxConstraints(maxWidth: Get.width * 0.68),
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 14, vertical: 10),
+                    horizontal: 14,
+                    vertical: 10,
+                  ),
                   decoration: BoxDecoration(
                     color: isMe
-                        ? const Color(0xff5B5EA6)
+                        ? const Color(0xffFFFFFF)
                         : const Color(0xff222325),
                     borderRadius: BorderRadius.only(
                       topLeft: const Radius.circular(18),
@@ -471,8 +506,8 @@ class _MessageBubble extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      // Image attachment
-                      if (msg.image != null) ...[
+                      // ✅ Image
+                      if (msg.image != null && msg.image!.isNotEmpty) ...[
                         ClipRRect(
                           borderRadius: BorderRadius.circular(10),
                           child: Image.network(
@@ -484,17 +519,78 @@ class _MessageBubble extends StatelessWidget {
                             ),
                           ),
                         ),
-                        if (msg.message.isNotEmpty)
-                          const SizedBox(height: 6),
+                        if (msg.message.isNotEmpty) const SizedBox(height: 6),
                       ],
 
-                      // Text
-                      if (msg.message.isNotEmpty)
+                      // ✅ Audio — now tappable with play/pause toggle
+                      if (msg.audio != null && msg.audio!.isNotEmpty) ...[
+                        GestureDetector(
+                          onTap: () => _toggleAudio(msg.audio!),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 8,
+                            ),
+                            decoration: BoxDecoration(
+                              color: isMe
+                                  ? const Color(0xffE8E8E8)
+                                  : const Color(0xff2E2F31),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  _isPlaying
+                                      ? Icons.pause_circle_filled_rounded
+                                      : Icons.play_circle_fill_rounded,
+                                  color: isMe
+                                      ? const Color(0xff1E1E1E)
+                                      : const Color(0xffEEEEF0),
+                                  size: 28,
+                                ),
+                                const SizedBox(width: 8),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Voice message',
+                                      style: GoogleFonts.manrope(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w500,
+                                        color: isMe
+                                            ? const Color(0xff1E1E1E)
+                                            : const Color(0xffEEEEF0),
+                                      ),
+                                    ),
+                                    Text(
+                                      _isPlaying ? 'Playing...' : 'Tap to play',
+                                      style: GoogleFonts.manrope(
+                                        fontSize: 10,
+                                        color: isMe
+                                            ? Colors.black45
+                                            : const Color(0xff8E8F9A),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                      ],
+
+                      // ✅ Text
+                      if (msg.message.isNotEmpty &&
+                          (msg.audio == null || msg.audio!.isEmpty))
                         Text(
                           msg.message,
                           style: GoogleFonts.manrope(
                             fontSize: 14,
-                            color: const Color(0xffEEEEF0),
+                            color: isMe
+                                ? const Color(0xff1E1E1E)
+                                : const Color(0xffEEEEF0),
                             fontWeight: FontWeight.w400,
                             height: 1.45,
                           ),
@@ -507,7 +603,7 @@ class _MessageBubble extends StatelessWidget {
                         style: GoogleFonts.manrope(
                           fontSize: 10,
                           color: isMe
-                              ? Colors.white54
+                              ? Colors.black45
                               : const Color(0xff5A5B65),
                         ),
                       ),
@@ -518,13 +614,313 @@ class _MessageBubble extends StatelessWidget {
             ),
           ),
 
-          // Spacer for own messages
           if (isMe) const SizedBox(width: 4),
         ],
       ),
     );
   }
 }
+// class _MessageBubble extends StatelessWidget {
+//   final ChatMessage msg;
+//   final bool isMe;
+
+//   const _MessageBubble({required this.msg, required this.isMe});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final timeStr = DateFormat('h:mm a').format(msg.createdAt);
+
+//     return Padding(
+//       padding: const EdgeInsets.symmetric(vertical: 3),
+//       child: Row(
+//         mainAxisAlignment:
+//             isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
+//         crossAxisAlignment: CrossAxisAlignment.end,
+//         children: [
+//           // Avatar (only for others)
+//           if (!isMe) ...[_Avatar(sender: msg.sender), const SizedBox(width: 8)],
+
+//           // Bubble
+//           Flexible(
+//             child: Column(
+//               crossAxisAlignment:
+//                   isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+//               children: [
+//                 // Sender name (only for others)
+//                 if (!isMe)
+//                   Padding(
+//                     padding: const EdgeInsets.only(left: 4, bottom: 2),
+//                     child: Text(
+//                       msg.sender.displayName,
+//                       style: GoogleFonts.manrope(
+//                         fontSize: 11,
+//                         color: const Color(0xff8E8F9A),
+//                         fontWeight: FontWeight.w600,
+//                       ),
+//                     ),
+//                   ),
+
+//                 // Bubble container
+//                 Container(
+//                   constraints: BoxConstraints(maxWidth: Get.width * 0.68),
+//                   padding: const EdgeInsets.symmetric(
+//                     horizontal: 14,
+//                     vertical: 10,
+//                   ),
+//                   decoration: BoxDecoration(
+//                     color: isMe
+//                         ? const Color(0xffFFFFFF)
+//                         : const Color(0xff222325),
+//                     borderRadius: BorderRadius.only(
+//                       topLeft: const Radius.circular(18),
+//                       topRight: const Radius.circular(18),
+//                       bottomLeft: Radius.circular(isMe ? 18 : 4),
+//                       bottomRight: Radius.circular(isMe ? 4 : 18),
+//                     ),
+//                     boxShadow: [
+//                       BoxShadow(
+//                         color: Colors.black.withOpacity(0.15),
+//                         blurRadius: 4,
+//                         offset: const Offset(0, 2),
+//                       ),
+//                     ],
+//                   ),
+//                   child: Column(
+//                     crossAxisAlignment: CrossAxisAlignment.end,
+//                     children: [
+//                       // ✅ Image attachment
+//                       if (msg.image != null && msg.image!.isNotEmpty) ...[
+//                         ClipRRect(
+//                           borderRadius: BorderRadius.circular(10),
+//                           child: Image.network(
+//                             msg.image!,
+//                             fit: BoxFit.cover,
+//                             errorBuilder: (_, __, ___) => const Icon(
+//                               Icons.broken_image,
+//                               color: Colors.white38,
+//                             ),
+//                           ),
+//                         ),
+//                         if (msg.message.isNotEmpty) const SizedBox(height: 6),
+//                       ],
+
+//                       // ✅ Audio attachment
+//                       if (msg.audio != null && msg.audio!.isNotEmpty) ...[
+//                         Container(
+//                           padding: const EdgeInsets.symmetric(
+//                             horizontal: 10,
+//                             vertical: 8,
+//                           ),
+//                           decoration: BoxDecoration(
+//                             color: isMe
+//                                 ? const Color(0xffE8E8E8)
+//                                 : const Color(0xff2E2F31),
+//                             borderRadius: BorderRadius.circular(10),
+//                           ),
+//                           child: Row(
+//                             mainAxisSize: MainAxisSize.min,
+//                             children: [
+//                               Icon(
+//                                 Icons.play_circle_fill_rounded,
+//                                 color: isMe
+//                                     ? const Color(0xff1E1E1E)
+//                                     : const Color(0xffEEEEF0),
+//                                 size: 28,
+//                               ),
+//                               const SizedBox(width: 8),
+//                               Column(
+//                                 crossAxisAlignment: CrossAxisAlignment.start,
+//                                 children: [
+//                                   Text(
+//                                     'Voice message',
+//                                     style: GoogleFonts.manrope(
+//                                       fontSize: 13,
+//                                       fontWeight: FontWeight.w500,
+//                                       color: isMe
+//                                           ? const Color(0xff1E1E1E)
+//                                           : const Color(0xffEEEEF0),
+//                                     ),
+//                                   ),
+//                                   Text(
+//                                     'Tap to play',
+//                                     style: GoogleFonts.manrope(
+//                                       fontSize: 10,
+//                                       color: isMe
+//                                           ? Colors.black45
+//                                           : const Color(0xff8E8F9A),
+//                                     ),
+//                                   ),
+//                                 ],
+//                               ),
+//                             ],
+//                           ),
+//                         ),
+//                         const SizedBox(height: 4),
+//                       ],
+
+//                       // ✅ Text — only show when no audio and has content
+//                       if (msg.message.isNotEmpty &&
+//                           (msg.audio == null || msg.audio!.isEmpty))
+//                         Text(
+//                           msg.message,
+//                           style: GoogleFonts.manrope(
+//                             fontSize: 14,
+//                             color: isMe
+//                                 ? const Color(0xff1E1E1E)
+//                                 : const Color(0xffEEEEF0),
+//                             fontWeight: FontWeight.w400,
+//                             height: 1.45,
+//                           ),
+//                         ),
+
+//                       // Timestamp
+//                       const SizedBox(height: 4),
+//                       Text(
+//                         timeStr,
+//                         style: GoogleFonts.manrope(
+//                           fontSize: 10,
+//                           color: isMe
+//                               ? Colors.black45
+//                               : const Color(0xff5A5B65),
+//                         ),
+//                       ),
+//                     ],
+//                   ),
+//                 ),
+//               ],
+//             ),
+//           ),
+
+//           // Spacer for own messages
+//           if (isMe) const SizedBox(width: 4),
+//         ],
+//       ),
+//     );
+//   }
+// }
+// class _MessageBubble extends StatelessWidget {
+//   final ChatMessage msg;
+//   final bool isMe;
+
+//   const _MessageBubble({required this.msg, required this.isMe});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final timeStr = DateFormat('h:mm a').format(msg.createdAt);
+
+//     return Padding(
+//       padding: const EdgeInsets.symmetric(vertical: 3),
+//       child: Row(
+//         mainAxisAlignment: isMe
+//             ? MainAxisAlignment.end
+//             : MainAxisAlignment.start,
+//         crossAxisAlignment: CrossAxisAlignment.end,
+//         children: [
+//           // Avatar (only for others)
+//           if (!isMe) ...[_Avatar(sender: msg.sender), const SizedBox(width: 8)],
+
+//           // Bubble
+//           Flexible(
+//             child: Column(
+//               crossAxisAlignment: isMe
+//                   ? CrossAxisAlignment.end
+//                   : CrossAxisAlignment.start,
+//               children: [
+//                 // Sender name (only for others)
+//                 if (!isMe)
+//                   Padding(
+//                     padding: const EdgeInsets.only(left: 4, bottom: 2),
+//                     child: Text(
+//                       msg.sender.displayName,
+//                       style: GoogleFonts.manrope(
+//                         fontSize: 11,
+//                         color: const Color(0xff8E8F9A),
+//                         fontWeight: FontWeight.w600,
+//                       ),
+//                     ),
+//                   ),
+
+//                 // Bubble container
+//                 Container(
+//                   constraints: BoxConstraints(maxWidth: Get.width * 0.68),
+//                   padding: const EdgeInsets.symmetric(
+//                     horizontal: 14,
+//                     vertical: 10,
+//                   ),
+//                   decoration: BoxDecoration(
+//                     color: isMe
+//                         ? const Color(0xffFFFFFF)
+//                         : const Color(0xff222325),
+//                     borderRadius: BorderRadius.only(
+//                       topLeft: const Radius.circular(18),
+//                       topRight: const Radius.circular(18),
+//                       bottomLeft: Radius.circular(isMe ? 18 : 4),
+//                       bottomRight: Radius.circular(isMe ? 4 : 18),
+//                     ),
+//                     boxShadow: [
+//                       BoxShadow(
+//                         color: Colors.black.withOpacity(0.15),
+//                         blurRadius: 4,
+//                         offset: const Offset(0, 2),
+//                       ),
+//                     ],
+//                   ),
+//                   child: Column(
+//                     crossAxisAlignment: CrossAxisAlignment.end,
+//                     children: [
+//                       // Image attachment
+//                       if (msg.image != null) ...[
+//                         ClipRRect(
+//                           borderRadius: BorderRadius.circular(10),
+//                           child: Image.network(
+//                             msg.image!,
+//                             fit: BoxFit.cover,
+//                             errorBuilder: (_, __, ___) => const Icon(
+//                               Icons.broken_image,
+//                               color: Colors.white38,
+//                             ),
+//                           ),
+//                         ),
+//                         if (msg.message.isNotEmpty) const SizedBox(height: 6),
+//                       ],
+
+//                       // Text
+//                       if (msg.message.isNotEmpty)
+//                         Text(
+//                           msg.message,
+//                           style: GoogleFonts.manrope(
+//                             fontSize: 14,
+//                             color: const Color(0xffEEEEF0),
+//                             fontWeight: FontWeight.w400,
+//                             height: 1.45,
+//                           ),
+//                         ),
+
+//                       // Timestamp
+//                       const SizedBox(height: 4),
+//                       Text(
+//                         timeStr,
+//                         style: GoogleFonts.manrope(
+//                           fontSize: 10,
+//                           color: isMe
+//                               ? Colors.white54
+//                               : const Color(0xff5A5B65),
+//                         ),
+//                       ),
+//                     ],
+//                   ),
+//                 ),
+//               ],
+//             ),
+//           ),
+
+//           // Spacer for own messages
+//           if (isMe) const SizedBox(width: 4),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
 // ─── Avatar ───────────────────────────────────────────────────────────────────
 
@@ -538,7 +934,9 @@ class _Avatar extends StatelessWidget {
     return CircleAvatar(
       radius: 16,
       backgroundColor: const Color(0xff2A2B2D),
-      backgroundImage: (url != null && url.isNotEmpty) ? NetworkImage(url) : null,
+      backgroundImage: (url != null && url.isNotEmpty)
+          ? NetworkImage(url)
+          : null,
       child: (url == null || url.isEmpty)
           ? Text(
               sender.displayName.isNotEmpty
@@ -568,7 +966,7 @@ class _InputBar extends GetView<CommunityChatDetailsController> {
           // Image pick button — original asset preserved
           GestureDetector(
             onTap: () {
-              // TODO: hook into your existing image-picking logic
+              controller.sendImage();
             },
             child: Image.asset(
               AppImages.imagepicking,
@@ -601,7 +999,9 @@ class _InputBar extends GetView<CommunityChatDetailsController> {
                       textInputAction: TextInputAction.newline,
                       decoration: InputDecoration(
                         contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 14, vertical: 12),
+                          horizontal: 14,
+                          vertical: 12,
+                        ),
                         hintText: 'Type message here...',
                         hintStyle: GoogleFonts.manrope(
                           fontWeight: FontWeight.w400,
@@ -624,13 +1024,31 @@ class _InputBar extends GetView<CommunityChatDetailsController> {
                   ),
 
                   // Mic button — original asset preserved
-                  GestureDetector(
-                    onTap: () {
-                      // TODO: hook into your audio recording logic
-                    },
-                    child: Image.asset(
-                      AppImages.micIcon,
-                      height: Get.height * 0.042,
+                  Obx(
+                    () => GestureDetector(
+                      onLongPressStart: (_) => controller.startRecording(),
+                      onLongPressEnd: (_) => controller.stopAndSendAudio(),
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 200),
+                        padding: EdgeInsets.all(
+                          controller.isRecording.value ? 6 : 0,
+                        ),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: controller.isRecording.value
+                              ? const Color(0xffF44336).withOpacity(0.15)
+                              : Colors.transparent,
+                        ),
+                        child: Image.asset(
+                          AppImages.micIcon,
+                          height: Get.height * 0.042,
+                          color: controller.isRecording.value
+                              ? const Color(
+                                  0xffF44336,
+                                ) // 🔴 red while recording
+                              : null,
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(width: 4),

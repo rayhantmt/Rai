@@ -6,6 +6,7 @@ import 'package:flutter_sound/flutter_sound.dart';
 import 'package:get/get.dart' hide FormData, MultipartFile;
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as path;
 import 'package:permission_handler/permission_handler.dart';
@@ -32,22 +33,22 @@ class ChatMessage {
   });
 
   factory ChatMessage.fromJson(Map<String, dynamic> json) => ChatMessage(
-        id: json['id'],
-        text: json['text'] ?? '',
-        isAi: json['is_ai'] ?? false,
-        status: json['status'] ?? 'completed',
-        createdAt: json['created_at'] ?? '',
-        imageUrl: json['image_url'],
-      );
+    id: json['id'],
+    text: json['text'] ?? '',
+    isAi: json['is_ai'] ?? false,
+    status: json['status'] ?? 'completed',
+    createdAt: json['created_at'] ?? '',
+    imageUrl: json['image_url'],
+  );
 
   ChatMessage copyWith({String? text, String? status}) => ChatMessage(
-        id: id,
-        text: text ?? this.text,
-        isAi: isAi,
-        status: status ?? this.status,
-        createdAt: createdAt,
-        imageUrl: imageUrl,
-      );
+    id: id,
+    text: text ?? this.text,
+    isAi: isAi,
+    status: status ?? this.status,
+    createdAt: createdAt,
+    imageUrl: imageUrl,
+  );
 }
 
 class ConversationModel {
@@ -90,7 +91,7 @@ class RaiChatController extends GetxController {
   // Image
   final isUploadingImage = false.obs;
   final selectedImagePath = ''.obs; // local path for preview in UI
-final inputText = ''.obs;
+  final inputText = ''.obs;
   // History
   final conversations = <ConversationModel>[].obs;
   final isLoadingHistory = false.obs;
@@ -245,21 +246,23 @@ final inputText = ''.obs;
     isSending.value = true;
 
     if (_pendingImageId != null) {
-      messages.add(ChatMessage(
-        id: -1, // temporary id; replaced when server echoes back
-        text: trimmed,
-        isAi: false,
-        status: 'completed',
-        createdAt: DateTime.now().toIso8601String(),
-        imageUrl: selectedImagePath.value.isNotEmpty
-            ? selectedImagePath.value // local file path shown via Image.file
-            : null,
-      ));
+      messages.add(
+        ChatMessage(
+          id: -1, // temporary id; replaced when server echoes back
+          text: trimmed,
+          isAi: false,
+          status: 'completed',
+          createdAt: DateTime.now().toIso8601String(),
+          imageUrl: selectedImagePath.value.isNotEmpty
+              ? selectedImagePath
+                    .value // local file path shown via Image.file
+              : null,
+        ),
+      );
 
-      _channel!.sink.add(jsonEncode({
-        'message': trimmed,
-        'image_id': _pendingImageId,
-      }));
+      _channel!.sink.add(
+        jsonEncode({'message': trimmed, 'image_id': _pendingImageId}),
+      );
 
       _pendingImageId = null;
       selectedImagePath.value = ''; // clear preview
@@ -365,18 +368,23 @@ final inputText = ''.obs;
   }
 
   Future<void> _startRecording() async {
-    await Permission.microphone.request();
-    if (!_recorderInitialized) {
-      Get.snackbar('Error', 'Recorder not ready');
-      return;
-    }
-    final tempDir = Directory.systemTemp;
-    _recordingPath =
-        '${tempDir.path}/rai_audio_${DateTime.now().millisecondsSinceEpoch}.aac';
-
-    await _recorder.startRecorder(toFile: _recordingPath, codec: Codec.aacMP4);
-    isRecording.value = true;
+  await Permission.microphone.request();
+  if (!_recorderInitialized) {
+    Get.snackbar('Error', 'Recorder not ready');
+    return;
   }
+  final tempDir = Directory.systemTemp;
+  _recordingPath =
+      '${tempDir.path}/rai_audio_${DateTime.now().millisecondsSinceEpoch}.mp4'; // ✅ .mp4 extension
+
+  await _recorder.startRecorder(
+    toFile: _recordingPath,
+    codec: Codec.aacMP4,        // ✅ AAC inside MP4 container
+    bitRate: 128000,            // ✅ good quality for Whisper
+    sampleRate: 44100,          // ✅ standard sample rate
+  );
+  isRecording.value = true;
+}
 
   Future<void> _stopAndTranscribe() async {
     final filePath = await _recorder.stopRecorder();
@@ -396,7 +404,8 @@ final inputText = ''.obs;
         await http.MultipartFile.fromPath(
           'audio',
           filePath,
-          filename: 'audio.aac',
+          filename: 'recording.m4a',
+          contentType: MediaType('audio', 'm4a'), // ✅ Explicit MIME type
         ),
       );
 
@@ -404,8 +413,11 @@ final inputText = ''.obs;
       final res = await http.Response.fromStream(streamed);
       print(res.body);
       if (res.statusCode == 200 || res.statusCode == 201) {
-        final body = jsonDecode(res.body);
-        final transcript = body['text'] ?? body['transcript'] ?? '';
+       final body = jsonDecode(res.body);
+  
+  // ✅ transcript is inside body['data']['text']
+  final data = body['data'] as Map<String, dynamic>? ?? {};
+  final transcript = data['text'] ?? '';
         if (transcript.isNotEmpty) {
           sendMessage(transcript);
         } else {
@@ -435,8 +447,9 @@ final inputText = ''.obs;
       if (res.statusCode == 200) {
         final body = jsonDecode(res.body);
         final List data = body['data'];
-        conversations.value =
-            data.map((e) => ConversationModel.fromJson(e)).toList();
+        conversations.value = data
+            .map((e) => ConversationModel.fromJson(e))
+            .toList();
       }
     } catch (e) {
       print('fetchConversations error: $e');

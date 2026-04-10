@@ -71,7 +71,7 @@ class RaisPicksView extends GetView<RaisPicsController> {
               if (controller.picksindex == 0) {
                 return _bangForBuck();
               } else if (controller.picksindex == 3) {
-                return _PickOfTheDay();
+                return _creatorspick();
               } else if (controller.picksindex == 1) {
                 return _betBuilder();
               } else {
@@ -704,7 +704,7 @@ Widget _bangForBuck() {
   );
 }
 
-Widget _PickOfTheDay() {
+Widget _creatorspick() {
   return Expanded(
     child: SingleChildScrollView(
       child: Column(
@@ -893,10 +893,10 @@ Widget _PickOfTheDay() {
                 ),
                 SizedBox(height: Get.height * 0.02),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(AppImages.addtoprolay),
-                    Image.asset(AppImages.viewbreakdown),
+                   // Image.asset(AppImages.viewbreakdown),
                   ],
                 ),
               ],

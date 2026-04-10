@@ -721,33 +721,33 @@ class _InputBar extends GetView<CommunityChatDetailsController> {
                   ),
 
                   // Mic button — original asset preserved
-                  Obx(
-                    () => GestureDetector(
-                      onLongPressStart: (_) => controller.startRecording(),
-                      onLongPressEnd: (_) => controller.stopAndSendAudio(),
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 200),
-                        padding: EdgeInsets.all(
-                          controller.isRecording.value ? 6 : 0,
-                        ),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: controller.isRecording.value
-                              ? const Color(0xffF44336).withOpacity(0.15)
-                              : Colors.transparent,
-                        ),
-                        child: Image.asset(
-                          AppImages.micIcon,
-                          height: Get.height * 0.042,
-                          color: controller.isRecording.value
-                              ? const Color(
-                                  0xffF44336,
-                                ) // 🔴 red while recording
-                              : null,
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Obx(
+                  //   () => GestureDetector(
+                  //     onLongPressStart: (_) => controller.startRecording(),
+                  //     onLongPressEnd: (_) => controller.stopAndSendAudio(),
+                  //     child: AnimatedContainer(
+                  //       duration: const Duration(milliseconds: 200),
+                  //       padding: EdgeInsets.all(
+                  //         controller.isRecording.value ? 6 : 0,
+                  //       ),
+                  //       decoration: BoxDecoration(
+                  //         shape: BoxShape.circle,
+                  //         color: controller.isRecording.value
+                  //             ? const Color(0xffF44336).withOpacity(0.15)
+                  //             : Colors.transparent,
+                  //       ),
+                  //       child: Image.asset(
+                  //         AppImages.micIcon,
+                  //         height: Get.height * 0.042,
+                  //         color: controller.isRecording.value
+                  //             ? const Color(
+                  //                 0xffF44336,
+                  //               ) // 🔴 red while recording
+                  //             : null,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   const SizedBox(width: 4),
                 ],
               ),

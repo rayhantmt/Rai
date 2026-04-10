@@ -84,6 +84,7 @@ class RaisPicksView extends GetView<RaisPicsController> {
     );
   }
 }
+
 Widget _dailypicks() {
   final controller = Get.find<RaisPicsController>();
   return Expanded(
@@ -343,6 +344,7 @@ Widget _dailypicks() {
     ),
   );
 }
+
 Widget _betBuilder() {
   return Expanded(
     child: Column(
@@ -419,6 +421,7 @@ Widget _betBuilder() {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
                     'OKC',
@@ -428,26 +431,44 @@ Widget _betBuilder() {
                       color: Color(0xffEEEEF0),
                     ),
                   ),
-                 
+                  Text(
+                    '145+',
+                    style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 14,
+                      color: Color(0xff10B981),
+                    ),
+                  ),
                 ],
               ),
-               Divider(
-                    height: 1,
-                    indent: 1,
-                    endIndent: 1,
-                    color: Color(0xff5F606A),
-                  ),
-                  Row(
-                    children: [
-                      Text('Chief',
-                        style: GoogleFonts.manrope(
+              Divider(
+                height: 1,
+                indent: 1,
+                endIndent: 1,
+                color: Color(0xff5F606A),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    'Chief',
+                    style: GoogleFonts.manrope(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
                       color: Color(0xffEEEEF0),
                     ),
-                      )
-                    ],
-                  )            ],
+                  ),
+                   Text(
+                    '_210',
+                    style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 14,
+                      color: Color(0xffEF4444),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ],
@@ -907,7 +928,7 @@ Widget _creatorspick() {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(AppImages.addtoprolay),
-                   // Image.asset(AppImages.viewbreakdown),
+                    // Image.asset(AppImages.viewbreakdown),
                   ],
                 ),
               ],

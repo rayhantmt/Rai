@@ -131,6 +131,16 @@ Widget _parleyBuilder() {
           fontSize: 16,
           color: Color(0xffEEEEF0)
         ),
+        ),
+        SizedBox( height: Get.height*0.02,),
+        Stack(
+          children: [
+             Image.asset(AppImages.riskbar,width: double.infinity,),
+             Positioned(
+              //bottom: 10,
+              left: Get.width*0.1-40,
+              child: Image.asset(AppImages.riskindicator))
+          ],
         )
       ],
     ),

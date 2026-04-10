@@ -72,11 +72,9 @@ class RaisPicksView extends GetView<RaisPicsController> {
                 return _bangForBuck();
               } else if (controller.picksindex == 3) {
                 return _PickOfTheDay();
-              } else if(controller.picksindex==1) {
+              } else if (controller.picksindex == 1) {
                 return _parleyBuilder();
-              }
-              else
-              {
+              } else {
                 return Text(
                   'Yet to build',
                   style: TextStyle(color: Colors.white),
@@ -89,46 +87,54 @@ class RaisPicksView extends GetView<RaisPicsController> {
     );
   }
 }
-Widget _parleyBuilder (){
-  return Expanded(child: 
-  Column(
-    children: [
-     
-     RichText(
-       textAlign: TextAlign.center,
-       text: TextSpan(
-         style: const TextStyle(
-           fontSize: 16.0,
-           color: Colors.white, // Standard text color
-           height: 1.5,         // Adjust line spacing if needed
-         ),
-         children: [
-           const TextSpan(
-     text: 'For your picks to show in parlay builder click ',
-           ),
-           TextSpan(
-     text: '“Add to Parlay”',
-     style: TextStyle(
-       color: Colors.orange[800], // The specific accent color
-       fontWeight: FontWeight.bold,
-     ),
-           ),
-           const TextSpan(
-     text: ' on any picks of your choice',
-           ),
-         ],
-       ),
-     ),
-     SizedBox(height: Get.height*0.02,),
-     Text('Your Stored Picks',
-     
-     style: GoogleFonts.manrope( 
-      fontWeight: FontWeight.w700,
-      fontSize: 16,
-      color: Color(0xffEEEEF0)
-     ),)
-    ],
-  ));
+
+Widget _parleyBuilder() {
+  return Expanded(
+    child: Column(
+      children: [
+        RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            style: const TextStyle(
+              fontSize: 16.0,
+              color: Colors.white, // Standard text color
+              height: 1.5, // Adjust line spacing if needed
+            ),
+            children: [
+              const TextSpan(
+                text: 'For your picks to show in parlay builder click ',
+              ),
+              TextSpan(
+                text: '“Add to Parlay”',
+                style: TextStyle(
+                  color: Colors.orange[800], // The specific accent color
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const TextSpan(text: ' on any picks of your choice'),
+            ],
+          ),
+        ),
+        SizedBox(height: Get.height * 0.02),
+        Text(
+          'Your Stored Picks',
+
+          style: GoogleFonts.manrope(
+            fontWeight: FontWeight.w700,
+            fontSize: 16,
+            color: Color(0xffEEEEF0),
+          ),
+        ),
+        Text('Risk Level',
+        style: GoogleFonts.manrope( 
+          fontWeight: FontWeight.w700,
+          fontSize: 16,
+          color: Color(0xffEEEEF0)
+        ),
+        )
+      ],
+    ),
+  );
 }
 
 Widget _bangForBuck() {
@@ -137,7 +143,7 @@ Widget _bangForBuck() {
     child: Column(
       children: [
         SizedBox(
-         height: Get.height * 0.045,
+          height: Get.height * 0.045,
 
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -443,8 +449,11 @@ Widget _PickOfTheDay() {
                         ),
                         Row(
                           children: [
-                            Image.asset(AppImages.nfl, height: Get.height * 0.03),
-      
+                            Image.asset(
+                              AppImages.nfl,
+                              height: Get.height * 0.03,
+                            ),
+
                             Text(
                               'NFL',
                               style: GoogleFonts.manrope(
@@ -486,7 +495,7 @@ Widget _PickOfTheDay() {
                         ),
                       ],
                     ),
-      
+
                     Text(
                       '+5.5',
                       style: GoogleFonts.manrope(
@@ -549,7 +558,7 @@ Widget _PickOfTheDay() {
                         ],
                       ),
                     ),
-                     Container(
+                    Container(
                       height: Get.height * 0.06,
                       width: Get.width * 0.25,
                       decoration: BoxDecoration(
@@ -578,7 +587,7 @@ Widget _PickOfTheDay() {
                         ],
                       ),
                     ),
-                     Container(
+                    Container(
                       height: Get.height * 0.06,
                       width: Get.width * 0.25,
                       decoration: BoxDecoration(
@@ -593,7 +602,7 @@ Widget _PickOfTheDay() {
                             style: GoogleFonts.manrope(
                               fontWeight: FontWeight.w600,
                               fontSize: 14,
-                             color: Color(0xff10B981),
+                              color: Color(0xff10B981),
                             ),
                           ),
                           Text(
@@ -609,23 +618,23 @@ Widget _PickOfTheDay() {
                     ),
                   ],
                 ),
-                SizedBox(height: Get.height*0.02,),
+                SizedBox(height: Get.height * 0.02),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Image.asset(AppImages.addtoprolay),
-                    Image.asset(AppImages.viewbreakdown)
+                    Image.asset(AppImages.viewbreakdown),
                   ],
-                )
+                ),
               ],
             ),
           ),
-          SizedBox(height: Get.height*0.05,),
+          SizedBox(height: Get.height * 0.05),
           Image.asset(AppImages.coming_soon),
-          SizedBox(height: Get.height*0.05,),
+          SizedBox(height: Get.height * 0.05),
           Image.asset(AppImages.coming_soon),
-          SizedBox(height: Get.height*0.05,),
-          Image.asset(AppImages.coming_soon)
+          SizedBox(height: Get.height * 0.05),
+          Image.asset(AppImages.coming_soon),
         ],
       ),
     ),

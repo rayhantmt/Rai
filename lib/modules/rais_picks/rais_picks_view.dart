@@ -1,6 +1,10 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:path/path.dart';
+import 'package:rai/common_widgets/common_button.dart';
 import 'package:rai/modules/rais_picks/rais_pics_controller.dart';
 import 'package:rai/utils/app_images.dart';
 
@@ -373,7 +377,7 @@ Widget _betBuilder() {
             ],
           ),
         ),
-        SizedBox(height: Get.height * 0.02),
+        //SizedBox(height: Get.height * 0.02),
         Text(
           'Your Stored Picks',
 
@@ -392,7 +396,7 @@ Widget _betBuilder() {
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
           ),
-          itemCount: cc.bets.length,
+          itemCount: 9, //cc.bets.length,
 
           itemBuilder: (context, index) => Container(
             height: Get.height * 0.007,
@@ -403,19 +407,16 @@ Widget _betBuilder() {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Image.asset(AppImages.betone,
-                height: Get.height*0.03,
+                Image.asset(AppImages.betone, height: Get.height * 0.03),
+                Text(
+                  'VS',
+                  style: GoogleFonts.manrope(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 12,
+                    color: Color(0xff797B86),
+                  ),
                 ),
-                Text('VS',
-                style: GoogleFonts.manrope( 
-                  fontWeight: FontWeight.w500,
-                  fontSize: 12,
-                  color: Color(0xff797B86)
-                ),
-                ),
-                Image.asset(AppImages.bettow,
-                height: Get.height*0.03,
-                )
+                Image.asset(AppImages.bettow, height: Get.height * 0.03),
               ],
             ),
           ),
@@ -428,7 +429,7 @@ Widget _betBuilder() {
             color: Color(0xffEEEEF0),
           ),
         ),
-        SizedBox(height: Get.height * 0.02),
+        //  SizedBox(height: Get.height * 0.02),
         Stack(
           children: [
             Image.asset(AppImages.riskbar, width: double.infinity),
@@ -439,7 +440,7 @@ Widget _betBuilder() {
             ),
           ],
         ),
-        SizedBox(height: Get.height * 0.02),
+        // SizedBox(height: Get.height * 0.02),
         Text(
           'Your Parley',
           style: GoogleFonts.manrope(
@@ -449,7 +450,7 @@ Widget _betBuilder() {
           ),
         ),
         Container(
-          height: Get.height * 0.15,
+          height: Get.height * 0.1,
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
@@ -507,6 +508,45 @@ Widget _betBuilder() {
                 ],
               ),
             ],
+          ),
+        ),
+        SizedBox(height: 5,),
+        CommonButton(tittle: 'Send to live bet tracking'),
+        SizedBox(height: 5,),
+        Container(
+          height: Get.height * 0.05,
+          decoration: BoxDecoration(
+            border: Border.all(width: 1, color: Color(0xff393A40)),
+            borderRadius: BorderRadius.circular(100),
+          ),
+          child: Center(
+            child: Text(
+              'Celar Parlay',
+              style: GoogleFonts.manrope(
+                fontWeight: FontWeight.w500,
+                fontSize: 14,
+                color: Color(0xffEF4444),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(height: 5,),
+        Container(
+          height: Get.height * 0.05,
+          width: Get.width * 0.4,
+          decoration: BoxDecoration(
+            border: Border.all(width: 1, color: Color(0xffB2B3BD)),
+            borderRadius: BorderRadius.circular(100),
+            color: Color(0xff303136),
+          ),
+          child: Center(
+            child: Text('84% Confidence',
+            style: GoogleFonts.manrope( 
+              fontWeight: FontWeight.w700,
+              fontSize: 14,
+              color: Color(0xffEEEEF0)
+            ),
+            ),
           ),
         ),
       ],

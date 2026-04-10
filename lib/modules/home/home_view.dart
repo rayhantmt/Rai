@@ -171,7 +171,7 @@ class HomeView extends GetView<HomeController> {
               ],
             ),
             SizedBox(height: Get.height * 0.02),
-            Image.asset(AppImages.launchBannar),
+           // Image.asset(AppImages.launchBannar),
           ],
         ),
       ),

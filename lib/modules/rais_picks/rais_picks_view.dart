@@ -141,6 +141,43 @@ Widget _parleyBuilder() {
               left: Get.width*0.1-40,
               child: Image.asset(AppImages.riskindicator))
           ],
+        ),
+        SizedBox(height: Get.height*0.02,),
+        Text('Your Parley',
+        style: GoogleFonts.manrope( 
+          fontWeight: FontWeight.w700,
+          fontSize: 16,
+          color: Color(0xffEEEEF0)
+        ),
+        ),
+        Container(
+          height: Get.height*0.15,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: Color(0xff303136)
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+            Row(
+              children: [
+                Text('OKC',
+                style: GoogleFonts.manrope( 
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14,
+                  color: Color(0xffEEEEF0)
+                ),
+                ),
+                Divider(
+                  height: 1,
+                  indent: 1,
+                  endIndent: 1,
+                  color: Color(0xff),
+                )
+              ],
+            )
+          ],),
         )
       ],
     ),
@@ -450,7 +487,7 @@ Widget _PickOfTheDay() {
                     Column(
                       children: [
                         Text(
-                          "Reese'S PICK",
+                          "Dr. Jones PICK",
                           style: GoogleFonts.manrope(
                             fontWeight: FontWeight.w400,
                             fontSize: 22,

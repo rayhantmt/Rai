@@ -9,7 +9,7 @@ class RaisPicsController extends GetxController {
 
   var picks = [
     Picksmodel(type: 'Bang for Buck'),
-    Picksmodel(type: 'Parlay Builder'),
+    Picksmodel(type: 'Bet Builder'),
     Picksmodel(type: 'Daily Picks'),
     Picksmodel(type: 'Pick of the Day'),
   ];

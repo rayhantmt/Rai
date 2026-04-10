@@ -324,27 +324,7 @@ Widget _bangForBuck() {
                             color: Color(0xffEEEEF0),
                           ),
                         ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              controller.predictions[index].confidence,
-                              style: GoogleFonts.manrope(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 14,
-                                color: Color(0xffFFA220),
-                              ),
-                            ),
-                            Text(
-                              'Confidence',
-                              style: GoogleFonts.manrope(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 12,
-                                color: Color(0xff797B86),
-                              ),
-                            ),
-                          ],
-                        ),
+                   
                       ],
                     ),
                     SizedBox(height: Get.height * 0.02),
@@ -390,27 +370,27 @@ Widget _bangForBuck() {
                             color: Color(0xff222325),
                           ),
                           child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  controller.predictions[index].edge,
-                                  style: GoogleFonts.manrope(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 14,
-                                    color: Color(0xff10B981),
-                                  ),
-                                ),
-                                Text(
-                                  'Edge',
-                                  style: GoogleFonts.manrope(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 12,
-                                    color: Color(0xff797B86),
-                                  ),
-                                ),
-                              ],
+                            child:      Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              controller.predictions[index].confidence,
+                              style: GoogleFonts.manrope(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 14,
+                                color: Color(0xffFFA220),
+                              ),
                             ),
+                            Text(
+                              'Confidence',
+                              style: GoogleFonts.manrope(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12,
+                                color: Color(0xff797B86),
+                              ),
+                            ),
+                          ],
+                        ),
                           ),
                         ),
                         Container(

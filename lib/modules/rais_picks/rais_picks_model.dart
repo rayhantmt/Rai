@@ -25,3 +25,9 @@ class Leaugemodel {
     required this.point,
   });
 }
+class bettinginfo{
+  final String image1;
+  final String image2;
+
+  bettinginfo({required this.image1, required this.image2});
+}

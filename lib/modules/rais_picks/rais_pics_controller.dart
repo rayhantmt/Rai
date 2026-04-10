@@ -1,12 +1,23 @@
 import 'package:get/get.dart';
 import 'package:rai/modules/rais_picks/rais_picks_model.dart';
+import 'package:rai/utils/app_images.dart';
 
 class RaisPicsController extends GetxController {
   var selectedCategoryIndex = 0.obs;
   void selectCategory(int index) {
     selectedCategoryIndex.value = index;
   }
-
+var bets=[
+  bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
+    bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
+      bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
+        bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
+          bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
+            bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
+              bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
+                bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
+                  bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
+];
   var picks = [
     Picksmodel(type: 'Bang for Buck'),
     Picksmodel(type: 'Bet Builder'),

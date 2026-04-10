@@ -346,6 +346,7 @@ Widget _dailypicks() {
 }
 
 Widget _betBuilder() {
+  final cc = Get.find<RaisPicsController>();
   return Expanded(
     child: Column(
       children: [
@@ -380,6 +381,43 @@ Widget _betBuilder() {
             fontWeight: FontWeight.w700,
             fontSize: 16,
             color: Color(0xffEEEEF0),
+          ),
+        ),
+        GridView.builder(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            childAspectRatio: 4 / 2,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+          ),
+          itemCount: cc.bets.length,
+
+          itemBuilder: (context, index) => Container(
+            height: Get.height * 0.007,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: Color(0xff303136),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Image.asset(AppImages.betone,
+                height: Get.height*0.03,
+                ),
+                Text('VS',
+                style: GoogleFonts.manrope( 
+                  fontWeight: FontWeight.w500,
+                  fontSize: 12,
+                  color: Color(0xff797B86)
+                ),
+                ),
+                Image.asset(AppImages.bettow,
+                height: Get.height*0.03,
+                )
+              ],
+            ),
           ),
         ),
         Text(
@@ -458,7 +496,7 @@ Widget _betBuilder() {
                       color: Color(0xffEEEEF0),
                     ),
                   ),
-                   Text(
+                  Text(
                     '_210',
                     style: GoogleFonts.manrope(
                       fontWeight: FontWeight.w700,

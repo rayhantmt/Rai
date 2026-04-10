@@ -535,6 +535,13 @@ Widget _PickOfTheDay() {
                         color: Colors.white,
                       ),
                     ),
+                    Text('Creator comment ...',
+                    style: GoogleFonts.manrope( 
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: Color(0xffEEEEF0)
+                    ),
+                    )
                   ],
                 ),
                 Row(

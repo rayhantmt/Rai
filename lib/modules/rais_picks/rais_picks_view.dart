@@ -73,12 +73,9 @@ class RaisPicksView extends GetView<RaisPicsController> {
               } else if (controller.picksindex == 3) {
                 return _PickOfTheDay();
               } else if (controller.picksindex == 1) {
-                return _parleyBuilder();
+                return _betBuilder();
               } else {
-                return Text(
-                  'Yet to build',
-                  style: TextStyle(color: Colors.white),
-                );
+                return _dailypicks();
               }
             }),
           ],
@@ -87,8 +84,266 @@ class RaisPicksView extends GetView<RaisPicsController> {
     );
   }
 }
+Widget _dailypicks() {
+  final controller = Get.find<RaisPicsController>();
+  return Expanded(
+    child: Column(
+      children: [
+        SizedBox(
+          height: Get.height * 0.045,
 
-Widget _parleyBuilder() {
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: controller.games.length,
+            itemBuilder: (context, index) => GestureDetector(
+              onTap: () => controller.selectgames(index),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 8),
+                child: Obx(
+                  () => Container(
+                    width: Get.width * 0.25,
+
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 1,
+                        color: controller.gamesindex.value == index
+                            ? Color(0xffEEEEF0)
+                            : Color(0xff393A40),
+                      ),
+                      borderRadius: BorderRadius.circular(100),
+                      color: controller.gamesindex.value == index
+                          ? Color(0xffEEEEF0)
+                          : AppImages.primarycolor,
+                    ),
+                    child: Center(
+                      child: Text(
+                        controller.games[index].gametype,
+                        style: GoogleFonts.manrope(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14,
+                          color: controller.gamesindex.value == index
+                              ? Color(0xff19191B)
+                              : Color(0xff797B86),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: controller.predictions.length,
+            shrinkWrap: true,
+            itemBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Container(
+                height: Get.height * 0.22,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Color(0xff191818), Color(0xff000000)],
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Row(
+                          children: [
+                            Image.asset(
+                              AppImages.nba,
+                              height: Get.height * 0.02,
+                            ),
+                            Text(
+                              'NBA',
+                              style: GoogleFonts.manrope(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 14,
+                                color: Color(0xffEEEEF0),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Expanded(child: SizedBox()),
+                        Row(
+                          children: [
+                            Image.asset(
+                              AppImages.l1,
+                              height: Get.height * 0.03,
+                            ),
+                            Text(
+                              'VS',
+                              style: GoogleFonts.manrope(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12,
+                                color: Color(0xff797B86),
+                              ),
+                            ),
+                            Image.asset(
+                              AppImages.l2,
+                              height: Get.height * 0.03,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: Get.height * 0.015),
+                    Divider(
+                      height: 1,
+                      indent: 1,
+                      endIndent: 1,
+                      color: Color(0xff393A40),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Image.asset(
+                              AppImages.l1,
+                              height: Get.height * 0.03,
+                            ),
+                            Text(
+                              'New York Knicks',
+                              style: GoogleFonts.manrope(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12,
+                                color: Color(0xffEEEEF0),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          controller.predictions[index].point,
+                          style: GoogleFonts.manrope(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                            color: Color(0xffEEEEF0),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: Get.height * 0.02),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Container(
+                          height: Get.height * 0.05,
+                          width: Get.width * 0.25,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Color(0xff222325),
+                          ),
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  controller.predictions[index].odds,
+                                  style: GoogleFonts.manrope(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14,
+                                    color: Color(0xffEEEEF0),
+                                  ),
+                                ),
+                                Text(
+                                  'Odds',
+                                  style: GoogleFonts.manrope(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12,
+                                    color: Color(0xff797B86),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: Get.height * 0.05,
+                          width: Get.width * 0.25,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Color(0xff222325),
+                          ),
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  controller.predictions[index].confidence,
+                                  style: GoogleFonts.manrope(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 14,
+                                    color: Color(0xffFFA220),
+                                  ),
+                                ),
+                                Text(
+                                  'Confidence',
+                                  style: GoogleFonts.manrope(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12,
+                                    color: Color(0xff797B86),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: Get.height * 0.05,
+                          width: Get.width * 0.25,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Color(0xff222325),
+                          ),
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'View',
+                                  style: GoogleFonts.manrope(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 14,
+                                    color: Color(0xffEEEEF0),
+                                  ),
+                                ),
+                                Text(
+                                  'Breakdown',
+                                  style: GoogleFonts.manrope(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 14,
+                                    color: Color(0xffEEEEF0),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: Get.height * 0.015),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(AppImages.addtoprolay),
+                        // Image.asset(AppImages.viewbreakdown),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+Widget _betBuilder() {
   return Expanded(
     child: Column(
       children: [
@@ -535,13 +790,14 @@ Widget _PickOfTheDay() {
                         color: Colors.white,
                       ),
                     ),
-                    Text('Creator comment ...',
-                    style: GoogleFonts.manrope( 
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                      color: Color(0xffEEEEF0)
+                    Text(
+                      'Creator comment ...',
+                      style: GoogleFonts.manrope(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                        color: Color(0xffEEEEF0),
+                      ),
                     ),
-                    )
                   ],
                 ),
                 Row(

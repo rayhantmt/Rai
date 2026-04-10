@@ -428,15 +428,26 @@ Widget _betBuilder() {
                       color: Color(0xffEEEEF0),
                     ),
                   ),
-                  Divider(
+                 
+                ],
+              ),
+               Divider(
                     height: 1,
                     indent: 1,
                     endIndent: 1,
-                    color: Color(0xff),
+                    color: Color(0xff5F606A),
                   ),
-                ],
-              ),
-            ],
+                  Row(
+                    children: [
+                      Text('Chief',
+                        style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: Color(0xffEEEEF0),
+                    ),
+                      )
+                    ],
+                  )            ],
           ),
         ),
       ],

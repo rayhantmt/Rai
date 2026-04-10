@@ -125,60 +125,65 @@ Widget _parleyBuilder() {
             color: Color(0xffEEEEF0),
           ),
         ),
-        Text('Risk Level',
-        style: GoogleFonts.manrope( 
-          fontWeight: FontWeight.w700,
-          fontSize: 16,
-          color: Color(0xffEEEEF0)
+        Text(
+          'Risk Level',
+          style: GoogleFonts.manrope(
+            fontWeight: FontWeight.w700,
+            fontSize: 16,
+            color: Color(0xffEEEEF0),
+          ),
         ),
-        ),
-        SizedBox( height: Get.height*0.02,),
+        SizedBox(height: Get.height * 0.02),
         Stack(
           children: [
-             Image.asset(AppImages.riskbar,width: double.infinity,),
-             Positioned(
+            Image.asset(AppImages.riskbar, width: double.infinity),
+            Positioned(
               //bottom: 10,
-              left: Get.width*0.1-40,
-              child: Image.asset(AppImages.riskindicator))
+              left: Get.width * 0.1 - 40,
+              child: Image.asset(AppImages.riskindicator),
+            ),
           ],
         ),
-        SizedBox(height: Get.height*0.02,),
-        Text('Your Parley',
-        style: GoogleFonts.manrope( 
-          fontWeight: FontWeight.w700,
-          fontSize: 16,
-          color: Color(0xffEEEEF0)
-        ),
+        SizedBox(height: Get.height * 0.02),
+        Text(
+          'Your Parley',
+          style: GoogleFonts.manrope(
+            fontWeight: FontWeight.w700,
+            fontSize: 16,
+            color: Color(0xffEEEEF0),
+          ),
         ),
         Container(
-          height: Get.height*0.15,
+          height: Get.height * 0.15,
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            color: Color(0xff303136)
+            color: Color(0xff303136),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-            Row(
-              children: [
-                Text('OKC',
-                style: GoogleFonts.manrope( 
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14,
-                  color: Color(0xffEEEEF0)
-                ),
-                ),
-                Divider(
-                  height: 1,
-                  indent: 1,
-                  endIndent: 1,
-                  color: Color(0xff),
-                )
-              ],
-            )
-          ],),
-        )
+              Row(
+                children: [
+                  Text(
+                    'OKC',
+                    style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: Color(0xffEEEEF0),
+                    ),
+                  ),
+                  Divider(
+                    height: 1,
+                    indent: 1,
+                    endIndent: 1,
+                    color: Color(0xff),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
       ],
     ),
   );
@@ -324,7 +329,6 @@ Widget _bangForBuck() {
                             color: Color(0xffEEEEF0),
                           ),
                         ),
-                   
                       ],
                     ),
                     SizedBox(height: Get.height * 0.02),
@@ -370,27 +374,27 @@ Widget _bangForBuck() {
                             color: Color(0xff222325),
                           ),
                           child: Center(
-                            child:      Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              controller.predictions[index].confidence,
-                              style: GoogleFonts.manrope(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 14,
-                                color: Color(0xffFFA220),
-                              ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  controller.predictions[index].confidence,
+                                  style: GoogleFonts.manrope(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 14,
+                                    color: Color(0xffFFA220),
+                                  ),
+                                ),
+                                Text(
+                                  'Confidence',
+                                  style: GoogleFonts.manrope(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12,
+                                    color: Color(0xff797B86),
+                                  ),
+                                ),
+                              ],
                             ),
-                            Text(
-                              'Confidence',
-                              style: GoogleFonts.manrope(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 12,
-                                color: Color(0xff797B86),
-                              ),
-                            ),
-                          ],
-                        ),
                           ),
                         ),
                         Container(
@@ -404,20 +408,22 @@ Widget _bangForBuck() {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text('View',
-                                style: GoogleFonts.manrope( 
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 14,
-                                  color: Color(0xffEEEEF0),
+                                Text(
+                                  'View',
+                                  style: GoogleFonts.manrope(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 14,
+                                    color: Color(0xffEEEEF0),
+                                  ),
                                 ),
+                                Text(
+                                  'Breakdown',
+                                  style: GoogleFonts.manrope(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 14,
+                                    color: Color(0xffEEEEF0),
+                                  ),
                                 ),
-                                Text('Breakdown',
-                                 style: GoogleFonts.manrope( 
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 14,
-                                  color: Color(0xffEEEEF0),
-                                ),
-                                )
                               ],
                             ),
                           ),
@@ -429,7 +435,7 @@ Widget _bangForBuck() {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(AppImages.addtoprolay),
-                       // Image.asset(AppImages.viewbreakdown),
+                        // Image.asset(AppImages.viewbreakdown),
                       ],
                     ),
                   ],
@@ -529,26 +535,6 @@ Widget _PickOfTheDay() {
                         color: Colors.white,
                       ),
                     ),
-                    Column(
-                      children: [
-                        Text(
-                          '82%',
-                          style: GoogleFonts.manrope(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 14,
-                            color: Color(0xffFFA220),
-                          ),
-                        ),
-                        Text(
-                          'Confidence',
-                          style: GoogleFonts.manrope(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12,
-                            color: Color(0xff797B86),
-                          ),
-                        ),
-                      ],
-                    ),
                   ],
                 ),
                 Row(
@@ -591,18 +577,17 @@ Widget _PickOfTheDay() {
                         color: Color(0xff222325),
                       ),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            '+8.23%',
+                            '82%',
                             style: GoogleFonts.manrope(
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w700,
                               fontSize: 14,
-                              color: Color(0xff10B981),
+                              color: Color(0xffFFA220),
                             ),
                           ),
                           Text(
-                            'Edges',
+                            'Confidence',
                             style: GoogleFonts.manrope(
                               fontWeight: FontWeight.w500,
                               fontSize: 12,
@@ -623,19 +608,19 @@ Widget _PickOfTheDay() {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            '+9.83%',
+                            'View',
                             style: GoogleFonts.manrope(
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w700,
                               fontSize: 14,
-                              color: Color(0xff10B981),
+                              color: Color(0xffEEEEF0),
                             ),
                           ),
                           Text(
-                            'EV',
+                            'Breakdown',
                             style: GoogleFonts.manrope(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 12,
-                              color: Color(0xff797B86),
+                              fontWeight: FontWeight.w700,
+                              fontSize: 14,
+                              color: Color(0xffEEEEF0),
                             ),
                           ),
                         ],

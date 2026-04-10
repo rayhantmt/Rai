@@ -53,4 +53,6 @@ class AppImages {
   static const String coming_soon = 'assets/coming_soon.png';
   static const String riskbar = 'assets/risk_bar.png';
   static const String riskindicator = 'assets/risk_bar_indicator.png';
+  static const String betone='assets/bet1.png';
+  static const String bettow='assets/bet2.png';
 }

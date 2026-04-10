@@ -404,22 +404,20 @@ Widget _bangForBuck() {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
-                                  controller.predictions[index].ev,
-                                  style: GoogleFonts.manrope(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 14,
-                                    color: Color(0xff10B981),
-                                  ),
+                                Text('View',
+                                style: GoogleFonts.manrope( 
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 14,
+                                  color: Color(0xffEEEEF0),
                                 ),
-                                Text(
-                                  'Ev',
-                                  style: GoogleFonts.manrope(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 12,
-                                    color: Color(0xff797B86),
-                                  ),
                                 ),
+                                Text('Breakdown',
+                                 style: GoogleFonts.manrope( 
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 14,
+                                  color: Color(0xffEEEEF0),
+                                ),
+                                )
                               ],
                             ),
                           ),
@@ -428,10 +426,10 @@ Widget _bangForBuck() {
                     ),
                     SizedBox(height: Get.height * 0.015),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(AppImages.addtoprolay),
-                        Image.asset(AppImages.viewbreakdown),
+                       // Image.asset(AppImages.viewbreakdown),
                       ],
                     ),
                   ],

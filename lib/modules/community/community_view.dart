@@ -155,7 +155,7 @@ class CommunityView extends GetView<CommunityController> {
                   GestureDetector(
                     onTap: () {
                       controller.showOptions(false);
-                      // your join navigation
+                     Get.toNamed(AppPages.join_community);
                     },
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),

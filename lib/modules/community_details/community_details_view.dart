@@ -125,7 +125,9 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
               ),
               SizedBox(height: Get.height * 0.03),
               GestureDetector(
-                onTap: () => Get.toNamed(AppPages.groupmembercommunity),
+                onTap: () => Get.toNamed(AppPages.groupmembercommunity,arguments: {
+                  'id':id
+                }),
                 child: MoreSectionWidget(
                   tittle: 'Group member',
                   img: AppImages.groupMemberIcon,

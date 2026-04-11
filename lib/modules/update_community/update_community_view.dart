@@ -1,11 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rai/common_widgets/common_button.dart';
 import 'package:rai/common_widgets/common_textfield.dart';
+import 'package:rai/modules/update_community/update_community_controller.dart';
 import 'package:rai/utils/app_images.dart';
 
-class UpdateCommunityView extends StatelessWidget {
+class UpdateCommunityView extends GetView<UpdateCommunityController> {
   const UpdateCommunityView({super.key});
 
   @override
@@ -39,19 +42,28 @@ class UpdateCommunityView extends StatelessWidget {
                 ],
               ),
               SizedBox(height: Get.height * 0.04),
-              CircleAvatar(
-                radius: 80,
-                backgroundImage: NetworkImage(
-                  'https://i.pravatar.cc/150?img=12',
+               Obx(
+                () => CircleAvatar(
+                  radius: 80,
+                  backgroundColor: Color(0xffB2B3BD),
+                  backgroundImage: controller.profileImage.value != null
+                      ? FileImage(File(controller.profileImage.value!.path))
+                      : null,
+                  child: controller.profileImage.value == null
+                      ? Icon(Icons.person, size: 60, color: Colors.white)
+                      : null,
                 ),
               ),
               SizedBox(height: Get.height * 0.03),
-              Text(
-                'Upload Group Photo',
-                style: GoogleFonts.manrope(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16,
-                  color: Color(0xffEEEEF0),
+              GestureDetector(
+                onTap: () => controller.pickProfileImage(),
+                child: Text(
+                  'Upload Group Photo',
+                  style: GoogleFonts.manrope(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16,
+                    color: Color(0xffEEEEF0),
+                  ),
                 ),
               ),
               SizedBox(height: Get.height * 0.02),
@@ -107,20 +119,20 @@ class UpdateCommunityView extends StatelessWidget {
                   
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Approval required to join',
-                    style: GoogleFonts.manrope(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16,
-                      color: Color(0xffEEEEF0),
-                    ),
-                  ),
-                  Switch(value: true, onChanged: (value) => {}),
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     Text(
+              //       'Approval required to join',
+              //       style: GoogleFonts.manrope(
+              //         fontWeight: FontWeight.w400,
+              //         fontSize: 16,
+              //         color: Color(0xffEEEEF0),
+              //       ),
+              //     ),
+              //     Switch(value: true, onChanged: (value) => {}),
+              //   ],
+              // ),
               SizedBox(height: Get.height * 0.06),
               CommonButton(tittle: 'Update'),
             ],

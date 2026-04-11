@@ -84,7 +84,7 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () => Get.toNamed(AppPages.updatecommunity),
+                          onTap: () => Get.toNamed(AppPages.updatecommunity,arguments: {'id':id}),
                           child: Image.asset(
                             AppImages.editCommunity,
                             height: Get.height * 0.05,
@@ -120,7 +120,7 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
               ),
               SizedBox(height: Get.height * 0.02),
               MoreSectionWidget(
-                tittle: 'Group Link',
+                tittle: 'Group Invite Link',
                 img: AppImages.shareGroupLink,
               ),
               SizedBox(height: Get.height * 0.03),

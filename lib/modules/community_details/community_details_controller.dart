@@ -1,4 +1,3 @@
-
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -6,12 +5,23 @@ import 'package:rai/api_services/api_services.dart';
 import 'package:rai/exceptions/app_exceptions.dart';
 
 class CommunityDetailsController extends GetxController {
-  RxBool notificatio=true.obs;
-  void notification(bool){
-    notificatio.value=bool;
+  late String id;
+  @override
+  void onInit() {
+    final arg = Get.arguments;
+
+    id = arg['id'];
+    fetchCommunityDetail();
+    super.onInit();
   }
+
+  RxBool notificatio = true.obs;
+  void notification(bool) {
+    notificatio.value = bool;
+  }
+
   RxBool isLoading = false.obs;
-  Future<void> deletecommunity( var id) async {
+  Future<void> deletecommunity(var id) async {
     isLoading.value = true;
     try {
       final storage = GetStorage();
@@ -20,7 +30,7 @@ class CommunityDetailsController extends GetxController {
         endpoint: '/api/community/$id',
         headers: {'Authorization': 'Bearer $token'},
       );
-      print(response2);  
+      print(response2);
     } on AppException catch (e) {
       Get.snackbar("Delete Failed", e.message);
     } finally {
@@ -28,8 +38,24 @@ class CommunityDetailsController extends GetxController {
     }
   }
 
+  // Add this variable (you already have it)
+  var inviteCode = "".obs;
 
-  var inviteCode = "ABC-123-XYZ".obs;
+  // Add this method
+  Future<void> fetchCommunityDetail() async {
+    final token=GetStorage().read('token');
+    try {
+      final response = await ApiService.get(endpoint: '/api/community/$id/',
+       headers: {'Authorization': 'Bearer $token'},
+      );
+
+      if (response != null && response['success'] == true) {
+        inviteCode.value = response['data']['invite_code'] ?? '';
+      }
+    } catch (e) {
+      print('fetchCommunityDetail error: $e');
+    }
+  }
 
   void copyInviteCode() {
     Clipboard.setData(ClipboardData(text: inviteCode.value)).then((_) {

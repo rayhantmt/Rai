@@ -28,9 +28,23 @@ class JoinCommunityView extends GetView<JoinCommunityController> {
                 color: Colors.white,
               ),
             ),
-            Commontextfield(tittle: '', hint: 'Enter invite code', obsecuretext: false),
-            SizedBox(height: Get.height*0.02,),
-            CommonButton(tittle: 'Join')
+            Commontextfield(
+              tittle: '',
+              hint: 'Enter invite code',
+              obsecuretext: false,
+              controller: controller.codecontroller,
+            ),
+            SizedBox(height: Get.height * 0.02),
+            GestureDetector(
+              onTap: () => controller.joinCommunityByCode(),
+              child: Obx(
+                () => controller.isLoading.value
+                    ? Center(
+                        child: CircularProgressIndicator(color: Colors.white),
+                      )
+                    : CommonButton(tittle: 'Join'),
+              ),
+            ),
           ],
         ),
       ),

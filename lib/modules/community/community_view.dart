@@ -40,7 +40,7 @@ class CommunityView extends GetView<CommunityController> {
                       color: Color(0xffB2B3BD),
                     ),
                   ),
-              
+
                   Obx(
                     () => controller.isLoading.value
                         ? CircularProgressIndicator(color: Colors.white)
@@ -109,124 +109,134 @@ class CommunityView extends GetView<CommunityController> {
               ),
             ),
           ),
-          // Positioned(
-          //   bottom: Get.height * 0.15,
-          //   right: 20,
-          //   child: GestureDetector(
-          //     onTap: () => Get.toNamed(AppPages.createNewGroup),
-          //     child: Container(
-          //       height: 60,
-          //       width: 60,
-          //       decoration: BoxDecoration(
-          //         color: Color(0xff303136),
-          //         shape: BoxShape.circle,
-          //       ),
-          //       child: Icon(Icons.add, color: Color(0xffEEEEF0), size: 30),
-          //     ),
-          //   ),
-          // ),
-          Positioned(
-  bottom: Get.height * 0.15,
-  right: 20,
-  child: Column(
-    crossAxisAlignment: CrossAxisAlignment.end,
-    mainAxisSize: MainAxisSize.min,
-    children: [
-      // Popup card
-      Obx(() => controller.showOptions.value
-          ? Container(
-              margin: EdgeInsets.only(bottom: 12),
-              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 4),
-              decoration: BoxDecoration(
-                color: Color(0xff303136),
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
-                    blurRadius: 10,
-                    offset: Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  // Join option
-                  GestureDetector(
-                    onTap: () {
-                      controller.showOptions(false);
-                     Get.toNamed(AppPages.join_community);
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(Icons.group_add, color: Color(0xffEEEEF0), size: 20),
-                          SizedBox(width: 10),
-                          Text(
-                            'Join Community',
-                            style: GoogleFonts.manrope(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              color: Color(0xffEEEEF0),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Divider(height: 1, color: Color(0xff393A40)),
-                  // Create option
-                  GestureDetector(
-                    onTap: () {
-                      controller.showOptions(false);
-                      Get.toNamed(AppPages.createNewGroup);
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(Icons.add_circle_outline, color: Color(0xffEEEEF0), size: 20),
-                          SizedBox(width: 10),
-                          Text(
-                            'Create Community',
-                            style: GoogleFonts.manrope(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              color: Color(0xffEEEEF0),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            )
-          : SizedBox.shrink()),
 
-      // + button
-      Obx(() => GestureDetector(
-        onTap: () => controller.showOptions(!controller.showOptions.value),
-        child: AnimatedRotation(
-          duration: Duration(milliseconds: 200),
-          turns: controller.showOptions.value ? 0.125 : 0,
-          child: Container(
-            height: 60,
-            width: 60,
-            decoration: BoxDecoration(
-              color: Color(0xff303136),
-              shape: BoxShape.circle,
+          Positioned(
+            bottom: Get.height * 0.15,
+            right: 20,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Obx(
+                  () => controller.showOptions.value
+                      ? Container(
+                          margin: EdgeInsets.only(bottom: 12),
+                          padding: EdgeInsets.symmetric(
+                            vertical: 8,
+                            horizontal: 4,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Color(0xff303136),
+                            borderRadius: BorderRadius.circular(12),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.3),
+                                blurRadius: 10,
+                                offset: Offset(0, 4),
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              // Join option
+                              GestureDetector(
+                                onTap: () {
+                                  controller.showOptions(false);
+                                  Get.toNamed(AppPages.join_community);
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 12,
+                                    vertical: 8,
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(
+                                        Icons.group_add,
+                                        color: Color(0xffEEEEF0),
+                                        size: 20,
+                                      ),
+                                      SizedBox(width: 10),
+                                      Text(
+                                        'Join Community',
+                                        style: GoogleFonts.manrope(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 14,
+                                          color: Color(0xffEEEEF0),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Divider(height: 1, color: Color(0xff393A40)),
+                              // Create option
+                              GestureDetector(
+                                onTap: () {
+                                  controller.showOptions(false);
+                                  Get.toNamed(AppPages.createNewGroup);
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 12,
+                                    vertical: 8,
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(
+                                        Icons.add_circle_outline,
+                                        color: Color(0xffEEEEF0),
+                                        size: 20,
+                                      ),
+                                      SizedBox(width: 10),
+                                      Text(
+                                        'Create Community',
+                                        style: GoogleFonts.manrope(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 14,
+                                          color: Color(0xffEEEEF0),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      : SizedBox.shrink(),
+                ),
+
+                // + button
+                Obx(
+                  () => GestureDetector(
+                    onTap: () =>
+                        controller.showOptions(!controller.showOptions.value),
+                    child: AnimatedRotation(
+                      duration: Duration(milliseconds: 200),
+                      turns: controller.showOptions.value ? 0.125 : 0,
+                      child: Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                          color: Color(0xff303136),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.add,
+                          color: Color(0xffEEEEF0),
+                          size: 30,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-            child: Icon(Icons.add, color: Color(0xffEEEEF0), size: 30),
           ),
-        ),
-      )),
-    ],
-  ),
-),
         ],
       ),
     );

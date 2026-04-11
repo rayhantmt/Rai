@@ -8,7 +8,7 @@ import 'package:rai/modules/community/community_model.dart';
 class CommunityController extends GetxController {
   var communities = <CommunityModel>[].obs;
   var isLoading = false.obs;
-
+var showOptions = false.obs;
   @override
   void onInit() {
     super.onInit();

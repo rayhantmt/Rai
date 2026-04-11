@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/state_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rai/common_widgets/common_button.dart';
+import 'package:rai/common_widgets/common_textfield.dart';
 import 'package:rai/modules/join_community/join_community_controller.dart';
 import 'package:rai/utils/app_images.dart';
 
@@ -19,13 +21,16 @@ class JoinCommunityView extends GetView<JoinCommunityController> {
             SizedBox(height: Get.height * 0.3),
             Text(
               'Enter code to join that community',
-        
+
               style: GoogleFonts.manrope(
                 fontWeight: FontWeight.w700,
-                fontSize: 16,
+                fontSize: 18,
                 color: Colors.white,
               ),
             ),
+            Commontextfield(tittle: '', hint: 'Enter invite code', obsecuretext: false),
+            SizedBox(height: Get.height*0.02,),
+            CommonButton(tittle: 'Join')
           ],
         ),
       ),

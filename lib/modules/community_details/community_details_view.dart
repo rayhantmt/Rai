@@ -127,16 +127,50 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
                   showDialog(
                     context: context,
                     builder: (context) => Dialog(
-                      child: Center(
-                        child: Container(
-                          height: Get.height * 0.3,
-                          width: double.infinity,
-                          decoration: BoxDecoration(),
+                      backgroundColor: AppImages.primarycolor,
+                      child: Container(
+                        height: Get.height * 0.15,
+                        width: double.infinity,
+                        decoration: BoxDecoration(),
                         child: Column(
                           children: [
-                            Text('Copy Invite code')
+                            Text('Copy Invite code'),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 15,
+                                vertical: 10,
+                              ),
+                              decoration: BoxDecoration(
+                                color: AppImages.primarycolor,
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: Colors.grey[300]!),
+                              ),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Obx(
+                                      () => Text(
+                                        controller.inviteCode.value,
+                                        style: GoogleFonts.manrope(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  IconButton(
+                                    icon: const Icon(
+                                      Icons.copy_rounded,
+                                      color: Colors.blue,
+                                    ),
+                                    onPressed: () =>
+                                        controller.copyInviteCode(),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ],
-                        ),
                         ),
                       ),
                     ),

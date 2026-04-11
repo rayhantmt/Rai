@@ -1,4 +1,5 @@
 
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:rai/api_services/api_services.dart';
@@ -25,5 +26,19 @@ class CommunityDetailsController extends GetxController {
     } finally {
       isLoading.value = false;
     }
+  }
+
+
+  var inviteCode = "ABC-123-XYZ".obs;
+
+  void copyInviteCode() {
+    Clipboard.setData(ClipboardData(text: inviteCode.value)).then((_) {
+      Get.snackbar(
+        "Copied!",
+        "Invite code added to clipboard",
+        snackPosition: SnackPosition.BOTTOM,
+        duration: const Duration(seconds: 2),
+      );
+    });
   }
 }

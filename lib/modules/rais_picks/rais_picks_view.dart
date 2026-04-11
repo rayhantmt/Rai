@@ -1,9 +1,6 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:path/path.dart';
 import 'package:rai/common_widgets/common_button.dart';
 import 'package:rai/modules/rais_picks/rais_pics_controller.dart';
 import 'package:rai/utils/app_images.dart';
@@ -71,17 +68,19 @@ class RaisPicksView extends GetView<RaisPicsController> {
                 ),
               ),
             ),
-            Obx(() {
-              if (controller.picksindex == 0) {
-                return _bangForBuck();
-              } else if (controller.picksindex == 3) {
-                return _creatorspick();
-              } else if (controller.picksindex == 1) {
-                return _betBuilder();
-              } else {
-                return _dailypicks();
-              }
-            }),
+            Expanded(
+              child: Obx(() {
+                if (controller.picksindex == 0) {
+                  return _bangForBuck();
+                } else if (controller.picksindex == 3) {
+                  return _creatorspick();
+                } else if (controller.picksindex == 1) {
+                  return _betBuilder();
+                } else {
+                  return _dailypicks();
+                }
+              }),
+            ),
           ],
         ),
       ),
@@ -354,204 +353,205 @@ Widget _betBuilder() {
   return Expanded(
     child: SingleChildScrollView(
       child: Column(
-        children: [
-          RichText(
-            textAlign: TextAlign.center,
-            text: TextSpan(
-              style: const TextStyle(
-                fontSize: 16.0,
-                color: Colors.white, // Standard text color
-                height: 1.5, // Adjust line spacing if needed
-              ),
-              children: [
-                const TextSpan(
-                  text: 'For your picks to show in parlay builder click ',
-                ),
-                TextSpan(
-                  text: '“Add to Parlay”',
-                  style: TextStyle(
-                    color: Colors.orange[800], // The specific accent color
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const TextSpan(text: ' on any picks of your choice'),
-              ],
+      children: [
+        RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            style: const TextStyle(
+              fontSize: 16.0,
+              color: Colors.white, // Standard text color
+              height: 1.5, // Adjust line spacing if needed
             ),
-          ),
-          //SizedBox(height: Get.height * 0.02),
-          Text(
-            'Your Stored Picks',
-      
-            style: GoogleFonts.manrope(
-              fontWeight: FontWeight.w700,
-              fontSize: 16,
-              color: Color(0xffEEEEF0),
-            ),
-          ),
-          GridView.builder(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              childAspectRatio: 4 / 2,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-            ),
-            itemCount: 9, //cc.bets.length,
-      
-            itemBuilder: (context, index) => Container(
-              height: Get.height * 0.007,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Color(0xff303136),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Image.asset(AppImages.betone, height: Get.height * 0.03),
-                  Text(
-                    'VS',
-                    style: GoogleFonts.manrope(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 12,
-                      color: Color(0xff797B86),
-                    ),
-                  ),
-                  Image.asset(AppImages.bettow, height: Get.height * 0.03),
-                ],
-              ),
-            ),
-          ),
-          Text(
-            'Risk Level',
-            style: GoogleFonts.manrope(
-              fontWeight: FontWeight.w700,
-              fontSize: 16,
-              color: Color(0xffEEEEF0),
-            ),
-          ),
-          //  SizedBox(height: Get.height * 0.02),
-          Stack(
             children: [
-              Image.asset(AppImages.riskbar, width: double.infinity),
-              Positioned(
-                //bottom: 10,
-                left: Get.width * 0.1 - 40,
-                child: Image.asset(AppImages.riskindicator),
+              const TextSpan(
+                text: 'For your picks to show in parlay builder click ',
               ),
+              TextSpan(
+                text: '“Add to Parlay”',
+                style: TextStyle(
+                  color: Colors.orange[800], // The specific accent color
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const TextSpan(text: ' on any picks of your choice'),
             ],
           ),
-          // SizedBox(height: Get.height * 0.02),
-          Text(
-            'Your Parley',
-            style: GoogleFonts.manrope(
-              fontWeight: FontWeight.w700,
-              fontSize: 16,
-              color: Color(0xffEEEEF0),
-            ),
+        ),
+        //SizedBox(height: Get.height * 0.02),
+        Text(
+          'Your Stored Picks',
+    
+          style: GoogleFonts.manrope(
+            fontWeight: FontWeight.w700,
+            fontSize: 16,
+            color: Color(0xffEEEEF0),
           ),
-          Container(
-            height: Get.height * 0.1,
-            width: double.infinity,
+        ),
+        GridView.builder(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            childAspectRatio: 4 / 2,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+          ),
+          itemCount: 9, //cc.bets.length,
+    
+          itemBuilder: (context, index) => Container(
+            height: Get.height * 0.007,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               color: Color(0xff303136),
             ),
-            child: Column(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      'OKC',
-                      style: GoogleFonts.manrope(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14,
-                        color: Color(0xffEEEEF0),
-                      ),
-                    ),
-                    Text(
-                      '145+',
-                      style: GoogleFonts.manrope(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 14,
-                        color: Color(0xff10B981),
-                      ),
-                    ),
-                  ],
+                Image.asset(AppImages.betone, height: Get.height * 0.03),
+                Text(
+                  'VS',
+                  style: GoogleFonts.manrope(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 12,
+                    color: Color(0xff797B86),
+                  ),
                 ),
-                Divider(
-                  height: 1,
-                  indent: 1,
-                  endIndent: 1,
-                  color: Color(0xff5F606A),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      'Chief',
-                      style: GoogleFonts.manrope(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14,
-                        color: Color(0xffEEEEF0),
-                      ),
-                    ),
-                    Text(
-                      '-210',
-                      style: GoogleFonts.manrope(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 14,
-                        color: Color(0xffEF4444),
-                      ),
-                    ),
-                  ],
-                ),
+                Image.asset(AppImages.bettow, height: Get.height * 0.03),
               ],
             ),
           ),
-          SizedBox(height: 5,),
-          CommonButton(tittle: 'Send to live bet tracking'),
-          SizedBox(height: 5,),
-          Container(
-            height: Get.height * 0.05,
-            decoration: BoxDecoration(
-              border: Border.all(width: 1, color: Color(0xff393A40)),
-              borderRadius: BorderRadius.circular(100),
-            ),
-            child: Center(
-              child: Text(
-                'Celar Parlay',
-                style: GoogleFonts.manrope(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14,
-                  color: Color(0xffEF4444),
-                ),
-              ),
-            ),
+        ),
+        Text(
+          'Risk Level',
+          style: GoogleFonts.manrope(
+            fontWeight: FontWeight.w700,
+            fontSize: 16,
+            color: Color(0xffEEEEF0),
           ),
-          SizedBox(height: 5,),
-          Container(
-            height: Get.height * 0.05,
-            width: Get.width * 0.4,
-            decoration: BoxDecoration(
-              border: Border.all(width: 1, color: Color(0xffB2B3BD)),
-              borderRadius: BorderRadius.circular(100),
-              color: Color(0xff303136),
+        ),
+        //  SizedBox(height: Get.height * 0.02),
+        Stack(
+          children: [
+            Image.asset(AppImages.riskbar, width: double.infinity),
+            Positioned(
+              //bottom: 10,
+              left: Get.width * 0.1 - 40,
+              child: Image.asset(AppImages.riskindicator),
             ),
-            child: Center(
-              child: Text('84% Confidence',
-              style: GoogleFonts.manrope( 
-                fontWeight: FontWeight.w700,
+          ],
+        ),
+        // SizedBox(height: Get.height * 0.02),
+        Text(
+          'Your Parley',
+          style: GoogleFonts.manrope(
+            fontWeight: FontWeight.w700,
+            fontSize: 16,
+            color: Color(0xffEEEEF0),
+          ),
+        ),
+        Container(
+          height: Get.height * 0.1,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: Color(0xff303136),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    'OKC',
+                    style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: Color(0xffEEEEF0),
+                    ),
+                  ),
+                  Text(
+                    '145+',
+                    style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 14,
+                      color: Color(0xff10B981),
+                    ),
+                  ),
+                ],
+              ),
+              Divider(
+                height: 1,
+                indent: 1,
+                endIndent: 1,
+                color: Color(0xff5F606A),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    'Chief',
+                    style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: Color(0xffEEEEF0),
+                    ),
+                  ),
+                  Text(
+                    '-210',
+                    style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 14,
+                      color: Color(0xffEF4444),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        SizedBox(height: Get.height*0.02,),
+        CommonButton(tittle: 'Send to live bet tracking'),
+        SizedBox(height: Get.height*0.02,),
+        Container(
+          height: Get.height * 0.05,
+          decoration: BoxDecoration(
+            border: Border.all(width: 1, color: Color(0xff393A40)),
+            borderRadius: BorderRadius.circular(100),
+          ),
+          child: Center(
+            child: Text(
+              'Celar Parlay',
+              style: GoogleFonts.manrope(
+                fontWeight: FontWeight.w500,
                 fontSize: 14,
-                color: Color(0xffEEEEF0)
-              ),
+                color: Color(0xffEF4444),
               ),
             ),
           ),
-        ],
-      ),
+        ),
+        SizedBox(height: Get.height*0.02,),
+        Container(
+          height: Get.height * 0.05,
+          width: Get.width * 0.4,
+          decoration: BoxDecoration(
+            border: Border.all(width: 1, color: Color(0xffB2B3BD)),
+            borderRadius: BorderRadius.circular(100),
+            color: Color(0xff303136),
+          ),
+          child: Center(
+            child: Text('84% Confidence',
+            style: GoogleFonts.manrope( 
+              fontWeight: FontWeight.w700,
+              fontSize: 14,
+              color: Color(0xffEEEEF0)
+            ),
+            ),
+          ),
+        ),
+        SizedBox(height: 500,),
+      ],
+    ),
     ),
   );
 }

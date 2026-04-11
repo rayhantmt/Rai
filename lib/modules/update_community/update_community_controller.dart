@@ -34,7 +34,7 @@ class UpdateCommunityController extends GetxController{
   final descriptioncontroller = TextEditingController();
   var id;
   RxBool isLoading = false.obs;
-  Future<void> createGroup() async {
+  Future<void> updateGroup() async {
     id=Get.arguments['id'];
     final storage = GetStorage();
     final token = storage.read('token');
@@ -79,12 +79,12 @@ class UpdateCommunityController extends GetxController{
       print('Data: ${response.data}');
       // --- PRINT RESPONSE END ---
 
-      Get.snackbar('Success', 'Group Created Successfully');
+      Get.snackbar('Success', 'Group Updated Successfully');
      // controller.fetchCommunities();
       Get.toNamed(AppPages.mainscreen);
     } on BadRequestException catch (e) {
       // Caught by our custom DioClient logic
-      Get.snackbar('Registration Failed', e.toString());
+      Get.snackbar('Group Update Failed', e.toString());
       print('❌ API Error:  $e');
     } on DioException catch (e) {
       // Catch generic Dio errors that might slip through

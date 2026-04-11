@@ -42,7 +42,7 @@ class UpdateCommunityView extends GetView<UpdateCommunityController> {
                 ],
               ),
               SizedBox(height: Get.height * 0.04),
-               Obx(
+              Obx(
                 () => CircleAvatar(
                   radius: 80,
                   backgroundColor: Color(0xffB2B3BD),
@@ -74,6 +74,7 @@ class UpdateCommunityView extends GetView<UpdateCommunityController> {
                 color: Color(0xff393A40),
               ),
               Commontextfield(
+                controller: controller.namecontroller,
                 tittle: 'Group Name',
                 hint: 'Write group name',
                 obsecuretext: false,
@@ -99,24 +100,24 @@ class UpdateCommunityView extends GetView<UpdateCommunityController> {
                   border: Border.all(width: 1, color: Color(0xff393A40)),
                 ),
                 child: TextFormField(
-                  
+                  controller: controller.descriptioncontroller,
                   decoration: InputDecoration(
-                    
+                    contentPadding: EdgeInsets.only(left: 10),
                     border: InputBorder.none,
-                    hint: Text('Write short description here....',
-                    style: GoogleFonts.manrope( 
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                      color: Color(0xff6C6E79)
+                    hint: Text(
+                      'Write short description here....',
+                      style: GoogleFonts.manrope(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                        color: Color(0xff6C6E79),
+                      ),
                     ),
-                    )
                   ),
-                   style: GoogleFonts.inter(
+                  style: GoogleFonts.inter(
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
                     color: Colors.white,
                   ),
-                  
                 ),
               ),
               // Row(
@@ -134,7 +135,11 @@ class UpdateCommunityView extends GetView<UpdateCommunityController> {
               //   ],
               // ),
               SizedBox(height: Get.height * 0.06),
-              CommonButton(tittle: 'Update'),
+              GestureDetector(
+                onTap: () => controller.updateGroup(),
+                child: Obx(() => controller.isLoading.value?Center(child: CircularProgressIndicator(
+                  color: Colors.white,
+                )):CommonButton(tittle: 'Update'))),
             ],
           ),
         ),

@@ -22,6 +22,8 @@ import 'package:rai/modules/group_member_community/group_member_community_bindin
 import 'package:rai/modules/group_member_community/group_member_community_view.dart';
 import 'package:rai/modules/home/home_binding.dart';
 import 'package:rai/modules/home/home_view.dart';
+import 'package:rai/modules/join_community/join_community_binding.dart';
+import 'package:rai/modules/join_community/join_community_view.dart';
 import 'package:rai/modules/log_in/log_in_binding.dart';
 import 'package:rai/modules/log_in/log_in_view.dart';
 import 'package:rai/modules/main_screen/main_screen_binding.dart';
@@ -75,7 +77,8 @@ class AppRoutes {
     GetPage(name: AppPages.communityDetails, page: () => CommunityDetailsView(),binding: CommunityDetailsBinding()),
     GetPage(name: AppPages.updatecommunity, page: () => UpdateCommunityView(),binding: UpdateCommunityBinding()),
     GetPage(name: AppPages.groupmembercommunity, page: () => GroupMemberCommunityView(),binding: GroupMemberCommunityBinding()),
-    GetPage(name: AppPages.admin_community_get_requests, page: () => AdmincommunityGetRequestsView(),binding: AdminCommunityGetRequestsBinding())
+    GetPage(name: AppPages.admin_community_get_requests, page: () => AdmincommunityGetRequestsView(),binding: AdminCommunityGetRequestsBinding()),
+    GetPage(name: AppPages.join_community, page: () => JoinCommunityView(),binding: JoinCommunityBinding())
 
   ];
 }

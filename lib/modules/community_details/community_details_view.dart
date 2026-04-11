@@ -73,18 +73,21 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
                             ),
                           ],
                         ),
+                        // GestureDetector(
+                        //   onTap: () => Get.toNamed(
+                        //     AppPages.admin_community_get_requests,
+                        //     arguments: {'role': role},
+                        //   ),
+                        //   child: Image.asset(
+                        //     AppImages.addPeopleIcon,
+                        //     height: Get.height * 0.05,
+                        //   ),
+                        // ),
                         GestureDetector(
                           onTap: () => Get.toNamed(
-                            AppPages.admin_community_get_requests,
-                            arguments: {'role': role},
+                            AppPages.updatecommunity,
+                            arguments: {'id': id},
                           ),
-                          child: Image.asset(
-                            AppImages.addPeopleIcon,
-                            height: Get.height * 0.05,
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () => Get.toNamed(AppPages.updatecommunity,arguments: {'id':id}),
                           child: Image.asset(
                             AppImages.editCommunity,
                             height: Get.height * 0.05,
@@ -119,15 +122,37 @@ class CommunityDetailsView extends GetView<CommunityDetailsController> {
                 ),
               ),
               SizedBox(height: Get.height * 0.02),
-              MoreSectionWidget(
-                tittle: 'Group Invite Link',
-                img: AppImages.shareGroupLink,
+              GestureDetector(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => Dialog(
+                      child: Center(
+                        child: Container(
+                          height: Get.height * 0.3,
+                          width: double.infinity,
+                          decoration: BoxDecoration(),
+                        child: Column(
+                          children: [
+                            Text('Copy Invite code')
+                          ],
+                        ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                child: MoreSectionWidget(
+                  tittle: 'Group Invite Link',
+                  img: AppImages.shareGroupLink,
+                ),
               ),
               SizedBox(height: Get.height * 0.03),
               GestureDetector(
-                onTap: () => Get.toNamed(AppPages.groupmembercommunity,arguments: {
-                  'id':id
-                }),
+                onTap: () => Get.toNamed(
+                  AppPages.groupmembercommunity,
+                  arguments: {'id': id},
+                ),
                 child: MoreSectionWidget(
                   tittle: 'Group member',
                   img: AppImages.groupMemberIcon,

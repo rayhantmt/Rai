@@ -137,7 +137,7 @@ Widget _dailypicks() {
         ),
         Expanded(
           child: ListView.builder(
-            itemCount: controller.predictions.length,
+            itemCount: controller.pickOfTheDay.length,
             shrinkWrap: true,
             itemBuilder: (context, index) => Padding(
               padding: const EdgeInsets.only(bottom: 10),
@@ -209,7 +209,7 @@ Widget _dailypicks() {
                               height: Get.height * 0.03,
                             ),
                             Text(
-                              controller.predictions[index].selectedTeam,
+                              controller.pickOfTheDay[index].selectedTeam,
                               style: GoogleFonts.manrope(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12,
@@ -219,7 +219,7 @@ Widget _dailypicks() {
                           ],
                         ),
                         Text(
-                          controller.predictions[index].point,
+                          controller.pickOfTheDay[index].point,
                           style: GoogleFonts.manrope(
                             fontWeight: FontWeight.w600,
                             fontSize: 16,
@@ -244,7 +244,7 @@ Widget _dailypicks() {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  controller.predictions[index].odds,
+                                  controller.pickOfTheDay[index].odds,
                                   style: GoogleFonts.manrope(
                                     fontWeight: FontWeight.w600,
                                     fontSize: 14,
@@ -275,7 +275,7 @@ Widget _dailypicks() {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  controller.predictions[index].confidence,
+                                  controller.pickOfTheDay[index].confidence,
                                   style: GoogleFonts.manrope(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 14,

@@ -166,8 +166,6 @@ class RaisPicsController extends GetxController {
         pickOfTheDay.value = allPicks.where((e) => e.isPickOfTheDay).toList();
       }
       print(response);
-      print(predictions);
-      print(pickOfTheDay);
     } catch (e) {
       print('fetchPredictions error: $e');
     } finally {

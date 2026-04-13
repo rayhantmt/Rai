@@ -21,7 +21,6 @@ class JoinCommunityView extends GetView<JoinCommunityController> {
             SizedBox(height: Get.height * 0.3),
             Text(
               'Enter code to join that community',
-
               style: GoogleFonts.manrope(
                 fontWeight: FontWeight.w700,
                 fontSize: 18,

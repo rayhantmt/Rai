@@ -101,7 +101,7 @@ class LogInView extends GetView<LogInController> {
               ),
               SizedBox(height: Get.height * 0.02),
               GestureDetector(
-                // onTap: () => Get.offAllNamed(AppPages.raichat),
+               // onTap: () => Get.offAllNamed(AppPages.mainscreen),
                 onTap: () => controller.login(),
                 child: Obx(
                   () => controller.isLoading.value

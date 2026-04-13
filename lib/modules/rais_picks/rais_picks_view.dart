@@ -95,7 +95,6 @@ Widget _dailypicks() {
       children: [
         SizedBox(
           height: Get.height * 0.045,
-
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: controller.games.length,
@@ -106,7 +105,6 @@ Widget _dailypicks() {
                 child: Obx(
                   () => Container(
                     width: Get.width * 0.25,
-
                     decoration: BoxDecoration(
                       border: Border.all(
                         width: 1,
@@ -211,7 +209,7 @@ Widget _dailypicks() {
                               height: Get.height * 0.03,
                             ),
                             Text(
-                              'New York Knicks',
+                              controller.predictions[index].selectedTeam,
                               style: GoogleFonts.manrope(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12,
@@ -679,7 +677,7 @@ Widget _bangForBuck() {
                               height: Get.height * 0.03,
                             ),
                             Text(
-                              'New York Knicks',
+                             controller.predictions[index].selectedTeam,
                               style: GoogleFonts.manrope(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12,

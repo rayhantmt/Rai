@@ -16,6 +16,7 @@ class Leaugemodel {
   final String ev;
   final String confidence;
   final String point;
+  final String selectedTeam;
 
   Leaugemodel({
     required this.odds,
@@ -23,6 +24,7 @@ class Leaugemodel {
     required this.ev,
     required this.confidence,
     required this.point,
+    required this.selectedTeam
   });
 }
 class bettinginfo{

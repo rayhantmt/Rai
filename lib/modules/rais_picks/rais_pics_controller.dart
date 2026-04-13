@@ -7,17 +7,18 @@ class RaisPicsController extends GetxController {
   void selectCategory(int index) {
     selectedCategoryIndex.value = index;
   }
-var bets=[
-  bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
+
+  var bets = [
     bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
-      bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
-        bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
-          bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
-            bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
-              bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
-                bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
-                  bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
-];
+    bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
+    bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
+    bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
+    bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
+    bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
+    bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
+    bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
+    bettinginfo(image1: AppImages.betone, image2: AppImages.bettow),
+  ];
   var picks = [
     Picksmodel(type: 'Bang for Buck'),
     Picksmodel(type: 'Bet Builder'),
@@ -52,76 +53,87 @@ var bets=[
       ev: '+9.83%',
       confidence: '82%',
       point: '+5.5',
+      selectedTeam: 'Almeria'
     ),
-     Leaugemodel(
+    Leaugemodel(
       odds: '153+',
       edge: "+8.23%",
       ev: '+9.83%',
       confidence: '82%',
       point: '+5.5',
+      selectedTeam: 'Argentina'
     ),
-     Leaugemodel(
+    Leaugemodel(
       odds: '153+',
       edge: "+8.23%",
       ev: '+9.83%',
       confidence: '82%',
       point: '+5.5',
+      selectedTeam: 'New Reference'
     ),
-     Leaugemodel(
+    Leaugemodel(
       odds: '153+',
       edge: "+8.23%",
       ev: '+9.83%',
       confidence: '82%',
       point: '+5.5',
+      selectedTeam: 'Updated Team'
     ),
-     Leaugemodel(
+    Leaugemodel(
       odds: '153+',
       edge: "+8.23%",
       ev: '+9.83%',
       confidence: '82%',
       point: '+5.5',
+      selectedTeam: 'Select'
     ),
-     Leaugemodel(
+    Leaugemodel(
       odds: '153+',
       edge: "+8.23%",
       ev: '+9.83%',
       confidence: '82%',
       point: '+5.5',
+      selectedTeam: 'New'
     ),
-     Leaugemodel(
+    Leaugemodel(
       odds: '153+',
       edge: "+8.23%",
       ev: '+9.83%',
       confidence: '82%',
       point: '+5.5',
+      selectedTeam: 'Rugby'
     ),
-     Leaugemodel(
+    Leaugemodel(
       odds: '153+',
       edge: "+8.23%",
       ev: '+9.83%',
       confidence: '82%',
       point: '+5.5',
+      selectedTeam: 'Nobody knows'
     ),
-     Leaugemodel(
+    Leaugemodel(
       odds: '153+',
       edge: "+8.23%",
       ev: '+9.83%',
       confidence: '82%',
       point: '+5.5',
+      selectedTeam: 'Hamper rocks'
     ),
-     Leaugemodel(
+    Leaugemodel(
       odds: '153+',
       edge: "+8.23%",
       ev: '+9.83%',
       confidence: '82%',
       point: '+5.5',
+      selectedTeam: 'Sydney Stars'
     ),
-     Leaugemodel(
+    Leaugemodel(
       odds: '153+',
       edge: "+8.23%",
       ev: '+9.83%',
       confidence: '82%',
       point: '+5.5',
+      selectedTeam: 'Rocking Jones'
     ),
   ];
 }

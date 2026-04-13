@@ -368,23 +368,23 @@ class RaiChatController extends GetxController {
   }
 
   Future<void> _startRecording() async {
-  await Permission.microphone.request();
-  if (!_recorderInitialized) {
-    Get.snackbar('Error', 'Recorder not ready');
-    return;
-  }
-  final tempDir = Directory.systemTemp;
-  _recordingPath =
-      '${tempDir.path}/rai_audio_${DateTime.now().millisecondsSinceEpoch}.mp4'; // ✅ .mp4 extension
+    await Permission.microphone.request();
+    if (!_recorderInitialized) {
+      Get.snackbar('Error', 'Recorder not ready');
+      return;
+    }
+    final tempDir = Directory.systemTemp;
+    _recordingPath =
+        '${tempDir.path}/rai_audio_${DateTime.now().millisecondsSinceEpoch}.mp4'; // ✅ .mp4 extension
 
-  await _recorder.startRecorder(
-    toFile: _recordingPath,
-    codec: Codec.aacMP4,        // ✅ AAC inside MP4 container
-    bitRate: 128000,            // ✅ good quality for Whisper
-    sampleRate: 44100,          // ✅ standard sample rate
-  );
-  isRecording.value = true;
-}
+    await _recorder.startRecorder(
+      toFile: _recordingPath,
+      codec: Codec.aacMP4, // ✅ AAC inside MP4 container
+      bitRate: 128000, // ✅ good quality for Whisper
+      sampleRate: 44100, // ✅ standard sample rate
+    );
+    isRecording.value = true;
+  }
 
   Future<void> _stopAndTranscribe() async {
     final filePath = await _recorder.stopRecorder();
@@ -413,11 +413,11 @@ class RaiChatController extends GetxController {
       final res = await http.Response.fromStream(streamed);
       print(res.body);
       if (res.statusCode == 200 || res.statusCode == 201) {
-       final body = jsonDecode(res.body);
-  
-  // ✅ transcript is inside body['data']['text']
-  final data = body['data'] as Map<String, dynamic>? ?? {};
-  final transcript = data['text'] ?? '';
+        final body = jsonDecode(res.body);
+
+        // ✅ transcript is inside body['data']['text']
+        final data = body['data'] as Map<String, dynamic>? ?? {};
+        final transcript = data['text'] ?? '';
         if (transcript.isNotEmpty) {
           sendMessage(transcript);
         } else {

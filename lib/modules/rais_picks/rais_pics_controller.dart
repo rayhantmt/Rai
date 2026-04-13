@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:rai/api_services/api_services.dart';
 import 'package:rai/modules/rais_picks/rais_picks_model.dart';
 import 'package:rai/utils/app_images.dart';
 
@@ -46,94 +48,135 @@ class RaisPicsController extends GetxController {
     print('Games inedx $index');
   }
 
-  var predictions = [
-    Leaugemodel(
-      odds: '153+',
-      edge: "+8.23%",
-      ev: '+9.83%',
-      confidence: '82%',
-      point: '+5.5',
-      selectedTeam: 'Almeria'
-    ),
-    Leaugemodel(
-      odds: '153+',
-      edge: "+8.23%",
-      ev: '+9.83%',
-      confidence: '82%',
-      point: '+5.5',
-      selectedTeam: 'Argentina'
-    ),
-    Leaugemodel(
-      odds: '153+',
-      edge: "+8.23%",
-      ev: '+9.83%',
-      confidence: '82%',
-      point: '+5.5',
-      selectedTeam: 'New Reference'
-    ),
-    Leaugemodel(
-      odds: '153+',
-      edge: "+8.23%",
-      ev: '+9.83%',
-      confidence: '82%',
-      point: '+5.5',
-      selectedTeam: 'Updated Team'
-    ),
-    Leaugemodel(
-      odds: '153+',
-      edge: "+8.23%",
-      ev: '+9.83%',
-      confidence: '82%',
-      point: '+5.5',
-      selectedTeam: 'Select'
-    ),
-    Leaugemodel(
-      odds: '153+',
-      edge: "+8.23%",
-      ev: '+9.83%',
-      confidence: '82%',
-      point: '+5.5',
-      selectedTeam: 'New'
-    ),
-    Leaugemodel(
-      odds: '153+',
-      edge: "+8.23%",
-      ev: '+9.83%',
-      confidence: '82%',
-      point: '+5.5',
-      selectedTeam: 'Rugby'
-    ),
-    Leaugemodel(
-      odds: '153+',
-      edge: "+8.23%",
-      ev: '+9.83%',
-      confidence: '82%',
-      point: '+5.5',
-      selectedTeam: 'Nobody knows'
-    ),
-    Leaugemodel(
-      odds: '153+',
-      edge: "+8.23%",
-      ev: '+9.83%',
-      confidence: '82%',
-      point: '+5.5',
-      selectedTeam: 'Hamper rocks'
-    ),
-    Leaugemodel(
-      odds: '153+',
-      edge: "+8.23%",
-      ev: '+9.83%',
-      confidence: '82%',
-      point: '+5.5',
-      selectedTeam: 'Sydney Stars'
-    ),
-    Leaugemodel(
-      odds: '153+',
-      edge: "+8.23%",
-      ev: '+9.83%',
-      confidence: '82%',
-      point: '+5.5',
-      selectedTeam: 'Rocking Jones'
-    ),
-  ];
+  // var predictions = [
+  //   Leaugemodel(
+  //     odds: '153+',
+  //     edge: "+8.23%",
+  //     ev: '+9.83%',
+  //     confidence: '82%',
+  //     point: '+5.5',
+  //     selectedTeam: 'Almeria'
+  //   ),
+  //   Leaugemodel(
+  //     odds: '153+',
+  //     edge: "+8.23%",
+  //     ev: '+9.83%',
+  //     confidence: '82%',
+  //     point: '+5.5',
+  //     selectedTeam: 'Argentina'
+  //   ),
+  //   Leaugemodel(
+  //     odds: '153+',
+  //     edge: "+8.23%",
+  //     ev: '+9.83%',
+  //     confidence: '82%',
+  //     point: '+5.5',
+  //     selectedTeam: 'New Reference'
+  //   ),
+  //   Leaugemodel(
+  //     odds: '153+',
+  //     edge: "+8.23%",
+  //     ev: '+9.83%',
+  //     confidence: '82%',
+  //     point: '+5.5',
+  //     selectedTeam: 'Updated Team'
+  //   ),
+  //   Leaugemodel(
+  //     odds: '153+',
+  //     edge: "+8.23%",
+  //     ev: '+9.83%',
+  //     confidence: '82%',
+  //     point: '+5.5',
+  //     selectedTeam: 'Select'
+  //   ),
+  //   Leaugemodel(
+  //     odds: '153+',
+  //     edge: "+8.23%",
+  //     ev: '+9.83%',
+  //     confidence: '82%',
+  //     point: '+5.5',
+  //     selectedTeam: 'New'
+  //   ),
+  //   Leaugemodel(
+  //     odds: '153+',
+  //     edge: "+8.23%",
+  //     ev: '+9.83%',
+  //     confidence: '82%',
+  //     point: '+5.5',
+  //     selectedTeam: 'Rugby'
+  //   ),
+  //   Leaugemodel(
+  //     odds: '153+',
+  //     edge: "+8.23%",
+  //     ev: '+9.83%',
+  //     confidence: '82%',
+  //     point: '+5.5',
+  //     selectedTeam: 'Nobody knows'
+  //   ),
+  //   Leaugemodel(
+  //     odds: '153+',
+  //     edge: "+8.23%",
+  //     ev: '+9.83%',
+  //     confidence: '82%',
+  //     point: '+5.5',
+  //     selectedTeam: 'Hamper rocks'
+  //   ),
+  //   Leaugemodel(
+  //     odds: '153+',
+  //     edge: "+8.23%",
+  //     ev: '+9.83%',
+  //     confidence: '82%',
+  //     point: '+5.5',
+  //     selectedTeam: 'Sydney Stars'
+  //   ),
+  //   Leaugemodel(
+  //     odds: '153+',
+  //     edge: "+8.23%",
+  //     ev: '+9.83%',
+  //     confidence: '82%',
+  //     point: '+5.5',
+  //     selectedTeam: 'Rocking Jones'
+  //   ),
+  // ];
+  // Keep same variable name as before
+  var predictions = <Leaugemodel>[].obs;
+
+  // New variable for pick of the day screen
+  var pickOfTheDay = <Leaugemodel>[].obs;
+
+  var isLoading = false.obs;
+
+  Future<void> fetchPredictions() async {
+      final token=GetStorage().read('token');
+    try {
+      isLoading(true);
+      final response = await ApiService.get(
+        endpoint: '/api/betting/bang_for_buck/',
+            headers: {'Authorization': 'Bearer $token'},
+      );
+
+      if (response != null && response['success'] == true) {
+        final List data = response['data'];
+        final allPicks = data.map((e) => Leaugemodel.fromJson(e)).toList();
+
+        // All picks
+        predictions.value = allPicks.where((e) => !e.isPickOfTheDay).toList();
+
+        // Pick of the day picks — ready for the other screen
+        pickOfTheDay.value = allPicks.where((e) => e.isPickOfTheDay).toList();
+      }
+      print(response);
+      print(predictions);
+      print(pickOfTheDay);
+    } catch (e) {
+      print('fetchPredictions error: $e');
+    } finally {
+      isLoading(false);
+    }
+  }
+  @override
+  void onInit() {
+    fetchPredictions();
+    super.onInit();
+  }
 }

@@ -49,6 +49,7 @@ class RaisPicsController extends GetxController {
     print(gamesindex.value);
     print('Games inedx $index');
   }
+
   var predictions = <Leaugemodel>[].obs;
 
   // New variable for pick of the day screen
@@ -57,12 +58,12 @@ class RaisPicsController extends GetxController {
   var isLoading = false.obs;
 
   Future<void> fetchPredictions() async {
-      final token=GetStorage().read('token');
+    final token = GetStorage().read('token');
     try {
       isLoading(true);
       final response = await ApiService.get(
         endpoint: '/api/betting/bang_for_buck/',
-            headers: {'Authorization': 'Bearer $token'},
+        headers: {'Authorization': 'Bearer $token'},
       );
 
       if (response != null && response['success'] == true) {
@@ -82,24 +83,24 @@ class RaisPicsController extends GetxController {
       isLoading(false);
     }
   }
+
   @override
   void onInit() {
     fetchPredictions();
     super.onInit();
   }
+
   var isLoading2 = false.obs;
   Future<void> addtoBetbuilder(var id) async {
     final token = GetStorage().read('token');
-    final body = {
- ''
-    };
+    final body = {''};
 
     isLoading2.value = true;
     try {
       final response = await ApiService.post(
         endpoint: '/api/betting/$id/toggle_save/',
-      
-      headers: {'Authorization': 'Bearer $token'},
+
+        headers: {'Authorization': 'Bearer $token'},
       );
       Get.snackbar('Success', 'Added successfully to bet biulder');
       print("Bet builder Added: $response");

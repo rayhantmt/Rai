@@ -29,13 +29,13 @@ class RaisPicsController extends GetxController {
     Picksmodel(type: 'Daily Picks'),
     Picksmodel(type: "Creator's Pick"),
   ];
-  var games = [
-    RaisPicksModel(gametype: 'Basketball'),
-    RaisPicksModel(gametype: 'Football'),
-    RaisPicksModel(gametype: 'Hockey'),
-    RaisPicksModel(gametype: 'Tenis'),
-    RaisPicksModel(gametype: 'Cricket'),
-  ];
+  // var games = [
+  //   RaisPicksModel(gametype: 'basketball'),
+  //   RaisPicksModel(gametype: 'football'),
+  //   RaisPicksModel(gametype: 'Hockey'),
+  //   RaisPicksModel(gametype: 'Tenis'),
+  //   RaisPicksModel(gametype: 'Cricket'),
+  // ];
   RxInt picksindex = 0.obs;
   RxInt gamesindex = 0.obs;
   void selectpicks(int index) {
@@ -43,8 +43,10 @@ class RaisPicsController extends GetxController {
     print('Picks inedx $index');
     picksindex.value = index;
   }
-
-  void selectgames(int index) {
+var gametypeapi='basketball'.obs;
+  void selectgames(int index,String gametype) {
+    gametypeapi.value=gametype;
+    fetchPredictions();
     gamesindex.value = index;
     print(gamesindex.value);
     print('Games inedx $index');

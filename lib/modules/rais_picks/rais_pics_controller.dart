@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:rai/api_services/api_services.dart';
+import 'package:rai/exceptions/app_exceptions.dart';
 import 'package:rai/modules/rais_picks/rais_picks_model.dart';
 import 'package:rai/utils/app_images.dart';
 
@@ -47,98 +49,6 @@ class RaisPicsController extends GetxController {
     print(gamesindex.value);
     print('Games inedx $index');
   }
-
-  // var predictions = [
-  //   Leaugemodel(
-  //     odds: '153+',
-  //     edge: "+8.23%",
-  //     ev: '+9.83%',
-  //     confidence: '82%',
-  //     point: '+5.5',
-  //     selectedTeam: 'Almeria'
-  //   ),
-  //   Leaugemodel(
-  //     odds: '153+',
-  //     edge: "+8.23%",
-  //     ev: '+9.83%',
-  //     confidence: '82%',
-  //     point: '+5.5',
-  //     selectedTeam: 'Argentina'
-  //   ),
-  //   Leaugemodel(
-  //     odds: '153+',
-  //     edge: "+8.23%",
-  //     ev: '+9.83%',
-  //     confidence: '82%',
-  //     point: '+5.5',
-  //     selectedTeam: 'New Reference'
-  //   ),
-  //   Leaugemodel(
-  //     odds: '153+',
-  //     edge: "+8.23%",
-  //     ev: '+9.83%',
-  //     confidence: '82%',
-  //     point: '+5.5',
-  //     selectedTeam: 'Updated Team'
-  //   ),
-  //   Leaugemodel(
-  //     odds: '153+',
-  //     edge: "+8.23%",
-  //     ev: '+9.83%',
-  //     confidence: '82%',
-  //     point: '+5.5',
-  //     selectedTeam: 'Select'
-  //   ),
-  //   Leaugemodel(
-  //     odds: '153+',
-  //     edge: "+8.23%",
-  //     ev: '+9.83%',
-  //     confidence: '82%',
-  //     point: '+5.5',
-  //     selectedTeam: 'New'
-  //   ),
-  //   Leaugemodel(
-  //     odds: '153+',
-  //     edge: "+8.23%",
-  //     ev: '+9.83%',
-  //     confidence: '82%',
-  //     point: '+5.5',
-  //     selectedTeam: 'Rugby'
-  //   ),
-  //   Leaugemodel(
-  //     odds: '153+',
-  //     edge: "+8.23%",
-  //     ev: '+9.83%',
-  //     confidence: '82%',
-  //     point: '+5.5',
-  //     selectedTeam: 'Nobody knows'
-  //   ),
-  //   Leaugemodel(
-  //     odds: '153+',
-  //     edge: "+8.23%",
-  //     ev: '+9.83%',
-  //     confidence: '82%',
-  //     point: '+5.5',
-  //     selectedTeam: 'Hamper rocks'
-  //   ),
-  //   Leaugemodel(
-  //     odds: '153+',
-  //     edge: "+8.23%",
-  //     ev: '+9.83%',
-  //     confidence: '82%',
-  //     point: '+5.5',
-  //     selectedTeam: 'Sydney Stars'
-  //   ),
-  //   Leaugemodel(
-  //     odds: '153+',
-  //     edge: "+8.23%",
-  //     ev: '+9.83%',
-  //     confidence: '82%',
-  //     point: '+5.5',
-  //     selectedTeam: 'Rocking Jones'
-  //   ),
-  // ];
-  // Keep same variable name as before
   var predictions = <Leaugemodel>[].obs;
 
   // New variable for pick of the day screen
@@ -176,5 +86,32 @@ class RaisPicsController extends GetxController {
   void onInit() {
     fetchPredictions();
     super.onInit();
+  }
+  var isLoading2 = false.obs;
+  Future<void> addtoBetbuilder(var id) async {
+    final token = GetStorage().read('token');
+    final body = {
+ ''
+    };
+
+    isLoading2.value = true;
+    try {
+      final response = await ApiService.post(
+        endpoint: '/api/betting/$id/toggle_save/',
+      
+      headers: {'Authorization': 'Bearer $token'},
+      );
+      Get.snackbar('Success', 'Added successfully to bet biulder');
+      print("Bet builder Added: $response");
+    } on AppException catch (e) {
+      Get.snackbar(
+        'Failed',
+        e.message,
+        backgroundColor: Colors.redAccent,
+        colorText: Colors.white,
+      );
+    } finally {
+      isLoading2.value = false;
+    }
   }
 }

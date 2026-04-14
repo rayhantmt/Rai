@@ -627,7 +627,7 @@ Widget _bangForBuck() {
                               height: Get.height * 0.02,
                             ),
                             Text(
-                              'NBA',
+                              controller.predictions[index].sportLabel,
                               style: GoogleFonts.manrope(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 14,
@@ -687,7 +687,7 @@ Widget _bangForBuck() {
                           ],
                         ),
                         Text(
-                          controller.predictions[index].point,
+                          controller.predictions[index].ev,
                           style: GoogleFonts.manrope(
                             fontWeight: FontWeight.w600,
                             fontSize: 16,
@@ -799,7 +799,9 @@ Widget _bangForBuck() {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset(AppImages.addtoprolay),
+                        GestureDetector(
+                          onTap: () => controller.addtoBetbuilder(controller.predictions[index].id),
+                          child: Obx(() => controller.isLoading.value?Center(child: CircularProgressIndicator(color: Colors.white,)):Image.asset(AppImages.addtoprolay))),
                         // Image.asset(AppImages.viewbreakdown),
                       ],
                     ),

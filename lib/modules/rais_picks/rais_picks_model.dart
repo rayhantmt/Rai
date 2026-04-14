@@ -113,4 +113,54 @@ class Leaugemodel {
       createdAt: json['created_at'] ?? '',
     );
   }
+  String get sportLabel {
+  final Map<String, String> sportMap = {
+    // Soccer
+    'soccer_spain_la_liga': 'Soccer',
+    'soccer_spain_segunda_division': 'Soccer',
+    'soccer_germany_bundesliga': 'Soccer',
+    'soccer_germany_liga3': 'Soccer',
+    'soccer_italy_serie_b': 'Soccer',
+    'soccer_epl': 'Soccer',
+    'soccer_france_ligue_one': 'Soccer',
+    'soccer_italy_serie_a': 'Soccer',
+    'soccer_uefa_champs_league': 'Soccer',
+    'soccer_usa_mls': 'Soccer',
+
+    // Baseball
+    'baseball_mlb': 'Baseball',
+    'baseball_ncaa': 'Baseball',
+
+    // Basketball
+    'basketball_nba': 'Basketball',
+    'basketball_ncaab': 'Basketball',
+    'basketball_wnba': 'Basketball',
+
+    // American Football
+    'americanfootball_nfl': 'Football',
+    'americanfootball_ncaaf': 'Football',
+
+    // Hockey
+    'icehockey_nhl': 'Hockey',
+
+    // Tennis
+    'tennis_atp': 'Tennis',
+    'tennis_wta': 'Tennis',
+
+    // MMA / Boxing
+    'mma_mixed_martial_arts': 'MMA',
+    'boxing_boxing': 'Boxing',
+  };
+
+  return sportMap[sport] ?? 
+      sport
+        .replaceAll('_', ' ')
+        .split(' ')
+        .last
+        .split('')
+        .asMap()
+        .entries
+        .map((e) => e.key == 0 ? e.value.toUpperCase() : e.value)
+        .join();
+}
 }

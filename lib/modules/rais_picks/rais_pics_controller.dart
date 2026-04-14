@@ -36,6 +36,16 @@ class RaisPicsController extends GetxController {
   //   RaisPicksModel(gametype: 'Tenis'),
   //   RaisPicksModel(gametype: 'Cricket'),
   // ];
+  var games = [
+  RaisPicksModel(gametype: 'All',        sportKey: 'all'),
+  RaisPicksModel(gametype: 'Basketball', sportKey: 'basketball'),
+  RaisPicksModel(gametype: 'Football',   sportKey: 'football'),
+  RaisPicksModel(gametype: 'Hockey',     sportKey: 'hockey'),
+  RaisPicksModel(gametype: 'Tennis',     sportKey: 'tennis'),
+  RaisPicksModel(gametype: 'Cricket',    sportKey: 'cricket'),
+  RaisPicksModel(gametype: 'Soccer',     sportKey: 'soccer'),
+  RaisPicksModel(gametype: 'Baseball',   sportKey: 'baseball'),
+];
   RxInt picksindex = 0.obs;
   RxInt gamesindex = 0.obs;
   void selectpicks(int index) {
@@ -43,48 +53,91 @@ class RaisPicsController extends GetxController {
     print('Picks inedx $index');
     picksindex.value = index;
   }
-var gametypeapi='basketball'.obs;
-  void selectgames(int index,String gametype) {
-    gametypeapi.value=gametype;
-    fetchPredictions();
-    gamesindex.value = index;
-    print(gamesindex.value);
-    print('Games inedx $index');
-  }
+
+  // void selectgames(int index,String gametype) {
+
+  //   fetchPredictions();
+  //   gamesindex.value = index;
+  //   print(gamesindex.value);
+  //   print('Games inedx $index');
+  // }
 
   var predictions = <Leaugemodel>[].obs;
 
   // New variable for pick of the day screen
   var pickOfTheDay = <Leaugemodel>[].obs;
+// Stores all fetched picks — never modified after fetch
+var allPredictions = <Leaugemodel>[].obs;
+void selectgames(int index, String gametype) {
+  gamesindex.value = index;
+  _filterPredictions(games[index].sportKey);
+}
 
+void _filterPredictions(String sportKey) {
+  if (sportKey == 'all') {
+    predictions.value = allPredictions.toList();
+  } else {
+    predictions.value = allPredictions
+        .where((e) => e.sportLabel.toLowerCase() == sportKey.toLowerCase())
+        .toList();
+  }
+}
+// This is what the view renders — filtered version
+// predictions stays as your existing variable, just reassigned on filter
   var isLoading = false.obs;
 
+  // Future<void> fetchPredictions() async {
+  //   final token = GetStorage().read('token');
+  //   try {
+  //     isLoading(true);
+  //     final response = await ApiService.get(
+  //       endpoint: '/api/betting/bang_for_buck/',
+  //       headers: {'Authorization': 'Bearer $token'},
+  //     );
+
+  //     if (response != null && response['success'] == true) {
+  //       final List data = response['data'];
+  //       final allPicks = data.map((e) => Leaugemodel.fromJson(e)).toList();
+
+  //       // All picks
+  //       predictions.value = allPicks.where((e) => !e.isPickOfTheDay).toList();
+
+  //       // Pick of the day picks — ready for the other screen
+  //       pickOfTheDay.value = allPicks.where((e) => e.isPickOfTheDay).toList();
+  //     }
+  //     print(response);
+  //   } catch (e) {
+  //     print('fetchPredictions error: $e');
+  //   } finally {
+  //     isLoading(false);
+  //   }
+  // }
   Future<void> fetchPredictions() async {
-    final token = GetStorage().read('token');
-    try {
-      isLoading(true);
-      final response = await ApiService.get(
-        endpoint: '/api/betting/bang_for_buck/',
-        headers: {'Authorization': 'Bearer $token'},
-      );
+  final token = GetStorage().read('token');
+  try {
+    isLoading(true);
+    final response = await ApiService.get(
+      endpoint: '/api/betting/bang_for_buck/',
+      headers: {'Authorization': 'Bearer $token'},
+    );
 
-      if (response != null && response['success'] == true) {
-        final List data = response['data'];
-        final allPicks = data.map((e) => Leaugemodel.fromJson(e)).toList();
+    if (response != null && response['success'] == true) {
+      final List data = response['data'];
+      final allPicks = data.map((e) => Leaugemodel.fromJson(e)).toList();
 
-        // All picks
-        predictions.value = allPicks.where((e) => !e.isPickOfTheDay).toList();
+      // store master list — never touch this after
+      allPredictions.value = allPicks.where((e) => !e.isPickOfTheDay).toList();
+      pickOfTheDay.value = allPicks.where((e) => e.isPickOfTheDay).toList();
 
-        // Pick of the day picks — ready for the other screen
-        pickOfTheDay.value = allPicks.where((e) => e.isPickOfTheDay).toList();
-      }
-      print(response);
-    } catch (e) {
-      print('fetchPredictions error: $e');
-    } finally {
-      isLoading(false);
+      // init predictions with all data
+      predictions.value = allPredictions.toList();
     }
+  } catch (e) {
+    print('fetchPredictions error: $e');
+  } finally {
+    isLoading(false);
   }
+}
 
   @override
   void onInit() {

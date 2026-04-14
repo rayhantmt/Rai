@@ -1,9 +1,14 @@
+// class RaisPicksModel {
+//   final String gametype;
+
+//   RaisPicksModel({required this.gametype});
+// }
 class RaisPicksModel {
   final String gametype;
+  final String sportKey; // matches sport field from API
 
-  RaisPicksModel({required this.gametype});
+  RaisPicksModel({required this.gametype, required this.sportKey});
 }
-
 class Picksmodel {
   final String type;
 

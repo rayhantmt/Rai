@@ -93,48 +93,48 @@ Widget _dailypicks() {
   return Expanded(
     child: Column(
       children: [
-        // SizedBox(
-        //   height: Get.height * 0.045,
-        //   child: ListView.builder(
-        //     scrollDirection: Axis.horizontal,
-        //     itemCount: controller.games.length,
-        //     itemBuilder: (context, index) => GestureDetector(
-        //       onTap: () => controller.selectgames(index,controller.games[index].gametype),
-        //       child: Padding(
-        //         padding: const EdgeInsets.only(right: 8),
-        //         child: Obx(
-        //           () => Container(
-        //             width: Get.width * 0.25,
-        //             decoration: BoxDecoration(
-        //               border: Border.all(
-        //                 width: 1,
-        //                 color: controller.gamesindex.value == index
-        //                     ? Color(0xffEEEEF0)
-        //                     : Color(0xff393A40),
-        //               ),
-        //               borderRadius: BorderRadius.circular(100),
-        //               color: controller.gamesindex.value == index
-        //                   ? Color(0xffEEEEF0)
-        //                   : AppImages.primarycolor,
-        //             ),
-        //             child: Center(
-        //               child: Text(
-        //                 controller.games[index].gametype,
-        //                 style: GoogleFonts.manrope(
-        //                   fontWeight: FontWeight.w700,
-        //                   fontSize: 14,
-        //                   color: controller.gamesindex.value == index
-        //                       ? Color(0xff19191B)
-        //                       : Color(0xff797B86),
-        //                 ),
-        //               ),
-        //             ),
-        //           ),
-        //         ),
-        //       ),
-        //     ),
-        //   ),
-        // ),
+        SizedBox(
+          height: Get.height * 0.045,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: controller.games.length,
+            itemBuilder: (context, index) => GestureDetector(
+              onTap: () => controller.selectgames(index,controller.games[index].gametype),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 8),
+                child: Obx(
+                  () => Container(
+                    width: Get.width * 0.25,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 1,
+                        color: controller.gamesindex.value == index
+                            ? Color(0xffEEEEF0)
+                            : Color(0xff393A40),
+                      ),
+                      borderRadius: BorderRadius.circular(100),
+                      color: controller.gamesindex.value == index
+                          ? Color(0xffEEEEF0)
+                          : AppImages.primarycolor,
+                    ),
+                    child: Center(
+                      child: Text(
+                        controller.games[index].gametype,
+                        style: GoogleFonts.manrope(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14,
+                          color: controller.gamesindex.value == index
+                              ? Color(0xff19191B)
+                              : Color(0xff797B86),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
         Expanded(
           child: ListView.builder(
             itemCount: controller.pickOfTheDay.length,
@@ -559,50 +559,50 @@ Widget _bangForBuck() {
   return Expanded(
     child: Column(
       children: [
-        // SizedBox(
-        //   height: Get.height * 0.045,
+        SizedBox(
+          height: Get.height * 0.045,
 
-        //   child: ListView.builder(
-        //     scrollDirection: Axis.horizontal,
-        //     itemCount: controller.games.length,
-        //     itemBuilder: (context, index) => GestureDetector(
-        //       onTap: () => controller.selectgames(index,controller.games[index].gametype),
-        //       child: Padding(
-        //         padding: const EdgeInsets.only(right: 8),
-        //         child: Obx(
-        //           () => Container(
-        //             width: Get.width * 0.25,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: controller.games.length,
+            itemBuilder: (context, index) => GestureDetector(
+              onTap: () => controller.selectgames(index,controller.games[index].gametype),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 8),
+                child: Obx(
+                  () => Container(
+                    width: Get.width * 0.25,
 
-        //             decoration: BoxDecoration(
-        //               border: Border.all(
-        //                 width: 1,
-        //                 color: controller.gamesindex.value == index
-        //                     ? Color(0xffEEEEF0)
-        //                     : Color(0xff393A40),
-        //               ),
-        //               borderRadius: BorderRadius.circular(100),
-        //               color: controller.gamesindex.value == index
-        //                   ? Color(0xffEEEEF0)
-        //                   : AppImages.primarycolor,
-        //             ),
-        //             child: Center(
-        //               child: Text(
-        //                 controller.games[index].gametype,
-        //                 style: GoogleFonts.manrope(
-        //                   fontWeight: FontWeight.w700,
-        //                   fontSize: 14,
-        //                   color: controller.gamesindex.value == index
-        //                       ? Color(0xff19191B)
-        //                       : Color(0xff797B86),
-        //                 ),
-        //               ),
-        //             ),
-        //           ),
-        //         ),
-        //       ),
-        //     ),
-        //   ),
-        // ),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 1,
+                        color: controller.gamesindex.value == index
+                            ? Color(0xffEEEEF0)
+                            : Color(0xff393A40),
+                      ),
+                      borderRadius: BorderRadius.circular(100),
+                      color: controller.gamesindex.value == index
+                          ? Color(0xffEEEEF0)
+                          : AppImages.primarycolor,
+                    ),
+                    child: Center(
+                      child: Text(
+                        controller.games[index].gametype,
+                        style: GoogleFonts.manrope(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14,
+                          color: controller.gamesindex.value == index
+                              ? Color(0xff19191B)
+                              : Color(0xff797B86),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
         Expanded(
           child: ListView.builder(
             itemCount: controller.predictions.length,

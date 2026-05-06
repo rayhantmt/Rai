@@ -25,4 +25,5 @@ class AppPages {
   static const String groupmembercommunity='/groupmembercommunity';
   static const String admin_community_get_requests='/adimncommunitygetrequests';
   static const String join_community='/joincommunity';
+  static const String spalsh='/splash';
 }

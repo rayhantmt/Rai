@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:rai/modules/splash_screen/splash_screen.dart';
+import 'package:rai/utils/app_pages.dart';
 import 'package:rai/utils/app_routes.dart';
 
 void main() async {
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: SplashScreen(),
+     // home: SplashScreen(),
+     initialRoute: AppPages.spalsh,
       debugShowCheckedModeBanner: false,
       getPages: AppRoutes.getpages,
     );

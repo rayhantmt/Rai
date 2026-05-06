@@ -45,6 +45,7 @@ import 'package:rai/modules/sign_up/2nd_page/2nd_page_binding.dart';
 import 'package:rai/modules/sign_up/2nd_page/2nd_page_view.dart';
 import 'package:rai/modules/community_details/community_details_binding.dart';
 import 'package:rai/modules/community_details/community_details_view.dart';
+import 'package:rai/modules/splash_screen/splash_screen.dart';
 import 'package:rai/modules/update_community/update_community_binding.dart';
 import 'package:rai/modules/update_community/update_community_view.dart';
 import 'package:rai/modules/user_credentials_page/user_credentials_page_binding.dart';
@@ -78,7 +79,8 @@ class AppRoutes {
     GetPage(name: AppPages.updatecommunity, page: () => UpdateCommunityView(),binding: UpdateCommunityBinding()),
     GetPage(name: AppPages.groupmembercommunity, page: () => GroupMemberCommunityView(),binding: GroupMemberCommunityBinding()),
     GetPage(name: AppPages.admin_community_get_requests, page: () => AdmincommunityGetRequestsView(),binding: AdminCommunityGetRequestsBinding()),
-    GetPage(name: AppPages.join_community, page: () => JoinCommunityView(),binding: JoinCommunityBinding())
+    GetPage(name: AppPages.join_community, page: () => JoinCommunityView(),binding: JoinCommunityBinding()),
+    GetPage(name: AppPages.spalsh, page: () => SplashScreen(),)
 
   ];
 }

@@ -168,9 +168,6 @@ Widget EmailSignup() {
             ),
           ],
         ),
-       // SizedBox(height: Get.height * 0.03),
-       // Image.asset(AppImages.google),
-        //SizedBox(height: Get.height * 0.22),
         Text(
           'Already have an account',
           style: GoogleFonts.manrope(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:rai/modules/splash_screen/splash_screen.dart';
 import 'package:rai/utils/app_pages.dart';
 import 'package:rai/utils/app_routes.dart';
 

@@ -44,7 +44,7 @@ class AccountSettingsController extends GetxController {
 
     final token = GetStorage().read('token');
     if (token == null) {
-      Get.snackbar("Error", "Token not found");
+      Get.snackbar("Error", "Please log in to your account again to change your password");
       isLoading.value = false;
       return;
     }

@@ -101,7 +101,7 @@ class LogInView extends GetView<LogInController> {
               ),
               SizedBox(height: Get.height * 0.02),
               GestureDetector(
-               // onTap: () => Get.offAllNamed(AppPages.mainscreen),
+                //onTap: () => Get.offAllNamed(AppPages.mainscreen),
                 onTap: () => controller.login(),
                 child: Obx(
                   () => controller.isLoading.value
@@ -143,7 +143,7 @@ class LogInView extends GetView<LogInController> {
                 ],
               ),
               SizedBox(height: Get.height * 0.02),
-              Image.asset(AppImages.google),
+             // Image.asset(AppImages.google),
               SizedBox(height: Get.height * 0.02),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

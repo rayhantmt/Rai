@@ -264,66 +264,64 @@ class CommunityChatDetailsController extends GetxController {
       Get.snackbar('Error', 'Could not send image');
     }
   }
-Future<void> startRecording() async {
-  await Permission.microphone.request();
-  if (!_recorderInitialized) {
-    Get.snackbar('Error', 'Recorder not ready');
-    return;
-  }
-  final tempDir = Directory.systemTemp;
-  _recordingPath =
-      '${tempDir.path}/rai_audio_${DateTime.now().millisecondsSinceEpoch}.aac';
 
-  await _recorder.startRecorder(toFile: _recordingPath, codec: Codec.aacMP4);
-  isRecording.value = true;
-}
-
-Future<void> stopAndSendAudio() async {
-  final filePath = await _recorder.stopRecorder();
-  isRecording.value = false;
-
-  if (filePath == null) return;
-
-  try {
-    final storage = GetStorage();
-    final token = storage.read('token');
-
-    final formData = FormData.fromMap({
-      'audio': await MultipartFile.fromFile(
-        filePath,
-        filename: 'audio.aac',
-        contentType: DioMediaType('audio', 'aac'),
-      ),
-    });
-
-    final response = await DioClient().postFormData(
-      url: '${ApiConfig.baseUrl}/api/community/${id.value}/upload-media/',
-      data: formData,
-      headers: {'Authorization': 'Bearer $token'},
-    );
-
-    final body = response.data;
-
-    if (response.statusCode == 200 || response.statusCode == 201) {
-      final fileUrl = body['data']['data']['audio_url'];
-      final payload = jsonEncode({
-        'message': '',
-        'message_type': 'audio',
-      });
-      _channel?.sink.add(payload);
-    } else {
-      Get.snackbar('Upload Failed', body['message'] ?? 'Audio upload failed');
+  Future<void> startRecording() async {
+    await Permission.microphone.request();
+    if (!_recorderInitialized) {
+      Get.snackbar('Error', 'Recorder not ready');
+      return;
     }
-  } on AppException catch (e) {
-    print('[AUDIO SEND] Error: ${e.message}');
-    Get.snackbar('Error', e.message);
-  } catch (e) {
-    print('[AUDIO SEND] Error: $e');
-    Get.snackbar('Error', 'Could not send audio');
-  } finally {
-    try {
-      File(filePath).deleteSync();
-    } catch (_) {}
+    final tempDir = Directory.systemTemp;
+    _recordingPath =
+        '${tempDir.path}/rai_audio_${DateTime.now().millisecondsSinceEpoch}.aac';
+
+    await _recorder.startRecorder(toFile: _recordingPath, codec: Codec.aacMP4);
+    isRecording.value = true;
   }
-}
+
+  Future<void> stopAndSendAudio() async {
+    final filePath = await _recorder.stopRecorder();
+    isRecording.value = false;
+
+    if (filePath == null) return;
+
+    try {
+      final storage = GetStorage();
+      final token = storage.read('token');
+
+      final formData = FormData.fromMap({
+        'audio': await MultipartFile.fromFile(
+          filePath,
+          filename: 'audio.aac',
+          contentType: DioMediaType('audio', 'aac'),
+        ),
+      });
+
+      final response = await DioClient().postFormData(
+        url: '${ApiConfig.baseUrl}/api/community/${id.value}/upload-media/',
+        data: formData,
+        headers: {'Authorization': 'Bearer $token'},
+      );
+
+      final body = response.data;
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final fileUrl = body['data']['data']['audio_url'];
+        final payload = jsonEncode({'message': '', 'message_type': 'audio'});
+        _channel?.sink.add(payload);
+      } else {
+        Get.snackbar('Upload Failed', body['message'] ?? 'Audio upload failed');
+      }
+    } on AppException catch (e) {
+      print('[AUDIO SEND] Error: ${e.message}');
+      Get.snackbar('Error', e.message);
+    } catch (e) {
+      print('[AUDIO SEND] Error: $e');
+      Get.snackbar('Error', 'Could not send audio');
+    } finally {
+      try {
+        File(filePath).deleteSync();
+      } catch (_) {}
+    }
+  }
 }

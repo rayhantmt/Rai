@@ -35,7 +35,7 @@ class RaiChatView extends GetView<RaiChatController> {
           children: [
             SizedBox(height: Get.height * 0.05),
 
-            // ── Top bar ───────────────────────────────────────
+            // Top bar 
             Row(
               children: [
                 Image.asset(
@@ -127,7 +127,7 @@ class RaiChatView extends GetView<RaiChatController> {
 
             SizedBox(height: Get.height * 0.02),
 
-            // ── Chat body ─────────────────────────────────────
+            // Chat body 
             Expanded(
               child: Obx(() {
                 if (controller.messages.isEmpty &&
@@ -190,7 +190,7 @@ class RaiChatView extends GetView<RaiChatController> {
               }),
             ),
 
-            // ── Image preview strip ───────────────────────────
+            // Image preview strip 
             // Shows the selected image ABOVE the input row so the user can
             // review it (and optionally remove it) before sending.
             Obx(() {
@@ -281,13 +281,13 @@ class RaiChatView extends GetView<RaiChatController> {
 
               return Row(
                 children: [
-                  // ── + / collapse button ────────────────────────────
+                  // collapse button 
                   GestureDetector(
                     onTap: () => controller.isInputExpanded.toggle(),
                     child: AnimatedRotation(
                       turns: isExpanded
                           ? 0.125
-                          : 0, // 45° when open → looks like ×
+                          : 0, 
                       duration: const Duration(milliseconds: 200),
                       child: Icon(
                         Icons.add_circle_outline,
@@ -297,7 +297,7 @@ class RaiChatView extends GetView<RaiChatController> {
                     ),
                   ),
 
-                  // ── Image + Mic slide in when expanded ─────────────
+                  // Image + Mic slide in when expanded 
                   AnimatedSize(
                     duration: const Duration(milliseconds: 200),
                     curve: Curves.easeOut,
@@ -334,7 +334,7 @@ class RaiChatView extends GetView<RaiChatController> {
 
                               const SizedBox(width: 4),
 
-                              // Mic — only shown here when panel is open AND no text/image
+                              // Mic only shown here when panel is open AND no text/image
                               if (!showSend)
                                 GestureDetector(
                                   onTap: isTranscribing
@@ -378,7 +378,7 @@ class RaiChatView extends GetView<RaiChatController> {
                         : const SizedBox(),
                   ),
 
-                  // ── Text input pill ────────────────────────────────
+                  //Text input pill
                   Expanded(
                     child: Container(
                       decoration: BoxDecoration(
@@ -456,7 +456,7 @@ class RaiChatView extends GetView<RaiChatController> {
                                   ),
                           ),
 
-                          // ── Send OR Mic inside the pill ───────────
+                          // Send OR Mic inside the pill 
                           if (showSend)
                             // Send button / spinner
                             GestureDetector(
@@ -540,7 +540,7 @@ class RaiChatView extends GetView<RaiChatController> {
   }
 }
 
-// ── History Bottom Sheet ──────────────────────────────────────
+//  History Bottom Sheet
 class _HistorySheet extends StatelessWidget {
   final RaiChatController controller;
   const _HistorySheet({required this.controller});
@@ -693,7 +693,7 @@ class _HistorySheet extends StatelessWidget {
   }
 }
 
-// ── Message bubble ────────────────────────────────────────────
+// Message bubble
 class _MessageBubble extends StatelessWidget {
   final ChatMessage message;
   const _MessageBubble({required this.message});
@@ -734,7 +734,7 @@ class _MessageBubble extends StatelessWidget {
             ? Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // ── Image (local or network) ──────────
+                  // Image (local or network)
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: isLocalFile
@@ -749,7 +749,7 @@ class _MessageBubble extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                   ),
-                  // ── Optional caption ──────────────────
+                  // Optional caption 
                   if (message.text.isNotEmpty) ...[
                     const SizedBox(height: 6),
                     Text(
@@ -776,7 +776,7 @@ class _MessageBubble extends StatelessWidget {
   }
 }
 
-// ── Typing bubble ─────────────────────────────────────────────
+//Typing bubble 
 class _TypingBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
